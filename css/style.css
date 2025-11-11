@@ -197,7 +197,30 @@ body {
   width: 100%;
   z-index: 9998;
 }
+/* ===== POSICIONAMENTO DAS DUAS BARRAS TRADINGVIEW ===== */
 
+/* Primeira barra (índices e moedas) */
+.main-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+/* Segunda barra (commodities) */
+.tradingview-widget-container:not(.main-bar) {
+  position: fixed;
+  top: 38px; /* logo abaixo da primeira */
+  left: 0;
+  width: 100%;
+  z-index: 9998;
+}
+
+/* Empurra o conteúdo do site para baixo das duas barras */
+body {
+  margin-top: 76px !important;
+}
 /* Empurra o conteúdo do site para baixo das duas barras */
 body {
   margin-top: 76px !important;
