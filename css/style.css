@@ -252,3 +252,34 @@ body {
 body {
   margin-top: 76px !important;
 }
+/* ===== FIXAR AS DUAS BARRAS TRADINGVIEW ===== */
+
+/* Primeira barra */
+.main-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  z-index: 9999;
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Segunda barra */
+.commodities-bar {
+  position: fixed;
+  top: 38px;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  z-index: 9998;
+  background: linear-gradient(90deg, #006838, #00914a);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Conteúdo do site começa abaixo das barras */
+body {
+  margin-top: 76px !important;
+}
