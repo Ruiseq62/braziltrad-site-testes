@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — BrazilTrad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    body{font-family:'Inter',sans-serif;background:#f5f8f9;margin:0;padding:0}
+    .ticker{position:sticky;top:0;z-index:9999;background:#004b5c;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+    .container{max-width:720px;background:#fff;margin:48px auto;padding:32px 40px;border-radius:16px;
+      box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    h2{color:#0a3f46;text-align:center;margin:8px 0 24px;font-weight:700;font-size:32px}
+    .field{margin-bottom:16px}
+    label{display:block;font-weight:600;margin:0 0 8px;color:#1f2937}
+    input,textarea{display:block;width:100%;padding:12px 14px;border:1px solid #d1d5db;border-radius:10px;
+      font-size:16px;box-sizing:border-box;transition:border .2s, box-shadow .2s;background:#fff}
+    input:focus,textarea:focus{border-color:#004b5c;outline:none;box-shadow:0 0 0 3px rgba(0,75,92,.15)}
+    button{width:100%;background:#004b5c;color:#fff;border:0;padding:14px 16px;border-radius:10px;
+      font-size:16px;font-weight:600;cursor:pointer}
+    button:hover{background:#036777}
+    #form-status{text-align:center;font-size:14px;margin-top:10px}
+    .footer-note{text-align:center;font-size:13px;color:#6b7280;margin-top:20px}
+    .footer-note a{color:#004b5c;text-decoration:none;font-weight:600}
+    </style>
+</head>
+<body>
+  <div class="ticker">
+    <div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async
+        data-config='{"symbols":[{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:USOIL","title":"WTI"},
+        {"proName":"CBOT:ZS1!","title":"Soybeans"},{"proName":"CBOT:ZC1!","title":"Corn"}],
+        "colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"en"}'></script>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Contact us</h2>
+    <form id="contact-form">
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      </div>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Enter your e-mail" required>
+      </div>
+      <div class="field">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="7" placeholder="Enter your message" required></textarea>
+      </div>
+      <button type="submit">Send message</button>
+      <p id="form-status"></p>
+    </form>
+    <p class="footer-note">
+      🌐 Este formulário é parte do site oficial da <a href="https://braziltrad.com">BrazilTrad</a>.<br>This form is part of the official <a href="https://braziltrad.com">BrazilTrad</a> website.
+    </p>
+  </div>
+
+  <script>
+    (function(){ emailjs.init({ publicKey:"c4B9inNGyjZO4lvDy" }); })();
+    document.getElementById("contact-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      const s=document.getElementById("form-status");
+      s.textContent="Sending..."; s.style.color="#004b5c";
+      emailjs.send("service_swyd6le","template_hslmzyd",{
+  from_name: document.getElementById("name").value,
+  from_email: document.getElementById("email").value,
+  subject: document.getElementById("subject").value,
+  message: document.getElementById("message").value
+}).then(()=>{
+  emailjs.send("service_swyd6le","template_autoreply_braziltrad",{
+    from_name: document.getElementById("name").value,
+    from_email: document.getElementById("email").value
+  });
+
+        s.textContent="Message sent successfully!"; s.style.color="green";
+        document.getElementById("contact-form").reset();
+      },()=>{ s.textContent="Error sending. Please try again."; s.style.color="red"; });
+    });
+  </script>
+</body>
+</html>

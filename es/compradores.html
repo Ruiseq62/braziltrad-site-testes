@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compradores de Productos Básicos — BrazilTrad</title>
+  <meta name="description" content="Conéctese con proveedores brasileños verificados de productos agrícolas y minerales. BrazilTrad garantiza transparencia y seguridad en cada negociación.">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f7f7f7;
+    }
+    header, main {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    h1, h2 {
+      color: #004d40;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea, button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #004d40;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #00796b;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Compradores de Productos Básicos</h1>
+    <p>Conéctese directamente con proveedores brasileños confiables de productos agrícolas y minerales.</p>
+  </header>
+
+  <main>
+    <section>
+      <p>
+        <strong>BrazilTrad</strong> conecta compradores internacionales con proveedores brasileños verificados,
+        ofreciendo un proceso transparente y seguro desde la cotización hasta el envío.
+      </p>
+      <ul>
+        <li>🔹 Productos disponibles: litio, niobio, soja, maíz, café y varios minerales.</li>
+        <li>🔹 Asistencia completa: documentación, inspección y logística.</li>
+        <li>🔹 Atención multilingüe: portugués, inglés, español y chino.</li>
+      </ul>
+    </section>
+
+    <section id="formulario">
+      <h2>Solicitar contacto</h2>
+
+      <form id="buyersForm">
+        <input type="hidden" name="origem" value="Comprador">
+        <input type="hidden" name="idioma" value="es">
+
+        <label>Nombre:</label>
+        <input type="text" name="nome" required>
+
+        <label>Correo electrónico:</label>
+        <input type="email" name="email" required>
+
+        <label>Empresa:</label>
+        <input type="text" name="empresa" required>
+
+        <label>País:</label>
+        <input type="text" name="pais" required>
+
+        <label>Producto de interés:</label>
+        <input type="text" name="producto" required>
+
+        <button type="submit">Enviar solicitud</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('buyersForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      fetch("https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(() => window.location.href = "/thankyou.html")
+      .catch(() => window.location.href = "/thankyou.html");
+    });
+  </script>
+</body>
+</html>

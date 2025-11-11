@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — BrazilTrad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Inter',sans-serif;background:#f5f8f9;margin:0;padding:0;text-align:center}
+    .ticker{position:sticky;top:0;z-index:9999;background:#004b5c;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+    .container{max-width:720px;background:#fff;margin:60px auto;padding:50px 40px;border-radius:16px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+    h2{color:#0a3f46;margin:20px 0 16px;font-weight:700;font-size:28px}
+    p{color:#374151;font-size:18px;margin-bottom:32px}
+    a.button{display:inline-block;background:#004b5c;color:#fff;text-decoration:none;padding:14px 30px;
+      border-radius:10px;font-weight:600;font-size:16px}
+    a.button:hover{background:#036777}
+    .checkmark{font-size:64px;color:#16a34a;animation:pop 0.4s ease-out}
+    @keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.2)}100%{transform:scale(1)}}
+    </style>
+</head>
+<body>
+  <div class="ticker">
+    <div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async
+        data-config='{"symbols":[{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:USOIL","title":"WTI"},
+        {"proName":"CBOT:ZS1!","title":"Soybeans"},{"proName":"CBOT:ZC1!","title":"Corn"}],
+        "colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"en"}'></script>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="checkmark">✅</div>
+    <h2>Message received successfully!</h2>
+    <p>The BrazilTrad team will get in touch with you soon.</p>
+    <a href="https://braziltrad.com" class="button">⬅️ Back to website</a>
+  </div>
+</body>
+</html>

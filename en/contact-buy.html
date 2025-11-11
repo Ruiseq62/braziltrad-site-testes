@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Buy — BrazilTrad&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="../css/style.css"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="container" style="max-width:700px;margin:60px auto;background:#fff;padding:30px 40px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 style="color:#004b5c;text-align:center;margin-bottom:25px"&gt;Buy commodities&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;form id="contact-form"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;Full name&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="text" id="name" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;E-mail&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="email" id="email" required&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;Product&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;select id="product"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;Soybeans&lt;/option&gt;&lt;option&gt;Corn&lt;/option&gt;&lt;option&gt;Sugar&lt;/option&gt;&lt;option&gt;Coffee&lt;/option&gt;&lt;option&gt;Lithium&lt;/option&gt;&lt;option&gt;Copper&lt;/option&gt;&lt;option&gt;Other&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;Estimated quantity (tons)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input type="number" id="quantity"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;Destination / Port&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="text" id="destination"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;Message / Requirements&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;textarea id="message" rows="5" required&gt;&lt;/textarea&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button type="submit" class="button"&gt;Send request&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p id="form-status" style="text-align:center;margin-top:10px;"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>(function(){ emailjs.init({ publicKey:"c4B9inNGyjZO4lvDy" }); })();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("contact-form").addEventListener("submit", function(e){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const s=document.getElementById("form-status");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>s.textContent="Sending..."; s.style.color="#004b5c";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const subject = "[BUY] " + document.getElementById("product").value + " — " + (document.getElementById("quantity").value||"qty n/a") + "t";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>emailjs.send("service_swyd6le","template_hslmzyd_en",{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>from_name: document.getElementById("name").value,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>from_email: document.getElementById("email").value,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>subject: subject,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>message:</p>
+<p class="p1"><span class="Apple-converted-space">          </span>"Product: "+document.getElementById("product").value+"\n"+</p>
+<p class="p1"><span class="Apple-converted-space">          </span>"Quantity (t): "+(document.getElementById("quantity").value||"n/a")+"\n"+</p>
+<p class="p1"><span class="Apple-converted-space">          </span>"Destination: "+(document.getElementById("destination").value||"n/a")+"\n\n"+</p>
+<p class="p1"><span class="Apple-converted-space">          </span>(document.getElementById("message").value||"")</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}).then(()=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>emailjs.send("service_swyd6le","template_autoreply_braziltrad_en",{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>from_name: document.getElementById("name").value,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>from_email: document.getElementById("email").value</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>s.textContent="Request sent successfully!"; s.style.color="green";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("contact-form").reset();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>},(err)=&gt;{ console.error(err); s.textContent="Error sending. Please try again."; s.style.color="red"; });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
