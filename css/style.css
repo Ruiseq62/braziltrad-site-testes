@@ -72,13 +72,22 @@ body {
   margin-top: 50px; /* dá espaço abaixo da barra */
 }
 /* === Barra de Cotações fixa no topo === */
+/* === Fixar a barra de cotações do TradingView no topo === */
 .tradingview-widget-container {
-  position: fixed;       /* Fixa o elemento na tela */
-  top: 0;                /* Encosta no topo */
-  left: 0;               /* Alinha à esquerda */
-  width: 100%;           /* Ocupa toda a largura */
-  z-index: 9999;         /* Mantém acima de tudo */
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #0a1f1a; /* cor de fundo para evitar transparência */
+  border-bottom: 1px solid #0d3026;
 }
+
+/* === Evita que o conteúdo fique escondido atrás da barra === */
+body {
+  margin-top: 65px; /* Ajusta conforme a altura da barra */
+}
+
 
 /* === Dá espaço abaixo da barra para o conteúdo não ficar escondido === */
 body {
