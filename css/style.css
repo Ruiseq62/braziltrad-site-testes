@@ -278,7 +278,33 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
+/* ===== ESTILO FIXO E UNIFICADO DAS DUAS BARRAS TRADINGVIEW ===== */
+.tradingview-widget-container.main-bar,
+.tradingview-widget-container.commodities-bar {
+  width: 100%;
+  height: 38px;
+  position: fixed;
+  left: 0;
+  background: linear-gradient(90deg, #006838, #00914a);
+  z-index: 99999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
 
+/* Posição da primeira barra (índices e moedas) */
+.tradingview-widget-container.main-bar {
+  top: 0;
+}
+
+/* Posição da segunda barra (commodities) */
+.tradingview-widget-container.commodities-bar {
+  top: 38px;
+}
+
+/* Garante que o conteúdo do site não fique escondido */
+body {
+  margin-top: 76px !important;
+}
 /* Conteúdo do site começa abaixo das barras */
 body {
   margin-top: 76px !important;
