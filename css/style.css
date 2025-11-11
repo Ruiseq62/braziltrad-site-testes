@@ -93,3 +93,37 @@ body {
 body {
   margin-top: 55px;      /* Ajusta conforme a altura da barra */
 }
+/* ===== BARRA DE COMMODITIES PERSONALIZADA (rolante abaixo do TradingView) ===== */
+.ticker-bar {
+  position: fixed;
+  top: 38px; /* logo abaixo da barra do TradingView */
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(90deg, #00914a, #00b06a);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 99998; /* um nível abaixo do TradingView */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Texto rolante */
+.ticker-content {
+  display: inline-block;
+  animation: tickerScroll 30s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Ajuste geral do corpo para as duas barras */
+body {
+  margin-top: 110px !important; /* espaço para o TradingView + barra rolante */
+}
