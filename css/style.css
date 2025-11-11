@@ -127,3 +127,37 @@ body {
 body {
   margin-top: 110px !important; /* espaço para o TradingView + barra rolante */
 }
+/* ===== BARRA DE COMMODITIES ROLANTE (BrazilTrad) ===== */
+.ticker-bar {
+  position: fixed;
+  top: 38px; /* logo abaixo da TradingView */
+  left: 0;
+  width: 100vw; /* mesma largura da barra de cotações */
+  height: 38px; /* mesma altura da barra TradingView */
+  background: linear-gradient(90deg, #00914a, #00b06a);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 38px;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 99998; /* um nível abaixo do TradingView */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Texto rolando da direita para a esquerda */
+.ticker-content {
+  display: inline-block;
+  animation: tickerScroll 60s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ===== AJUSTE DO CORPO DO SITE ===== */
+body {
+  margin-top: 120px !important; /* espaço suficiente para as duas barras */
+}
