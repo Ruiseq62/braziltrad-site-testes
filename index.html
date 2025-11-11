@@ -130,23 +130,28 @@
   footer [data-i18n="footer.location"] {
     color: #ffffff !important;
   }
-/* ===== BARRA DE COTAÇÕES - ESTILO BRAZILTRAD ===== */
-.ticker-bar {
-  position: fixed;
+
+/* ===== BARRA DE COTAÇÕES - ESTILO BRAZILTRAD (TradingView fixo) ===== */
+.tradingview-widget-container {
+  position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;
-  height: 32px; /* aumentamos um pouco */
+  height: 38px; /* ligeiramente maior para evitar corte */
   background: linear-gradient(90deg, #006838, #00914a);
   color: #ffffff;
-  font-weight: 500;
-  font-size: 0.95rem;
-  line-height: 32px;
-  white-space: nowrap;
-  overflow: hidden;
-  z-index: 999999; /* acima de qualquer widget TradingView */
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  z-index: 99999; /* suficiente para ficar acima do header */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* dá leve sombra, separando do header */
 }
+
+/* Espaçamento para o conteúdo não ficar escondido */
+body {
+  margin-top: 70px; /* ajusta conforme o header */
+}
+
+}
+
 
 .ticker-content {
   display: inline-block;
