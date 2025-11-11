@@ -263,56 +263,70 @@ body {
 </div>
 <!-- ===== Barra de Commodities Personalizada (BrazilTrad) ===== -->
 <!-- ===== Barra de Commodities (BrazilTrad + Dados Reais do TradingView) ===== -->
+<!-- ===== Barra de Commodities (BrazilTrad Ampliada) ===== -->
 <div class="ticker-bar">
   <div class="ticker-content" id="commodities-ticker">
-    <span>🌽 Milho: <span id="ZC1">--</span></span> |
-    <span>☕ Café: <span id="KC1">--</span></span> |
-    <span>🌱 Soja: <span id="ZS1">--</span></span> |
-    <span>🧂 Açúcar: <span id="SB1">--</span></span> |
-    <span>🧵 Algodão: <span id="CT1">--</span></span> |
-    <span>🪙 Cobre: <span id="HG1">--</span></span> |
-    <span>💎 Ouro: <span id="GC1">--</span></span> |
-    <span>🛢️ Petróleo Brent: <span id="BRN1">--</span></span> |
-    <span>⚙️ Zinco: <span id="MZX1">--</span></span> |
-    <span>🔋 Lítio: <span id="LIT">--</span></span>
+    🪙 Ouro: <span id="GC1">--</span> |
+    🛢️ Petróleo Brent: <span id="BRN1">--</span> |
+    🌱 Soja: <span id="ZS1">--</span> |
+    🌽 Milho: <span id="ZC1">--</span> |
+    ☕ Café: <span id="KC1">--</span> |
+    🧂 Açúcar: <span id="SB1">--</span> |
+    🧵 Algodão: <span id="CT1">--</span> |
+    ⚙️ Cobre: <span id="HG1">--</span> |
+    ⚒️ Minério de Ferro: <span id="TIO1">--</span> |
+    🔋 Lítio: <span id="LIT">--</span> |
+    💎 Prata: <span id="SI1">--</span> |
+    🧱 Níquel: <span id="NI1">--</span> |
+    🔩 Zinco: <span id="MZX1">--</span> |
+    🧈 Óleo de Palma: <span id="FCPO1">--</span> |
+    🥥 Cacau: <span id="CC1">--</span> |
+    🍚 Arroz: <span id="ZR1">--</span> |
+    🧄 Alho: <span id="GARLIC">--</span> |
+    🧅 Cebola: <span id="ONION">--</span> |
+    🐄 Gado Vivo: <span id="LE1">--</span> |
+    🐖 Suínos: <span id="HE1">--</span>
   </div>
 </div>
 
-
+<!-- ===== Script: Atualização Automática ===== -->
 <script>
-
-  <!-- ===== Script: Atualização Automática de Commodities (TradingView API Proxy) ===== -->
-    
-    // Lista de commodities com símbolos reais do TradingView
   const commodities = [
+    { id: "GC1", symbol: "COMEX:GC1!" },   // Ouro
+    { id: "BRN1", symbol: "ICEEUR:BRN1!" }, // Petróleo Brent
+    { id: "ZS1", symbol: "CBOT:ZS1!" },    // Soja
     { id: "ZC1", symbol: "CBOT:ZC1!" },    // Milho
     { id: "KC1", symbol: "ICEUS:KC1!" },   // Café
-    { id: "ZS1", symbol: "CBOT:ZS1!" },    // Soja
     { id: "SB1", symbol: "ICEUS:SB1!" },   // Açúcar
     { id: "CT1", symbol: "ICEUS:CT1!" },   // Algodão
     { id: "HG1", symbol: "COMEX:HG1!" },   // Cobre
-    { id: "GC1", symbol: "COMEX:GC1!" },   // Ouro
-    { id: "BRN1", symbol: "ICEEUR:BRN1!" }, // Petróleo Brent
+    { id: "TIO1", symbol: "SGX:FEF1!" },   // Minério de Ferro
+    { id: "LIT", symbol: "AMEX:LIT" },     // Lítio (ETF)
+    { id: "SI1", symbol: "COMEX:SI1!" },   // Prata
+    { id: "NI1", symbol: "LME:NICKEL1!" }, // Níquel
     { id: "MZX1", symbol: "LME:ZINC1!" },  // Zinco
-    { id: "LIT", symbol: "AMEX:LIT" }      // Lítio (ETF)
+    { id: "FCPO1", symbol: "MYX:FCPO1!" }, // Óleo de Palma
+    { id: "CC1", symbol: "ICEUS:CC1!" },   // Cacau
+    { id: "ZR1", symbol: "CBOT:ZR1!" },    // Arroz
+    { id: "LE1", symbol: "CME:LE1!" },     // Gado
+    { id: "HE1", symbol: "CME:HE1!" }      // Suínos
   ];
 
   async function updateCommodities() {
     for (const c of commodities) {
       try {
-        // Usa a API pública do TradingView JSON embed
         const url = `https://api.allorigins.win/raw?url=https://api.tradingview.com/symbols/${c.symbol.replace(':', '%3A')}`;
         const response = await fetch(url);
         const data = await response.text();
         document.getElementById(c.id).textContent = data ? data.slice(0, 8) : "--";
-      } catch (e) {
+      } catch {
         document.getElementById(c.id).textContent = "--";
       }
     }
   }
 
   updateCommodities();
-  setInterval(updateCommodities, 60000); // atualiza a cada 1 minuto
+  setInterval(updateCommodities, 60000);
 </script>
 
 <!-- TradingView Widget END -->
