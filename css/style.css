@@ -71,3 +71,16 @@ textarea{min-height:120px;resize:vertical}
 body {
   margin-top: 50px; /* dá espaço abaixo da barra */
 }
+/* === Barra de Cotações fixa no topo === */
+.tradingview-widget-container {
+  position: fixed;       /* Fixa o elemento na tela */
+  top: 0;                /* Encosta no topo */
+  left: 0;               /* Alinha à esquerda */
+  width: 100%;           /* Ocupa toda a largura */
+  z-index: 9999;         /* Mantém acima de tudo */
+}
+
+/* === Dá espaço abaixo da barra para o conteúdo não ficar escondido === */
+body {
+  margin-top: 55px;      /* Ajusta conforme a altura da barra */
+}
