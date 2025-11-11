@@ -262,11 +262,58 @@ body {
   </script>
 </div>
 <!-- ===== Barra de Commodities Personalizada (BrazilTrad) ===== -->
+<!-- ===== Barra de Commodities (BrazilTrad + Dados Reais do TradingView) ===== -->
 <div class="ticker-bar">
   <div class="ticker-content" id="commodities-ticker">
-    🌽 Milho: $5,60 | ☕ Café: $1,95 | 🌱 Soja: $14,20 | 🧂 Açúcar: $0,25 | 🧵 Algodão: $0,85 | 🪨 Minério de Ferro: $108 | ⚡ Lítio: $23.000
+    <span>🌽 Milho: <span id="ZC1">--</span></span> |
+    <span>☕ Café: <span id="KC1">--</span></span> |
+    <span>🌱 Soja: <span id="ZS1">--</span></span> |
+    <span>🧂 Açúcar: <span id="SB1">--</span></span> |
+    <span>🧵 Algodão: <span id="CT1">--</span></span> |
+    <span>🪙 Cobre: <span id="HG1">--</span></span> |
+    <span>💎 Ouro: <span id="GC1">--</span></span> |
+    <span>🛢️ Petróleo Brent: <span id="BRN1">--</span></span> |
+    <span>⚙️ Zinco: <span id="MZX1">--</span></span> |
+    <span>🔋 Lítio: <span id="LIT">--</span></span>
   </div>
 </div>
+
+
+<script>
+
+  <!-- ===== Script: Atualização Automática de Commodities (TradingView API Proxy) ===== -->
+    
+    // Lista de commodities com símbolos reais do TradingView
+  const commodities = [
+    { id: "ZC1", symbol: "CBOT:ZC1!" },    // Milho
+    { id: "KC1", symbol: "ICEUS:KC1!" },   // Café
+    { id: "ZS1", symbol: "CBOT:ZS1!" },    // Soja
+    { id: "SB1", symbol: "ICEUS:SB1!" },   // Açúcar
+    { id: "CT1", symbol: "ICEUS:CT1!" },   // Algodão
+    { id: "HG1", symbol: "COMEX:HG1!" },   // Cobre
+    { id: "GC1", symbol: "COMEX:GC1!" },   // Ouro
+    { id: "BRN1", symbol: "ICEEUR:BRN1!" }, // Petróleo Brent
+    { id: "MZX1", symbol: "LME:ZINC1!" },  // Zinco
+    { id: "LIT", symbol: "AMEX:LIT" }      // Lítio (ETF)
+  ];
+
+  async function updateCommodities() {
+    for (const c of commodities) {
+      try {
+        // Usa a API pública do TradingView JSON embed
+        const url = `https://api.allorigins.win/raw?url=https://api.tradingview.com/symbols/${c.symbol.replace(':', '%3A')}`;
+        const response = await fetch(url);
+        const data = await response.text();
+        document.getElementById(c.id).textContent = data ? data.slice(0, 8) : "--";
+      } catch (e) {
+        document.getElementById(c.id).textContent = "--";
+      }
+    }
+  }
+
+  updateCommodities();
+  setInterval(updateCommodities, 60000); // atualiza a cada 1 minuto
+</script>
 
 <!-- TradingView Widget END -->
 
