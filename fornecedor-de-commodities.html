@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fornecedores de Commodities — BrazilTrad</title>
+  <meta name="description" content="Venda sua produção para compradores internacionais qualificados. Conecte-se com a BrazilTrad e expanda seus negócios globais.">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f7f7f7;
+    }
+    header, main {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    h1, h2 {
+      color: #004d40;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea, button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #004d40;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #00796b;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Fornecedores de Commodities</h1>
+    <p>Venda sua produção para compradores internacionais qualificados com o apoio da BrazilTrad.</p>
+  </header>
+
+  <main>
+    <section>
+      <p>
+        A <strong>BrazilTrad</strong> ajuda produtores e distribuidores brasileiros a expandir suas operações globalmente,
+        conectando-os a compradores confiáveis em mercados estratégicos.
+      </p>
+      <ul>
+        <li>🔹 Acesso direto a compradores na Ásia, Europa e América Latina.</li>
+        <li>🔹 Suporte em logística, documentação e due diligence.</li>
+        <li>🔹 Negociações mediadas com segurança e agilidade.</li>
+      </ul>
+    </section>
+
+    <section id="formulario">
+      <h2>Cadastre-se como fornecedor</h2>
+
+      <form id="fornecedoresForm">
+        <input type="hidden" name="origem" value="Fornecedor">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label>E-mail:</label>
+        <input type="email" name="email" required>
+
+        <label>Empresa:</label>
+        <input type="text" name="empresa" required>
+
+        <label>País:</label>
+        <input type="text" name="pais" required>
+
+        <label>Produtos que fornece:</label>
+        <textarea name="produtos" rows="3" required></textarea>
+
+        <button type="submit">Registrar fornecedor</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('fornecedoresForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      fetch("https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(() => window.location.href = "/thankyou.html")
+      .catch(() => window.location.href = "/thankyou.html");
+    });
+  </script>
+</body>
+</html>

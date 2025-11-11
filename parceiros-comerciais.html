@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcerias Comerciais — BrazilTrad</title>
+  <meta name="description" content="Torne-se parceiro comercial ou representante da BrazilTrad e participe da expansão global do comércio de commodities.">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f7f7f7;
+    }
+    header, main {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    h1, h2 {
+      color: #004d40;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea, button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #004d40;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #00796b;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Parcerias Comerciais e Representação</h1>
+    <p>Junte-se à rede BrazilTrad como parceiro estratégico em mercados internacionais.</p>
+  </header>
+
+  <main>
+    <section>
+      <p>
+        A <strong>BrazilTrad</strong> busca representantes e consultores comerciais em mercados estratégicos
+        para expandir sua presença no comércio internacional de commodities.
+      </p>
+      <ul>
+        <li>🔹 Parcerias com comissionamento sobre contratos fechados.</li>
+        <li>🔹 Suporte completo em marketing, documentação e integração CRM.</li>
+        <li>🔹 Trabalhe com uma marca sólida e confiável no setor.</li>
+      </ul>
+    </section>
+
+    <section id="formulario">
+      <h2>Envie sua proposta de parceria</h2>
+
+      <form id="parceirosForm">
+        <input type="hidden" name="origem" value="Parceiro">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label>E-mail:</label>
+        <input type="email" name="email" required>
+
+        <label>Empresa / Organização:</label>
+        <input type="text" name="empresa">
+
+        <label>País / Região de atuação:</label>
+        <input type="text" name="pais" required>
+
+        <label>Mensagem:</label>
+        <textarea name="mensagem" rows="4" required></textarea>
+
+        <button type="submit">Enviar proposta</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('parceirosForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      fetch("https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(() => window.location.href = "/thankyou.html")
+      .catch(() => window.location.href = "/thankyou.html");
+    });
+  </script>
+</body>
+</html>
