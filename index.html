@@ -132,23 +132,39 @@
   }
 
 /* ===== BARRA DE COTAÇÕES - ESTILO BRAZILTRAD (TradingView fixo) ===== */
+/* ===== BARRA DE COTAÇÕES – ESTILO BRAZILTRAD (TradingView fixo) ===== */
 .tradingview-widget-container {
   position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;
-  height: 38px; /* ligeiramente maior para evitar corte */
+  height: 38px;
   background: linear-gradient(90deg, #006838, #00914a);
   color: #ffffff;
-  z-index: 99999; /* suficiente para ficar acima do header */
+  z-index: 99999;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* dá leve sombra, separando do header */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Espaçamento para o conteúdo não ficar escondido */
-body {
-  margin-top: 70px; /* ajusta conforme o header */
+/* ===== SEGUNDA BARRA – COMMODITIES ===== */
+.commodities-bar {
+  position: fixed !important;
+  top: 38px; /* aparece logo abaixo da primeira */
+  left: 0;
+  width: 100%;
+  height: 38px;
+  background: linear-gradient(90deg, #006838, #00914a);
+  color: #ffffff;
+  z-index: 99998;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+/* Evita que o conteúdo do site fique escondido atrás das duas barras */
+body {
+  margin-top: 76px !important;
+}
+
 /* ===== BARRA DE COMMODITIES PERSONALIZADA (rolante abaixo do TradingView) ===== */
 .ticker-bar {
   position: fixed;
