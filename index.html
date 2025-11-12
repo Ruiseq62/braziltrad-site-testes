@@ -5,49 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BrazilTrad — Conectando o Brasil ao mercado global de commodities</title>
   <meta name="description" content="Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.">
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/style.css">
 
   <style>
-    /* ===== BOTÃO MULTILÍNGUA ===== */
-    .lang-btn {
-      position: fixed;
-      top: 6px;
-      right: 18px;
-      height: 30px;
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 25px;
-      padding: 0 14px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #0F4C5C;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      z-index: 10000;
-      transition: all 0.2s ease-in-out;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+    /* local styles needed quickly (keeps CSS file clean) */
+    /* small helper to avoid content behind bars on very small screens */
+    @media (max-width:420px){
+      body{margin-top:95px !important;}
+      .lang-btn{top:86px;}
     }
-    .lang-btn:hover {
-      background: #f9f9f9;
-      transform: translateY(-1px);
-    }
-
-    /* ===== MARGEM PARA BARRAS FIXAS ===== */
-    body { margin-top: 90px !important; }
   </style>
 </head>
 
 <body>
+  <!-- ===== PLACEHOLDERS DAS BARRAS (serão preenchidas por JS) ===== -->
+  <div id="tv-bar-1-placeholder"></div>
+  <div id="tv-bar-2-placeholder"></div>
 
-  <!-- ===== BOTÃO MULTILÍNGUA ===== -->
-  <button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
+  <!-- ===== BOTÃO MULTILÍNGUA (flutuando abaixo do topo, canto direito) ===== -->
+  <button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
 
-  <!-- ===== HEADER ===== -->
+  <!-- ===== HEADER E CONTEÚDO DO SITE (mantive o teu conteúdo) ===== -->
   <header class="header">
     <div class="container nav">
-      <a class="brand" href="#">
+      <a class="brand" href="./">
         <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" />
         <div>
           <div class="title">BrazilTrad</div>
@@ -67,230 +48,194 @@
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="container">
-      <h1>Conectando o Brasil ao mercado global de commodities</h1>
-      <p>Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF. Atuamos com fornecedores selecionados e compradores qualificados.</p>
-      <div class="cta">
-        <a class="button" href="#">Quero comprar</a>
-        <a class="button secondary" href="#">Quero vender</a>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Conectando o Brasil ao mercado global de commodities</h1>
+        <p>Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF. Atuamos com fornecedores selecionados e compradores qualificados.</p>
+        <div class="cta">
+          <a id="btn-comprar" class="button" href="./contato-compra.html">Quero comprar</a>
+          <a id="btn-vender" class="button secondary" href="./contato-venda.html">Quero vender</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== SOBRE ===== -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2>Sobre a BrazilTrad</h2>
-      <p class="lead">Somos um parceiro brasileiro confiável para compradores internacionais. Atuamos com due diligence, auditoria de fornecedores e coordenação logística sob Incoterms.</p>
-    </div>
-  </section>
-
-  <!-- ===== SERVIÇOS ===== -->
-  <section id="services" class="section">
-    <div class="container">
-      <h2>Serviços</h2>
-      <p>Reduzimos riscos e aceleramos operações internacionais.</p>
-      <ul class="list">
-        <li>Intermediação ponta a ponta entre produtor e comprador.</li>
-        <li>Due diligence: origem, documentação, compliance e KYC.</li>
-        <li>Logística FOB/CIF via portos brasileiros.</li>
-        <li>Negociação internacional: contratos, L/C, T/T.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== PRODUTOS ===== -->
-  <section id="products" class="section">
-    <div class="container">
-      <h2>Produtos</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="./assets/img/agricolas.png" alt="Agrícolas" />
-          <h3>Agrícolas</h3>
-          <p>Soja, milho, açúcar e café. Certificações sob demanda; contratos a médio e longo prazo.</p>
-        </article>
-        <article class="card">
-          <img src="./assets/img/energeticas.png" alt="Energéticas" />
-          <h3>Energéticas</h3>
-          <p>Etanol, diesel renovável, biomassa. Cadeia otimizada para mercados asiáticos e europeus.</p>
-        </article>
-        <article class="card">
-          <img src="./assets/img/minerais.png" alt="Minerais" />
-          <h3>Minerais</h3>
-          <p>Lítio, ferro, nióbio e cobre. Qualificação técnica e compliance para exportação.</p>
-        </article>
+    <section id="about" class="section">
+      <div class="container">
+        <h2>Sobre a BrazilTrad</h2>
+        <p class="lead">Somos um parceiro brasileiro confiável para compradores internacionais. Atuamos com due diligence, auditoria de fornecedores e coordenação logística sob Incoterms.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== MERCADOS ===== -->
-  <section id="markets" class="section">
-    <div class="container">
-      <h2>Mercados</h2>
-      <ul class="list">
-        <li>Ásia: foco em China e Índia (minerais e agrícolas).</li>
-        <li>EUA/UE: contratos com requisitos ESG e compliance.</li>
-        <li>Rede de fornecedores qualificados no Brasil.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== INSIGHTS ===== -->
-  <section id="insights" class="section">
-    <div class="container">
-      <h2>Insights</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Panorama do Lítio em 2025</h3>
-          <p>Demanda crescente na Ásia e novas rotas logísticas via Santos.</p>
-        </article>
-        <article class="card">
-          <h3>Exportações agrícolas do Brasil</h3>
-          <p>Soja e açúcar com contratos FOB competitivos para China e Índia.</p>
-        </article>
-        <article class="card">
-          <h3>Nióbio brasileiro</h3>
-          <p>Aplicações em ligas especiais e tendências de demanda para eletrificação.</p>
-        </article>
+    <section id="services" class="section">
+      <div class="container">
+        <h2>Serviços</h2>
+        <ul class="list">
+          <li>Intermediação ponta a ponta entre produtor e comprador.</li>
+          <li>Due diligence: origem, documentação, compliance e KYC.</li>
+          <li>Logística FOB/CIF via portos brasileiros.</li>
+          <li>Negociação internacional: contratos, L/C, T/T.</li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== FOOTER ===== -->
+    <section id="products" class="section">
+      <div class="container">
+        <h2>Produtos</h2>
+        <div class="grid">
+          <article class="card">
+            <img src="./assets/img/agricolas.png" alt="Agrícolas" />
+            <h3>Agrícolas</h3>
+            <p>Soja, milho, açúcar e café. Certificações sob demanda; contratos a médio e longo prazo.</p>
+          </article>
+          <article class="card">
+            <img src="./assets/img/energeticas.png" alt="Energéticas" />
+            <h3>Energéticas</h3>
+            <p>Etanol, diesel renovável, biomassa. Cadeia otimizada para mercados asiáticos e europeus.</p>
+          </article>
+          <article class="card">
+            <img src="./assets/img/minerais.png" alt="Minerais" />
+            <h3>Minerais</h3>
+            <p>Lítio, ferro, nióbio e cobre. Qualificação técnica e compliance para exportação.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="markets" class="section">
+      <div class="container">
+        <h2>Mercados</h2>
+        <ul class="list">
+          <li>Ásia: foco em China e Índia (minerais e agrícolas).</li>
+          <li>EUA/UE: contratos com requisitos ESG e compliance.</li>
+          <li>Rede de fornecedores qualificados no Brasil.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="insights" class="section">
+      <div class="container">
+        <h2>Insights</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Panorama do Lítio em 2025</h3>
+            <p>Demanda crescente na Ásia e novas rotas logísticas via Santos.</p>
+          </article>
+          <article class="card">
+            <h3>Exportações agrícolas do Brasil</h3>
+            <p>Soja e açúcar com contratos FOB competitivos para China e Índia.</p>
+          </article>
+          <article class="card">
+            <h3>Nióbio brasileiro</h3>
+            <p>Aplicações em ligas especiais e tendências de demanda para eletrificação.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER COM LINKS RESTAURADOS ===== -->
   <footer class="footer">
     <div class="inner container" style="text-align:center; padding:20px 0;">
       <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:34px;width:auto;display:block;margin:0 auto 10px">
       <div>© BrazilTrad. Conectando produtores brasileiros a mercados globais.</div>
-      <div>São Paulo — Brasil</div>
+      <div style="margin-top:8px;">
+        🌐 <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>
+        &nbsp;|&nbsp;
+        ✉️ <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a>
+        &nbsp;|&nbsp;
+        💼 <a href="https://www.linkedin.com/company/braziltrad/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <div style="margin-top:8px; color:#fff; opacity:0.9;">São Paulo — Brasil</div>
     </div>
   </footer>
 
-  <!-- ===== SCRIPT: BOTÃO MULTILÍNGUA E TRADINGVIEW ===== -->
+  <!-- ===== SCRIPTS: multilíngua, CTA, e inicialização dos widgets (locale do TradingView) ===== -->
   <script>
-    const langOrder = ["pt", "en", "es", "zh"];
-    const flag = { pt: "🇧🇷", en: "🇬🇧", es: "🇪🇸", zh: "🇨🇳" };
-    let langIndex = 0;
+    /* --------------- multilíngua (opção 2: troca também as barras) --------------- */
+    const LANGS = ["pt","en","es","zh"];
+    const FLAGS = {pt:"🇧🇷",en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳"};
+    let idx = 0;
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("langBtn");
-      const saved = localStorage.getItem("bt_lang");
-      if (saved && langOrder.includes(saved)) langIndex = langOrder.indexOf(saved);
+    function getSavedLang(){
+      try{ const s = localStorage.getItem('bt_lang'); if(s && LANGS.includes(s)) return s; }catch(e){}
+      return 'pt';
+    }
+    function saveLang(code){
+      try{ localStorage.setItem('bt_lang', code); }catch(e){}
+    }
 
-      function setLang(code) {
-        localStorage.setItem("bt_lang", code);
-        btn.textContent = `🌎 ${flag[code]} ${code.toUpperCase()}`;
-        document.documentElement.lang = code;
-        loadTradingViewWidgets(code);
-      }
+    document.addEventListener('DOMContentLoaded', () => {
+      // set initial lang index from storage
+      const saved = getSavedLang();
+      idx = LANGS.indexOf(saved);
+      if(idx < 0) idx = 0;
+      const btn = document.getElementById('langBtn');
+      btn.textContent = `🌎 ${FLAGS[LANGS[idx]]} ${LANGS[idx].toUpperCase()}`;
 
-      btn.addEventListener("click", () => {
-        langIndex = (langIndex + 1) % langOrder.length;
-        setLang(langOrder[langIndex]);
+      // clicking cycles languages (we reload page to ensure TradingView widgets init cleanly)
+      btn.addEventListener('click', () => {
+        idx = (idx + 1) % LANGS.length;
+        const code = LANGS[idx];
+        saveLang(code);
+        // update button and reload so widgets re-init with new locale
+        btn.textContent = `🌎 ${FLAGS[code]} ${code.toUpperCase()}`;
+        // small delay to show new label, then reload
+        setTimeout(()=> location.reload(), 220);
       });
 
-      setLang(langOrder[langIndex]);
+      // CTA buttons: sessionStorage + navigate
+      const bc = document.getElementById('btn-comprar');
+      const bv = document.getElementById('btn-vender');
+      if(bc) bc.addEventListener('click', (e)=>{ sessionStorage.setItem('bt_type','buy'); /* keep default navigation */ });
+      if(bv) bv.addEventListener('click', (e)=>{ sessionStorage.setItem('bt_type','sell'); });
+
+      // initialize tradingview widgets after DOM ready, using saved locale
+      initTradingViewWidgets(getSavedLang());
     });
 
-    function loadTradingViewWidgets(lang = "pt") {
-      document.querySelectorAll(".tv-widget").forEach(c => c.remove());
-
-      const tv1 = document.createElement("div");
-      tv1.className = "tradingview-widget-container main-bar tv-widget";
-      tv1.innerHTML = `
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {
-          "symbols": [
-            { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
-            { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
-            { "proName": "OANDA:SPX500USD", "title": "S&P 500" },
-            { "proName": "NASDAQ:NDX", "title": "NASDAQ 100" },
-            { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-            { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" }
-          ],
-          "showSymbolLogo": true,
-          "colorTheme": "light",
-          "isTransparent": false,
-          "displayMode": "adaptive",
-          "locale": "${lang}"
-        }
-        <\/script>`;
-      document.body.prepend(tv1);
-
-      const tv2 = document.createElement("div");
-      tv2.className = "tradingview-widget-container commodities-bar tv-widget";
-      tv2.innerHTML = `
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {
-          "symbols": [
-            { "proName": "COMEX:GC1!", "title": "Ouro" },
-            { "proName": "ICEEUR:BRN1!", "title": "Petróleo Brent" },
-            { "proName": "CBOT:ZS1!", "title": "Soja" },
-            { "proName": "ICEUS:KC1!", "title": "Café" },
-            { "proName": "ICEUS:SB1!", "title": "Açúcar" },
-            { "proName": "ICEUS:CT1!", "title": "Algodão" },
-            { "proName": "COMEX:HG1!", "title": "Cobre" },
-            { "proName": "SGX:FEF1!", "title": "Minério de Ferro" }
-          ],
-          "showSymbolLogo": true,
-          "colorTheme": "light",
-          "isTransparent": false,
-          "displayMode": "adaptive",
-          "locale": "${lang}"
-        }
-        <\/script>`;
-      document.body.prepend(tv2);
-    }
-  </script>
-
-</body>
-</html>
-<!-- ===== BOTÃO MULTILÍNGUA ===== -->
-<button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
-
-<!-- ===== SCRIPT DO BOTÃO E DAS BARRAS ===== -->
-<script>
-  const langOrder = ["pt", "en", "es", "zh"];
-  const flag = { pt: "🇧🇷", en: "🇬🇧", es: "🇪🇸", zh: "🇨🇳" };
-  let langIndex = 0;
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("langBtn");
-    const saved = localStorage.getItem("bt_lang");
-    if (saved && langOrder.includes(saved)) langIndex = langOrder.indexOf(saved);
-
-    function setLang(code) {
-      localStorage.setItem("bt_lang", code);
-      btn.textContent = `🌎 ${flag[code]} ${code.toUpperCase()}`;
-      document.documentElement.lang = code;
-      loadTradingViewWidgets(code);
+    /* --------------- TradingView: cria os scripts com o JSON de configuração --------------- */
+    function createTradingViewWidget(containerId, configObj){
+      // create the script element that TradingView expects: <script src="..."> { json } </script>
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+      // build JSON text (no surrounding <script> tags)
+      script.text = JSON.stringify(configObj, null, 2);
+      // append into the container
+      document.getElementById(containerId).appendChild(script);
     }
 
-    btn.addEventListener("click", () => {
-      langIndex = (langIndex + 1) % langOrder.length;
-      setLang(langOrder[langIndex]);
-    });
+    function initTradingViewWidgets(locale){
+      // clear placeholders (remove any existing containers)
+      const p1 = document.getElementById('tv-bar-1-placeholder');
+      const p2 = document.getElementById('tv-bar-2-placeholder');
+      p1.innerHTML = '';
+      p2.innerHTML = '';
 
-    setLang(langOrder[langIndex]);
-  });
+      // create wrapper containers (with logo)
+      const wrapper1 = document.createElement('div');
+      wrapper1.className = 'tradingview-widget-container main-bar';
+      wrapper1.innerHTML = `
+        <a href="https://braziltrad.com" class="tv-logo-link" target="_blank" rel="noopener">
+          <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
+        </a>
+        <div class="tradingview-widget-container__widget"></div>
+      `;
+      p1.appendChild(wrapper1);
 
-  /* ===== INSERÇÃO DAS DUAS BARRAS TRADINGVIEW COM LOGOTIPO ===== */
-  function loadTradingViewWidgets(lang = "pt") {
-    document.querySelectorAll(".tv-widget").forEach(c => c.remove());
+      const wrapper2 = document.createElement('div');
+      wrapper2.className = 'tradingview-widget-container commodities-bar';
+      wrapper2.innerHTML = `
+        <a href="https://braziltrad.com" class="tv-logo-link" target="_blank" rel="noopener">
+          <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
+        </a>
+        <div class="tradingview-widget-container__widget"></div>
+      `;
+      p2.appendChild(wrapper2);
 
-    /* ===== Barra 1: Índices e Moedas ===== */
-    const bar1 = document.createElement("div");
-    bar1.className = "tradingview-widget-container main-bar tv-widget";
-    bar1.innerHTML = `
-      <a href="https://braziltrad.com" target="_blank" class="tv-logo-link">
-        <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
-      </a>
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {
+      // configs
+      const cfg1 = {
         "symbols": [
           { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
           { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
@@ -303,21 +248,10 @@
         "colorTheme": "light",
         "isTransparent": false,
         "displayMode": "adaptive",
-        "locale": "${lang}"
-      }
-      <\/script>`;
-    document.body.prepend(bar1);
+        "locale": locale
+      };
 
-    /* ===== Barra 2: Commodities ===== */
-    const bar2 = document.createElement("div");
-    bar2.className = "tradingview-widget-container commodities-bar tv-widget";
-    bar2.innerHTML = `
-      <a href="https://braziltrad.com" target="_blank" class="tv-logo-link">
-        <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
-      </a>
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {
+      const cfg2 = {
         "symbols": [
           { "proName": "COMEX:GC1!", "title": "Ouro" },
           { "proName": "ICEEUR:BRN1!", "title": "Petróleo Brent" },
@@ -332,79 +266,50 @@
         "colorTheme": "light",
         "isTransparent": false,
         "displayMode": "adaptive",
-        "locale": "${lang}"
-      }
-      <\/script>`;
-    document.body.prepend(bar2);
-  }
-</script>
+        "locale": locale
+      };
 
-<!-- ===== ESTILOS EXTRAS PARA LOGO E BOTÃO ===== -->
-<style>
-  .tv-logo-link {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    z-index: 99999;
-  }
+      // append embed scripts into the wrappers (TradingView will parse them)
+      // IMPORTANT: use appendChild(script) where script.src + script.text are set
+      const containerScript1 = document.createElement('script');
+      containerScript1.type = 'text/javascript';
+      containerScript1.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+      containerScript1.text = JSON.stringify(cfg1, null, 2);
+      wrapper1.appendChild(containerScript1);
 
-  .tv-logo {
-    height: 22px;
-    width: auto;
-    opacity: 0.9;
-    transition: opacity 0.2s ease;
-  }
+      const containerScript2 = document.createElement('script');
+      containerScript2.type = 'text/javascript';
+      containerScript2.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+      containerScript2.text = JSON.stringify(cfg2, null, 2);
+      wrapper2.appendChild(containerScript2);
+    }
+  </script>
 
-  .tv-logo:hover { opacity: 1; }
+  <!-- ===== pequenos estilos inline para o logo nas barras (se preferires, põe no style.css) ===== -->
+  <style>
+    .tv-logo-link { position:absolute; left:10px; top:50%; transform:translateY(-50%); z-index:100000; display:flex; align-items:center; }
+    .tv-logo { height:22px; width:auto; opacity:0.95; }
+    .tradingview-widget-container.main-bar .tradingview-widget-container__widget,
+    .tradingview-widget-container.commodities-bar .tradingview-widget-container__widget {
+      margin-left:60px; /* espaço para o logo */
+    }
 
-  /* Botão multilíngua flutuante abaixo da barra superior */
-  .lang-btn {
-    position: fixed;
-    top: 85px;
-    right: 18px;
-    height: 32px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-    padding: 0 14px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #0F4C5C;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    z-index: 100000;
-    transition: all 0.25s ease-in-out;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-  }
-
-  .lang-btn:hover {
-    background: #f9f9f9;
-    transform: translateY(-1px);
-  }
-
-  /* Ajustes das barras para o logotipo */
-  .tradingview-widget-container.main-bar,
-  .tradingview-widget-container.commodities-bar {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    height: 38px;
-    z-index: 9999;
-  }
-
-  .tradingview-widget-container.main-bar { top: 0; }
-  .tradingview-widget-container.commodities-bar { top: 38px; }
-
-  body { margin-top: 85px !important; }
-</style>
+    /* barra visuals (sombra definida) */
+    .tradingview-widget-container.main-bar,
+    .tradingview-widget-container.commodities-bar {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 38px;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      z-index: 99999;
+    }
+    .tradingview-widget-container.main-bar { top:0; }
+    .tradingview-widget-container.commodities-bar { top:38px; }
+    body { margin-top: 86px !important; }
+  </style>
 
 </body>
 </html>
