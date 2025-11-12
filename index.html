@@ -226,15 +226,45 @@ function basePath(){
 }
 
 function updateLinks(code){
-  const base=basePath();
-  const btnComprar=document.getElementById("btn-comprar");
-  const btnVender=document.getElementById("btn-vender");
-  const contato=document.querySelector('a[href="#contact"]')||document.querySelector('a[href*="contato"],a[href*="contact"]');
-  if(code==="pt"){btnComprar.href=`${base}/contato-compra.html`;btnVender.href=`${base}/contato-venda.html`;if(contato) contato.href=`${base}/contato.html`;}
-  else if(code==="en"){btnComprar.href=`${base}/en/contact-buy.html`;btnVender.href=`${base}/en/contact-sell.html`;if(contato) contato.href=`${base}/en/contact.html`;}
-  else if(code==="es"){btnComprar.href=`${base}/es/compradores.html`;btnVender.href=`${base}/es/compradores.html`;if(contato) contato.href=`${base}/es/contact.html`;}
-  else if(code==="zh"){btnComprar.href=`${base}/zh/contact-buy.html`;btnVender.href=`${base}/zh/contact-sell.html`;if(contato) contato.href=`${base}/zh/contact.html`;}
+  // Detecta se está hospedado no GitHub Pages ou domínio final
+  const base = window.location.hostname.includes("github")
+    ? "/braziltrad-site-testes"
+    : "";
+
+  const btnComprar = document.getElementById("btn-comprar");
+  const btnVender = document.getElementById("btn-vender");
+  const contato = document.querySelector('a[href="#contact"]') ||
+                  document.querySelector('a[href*="contato"], a[href*="contact"]');
+
+  // Versão PT (raiz)
+  if (code === "pt") {
+    if (btnComprar) btnComprar.href = `${base}/contato-compra.html`;
+    if (btnVender) btnVender.href = `${base}/contato-venda.html`;
+    if (contato) contato.href = `${base}/contato.html`;
+  }
+
+  // Versão EN
+  else if (code === "en") {
+    if (btnComprar) btnComprar.href = `${base}/en/contact-buy.html`;
+    if (btnVender) btnVender.href = `${base}/en/contact-sell.html`;
+    if (contato) contato.href = `${base}/en/contact.html`;
+  }
+
+  // Versão ES
+  else if (code === "es") {
+    if (btnComprar) btnComprar.href = `${base}/es/compradores.html`;
+    if (btnVender) btnVender.href = `${base}/es/compradores.html`;
+    if (contato) contato.href = `${base}/es/contact.html`;
+  }
+
+  // Versão ZH
+  else if (code === "zh") {
+    if (btnComprar) btnComprar.href = `${base}/zh/contact-buy.html`;
+    if (btnVender) btnVender.href = `${base}/zh/contact-sell.html`;
+    if (contato) contato.href = `${base}/zh/contact.html`;
+  }
 }
+
 
 function applyLang(code){
   const t=TRANSLATIONS[code];
