@@ -178,139 +178,7 @@ body {
 body {
   margin-top: 50px !important;
 }
-/* ===== POSICIONAMENTO DAS DUAS BARRAS TRADINGVIEW ===== */
-
-/* Primeira barra (índices e moedas) */
-.main-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-}
-
-/* Segunda barra (commodities) */
-.commodities-bar {
-  position: fixed;
-  top: 38px; /* logo abaixo da primeira */
-  left: 0;
-  width: 100%;
-  z-index: 9998;
-}
-/* ===== POSICIONAMENTO DAS DUAS BARRAS TRADINGVIEW ===== */
-
-/* Primeira barra (índices e moedas) */
-.main-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-}
-
-/* Segunda barra (commodities) */
-.tradingview-widget-container:not(.main-bar) {
-  position: fixed;
-  top: 38px; /* logo abaixo da primeira */
-  left: 0;
-  width: 100%;
-  z-index: 9998;
-}
-
-/* Empurra o conteúdo do site para baixo das duas barras */
-body {
-  margin-top: 76px !important;
-}
-/* Empurra o conteúdo do site para baixo das duas barras */
-body {
-  margin-top: 76px !important;
-}
-/* ===== ESTILO DAS BARRAS TRADINGVIEW FIXAS ===== */
-
-.tv-bar-wrapper {
-  width: 100%;
-  height: 38px;
-  position: fixed;
-  left: 0;
-  background: linear-gradient(90deg, #006838, #00914a);
-  z-index: 9999;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Primeira barra (índices e moedas) */
-.top-bar {
-  top: 0;
-}
-
-/* Segunda barra (commodities) */
-.commodities-bar {
-  top: 38px;
-}
-
-/* Ajusta o corpo do site para não ficar escondido */
-body {
-  margin-top: 76px !important;
-}
-/* ===== FIXAR AS DUAS BARRAS TRADINGVIEW ===== */
-
-/* Primeira barra */
-.main-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 38px;
-  z-index: 9999;
-  background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Segunda barra */
-.commodities-bar {
-  position: fixed;
-  top: 38px;
-  left: 0;
-  width: 100%;
-  height: 38px;
-  z-index: 9998;
-  background: linear-gradient(90deg, #006838, #00914a);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-/* ===== ESTILO FIXO E UNIFICADO DAS DUAS BARRAS TRADINGVIEW ===== */
-.tradingview-widget-container.main-bar,
-.tradingview-widget-container.commodities-bar {
-  width: 100%;
-  height: 38px;
-  position: fixed;
-  left: 0;
-  background: linear-gradient(90deg, #006838, #00914a);
-  z-index: 99999;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-/* Posição da primeira barra (índices e moedas) */
-.tradingview-widget-container.main-bar {
-  top: 0;
-}
-
-/* Posição da segunda barra (commodities) */
-.tradingview-widget-container.commodities-bar {
-  top: 38px;
-}
-
-/* Garante que o conteúdo do site não fique escondido */
-body {
-  margin-top: 76px !important;
-}
-/* Conteúdo do site começa abaixo das barras */
-body {
-  margin-top: 76px !important;
-}
 /* ===== BARRAS TRADINGVIEW FIXAS ===== */
-
 .tradingview-widget-container.main-bar,
 .tradingview-widget-container.commodities-bar {
   width: 100%;
@@ -333,7 +201,7 @@ body {
   top: 38px;
 }
 
-/* Corrige o espaço do conteúdo principal */
+/* Corrige o espaçamento do conteúdo principal */
 body {
-  margin-top: 76px !important; /* 38px x 2 barras */
+  margin-top: 76px !important; /* 38px x 2 */
 }
