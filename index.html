@@ -18,9 +18,24 @@
 </head>
 
 <body>
-  <!-- ===== PLACEHOLDERS DAS BARRAS (serão preenchidas por JS) ===== -->
-  <div id="tv-bar-1-placeholder"></div>
-  <div id="tv-bar-2-placeholder"></div>
+  <!-- ===== BARRAS TRADINGVIEW ===== -->
+<div class="tv-bar main-bar">
+  <a href="https://braziltrad.com" target="_blank" class="tv-logo-link">
+    <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
+  </a>
+  <div class="tradingview-widget-container__widget" id="tv-indices"></div>
+</div>
+
+<div class="tv-bar commodities-bar">
+  <a href="https://braziltrad.com" target="_blank" class="tv-logo-link">
+    <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
+  </a>
+  <div class="tradingview-widget-container__widget" id="tv-commodities"></div>
+</div>
+
+<!-- espaço para não esconder o conteúdo -->
+<style>body{margin-top:86px!important;}</style>
+
 
   <!-- ===== BOTÃO MULTILÍNGUA (flutuando abaixo do topo, canto direito) ===== -->
   <button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
@@ -310,6 +325,69 @@
     .tradingview-widget-container.commodities-bar { top:38px; }
     body { margin-top: 86px !important; }
   </style>
+<!-- ===== BOTÃO MULTILÍNGUA ===== -->
+<button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
 
+<!-- ===== SCRIPT: Multilíngua + Barras ===== -->
+<script>
+const LANGS=["pt","en","es","zh"];
+const FLAGS={pt:"🇧🇷",en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳"};
+let langIndex=LANGS.indexOf(localStorage.getItem("bt_lang")||"pt");
+if(langIndex<0)langIndex=0;
+const langBtn=document.getElementById("langBtn");
+
+function setLang(code){
+  document.documentElement.lang=code;
+  langBtn.textContent=`🌎 ${FLAGS[code]} ${code.toUpperCase()}`;
+  localStorage.setItem("bt_lang",code);
+  loadTradingView(code);
+}
+
+langBtn.addEventListener("click",()=>{
+  langIndex=(langIndex+1)%LANGS.length;
+  setLang(LANGS[langIndex]);
+});
+
+function loadTradingView(locale){
+  document.getElementById("tv-indices").innerHTML="";
+  document.getElementById("tv-commodities").innerHTML="";
+  const makeScript=(cfg)=>{
+    const s=document.createElement("script");
+    s.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+    s.type="text/javascript";
+    s.async=true;
+    s.text=JSON.stringify(cfg);
+    return s;
+  };
+  const cfg1={
+    symbols:[
+      {proName:"FOREXCOM:EURUSD",title:"EUR/USD"},
+      {proName:"FOREXCOM:USDJPY",title:"USD/JPY"},
+      {proName:"OANDA:SPX500USD",title:"S&P 500"},
+      {proName:"NASDAQ:NDX",title:"NASDAQ 100"},
+      {proName:"BITSTAMP:BTCUSD",title:"Bitcoin"},
+      {proName:"BITSTAMP:ETHUSD",title:"Ethereum"}],
+    showSymbolLogo:true,colorTheme:"light",isTransparent:false,
+    displayMode:"adaptive",locale:locale
+  };
+  const cfg2={
+    symbols:[
+      {proName:"COMEX:GC1!",title:"Ouro"},
+      {proName:"ICEEUR:BRN1!",title:"Petróleo Brent"},
+      {proName:"CBOT:ZS1!",title:"Soja"},
+      {proName:"ICEUS:KC1!",title:"Café"},
+      {proName:"ICEUS:SB1!",title:"Açúcar"},
+      {proName:"ICEUS:CT1!",title:"Algodão"},
+      {proName:"COMEX:HG1!",title:"Cobre"},
+      {proName:"SGX:FEF1!",title:"Minério de Ferro"}],
+    showSymbolLogo:true,colorTheme:"light",isTransparent:false,
+    displayMode:"adaptive",locale:locale
+  };
+  document.getElementById("tv-indices").appendChild(makeScript(cfg1));
+  document.getElementById("tv-commodities").appendChild(makeScript(cfg2));
+}
+
+setLang(LANGS[langIndex]);
+</script>
 </body>
 </html>
