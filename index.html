@@ -237,31 +237,33 @@ const FLAGS={pt:"🇧🇷 PT",en:"🇬🇧 EN",es:"🇪🇸 ES",zh:"🇨🇳 中
 let langIndex=0;
 
 function updateLinks(code){
+  const base = "/braziltrad-site-testes"; // 🔹 nome do repositório no GitHub Pages
   const btnComprar=document.getElementById("btn-comprar");
   const btnVender=document.getElementById("btn-vender");
   const contatoLink=document.querySelector('a[href="#contact"]') || document.querySelector('a[href*="contato"], a[href*="contact"]');
 
   if(code==="pt"){
-    btnComprar.href="/contato-compra.html";
-    btnVender.href="/contato-venda.html";
-    if(contatoLink) contatoLink.href="/contato.html";
+    btnComprar.href=`${base}/contato-compra.html`;
+    btnVender.href=`${base}/contato-venda.html`;
+    if(contatoLink) contatoLink.href=`${base}/contato.html`;
   } 
   else if(code==="en"){
-    btnComprar.href="/en/contact-buy.html";
-    btnVender.href="/en/contact-sell.html";
-    if(contatoLink) contatoLink.href="/en/contact.html";
+    btnComprar.href=`${base}/en/contact-buy.html`;
+    btnVender.href=`${base}/en/contact-sell.html`;
+    if(contatoLink) contatoLink.href=`${base}/en/contact.html`;
   } 
   else if(code==="es"){
-    btnComprar.href="/es/compradores.html";
-    btnVender.href="/es/compradores.html";
-    if(contatoLink) contatoLink.href="/es/contact.html";
+    btnComprar.href=`${base}/es/compradores.html`;
+    btnVender.href=`${base}/es/compradores.html`;
+    if(contatoLink) contatoLink.href=`${base}/es/contact.html`;
   } 
   else if(code==="zh"){
-    btnComprar.href="/zh/contact-buy.html";
-    btnVender.href="/zh/contact-sell.html";
-    if(contatoLink) contatoLink.href="/zh/contact.html";
+    btnComprar.href=`${base}/zh/contact-buy.html`;
+    btnVender.href=`${base}/zh/contact-sell.html`;
+    if(contatoLink) contatoLink.href=`${base}/zh/contact.html`;
   }
 }
+
 
 function applyTranslations(code){
   const t=TRANSLATIONS[code];
