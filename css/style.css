@@ -309,54 +309,31 @@ body {
 body {
   margin-top: 76px !important;
 }
-/* ===== BARRAS TRADINGVIEW FIXAS — ESTILO BRAZILTRAD ===== */
+/* ===== BARRAS TRADINGVIEW FIXAS ===== */
+
 .tradingview-widget-container.main-bar,
 .tradingview-widget-container.commodities-bar {
   width: 100%;
   height: 38px;
-  position: fixed;
-  left: 0;
-  background: #ffffff; /* branco clean */
-  z-index: 99999;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
-}
-
-/* Barra principal (índices e moedas) */
-.tradingview-widget-container.main-bar {
-  top: 0;
-}
-
-/* Barra de commodities logo abaixo */
-.tradingview-widget-container.commodities-bar {
-  top: 38px;
-}
-
-/* Ajuste para o corpo não ficar escondido */
-body {
-  margin-top: 76px !important;
-}
-/* ===== Ajuste Fino de Espaçamento ===== */
-body {
-  margin-top: 76px !important; /* altura das duas barras */
-}
-
-.tradingview-widget-container.main-bar,
-.tradingview-widget-container.commodities-bar {
   background: #ffffff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   position: fixed;
   left: 0;
-  width: 100%;
   z-index: 9999;
-  height: 38px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Primeira barra (índices e moedas) */
 .tradingview-widget-container.main-bar {
   top: 0;
 }
 
+/* Segunda barra (commodities) */
 .tradingview-widget-container.commodities-bar {
   top: 38px;
+}
+
+/* Corrige o espaço do conteúdo principal */
+body {
+  margin-top: 76px !important; /* 38px x 2 barras */
 }
