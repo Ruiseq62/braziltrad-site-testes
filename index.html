@@ -1,200 +1,113 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BrazilTrad — Conectando o Brasil ao mercado global de commodities</title>
 
-  <title>BrazilTrad — Intermediação confiável de commodities brasileiras (FOB/CIF)</title>
-  <meta name="description" content="Intermediação confiável de metais e agrícolas brasileiros, com verificação de origem, compliance e logística eficiente sob FOB/CIF.">
-  <meta name="author" content="BrazilTrad">
-  <link rel="icon" href="favicon.ico">
+  <meta name="description" content="Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- ===== SCRIPTS TRADINGVIEW ===== -->
-  <script>
-    function loadTradingViewWidgets(lang = "pt") {
-      const containers = document.querySelectorAll(".tv-widget");
-      containers.forEach(c => c.remove());
-      const body = document.body;
-
-      // ===== Barra 1: Índices e Moedas =====
-      const div1 = document.createElement("div");
-      div1.className = "tradingview-widget-container main-bar tv-widget";
-      div1.innerHTML = `
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {
-          "symbols": [
-            { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
-            { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
-            { "proName": "OANDA:SPX500USD", "title": "S&P 500" },
-            { "proName": "NASDAQ:NDX", "title": "NASDAQ 100" },
-            { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-            { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" }
-          ],
-          "showSymbolLogo": true,
-          "colorTheme": "light",
-          "isTransparent": false,
-          "displayMode": "adaptive",
-          "locale": "${lang}"
-        }
-        <\/script>
-      `;
-      body.prepend(div1);
-
-      // ===== Barra 2: Commodities =====
-      const div2 = document.createElement("div");
-      div2.className = "tradingview-widget-container commodities-bar tv-widget";
-      div2.innerHTML = `
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {
-          "symbols": [
-            { "proName": "COMEX:GC1!", "title": "Ouro" },
-            { "proName": "ICEEUR:BRN1!", "title": "Petróleo Brent" },
-            { "proName": "CBOT:ZS1!", "title": "Soja" },
-            { "proName": "ICEUS:KC1!", "title": "Café" },
-            { "proName": "ICEUS:SB1!", "title": "Açúcar" },
-            { "proName": "ICEUS:CT1!", "title": "Algodão" },
-            { "proName": "COMEX:HG1!", "title": "Cobre" },
-            { "proName": "SGX:FEF1!", "title": "Minério de Ferro" }
-          ],
-          "showSymbolLogo": true,
-          "colorTheme": "light",
-          "isTransparent": false,
-          "displayMode": "adaptive",
-          "locale": "${lang}"
-        }
-        <\/script>
-      `;
-      body.prepend(div2);
+  <style>
+    /* ===== FIXO: BOTÃO MULTILÍNGUA ===== */
+    .lang-btn {
+      position: fixed;
+      top: 6px;
+      right: 18px;
+      height: 30px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 25px;
+      padding: 0 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #0F4C5C;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 10000;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
     }
-  </script>
+    .lang-btn:hover {
+      background: #f9f9f9;
+      transform: translateY(-1px);
+    }
+
+    /* ===== MARGEM DO SITE ===== */
+    body { margin-top: 80px !important; }
+  </style>
 </head>
 
 <body>
-  <!-- ===== BOTÃO MULTILÍNGUA INTEGRADO ===== -->
-  <button class="lang-btn" id="langBtn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
 
+  <!-- ===== BOTÃO MULTILÍNGUA ===== -->
+  <button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
+
+  <!-- ===== HEADER ===== -->
   <header class="header">
     <div class="container nav">
       <a class="brand" href="#">
-        <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad">
+        <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" />
         <div>
           <div class="title">BrazilTrad</div>
-          <div class="slogan" data-i18n="slogan"></div>
+          <div class="slogan"><em>Conectando produtores brasileiros a mercados globais</em></div>
         </div>
       </a>
       <nav>
         <ul>
-          <li><a href="#about" data-i18n="menu.about"></a></li>
-          <li><a href="#services" data-i18n="menu.services"></a></li>
-          <li><a href="#products" data-i18n="menu.products"></a></li>
-          <li><a href="#markets" data-i18n="menu.markets"></a></li>
-          <li><a href="#insights" data-i18n="menu.insights"></a></li>
-          <li><a href="contato.html" data-i18n="menu.contact"></a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#products">Produtos</a></li>
+          <li><a href="#markets">Mercados</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="#contact">Contato</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="container">
-      <h1 data-i18n="hero.title"></h1>
-      <p data-i18n="hero.desc"></p>
+      <h1>Conectando o Brasil ao mercado global de commodities</h1>
+      <p>Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF. Atuamos com fornecedores selecionados e compradores qualificados.</p>
       <div class="cta">
-        <a id="btn-comprar" class="button" href="contato-compra.html" data-i18n="cta.buy"></a>
-        <a id="btn-vender" class="button secondary" href="contato-venda.html" data-i18n="cta.sell"></a>
+        <a class="button" href="#">Quero comprar</a>
+        <a class="button secondary" href="#">Quero vender</a>
       </div>
     </div>
   </section>
 
+  <!-- ===== EXEMPLOS DE SEÇÕES ===== -->
   <section id="about" class="section">
     <div class="container">
-      <h2 data-i18n="about.title"></h2>
-      <p class="lead" data-i18n="about.lead"></p>
+      <h2>Sobre a BrazilTrad</h2>
+      <p class="lead">Parceiro brasileiro confiável para compradores internacionais. Atuamos com due diligence, auditoria de fornecedores e coordenação logística sob Incoterms.</p>
     </div>
   </section>
 
   <section id="services" class="section">
     <div class="container">
-      <h2 data-i18n="services.title"></h2>
-      <p class="lead" data-i18n="services.lead"></p>
+      <h2>Serviços</h2>
       <ul class="list">
-        <li data-i18n="services.items.0"></li>
-        <li data-i18n="services.items.1"></li>
-        <li data-i18n="services.items.2"></li>
-        <li data-i18n="services.items.3"></li>
+        <li>Intermediação ponta a ponta entre produtor e comprador.</li>
+        <li>Due diligence: origem, documentação, compliance e KYC.</li>
+        <li>Logística FOB/CIF via portos brasileiros.</li>
+        <li>Negociação internacional: contratos, L/C, T/T.</li>
       </ul>
     </div>
   </section>
 
-  <section id="products" class="section">
-    <div class="container">
-      <h2 data-i18n="products.title"></h2>
-      <p class="lead" data-i18n="products.lead"></p>
-      <div class="grid">
-        <article class="card">
-          <img src="assets/img/agricolas.png" alt="Agrícolas">
-          <h3 data-i18n="products.cards.0.title"></h3>
-          <p data-i18n="products.cards.0.text"></p>
-        </article>
-        <article class="card">
-          <img src="assets/img/energeticas.png" alt="Energéticas">
-          <h3 data-i18n="products.cards.1.title"></h3>
-          <p data-i18n="products.cards.1.text"></p>
-        </article>
-        <article class="card">
-          <img src="assets/img/minerais.png" alt="Minerais">
-          <h3 data-i18n="products.cards.2.title"></h3>
-          <p data-i18n="products.cards.2.text"></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="markets" class="section">
-    <div class="container">
-      <h2 data-i18n="markets.title"></h2>
-      <p class="lead" data-i18n="markets.lead"></p>
-      <ul class="list">
-        <li data-i18n="markets.items.0"></li>
-        <li data-i18n="markets.items.1"></li>
-        <li data-i18n="markets.items.2"></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="insights" class="section">
-    <div class="container">
-      <h2 data-i18n="insights.title"></h2>
-      <div class="grid">
-        <article class="card">
-          <h3 data-i18n="insights.cards.0.title"></h3>
-          <p data-i18n="insights.cards.0.text"></p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="insights.cards.1.title"></h3>
-          <p data-i18n="insights.cards.1.text"></p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="insights.cards.2.title"></h3>
-          <p data-i18n="insights.cards.2.text"></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="inner container">
-      <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" class="footer-logo">
-      <div data-i18n="footer.claim"></div>
-      <div data-i18n="footer.location"></div>
-    </div>
+    <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" class="footer-logo">
+    <div>© BrazilTrad. Conectando produtores brasileiros a mercados globais.</div>
+    <div>São Paulo — Brasil</div>
   </footer>
 
-  <!-- ===== SCRIPT DE IDIOMA ===== -->
+  <!-- ===== SCRIPT DO BOTÃO E DAS BARRAS ===== -->
   <script>
     const langOrder = ["pt", "en", "es", "zh"];
     const flag = { pt: "🇧🇷", en: "🇬🇧", es: "🇪🇸", zh: "🇨🇳" };
@@ -220,5 +133,61 @@
       setLang(langOrder[langIndex]);
     });
   </script>
+
+  <!-- ===== TRADINGVIEW BARRAS ===== -->
+  <script>
+    function loadTradingViewWidgets(lang = "pt") {
+      document.querySelectorAll(".tv-widget").forEach(c => c.remove());
+
+      const tv1 = document.createElement("div");
+      tv1.className = "tradingview-widget-container main-bar tv-widget";
+      tv1.innerHTML = `
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
+            { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
+            { "proName": "OANDA:SPX500USD", "title": "S&P 500" },
+            { "proName": "NASDAQ:NDX", "title": "NASDAQ 100" },
+            { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
+            { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "light",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "${lang}"
+        }
+        <\/script>`;
+      document.body.prepend(tv1);
+
+      const tv2 = document.createElement("div");
+      tv2.className = "tradingview-widget-container commodities-bar tv-widget";
+      tv2.innerHTML = `
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "COMEX:GC1!", "title": "Ouro" },
+            { "proName": "ICEEUR:BRN1!", "title": "Petróleo Brent" },
+            { "proName": "CBOT:ZS1!", "title": "Soja" },
+            { "proName": "ICEUS:KC1!", "title": "Café" },
+            { "proName": "ICEUS:SB1!", "title": "Açúcar" },
+            { "proName": "ICEUS:CT1!", "title": "Algodão" },
+            { "proName": "COMEX:HG1!", "title": "Cobre" },
+            { "proName": "SGX:FEF1!", "title": "Minério de Ferro" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "light",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "${lang}"
+        }
+        <\/script>`;
+      document.body.prepend(tv2);
+    }
+  </script>
+
 </body>
 </html>
