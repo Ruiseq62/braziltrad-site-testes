@@ -336,3 +336,27 @@ body {
 body {
   margin-top: 76px !important;
 }
+/* ===== Ajuste Fino de Espaçamento ===== */
+body {
+  margin-top: 76px !important; /* altura das duas barras */
+}
+
+.tradingview-widget-container.main-bar,
+.tradingview-widget-container.commodities-bar {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  height: 38px;
+}
+
+.tradingview-widget-container.main-bar {
+  top: 0;
+}
+
+.tradingview-widget-container.commodities-bar {
+  top: 38px;
+}
