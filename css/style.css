@@ -1,298 +1,234 @@
-html {
-  scroll-padding-top: 100px; /* compensa as barras fixas */
-}
-
-/* ===== RESET BÁSICO ===== */
+/* ===== BASE GERAL ===== */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* evita que os títulos fiquem sob as barras fixas */
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  color: #222;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
+  color: #333;
   background: #fff;
-  margin: 0;
 }
 
-/* ===== BARRAS FIXAS TRADINGVIEW ===== */
-.tradingview-widget-container.main-bar,
-.tradingview-widget-container.commodities-bar {
-  width: 100%;
-  height: 38px;
-  background: #ffffff;
-  position: fixed;
-  left: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  z-index: 9999;
-}
-
-.tradingview-widget-container.main-bar {
-  top: 0;
-}
-
-.tradingview-widget-container.commodities-bar {
-  top: 38px;
-}
-
-/* Garante que o conteúdo do site não fique atrás das barras */
-body {
-  margin-top: 76px !important;
-}
-
-/* ===== BOTÃO MULTILÍNGUA ===== */
-.lang-btn {
-  position: fixed;
-  top: 5px;
-  right: 16px;
-  height: 28px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 30px;
-  padding: 0 14px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #0F4C5C;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  z-index: 10000;
-  transition: all 0.25s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.lang-btn:hover {
-  background: #f9f9f9;
-  transform: translateY(-1px);
+/* ===== CONTAINERS ===== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* ===== HEADER ===== */
-.header {
-  width: 100%;
+header {
   background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   position: relative;
-  z-index: 999;
+  z-index: 10;
 }
 
-.header .container {
+header .nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 24px;
+  align-items: center;
+  padding: 15px 0;
 }
 
-.header .brand {
+.brand {
   display: flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
+}
+
+.brand img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.2rem;
   color: #0F4C5C;
 }
 
-.header .brand img {
-  height: 36px;
+.slogan {
+  font-size: 0.85rem;
+  color: #555;
 }
 
-.header .title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #0F4C5C;
-}
-
-.header nav ul {
+header nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
-.header nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.header nav a:hover {
+header nav ul li a {
   color: #0F4C5C;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-/* ===== HERO ===== */
+header nav ul li a:hover {
+  color: #136f82;
+}
+
+/* ===== HERO SECTION ===== */
 .hero {
+  background: linear-gradient(to bottom right, #0F4C5C, #136f82);
+  color: #fff;
   text-align: center;
-  padding: 80px 20px;
-  background: #f8f9fa;
+  padding: 140px 20px 100px;
 }
 
 .hero h1 {
   font-size: 2rem;
-  margin-bottom: 10px;
-  color: #0F4C5C;
+  margin-bottom: 15px;
 }
 
 .hero p {
   font-size: 1.1rem;
-  color: #333;
-  margin-bottom: 20px;
+  max-width: 700px;
+  margin: 0 auto 25px;
+  opacity: 0.95;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .button {
-  background: #0F4C5C;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
+  background: #fff;
+  color: #0F4C5C;
+  padding: 10px 25px;
+  border-radius: 30px;
   text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .button:hover {
-  background: #096f83;
+  background: #f2f2f2;
 }
 
 .button.secondary {
-  background: #fff;
-  border: 1px solid #0F4C5C;
-  color: #0F4C5C;
-  margin-left: 10px;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
 }
 
 .button.secondary:hover {
-  background: #f5f5f5;
+  background: #fff;
+  color: #0F4C5C;
 }
 
-/* ===== SEÇÕES ===== */
+/* ===== SEÇÕES GERAIS ===== */
 .section {
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: auto;
+  padding: 80px 20px;
+  text-align: center;
 }
 
 .section h2 {
+  font-size: 1.8rem;
   color: #0F4C5C;
-  text-align: center;
-  font-size: 1.6rem;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.section .lead {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px;
-  color: #555;
+.section p {
+  font-size: 1.05rem;
+  margin-bottom: 15px;
 }
 
-/* ===== GRID DE CARDS ===== */
+/* ===== LISTAS ===== */
+ul.list {
+  display: inline-block;
+  text-align: left;
+  line-height: 1.8;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* ===== GRID DE PRODUTOS / INSIGHTS ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  gap: 25px;
+  justify-content: center;
 }
 
 .card {
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   padding: 20px;
   text-align: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
 .card img {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 12px;
+  max-width: 120px;
+  margin: 0 auto 15px;
 }
 
-/* ===== FOOTER ===== */
-.footer {
-  background: #0F4C5C;
-  color: #fff;
-  text-align: center;
-  padding: 30px 10px;
-  margin-top: 50px;
-}
-
-.footer .footer-logo {
-  height: 40px;
+.card h3 {
+  color: #0F4C5C;
   margin-bottom: 10px;
 }
 
-.footer div {
-  font-size: 14px;
-  opacity: 0.9;
+/* ===== FOOTER ===== */
+footer {
+  background: #0F4C5C;
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+footer a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
-  .header .container {
+  header .nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header nav ul {
     flex-direction: column;
     gap: 10px;
   }
 
-  .header nav ul {
-    flex-direction: column;
-    gap: 10px;
+  .hero h1 {
+    font-size: 1.6rem;
   }
 
-  .hero {
-    padding: 60px 10px;
+  .hero p {
+    font-size: 1rem;
   }
 
-  .lang-btn {
-    top: 8px;
-    right: 8px;
-    font-size: 12px;
-    padding: 0 10px;
+  .section {
+    padding: 60px 15px;
   }
-}
-/* ===== BARRAS TRADINGVIEW ===== */
-.tv-bar{
-  position:fixed;left:0;width:100%;height:38px;
-  background:#fff;border-bottom:1px solid rgba(0,0,0,.1);
-  box-shadow:0 4px 10px rgba(0,0,0,.15);
-  z-index:9999;
-}
-.main-bar{top:0;}
-.commodities-bar{top:38px;}
-.tv-logo-link{position:absolute;left:10px;top:50%;transform:translateY(-50%);}
-.tv-logo{height:22px;width:auto;opacity:.9;}
-.tradingview-widget-container__widget{margin-left:60px;}
-
-/* ===== BOTÃO MULTILÍNGUA ===== */
-.lang-btn{
-  position:fixed;top:85px;right:18px;height:32px;
-  background:#fff;border:1px solid rgba(0,0,0,.1);
-  border-radius:25px;padding:0 14px;font-size:14px;
-  font-weight:500;color:#0F4C5C;cursor:pointer;
-  display:flex;align-items:center;gap:6px;
-  box-shadow:0 2px 5px rgba(0,0,0,.1);
-  z-index:10000;transition:all .25s;
-}
-.lang-btn:hover{background:#f9f9f9;transform:translateY(-1px);}
-
-/* ===== RODAPÉ VERDE-ESCURO ===== */
-.footer{
-  background:#0F4C5C;
-  color:#fff;
-  text-align:center;
-  padding:25px 10px;
-}
-.footer a{color:#fff;text-decoration:none;}
-.footer a:hover{text-decoration:underline;}
-html {
-  scroll-behavior: smooth;
 }
