@@ -1,3 +1,7 @@
+html {
+  scroll-padding-top: 100px; /* compensa as barras fixas */
+}
+
 /* ===== RESET BÁSICO ===== */
 * {
   margin: 0;
