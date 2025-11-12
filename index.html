@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="./css/style.css">
 
   <style>
-    /* Ajuste em telas pequenas */
     @media (max-width:420px){
       body{margin-top:95px !important;}
       .lang-btn{top:86px;}
@@ -88,12 +87,10 @@
 </head>
 
 <body>
-  <!-- ===== BARRA 1: ÍNDICES ===== -->
+  <!-- ===== BARRAS TRADINGVIEW ===== -->
   <div class="tradingview-widget-container main-bar">
     <div class="tradingview-widget-container__widget" id="tv-indices"></div>
   </div>
-
-  <!-- ===== BARRA 2: COMMODITIES ===== -->
   <div class="tradingview-widget-container commodities-bar">
     <div class="tradingview-widget-container__widget" id="tv-commodities"></div>
   </div>
@@ -101,7 +98,7 @@
   <!-- ===== BOTÃO MULTILÍNGUA ===== -->
   <button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
 
-  <!-- ===== HEADER E CONTEÚDO DO SITE ===== -->
+  <!-- ===== HEADER ===== -->
   <header class="header">
     <div class="container nav">
       <a class="brand" href="./">
@@ -128,10 +125,10 @@
     <section class="hero">
       <div class="container">
         <h1>Conectando o Brasil ao mercado global de commodities</h1>
-        <p>Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF. Atuamos com fornecedores selecionados e compradores qualificados.</p>
+        <p>Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.</p>
         <div class="cta">
-          <a id="btn-comprar" class="button" href="./contato-compra.html">Quero comprar</a>
-          <a id="btn-vender" class="button secondary" href="./contato-venda.html">Quero vender</a>
+          <a id="btn-comprar" class="button" href="#contact">Quero comprar</a>
+          <a id="btn-vender" class="button secondary" href="#contact">Quero vender</a>
         </div>
       </div>
     </section>
@@ -139,7 +136,7 @@
     <section id="about" class="section">
       <div class="container">
         <h2>Sobre a BrazilTrad</h2>
-        <p class="lead">Somos um parceiro brasileiro confiável para compradores internacionais. Atuamos com due diligence, auditoria de fornecedores e coordenação logística sob Incoterms.</p>
+        <p>Somos um parceiro brasileiro confiável para compradores internacionais. Atuamos com due diligence, auditoria de fornecedores e coordenação logística sob Incoterms.</p>
       </div>
     </section>
 
@@ -162,17 +159,17 @@
           <article class="card">
             <img src="./assets/img/agricolas.png" alt="Agrícolas" />
             <h3>Agrícolas</h3>
-            <p>Soja, milho, açúcar e café. Certificações sob demanda; contratos a médio e longo prazo.</p>
+            <p>Soja, milho, açúcar e café.</p>
           </article>
           <article class="card">
             <img src="./assets/img/energeticas.png" alt="Energéticas" />
             <h3>Energéticas</h3>
-            <p>Etanol, diesel renovável, biomassa. Cadeia otimizada para mercados asiáticos e europeus.</p>
+            <p>Etanol, diesel renovável, biomassa.</p>
           </article>
           <article class="card">
             <img src="./assets/img/minerais.png" alt="Minerais" />
             <h3>Minerais</h3>
-            <p>Lítio, ferro, nióbio e cobre. Qualificação técnica e compliance para exportação.</p>
+            <p>Lítio, ferro, nióbio e cobre.</p>
           </article>
         </div>
       </div>
@@ -216,244 +213,88 @@
       <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:34px;width:auto;display:block;margin:0 auto 10px">
       <div>© BrazilTrad. Conectando produtores brasileiros a mercados globais.</div>
       <div style="margin-top:8px;">
-        🌐 <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>
+        🌐 <a href="https://braziltrad.com" target="_blank">braziltrad.com</a>
         &nbsp;|&nbsp;
         ✉️ <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a>
         &nbsp;|&nbsp;
-        💼 <a href="https://www.linkedin.com/company/braziltrad/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        💼 <a href="https://www.linkedin.com/company/braziltrad/" target="_blank">LinkedIn</a>
       </div>
       <div style="margin-top:8px; color:#fff; opacity:0.9;">São Paulo — Brasil</div>
     </div>
   </footer>
 
-  <!-- ===== SCRIPTS ===== -->
- <script>
-const LANGS = ["pt","en","es","zh"];
-const FLAGS = {pt:"🇧🇷 PT",en:"🇬🇧 EN",es:"🇪🇸 ES",zh:"🇨🇳 中文"};
-let langIndex = 0;
-
-function setLang(code){
-  localStorage.setItem("bt_lang", code);
-  document.documentElement.lang = code;
-  document.getElementById("langBtn").textContent = "🌎 " + FLAGS[code];
-
-  // Atualiza os links conforme idioma
-  document.getElementById("btn-comprar").href = `./contato-compra-${code}.html`;
-  document.getElementById("btn-vender").href = `./contato-venda-${code}.html`;
-  document.querySelector('a[href="#contact"]').href = `./contato-${code}.html`;
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-  const saved = localStorage.getItem("bt_lang");
-  const code = LANGS.includes(saved) ? saved : "pt";
-  langIndex = LANGS.indexOf(code);
-  setLang(code);
-  document.getElementById("langBtn").addEventListener("click",()=>{
-    langIndex = (langIndex + 1) % LANGS.length;
-    setLang(LANGS[langIndex]);
-  });
-});
-</script>
+  <!-- ===== SCRIPT MULTILÍNGUA + SCROLL ===== -->
   <script>
-/* ---------- Traduções simples embutidas ---------- */
 const TRANSLATIONS = {
-  pt: {
-    nav: ["Sobre","Serviços","Produtos","Mercados","Insights","Contato"],
-    title: "Conectando o Brasil ao mercado global de commodities",
-    lead: "Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF. Atuamos com fornecedores selecionados e compradores qualificados.",
-    btnComprar: "Quero comprar",
-    btnVender: "Quero vender",
-    contactSectionTitle: "Contato",
-    contactHtml: `Fale connosco por e-mail: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>ou visite nosso site: <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>`
-  },
-  en: {
-    nav: ["About","Services","Products","Markets","Insights","Contact"],
-    title: "Connecting Brazil to the global commodities market",
-    lead: "Reliable intermediation of metals and agricultural products, with origin verification, compliance and efficient FOB/CIF logistics. We work with selected suppliers and qualified buyers.",
-    btnComprar: "I want to buy",
-    btnVender: "I want to sell",
-    contactSectionTitle: "Contact",
-    contactHtml: `Contact us by email: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>or visit: <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>`
-  },
-  es: {
-    nav: ["Sobre","Servicios","Productos","Mercados","Insights","Contacto"],
-    title: "Conectando a Brasil con el mercado global de commodities",
-    lead: "Intermediación confiable de metales y agrícolas, con verificación de origen, cumplimiento y logística eficiente FOB/CIF. Trabajamos con proveedores seleccionados y compradores calificados.",
-    btnComprar: "Quiero comprar",
-    btnVender: "Quiero vender",
-    contactSectionTitle: "Contacto",
-    contactHtml: `Contáctanos por correo: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>o visita: <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>`
-  },
-  zh: {
-    nav: ["关于","服务","产品","市场","洞察","联系"],
-    title: "连接巴西与全球大宗商品市场",
-    lead: "提供可靠的金属与农产品中介服务，进行产地验证、合规与高效的FOB/CIF物流。我们与精选供应商和合格买家合作。",
-    btnComprar: "我要买",
-    btnVender: "我要卖",
-    contactSectionTitle: "联系",
-    contactHtml: `通过邮件联系: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>或访问: <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>`
-  }
+  pt: {nav:["Sobre","Serviços","Produtos","Mercados","Insights","Contato"],title:"Conectando o Brasil ao mercado global de commodities",lead:"Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.",btnComprar:"Quero comprar",btnVender:"Quero vender",contactSectionTitle:"Contato",contactHtml:`Fale connosco por e-mail: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>ou visite: <a href="https://braziltrad.com" target="_blank">braziltrad.com</a>`},
+  en: {nav:["About","Services","Products","Markets","Insights","Contact"],title:"Connecting Brazil to the global commodities market",lead:"Reliable intermediation of metals and agricultural products, with origin verification, compliance and efficient FOB/CIF logistics.",btnComprar:"I want to buy",btnVender:"I want to sell",contactSectionTitle:"Contact",contactHtml:`Contact us at <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>or visit: <a href="https://braziltrad.com" target="_blank">braziltrad.com</a>`},
+  es: {nav:["Sobre","Servicios","Productos","Mercados","Insights","Contacto"],title:"Conectando a Brasil con el mercado global de commodities",lead:"Intermediación confiable de metales y agrícolas, con verificación de origen, cumplimiento y logística eficiente FOB/CIF.",btnComprar:"Quiero comprar",btnVender:"Quiero vender",contactSectionTitle:"Contacto",contactHtml:`Contáctanos por correo: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>o visita: <a href="https://braziltrad.com" target="_blank">braziltrad.com</a>`},
+  zh: {nav:["关于","服务","产品","市场","洞察","联系"],title:"连接巴西与全球大宗商品市场",lead:"提供可靠的金属与农产品中介服务，进行产地验证、合规与高效的FOB/CIF物流。",btnComprar:"我要买",btnVender:"我要卖",contactSectionTitle:"联系",contactHtml:`通过邮件联系: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>或访问: <a href="https://braziltrad.com" target="_blank">braziltrad.com</a>`}
 };
 
-/* ---------- Botão e idiomas ---------- */
-const LANGS = ["pt","en","es","zh"];
-const FLAGS = {pt:"🇧🇷 PT", en:"🇬🇧 EN", es:"🇪🇸 ES", zh:"🇨🇳 中文"};
-let langIndex = 0;
+const LANGS=["pt","en","es","zh"];
+const FLAGS={pt:"🇧🇷 PT",en:"🇬🇧 EN",es:"🇪🇸 ES",zh:"🇨🇳 中文"};
+let langIndex=0;
 
 function applyTranslations(code){
-  const t = TRANSLATIONS[code] || TRANSLATIONS.pt;
-
-  // Nav — assume nav links na mesma ordem
-  const navLinks = document.querySelectorAll('header nav ul li a');
-  if(navLinks && navLinks.length >= t.nav.length){
-    for(let i=0;i<t.nav.length;i++){
-      navLinks[i].textContent = t.nav[i];
-      // garante que link para contact aponte para secção interna
-      if(t.nav[i].toLowerCase().includes('contact') || t.nav[i].toLowerCase().includes('contato') || i===5){
-        navLinks[i].setAttribute('href','#contact');
-      } else {
-        // mantém âncoras existentes por ordem (assume id's na mesma ordem)
-        const anchors = ['about','services','products','markets','insights'];
-        if(anchors[i]) navLinks[i].setAttribute('href', '#'+anchors[i]);
-      }
-    }
-  }
-
-  // Hero title / lead
-  const heroTitle = document.querySelector('.hero h1');
-  const heroLead = document.querySelector('.hero p');
-  if(heroTitle) heroTitle.textContent = t.title;
-  if(heroLead) heroLead.textContent = t.lead;
-
-  // CTA Buttons
-  const btnComprar = document.getElementById('btn-comprar');
-  const btnVender = document.getElementById('btn-vender');
-  if(btnComprar) {
-    btnComprar.textContent = t.btnComprar;
-    // aponta para a secção de contato (garante que funciona)
-    btnComprar.setAttribute('href','#contact');
-  }
-  if(btnVender) {
-    btnVender.textContent = t.btnVender;
-    btnVender.setAttribute('href','#contact');
-  }
-
-  // Atualiza botão de idioma visual
-  const langBtn = document.getElementById('langBtn');
-  if(langBtn) langBtn.textContent = "🌎 " + FLAGS[code];
-
-  // Atualiza secção de contato (cria se não existir)
-  let contactSection = document.getElementById('contact');
-  if(!contactSection){
-    contactSection = document.createElement('section');
-    contactSection.id = 'contact';
-    contactSection.className = 'section';
-    contactSection.innerHTML = `<div class="container" style="text-align:center;">
-      <h2>${t.contactSectionTitle}</h2>
-      <p>${t.contactHtml}</p>
-    </div>`;
-    // inserir antes do footer, se footer existir
-    const footer = document.querySelector('footer');
-    if(footer) footer.parentNode.insertBefore(contactSection, footer);
-    else document.body.appendChild(contactSection);
-  } else {
-    // se existir, atualiza conteúdo
-    contactSection.innerHTML = `<div class="container" style="text-align:center;">
-      <h2>${t.contactSectionTitle}</h2>
-      <p>${t.contactHtml}</p>
-    </div>`;
-  }
+  const t=TRANSLATIONS[code];
+  document.querySelectorAll('header nav ul li a').forEach((a,i)=>a.textContent=t.nav[i]);
+  document.querySelector('.hero h1').textContent=t.title;
+  document.querySelector('.hero p').textContent=t.lead;
+  document.getElementById('btn-comprar').textContent=t.btnComprar;
+  document.getElementById('btn-vender').textContent=t.btnVender;
+  document.getElementById('langBtn').textContent="🌎 "+FLAGS[code];
+  let c=document.getElementById('contact');
+  if(!c){c=document.createElement('section');c.id='contact';c.className='section';document.body.appendChild(c);}
+  c.innerHTML=`<div class="container" style="text-align:center;"><h2>${t.contactSectionTitle}</h2><p>${t.contactHtml}</p></div>`;
 }
 
-function setLang(code){
-  localStorage.setItem("bt_lang", code);
-  document.documentElement.lang = code;
-  applyTranslations(code);
-}
+function setLang(code){localStorage.setItem("bt_lang",code);document.documentElement.lang=code;applyTranslations(code);initTradingView(code);}
 
-/* ---------- Interceptar cliques em âncoras para compensar as barras fixas ---------- */
-function enableAnchorsCompensated(){
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if(!href || href === "#") return;
-      const targetId = href.substring(1);
-      const target = document.getElementById(targetId);
-      if (target) {
-        e.preventDefault();
-        const offset = target.getBoundingClientRect().top + window.scrollY - 100; // compensação em px
-        window.scrollTo({ top: offset, behavior: 'smooth' });
-      }
-    });
-  });
-}
-
-/* ---------- Inicialização no DOMContentLoaded ---------- */
-document.addEventListener("DOMContentLoaded",()=> {
-  // detecta saved ou browser
-  const saved = localStorage.getItem("bt_lang");
-  let code = 'pt';
-  if(saved && LANGS.includes(saved)) code = saved;
-  else {
-    const n = (navigator.language || navigator.userLanguage || 'pt').toLowerCase();
-    if(n.startsWith('pt')) code = 'pt';
-    else if(n.startsWith('es')) code = 'es';
-    else if(n.startsWith('zh')) code = 'zh';
-    else code = 'en';
-  }
-  langIndex = LANGS.indexOf(code);
+document.addEventListener("DOMContentLoaded",()=>{
+  const saved=localStorage.getItem("bt_lang");
+  let code=saved&&LANGS.includes(saved)?saved:(navigator.language||"pt").substring(0,2);
+  if(!LANGS.includes(code))code="pt";
+  langIndex=LANGS.indexOf(code);
   setLang(code);
-
-  // ligar o botão multilíngua
-  const langBtn = document.getElementById('langBtn');
-  if(langBtn){
-    langBtn.addEventListener('click', () => {
-      langIndex = (langIndex + 1) % LANGS.length;
-      setLang(LANGS[langIndex]);
-      // re-aplicar anchors (caso nav tenha sido recriada)
-      enableAnchorsCompensated();
-    });
-  }
-
-  // habilitar compensação de âncoras
-  enableAnchorsCompensated();
+  document.getElementById("langBtn").addEventListener("click",()=>{langIndex=(langIndex+1)%LANGS.length;setLang(LANGS[langIndex]);});
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const id=a.getAttribute('href').substring(1);const el=document.getElementById(id);
+    if(el){e.preventDefault();window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'});}
+  }));
 });
 </script>
 
-  <script>
-  function initTradingView(locale){
-      document.getElementById("tv-indices").innerHTML = "";
-      document.getElementById("tv-commodities").innerHTML = "";
-      const w1=document.createElement("script");
-      w1.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-      w1.text=JSON.stringify({
-        "symbols":[
-          {"proName":"FOREXCOM:EURUSD","title":"EUR/USD"},
-          {"proName":"FOREXCOM:USDJPY","title":"USD/JPY"},
-          {"proName":"OANDA:SPX500USD","title":"S&P 500"},
-          {"proName":"NASDAQ:NDX","title":"NASDAQ 100"},
-          {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
-          {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],
-        "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,
-        "displayMode":"adaptive","locale":locale});
-      document.getElementById("tv-indices").appendChild(w1);
-
-      const w2=document.createElement("script");
-      w2.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-      w2.text=JSON.stringify({
-        "symbols":[
-          {"proName":"COMEX:GC1!","title":"Ouro"},
-          {"proName":"ICEEUR:BRN1!","title":"Petróleo Brent"},
-          {"proName":"CBOT:ZS1!","title":"Soja"},
-          {"proName":"ICEUS:KC1!","title":"Café"},
-          {"proName":"ICEUS:SB1!","title":"Açúcar"},
-          {"proName":"ICEUS:CT1!","title":"Algodão"},
-          {"proName":"COMEX:HG1!","title":"Cobre"},
-          {"proName":"SGX:FEF1!","title":"Minério de Ferro"}],
-        "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,
-        "displayMode":"adaptive","locale":locale});
-      document.getElementById("tv-commodities").appendChild(w2);
-    }
-  </script>
+<!-- ===== SCRIPT TRADINGVIEW ===== -->
+<script>
+function initTradingView(locale){
+  document.getElementById("tv-indices").innerHTML="";
+  document.getElementById("tv-commodities").innerHTML="";
+  const w1=document.createElement("script");
+  w1.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+  w1.text=JSON.stringify({"symbols":[
+    {"proName":"FOREXCOM:EURUSD","title":"EUR/USD"},
+    {"proName":"FOREXCOM:USDJPY","title":"USD/JPY"},
+    {"proName":"OANDA:SPX500USD","title":"S&P 500"},
+    {"proName":"NASDAQ:NDX","title":"NASDAQ 100"},
+    {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
+    {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],
+    "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,"displayMode":"adaptive","locale":locale});
+  document.getElementById("tv-indices").appendChild(w1);
+  const w2=document.createElement("script");
+  w2.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+  w2.text=JSON.stringify({"symbols":[
+    {"proName":"COMEX:GC1!","title":"Ouro"},
+    {"proName":"ICEEUR:BRN1!","title":"Petróleo Brent"},
+    {"proName":"CBOT:ZS1!","title":"Soja"},
+    {"proName":"ICEUS:KC1!","title":"Café"},
+    {"proName":"ICEUS:SB1!","title":"Açúcar"},
+    {"proName":"ICEUS:CT1!","title":"Algodão"},
+    {"proName":"COMEX:HG1!","title":"Cobre"},
+    {"proName":"SGX:FEF1!","title":"Minério de Ferro"}],
+    "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,"displayMode":"adaptive","locale":locale});
+  document.getElementById("tv-commodities").appendChild(w2);
+}
+</script>
 </body>
 </html>
