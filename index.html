@@ -227,38 +227,36 @@
   </footer>
 
   <!-- ===== SCRIPTS ===== -->
-  <script>
-    const LANGS = ["pt","en","es","zh"];
-    const FLAGS = {pt:"🇧🇷 PT",en:"🇬🇧 EN",es:"🇪🇸 ES",zh:"🇨🇳 中文"};
-    let langIndex = 0;
+ <script>
+const LANGS = ["pt","en","es","zh"];
+const FLAGS = {pt:"🇧🇷 PT",en:"🇬🇧 EN",es:"🇪🇸 ES",zh:"🇨🇳 中文"};
+let langIndex = 0;
 
-    function detectLang(){
-      const saved = localStorage.getItem("bt_lang");
-      if(saved && LANGS.includes(saved)) return saved;
-      const n = (navigator.language||"pt").toLowerCase();
-      if(n.startsWith("pt")) return "pt";
-      if(n.startsWith("es")) return "es";
-      if(n.startsWith("zh")) return "zh";
-      return "en";
-    }
+function setLang(code){
+  localStorage.setItem("bt_lang", code);
+  document.documentElement.lang = code;
+  document.getElementById("langBtn").textContent = "🌎 " + FLAGS[code];
 
-    function setLang(code){
-      localStorage.setItem("bt_lang", code);
-      document.getElementById("langBtn").textContent = "🌎 " + FLAGS[code];
-      document.documentElement.lang = code;
-      initTradingView(code);
-    }
+  // Atualiza os links conforme idioma
+  document.getElementById("btn-comprar").href = `./contato-compra-${code}.html`;
+  document.getElementById("btn-vender").href = `./contato-venda-${code}.html`;
+  document.querySelector('a[href="#contact"]').href = `./contato-${code}.html`;
+}
 
-    document.addEventListener("DOMContentLoaded",()=>{
-      const code = detectLang();
-      langIndex = LANGS.indexOf(code);
-      setLang(code);
-      document.getElementById("langBtn").addEventListener("click",()=>{
-        langIndex = (langIndex + 1) % LANGS.length;
-        setLang(LANGS[langIndex]);
-      });
-    });
-
+document.addEventListener("DOMContentLoaded",()=>{
+  const saved = localStorage.getItem("bt_lang");
+  const code = LANGS.includes(saved) ? saved : "pt";
+  langIndex = LANGS.indexOf(code);
+  setLang(code);
+  document.getElementById("langBtn").addEventListener("click",()=>{
+    langIndex = (langIndex + 1) % LANGS.length;
+    setLang(LANGS[langIndex]);
+  });
+});
+</script>
+  
+  </script>
+  
     function initTradingView(locale){
       document.getElementById("tv-indices").innerHTML = "";
       document.getElementById("tv-commodities").innerHTML = "";
