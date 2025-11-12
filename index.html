@@ -132,61 +132,61 @@
   }
 <div class="tv-bar-wrapper top-bar">
   
-  /*<!-- ===== BARRA PRINCIPAL (Índices e Moedas) ===== -->*/
-<div class="tradingview-widget-container main-bar">
-  <div class="tradingview-widget-container__widget"></div>
-  <script
-    type="text/javascript"
-    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-    async
-  >
-  {
-    "symbols": [
-      { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
-      { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
-      { "proName": "OANDA:SPX500USD", "title": "S&P 500" },
-      { "proName": "NASDAQ:NDX", "title": "NASDAQ 100" },
-      { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-      { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" }
-    ],
-    "showSymbolLogo": true,
-    "colorTheme": "light",
-    "isTransparent": false,
-    "displayMode": "adaptive",
-    "locale": "pt"
-  }
-  </script>
-</div>
+  <body>
+  <!-- ===== BARRA 1: ÍNDICES E MOEDAS ===== -->
+  <div class="tradingview-widget-container main-bar">
+    <div class="tradingview-widget-container__widget"></div>
+    <script
+      type="text/javascript"
+      src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+      async
+    >
+    {
+      "symbols": [
+        { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
+        { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
+        { "proName": "OANDA:SPX500USD", "title": "S&P 500" },
+        { "proName": "NASDAQ:NDX", "title": "NASDAQ 100" },
+        { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
+        { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" }
+      ],
+      "showSymbolLogo": true,
+      "colorTheme": "light",
+      "isTransparent": false,
+      "displayMode": "adaptive",
+      "locale": "pt"
+    }
+    </script>
+  </div>
 
-<!-- ===== BARRA DE COMMODITIES ===== -->
-<div class="tradingview-widget-container commodities-bar">
-  <div class="tradingview-widget-container__widget"></div>
-  <script
-    type="text/javascript"
-    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-    async
-  >
-  {
-    "symbols": [
-      { "proName": "COMEX:GC1!", "title": "Ouro" },
-      { "proName": "ICEEUR:BRN1!", "title": "Petróleo Brent" },
-      { "proName": "CBOT:ZS1!", "title": "Soja" },
-      { "proName": "ICEUS:KC1!", "title": "Café" },
-      { "proName": "ICEUS:SB1!", "title": "Açúcar" },
-      { "proName": "ICEUS:CT1!", "title": "Algodão" },
-      { "proName": "COMEX:HG1!", "title": "Cobre" },
-      { "proName": "LME:NI1!", "title": "Níquel" },
-      { "proName": "LME:ZNC1!", "title": "Zinco" },
-      { "proName": "SGX:FEF1!", "title": "Minério de Ferro" }
-    ],
-    "showSymbolLogo": true,
-    "colorTheme": "light",
-    "isTransparent": false,
-    "displayMode": "adaptive",
-    "locale": "pt"
-  }
-  </script>
-</div>
+  <!-- ===== BARRA 2: COMMODITIES ===== -->
+  <div class="tradingview-widget-container commodities-bar">
+    <div class="tradingview-widget-container__widget"></div>
+    <script
+      type="text/javascript"
+      src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+      async
+    >
+    {
+      "symbols": [
+        { "proName": "COMEX:GC1!", "title": "Ouro" },
+        { "proName": "ICEEUR:BRN1!", "title": "Petróleo Brent" },
+        { "proName": "CBOT:ZS1!", "title": "Soja" },
+        { "proName": "ICEUS:KC1!", "title": "Café" },
+        { "proName": "ICEUS:SB1!", "title": "Açúcar" },
+        { "proName": "ICEUS:CT1!", "title": "Algodão" },
+        { "proName": "COMEX:SI1!", "title": "Prata" },
+        { "proName": "COMEX:HG1!", "title": "Cobre" },
+        { "proName": "SGX:FEF1!", "title": "Minério de Ferro" }
+      ],
+      "showSymbolLogo": true,
+      "colorTheme": "light",
+      "isTransparent": false,
+      "displayMode": "adaptive",
+      "locale": "pt"
+    }
+    </script>
+  </div>
 
 
 /* Evita que o conteúdo do site fique escondido atrás das duas barras */
