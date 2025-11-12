@@ -255,21 +255,173 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 </script>
   <script>
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const targetId = this.getAttribute('href').substring(1);
-    const target = document.getElementById(targetId);
-    if (target) {
-      e.preventDefault();
-      const offset = target.getBoundingClientRect().top + window.scrollY - 100; // compensa barras
-      window.scrollTo({ top: offset, behavior: 'smooth' });
+/* ---------- Traduções simples embutidas ---------- */
+const TRANSLATIONS = {
+  pt: {
+    nav: ["Sobre","Serviços","Produtos","Mercados","Insights","Contato"],
+    title: "Conectando o Brasil ao mercado global de commodities",
+    lead: "Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF. Atuamos com fornecedores selecionados e compradores qualificados.",
+    btnComprar: "Quero comprar",
+    btnVender: "Quero vender",
+    contactSectionTitle: "Contato",
+    contactHtml: `Fale connosco por e-mail: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>ou visite nosso site: <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>`
+  },
+  en: {
+    nav: ["About","Services","Products","Markets","Insights","Contact"],
+    title: "Connecting Brazil to the global commodities market",
+    lead: "Reliable intermediation of metals and agricultural products, with origin verification, compliance and efficient FOB/CIF logistics. We work with selected suppliers and qualified buyers.",
+    btnComprar: "I want to buy",
+    btnVender: "I want to sell",
+    contactSectionTitle: "Contact",
+    contactHtml: `Contact us by email: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>or visit: <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>`
+  },
+  es: {
+    nav: ["Sobre","Servicios","Productos","Mercados","Insights","Contacto"],
+    title: "Conectando a Brasil con el mercado global de commodities",
+    lead: "Intermediación confiable de metales y agrícolas, con verificación de origen, cumplimiento y logística eficiente FOB/CIF. Trabajamos con proveedores seleccionados y compradores calificados.",
+    btnComprar: "Quiero comprar",
+    btnVender: "Quiero vender",
+    contactSectionTitle: "Contacto",
+    contactHtml: `Contáctanos por correo: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>o visita: <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>`
+  },
+  zh: {
+    nav: ["关于","服务","产品","市场","洞察","联系"],
+    title: "连接巴西与全球大宗商品市场",
+    lead: "提供可靠的金属与农产品中介服务，进行产地验证、合规与高效的FOB/CIF物流。我们与精选供应商和合格买家合作。",
+    btnComprar: "我要买",
+    btnVender: "我要卖",
+    contactSectionTitle: "联系",
+    contactHtml: `通过邮件联系: <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a><br>或访问: <a href="https://braziltrad.com" target="_blank" rel="noopener noreferrer">braziltrad.com</a>`
+  }
+};
+
+/* ---------- Botão e idiomas ---------- */
+const LANGS = ["pt","en","es","zh"];
+const FLAGS = {pt:"🇧🇷 PT", en:"🇬🇧 EN", es:"🇪🇸 ES", zh:"🇨🇳 中文"};
+let langIndex = 0;
+
+function applyTranslations(code){
+  const t = TRANSLATIONS[code] || TRANSLATIONS.pt;
+
+  // Nav — assume nav links na mesma ordem
+  const navLinks = document.querySelectorAll('header nav ul li a');
+  if(navLinks && navLinks.length >= t.nav.length){
+    for(let i=0;i<t.nav.length;i++){
+      navLinks[i].textContent = t.nav[i];
+      // garante que link para contact aponte para secção interna
+      if(t.nav[i].toLowerCase().includes('contact') || t.nav[i].toLowerCase().includes('contato') || i===5){
+        navLinks[i].setAttribute('href','#contact');
+      } else {
+        // mantém âncoras existentes por ordem (assume id's na mesma ordem)
+        const anchors = ['about','services','products','markets','insights'];
+        if(anchors[i]) navLinks[i].setAttribute('href', '#'+anchors[i]);
+      }
     }
+  }
+
+  // Hero title / lead
+  const heroTitle = document.querySelector('.hero h1');
+  const heroLead = document.querySelector('.hero p');
+  if(heroTitle) heroTitle.textContent = t.title;
+  if(heroLead) heroLead.textContent = t.lead;
+
+  // CTA Buttons
+  const btnComprar = document.getElementById('btn-comprar');
+  const btnVender = document.getElementById('btn-vender');
+  if(btnComprar) {
+    btnComprar.textContent = t.btnComprar;
+    // aponta para a secção de contato (garante que funciona)
+    btnComprar.setAttribute('href','#contact');
+  }
+  if(btnVender) {
+    btnVender.textContent = t.btnVender;
+    btnVender.setAttribute('href','#contact');
+  }
+
+  // Atualiza botão de idioma visual
+  const langBtn = document.getElementById('langBtn');
+  if(langBtn) langBtn.textContent = "🌎 " + FLAGS[code];
+
+  // Atualiza secção de contato (cria se não existir)
+  let contactSection = document.getElementById('contact');
+  if(!contactSection){
+    contactSection = document.createElement('section');
+    contactSection.id = 'contact';
+    contactSection.className = 'section';
+    contactSection.innerHTML = `<div class="container" style="text-align:center;">
+      <h2>${t.contactSectionTitle}</h2>
+      <p>${t.contactHtml}</p>
+    </div>`;
+    // inserir antes do footer, se footer existir
+    const footer = document.querySelector('footer');
+    if(footer) footer.parentNode.insertBefore(contactSection, footer);
+    else document.body.appendChild(contactSection);
+  } else {
+    // se existir, atualiza conteúdo
+    contactSection.innerHTML = `<div class="container" style="text-align:center;">
+      <h2>${t.contactSectionTitle}</h2>
+      <p>${t.contactHtml}</p>
+    </div>`;
+  }
+}
+
+function setLang(code){
+  localStorage.setItem("bt_lang", code);
+  document.documentElement.lang = code;
+  applyTranslations(code);
+}
+
+/* ---------- Interceptar cliques em âncoras para compensar as barras fixas ---------- */
+function enableAnchorsCompensated(){
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(!href || href === "#") return;
+      const targetId = href.substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        e.preventDefault();
+        const offset = target.getBoundingClientRect().top + window.scrollY - 100; // compensação em px
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
   });
+}
+
+/* ---------- Inicialização no DOMContentLoaded ---------- */
+document.addEventListener("DOMContentLoaded",()=> {
+  // detecta saved ou browser
+  const saved = localStorage.getItem("bt_lang");
+  let code = 'pt';
+  if(saved && LANGS.includes(saved)) code = saved;
+  else {
+    const n = (navigator.language || navigator.userLanguage || 'pt').toLowerCase();
+    if(n.startsWith('pt')) code = 'pt';
+    else if(n.startsWith('es')) code = 'es';
+    else if(n.startsWith('zh')) code = 'zh';
+    else code = 'en';
+  }
+  langIndex = LANGS.indexOf(code);
+  setLang(code);
+
+  // ligar o botão multilíngua
+  const langBtn = document.getElementById('langBtn');
+  if(langBtn){
+    langBtn.addEventListener('click', () => {
+      langIndex = (langIndex + 1) % LANGS.length;
+      setLang(LANGS[langIndex]);
+      // re-aplicar anchors (caso nav tenha sido recriada)
+      enableAnchorsCompensated();
+    });
+  }
+
+  // habilitar compensação de âncoras
+  enableAnchorsCompensated();
 });
 </script>
-  </script>
-  
-    function initTradingView(locale){
+
+  <script>
+  function initTradingView(locale){
       document.getElementById("tv-indices").innerHTML = "";
       document.getElementById("tv-commodities").innerHTML = "";
       const w1=document.createElement("script");
