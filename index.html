@@ -328,66 +328,125 @@
 <!-- ===== BOTÃO MULTILÍNGUA ===== -->
 <button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
 
-<!-- ===== SCRIPT: Multilíngua + Barras ===== -->
+<!-- ===== BOTÃO MULTILÍNGUA ===== -->
+<button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
+
+<!-- ===== SCRIPT: Multilíngua + Barras Fixas + Rodapé ===== -->
+<style>
+  /* ===== FIXAR AS DUAS BARRAS ===== */
+  .tradingview-widget-container.main-bar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 38px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    z-index: 99999;
+  }
+
+  .tradingview-widget-container.commodities-bar {
+    position: fixed !important;
+    top: 38px;
+    left: 0;
+    width: 100%;
+    height: 38px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    z-index: 99998;
+  }
+
+  /* ===== AJUSTE DO BODY PARA NÃO SOBREPOR ===== */
+  body {
+    margin-top: 86px !important;
+  }
+
+  /* ===== BOTÃO MULTILÍNGUA ===== */
+  .lang-btn {
+    position: fixed;
+    top: 86px;
+    right: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 25px;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    color: #0F4C5C;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    transition: all 0.25s ease;
+    z-index: 1000000;
+  }
+
+  .lang-btn:hover {
+    background: #f7f7f7;
+    color: #0b3d47;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  /* ===== RODAPÉ ===== */
+  footer {
+    background: #0F4C5C !important;
+    color: #ffffff !important;
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  footer a {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+  }
+
+  footer [data-i18n="footer.location"] {
+    color: #ffffff !important;
+  }
+</style>
+
 <script>
-const LANGS=["pt","en","es","zh"];
-const FLAGS={pt:"🇧🇷",en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳"};
-let langIndex=LANGS.indexOf(localStorage.getItem("bt_lang")||"pt");
-if(langIndex<0)langIndex=0;
-const langBtn=document.getElementById("langBtn");
-
-function setLang(code){
-  document.documentElement.lang=code;
-  langBtn.textContent=`🌎 ${FLAGS[code]} ${code.toUpperCase()}`;
-  localStorage.setItem("bt_lang",code);
-  loadTradingView(code);
-}
-
-langBtn.addEventListener("click",()=>{
-  langIndex=(langIndex+1)%LANGS.length;
-  setLang(LANGS[langIndex]);
-});
-
-function loadTradingView(locale){
-  document.getElementById("tv-indices").innerHTML="";
-  document.getElementById("tv-commodities").innerHTML="";
-  const makeScript=(cfg)=>{
-    const s=document.createElement("script");
-    s.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-    s.type="text/javascript";
-    s.async=true;
-    s.text=JSON.stringify(cfg);
-    return s;
+  // ===== SCRIPT DO BOTÃO MULTILÍNGUA =====
+  const LANGS = ["pt", "en", "es", "zh"];
+  const FLAGS = {
+    pt: "🇧🇷 PT",
+    en: "🇬🇧 EN",
+    es: "🇪🇸 ES",
+    zh: "🇨🇳 中文"
   };
-  const cfg1={
-    symbols:[
-      {proName:"FOREXCOM:EURUSD",title:"EUR/USD"},
-      {proName:"FOREXCOM:USDJPY",title:"USD/JPY"},
-      {proName:"OANDA:SPX500USD",title:"S&P 500"},
-      {proName:"NASDAQ:NDX",title:"NASDAQ 100"},
-      {proName:"BITSTAMP:BTCUSD",title:"Bitcoin"},
-      {proName:"BITSTAMP:ETHUSD",title:"Ethereum"}],
-    showSymbolLogo:true,colorTheme:"light",isTransparent:false,
-    displayMode:"adaptive",locale:locale
-  };
-  const cfg2={
-    symbols:[
-      {proName:"COMEX:GC1!",title:"Ouro"},
-      {proName:"ICEEUR:BRN1!",title:"Petróleo Brent"},
-      {proName:"CBOT:ZS1!",title:"Soja"},
-      {proName:"ICEUS:KC1!",title:"Café"},
-      {proName:"ICEUS:SB1!",title:"Açúcar"},
-      {proName:"ICEUS:CT1!",title:"Algodão"},
-      {proName:"COMEX:HG1!",title:"Cobre"},
-      {proName:"SGX:FEF1!",title:"Minério de Ferro"}],
-    showSymbolLogo:true,colorTheme:"light",isTransparent:false,
-    displayMode:"adaptive",locale:locale
-  };
-  document.getElementById("tv-indices").appendChild(makeScript(cfg1));
-  document.getElementById("tv-commodities").appendChild(makeScript(cfg2));
-}
+  let langIndex = 0;
 
-setLang(LANGS[langIndex]);
+  function setLang(lang) {
+    localStorage.setItem("bt_lang", lang);
+    document.documentElement.lang = lang;
+    const btn = document.getElementById("langBtn");
+    if (btn) btn.textContent = "🌎 " + FLAGS[lang];
+    console.log("Idioma alterado para:", lang);
+    // Atualiza automaticamente os textos do site se o sistema de tradução estiver ativo
+    if (typeof setLanguage === "function") setLanguage(lang);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("bt_lang") || "pt";
+    langIndex = LANGS.indexOf(savedLang);
+    if (langIndex < 0) langIndex = 0;
+    setLang(LANGS[langIndex]);
+
+    const btn = document.getElementById("langBtn");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        langIndex = (langIndex + 1) % LANGS.length;
+        setLang(LANGS[langIndex]);
+      });
+    }
+  });
 </script>
+
 </body>
 </html>
