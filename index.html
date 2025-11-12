@@ -8,39 +8,100 @@
   <link rel="stylesheet" href="./css/style.css">
 
   <style>
-    /* local styles needed quickly (keeps CSS file clean) */
-    /* small helper to avoid content behind bars on very small screens */
+    /* Ajuste em telas pequenas */
     @media (max-width:420px){
       body{margin-top:95px !important;}
       .lang-btn{top:86px;}
+    }
+
+    /* ===== BARRAS TRADINGVIEW ===== */
+    .tradingview-widget-container.main-bar {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 38px;
+      background: #ffffff !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      z-index: 99999;
+    }
+
+    .tradingview-widget-container.commodities-bar {
+      position: fixed !important;
+      top: 38px;
+      left: 0;
+      width: 100%;
+      height: 38px;
+      background: #0F4C5C !important;
+      color: #ffffff !important;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      z-index: 99998;
+    }
+
+    body { margin-top: 86px !important; }
+
+    /* ===== BOTÃO MULTILÍNGUA ===== */
+    .lang-btn {
+      position: fixed;
+      top: 90px;
+      right: 20px;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 25px;
+      padding: 6px 16px;
+      font-size: 0.9rem;
+      color: #0F4C5C;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      transition: all 0.25s ease;
+      z-index: 1000000;
+    }
+
+    .lang-btn:hover {
+      background: #f7f7f7;
+      color: #0b3d47;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* ===== RODAPÉ ===== */
+    footer {
+      background: #0F4C5C !important;
+      color: #ffffff !important;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    footer a {
+      color: #ffffff !important;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      opacity: 0.85;
     }
   </style>
 </head>
 
 <body>
-  <!-- ===== BARRAS TRADINGVIEW ===== -->
-<div class="tv-bar main-bar">
-  <a href="https://braziltrad.com" target="_blank" class="tv-logo-link">
-    <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
-  </a>
-  <div class="tradingview-widget-container__widget" id="tv-indices"></div>
-</div>
+  <!-- ===== BARRA 1: ÍNDICES ===== -->
+  <div class="tradingview-widget-container main-bar">
+    <div class="tradingview-widget-container__widget" id="tv-indices"></div>
+  </div>
 
-<div class="tv-bar commodities-bar">
-  <a href="https://braziltrad.com" target="_blank" class="tv-logo-link">
-    <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
-  </a>
-  <div class="tradingview-widget-container__widget" id="tv-commodities"></div>
-</div>
+  <!-- ===== BARRA 2: COMMODITIES ===== -->
+  <div class="tradingview-widget-container commodities-bar">
+    <div class="tradingview-widget-container__widget" id="tv-commodities"></div>
+  </div>
 
-<!-- espaço para não esconder o conteúdo -->
-<style>body{margin-top:86px!important;}</style>
-
-
-  <!-- ===== BOTÃO MULTILÍNGUA (flutuando abaixo do topo, canto direito) ===== -->
+  <!-- ===== BOTÃO MULTILÍNGUA ===== -->
   <button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
 
-  <!-- ===== HEADER E CONTEÚDO DO SITE (mantive o teu conteúdo) ===== -->
+  <!-- ===== HEADER E CONTEÚDO DO SITE ===== -->
   <header class="header">
     <div class="container nav">
       <a class="brand" href="./">
@@ -149,7 +210,7 @@
     </section>
   </main>
 
-  <!-- ===== FOOTER COM LINKS RESTAURADOS ===== -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="inner container" style="text-align:center; padding:20px 0;">
       <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:34px;width:auto;display:block;margin:0 auto 10px">
@@ -165,303 +226,72 @@
     </div>
   </footer>
 
-  <!-- ===== SCRIPTS: multilíngua, CTA, e inicialização dos widgets (locale do TradingView) ===== -->
+  <!-- ===== SCRIPTS ===== -->
   <script>
-    /* --------------- multilíngua (opção 2: troca também as barras) --------------- */
     const LANGS = ["pt","en","es","zh"];
-    const FLAGS = {pt:"🇧🇷",en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳"};
-    let idx = 0;
+    const FLAGS = {pt:"🇧🇷 PT",en:"🇬🇧 EN",es:"🇪🇸 ES",zh:"🇨🇳 中文"};
+    let langIndex = 0;
 
-    function getSavedLang(){
-      try{ const s = localStorage.getItem('bt_lang'); if(s && LANGS.includes(s)) return s; }catch(e){}
-      return 'pt';
-    }
-    function saveLang(code){
-      try{ localStorage.setItem('bt_lang', code); }catch(e){}
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // set initial lang index from storage
-      const saved = getSavedLang();
-      idx = LANGS.indexOf(saved);
-      if(idx < 0) idx = 0;
-      const btn = document.getElementById('langBtn');
-      btn.textContent = `🌎 ${FLAGS[LANGS[idx]]} ${LANGS[idx].toUpperCase()}`;
-
-      // clicking cycles languages (we reload page to ensure TradingView widgets init cleanly)
-      btn.addEventListener('click', () => {
-        idx = (idx + 1) % LANGS.length;
-        const code = LANGS[idx];
-        saveLang(code);
-        // update button and reload so widgets re-init with new locale
-        btn.textContent = `🌎 ${FLAGS[code]} ${code.toUpperCase()}`;
-        // small delay to show new label, then reload
-        setTimeout(()=> location.reload(), 220);
-      });
-
-      // CTA buttons: sessionStorage + navigate
-      const bc = document.getElementById('btn-comprar');
-      const bv = document.getElementById('btn-vender');
-      if(bc) bc.addEventListener('click', (e)=>{ sessionStorage.setItem('bt_type','buy'); /* keep default navigation */ });
-      if(bv) bv.addEventListener('click', (e)=>{ sessionStorage.setItem('bt_type','sell'); });
-
-      // initialize tradingview widgets after DOM ready, using saved locale
-      initTradingViewWidgets(getSavedLang());
-    });
-
-    /* --------------- TradingView: cria os scripts com o JSON de configuração --------------- */
-    function createTradingViewWidget(containerId, configObj){
-      // create the script element that TradingView expects: <script src="..."> { json } </script>
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-      // build JSON text (no surrounding <script> tags)
-      script.text = JSON.stringify(configObj, null, 2);
-      // append into the container
-      document.getElementById(containerId).appendChild(script);
+    function detectLang(){
+      const saved = localStorage.getItem("bt_lang");
+      if(saved && LANGS.includes(saved)) return saved;
+      const n = (navigator.language||"pt").toLowerCase();
+      if(n.startsWith("pt")) return "pt";
+      if(n.startsWith("es")) return "es";
+      if(n.startsWith("zh")) return "zh";
+      return "en";
     }
 
-    function initTradingViewWidgets(locale){
-      // clear placeholders (remove any existing containers)
-      const p1 = document.getElementById('tv-bar-1-placeholder');
-      const p2 = document.getElementById('tv-bar-2-placeholder');
-      p1.innerHTML = '';
-      p2.innerHTML = '';
-
-      // create wrapper containers (with logo)
-      const wrapper1 = document.createElement('div');
-      wrapper1.className = 'tradingview-widget-container main-bar';
-      wrapper1.innerHTML = `
-        <a href="https://braziltrad.com" class="tv-logo-link" target="_blank" rel="noopener">
-          <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
-        </a>
-        <div class="tradingview-widget-container__widget"></div>
-      `;
-      p1.appendChild(wrapper1);
-
-      const wrapper2 = document.createElement('div');
-      wrapper2.className = 'tradingview-widget-container commodities-bar';
-      wrapper2.innerHTML = `
-        <a href="https://braziltrad.com" class="tv-logo-link" target="_blank" rel="noopener">
-          <img src="./assets/img/braziltrad-logo.png" alt="BrazilTrad" class="tv-logo">
-        </a>
-        <div class="tradingview-widget-container__widget"></div>
-      `;
-      p2.appendChild(wrapper2);
-
-      // configs
-      const cfg1 = {
-        "symbols": [
-          { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
-          { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
-          { "proName": "OANDA:SPX500USD", "title": "S&P 500" },
-          { "proName": "NASDAQ:NDX", "title": "NASDAQ 100" },
-          { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-          { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" }
-        ],
-        "showSymbolLogo": true,
-        "colorTheme": "light",
-        "isTransparent": false,
-        "displayMode": "adaptive",
-        "locale": locale
-      };
-
-      const cfg2 = {
-        "symbols": [
-          { "proName": "COMEX:GC1!", "title": "Ouro" },
-          { "proName": "ICEEUR:BRN1!", "title": "Petróleo Brent" },
-          { "proName": "CBOT:ZS1!", "title": "Soja" },
-          { "proName": "ICEUS:KC1!", "title": "Café" },
-          { "proName": "ICEUS:SB1!", "title": "Açúcar" },
-          { "proName": "ICEUS:CT1!", "title": "Algodão" },
-          { "proName": "COMEX:HG1!", "title": "Cobre" },
-          { "proName": "SGX:FEF1!", "title": "Minério de Ferro" }
-        ],
-        "showSymbolLogo": true,
-        "colorTheme": "light",
-        "isTransparent": false,
-        "displayMode": "adaptive",
-        "locale": locale
-      };
-
-      // append embed scripts into the wrappers (TradingView will parse them)
-      // IMPORTANT: use appendChild(script) where script.src + script.text are set
-      const containerScript1 = document.createElement('script');
-      containerScript1.type = 'text/javascript';
-      containerScript1.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-      containerScript1.text = JSON.stringify(cfg1, null, 2);
-      wrapper1.appendChild(containerScript1);
-
-      const containerScript2 = document.createElement('script');
-      containerScript2.type = 'text/javascript';
-      containerScript2.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-      containerScript2.text = JSON.stringify(cfg2, null, 2);
-      wrapper2.appendChild(containerScript2);
-    }
-  </script>
-
-  <!-- ===== pequenos estilos inline para o logo nas barras (se preferires, põe no style.css) ===== -->
-  <style>
-    .tv-logo-link { position:absolute; left:10px; top:50%; transform:translateY(-50%); z-index:100000; display:flex; align-items:center; }
-    .tv-logo { height:22px; width:auto; opacity:0.95; }
-    .tradingview-widget-container.main-bar .tradingview-widget-container__widget,
-    .tradingview-widget-container.commodities-bar .tradingview-widget-container__widget {
-      margin-left:60px; /* espaço para o logo */
+    function setLang(code){
+      localStorage.setItem("bt_lang", code);
+      document.getElementById("langBtn").textContent = "🌎 " + FLAGS[code];
+      document.documentElement.lang = code;
+      initTradingView(code);
     }
 
-    /* barra visuals (sombra definida) */
-    .tradingview-widget-container.main-bar,
-    .tradingview-widget-container.commodities-bar {
-      position: fixed;
-      left: 0;
-      width: 100%;
-      height: 38px;
-      background: #fff;
-      border-bottom: 1px solid rgba(0,0,0,0.12);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      z-index: 99999;
-    }
-    .tradingview-widget-container.main-bar { top:0; }
-    .tradingview-widget-container.commodities-bar { top:38px; }
-    body { margin-top: 86px !important; }
-  </style>
-<!-- ===== BOTÃO MULTILÍNGUA ===== -->
-<button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
-
-<!-- ===== BOTÃO MULTILÍNGUA ===== -->
-<button id="langBtn" class="lang-btn" aria-label="Mudar idioma">🌎 🇧🇷 PT</button>
-
-<!-- ===== ESTILO E SCRIPT: Barras + Botão Multilíngua + Rodapé ===== -->
-<style>
-  /* ===== BARRA SUPERIOR (índices e moedas) ===== */
-  .tradingview-widget-container.main-bar {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 38px;
-    background: #ffffff !important; /* branco */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-    z-index: 99999;
-  }
-
-  /* ===== BARRA DE COMMODITIES ===== */
-  .tradingview-widget-container.commodities-bar {
-    position: fixed !important;
-    top: 38px;
-    left: 0;
-    width: 100%;
-    height: 38px;
-    background: #0F4C5C !important; /* verde institucional */
-    color: #ffffff !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    z-index: 99998;
-  }
-
-  /* ===== AJUSTE DO CONTEÚDO ===== */
-  body {
-    margin-top: 86px !important;
-  }
-
-  /* ===== BOTÃO MULTILÍNGUA ===== */
-  .lang-btn {
-    position: fixed;
-    top: 90px;
-    right: 20px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 25px;
-    padding: 6px 16px;
-    font-size: 0.9rem;
-    color: #0F4C5C;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    transition: all 0.25s ease;
-    z-index: 1000000;
-  }
-
-  .lang-btn:hover {
-    background: #f7f7f7;
-    color: #0b3d47;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
-
-  /* ===== RODAPÉ ===== */
-  footer {
-    background: #0F4C5C !important;
-    color: #ffffff !important;
-    padding: 40px 0;
-    text-align: center;
-  }
-
-  footer a {
-    color: #ffffff !important;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  footer a:hover {
-    text-decoration: underline;
-    opacity: 0.85;
-  }
-</style>
-
-<script>
-  // ===== SISTEMA DE IDIOMA =====
-  const LANGS = ["pt", "en", "es", "zh"];
-  const FLAGS = {
-    pt: "🇧🇷 PT",
-    en: "🇬🇧 EN",
-    es: "🇪🇸 ES",
-    zh: "🇨🇳 中文"
-  };
-  let langIndex = 0;
-
-  function detectInitialLang() {
-    const savedLang = localStorage.getItem("bt_lang");
-    if (savedLang && LANGS.includes(savedLang)) return savedLang;
-    const browserLang = (navigator.language || "pt").toLowerCase();
-    if (browserLang.startsWith("pt")) return "pt";
-    if (browserLang.startsWith("es")) return "es";
-    if (browserLang.startsWith("zh")) return "zh";
-    return "en";
-  }
-
-  function setLang(lang) {
-    localStorage.setItem("bt_lang", lang);
-    document.documentElement.lang = lang;
-    const btn = document.getElementById("langBtn");
-    if (btn) btn.textContent = "🌎 " + FLAGS[lang];
-    console.log("Idioma ativo:", lang);
-
-    // Atualiza textos se houver setLanguage()
-    if (typeof setLanguage === "function") setLanguage(lang);
-
-    // Atualiza idioma dos widgets TradingView
-    document.querySelectorAll("iframe[src*='tradingview']").forEach(el => {
-      const src = el.src.replace(/locale=\w+/, "locale=" + lang);
-      el.src = src;
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const initialLang = detectInitialLang();
-    langIndex = LANGS.indexOf(initialLang);
-    if (langIndex < 0) langIndex = 0;
-    setLang(LANGS[langIndex]);
-
-    const btn = document.getElementById("langBtn");
-    if (btn) {
-      btn.addEventListener("click", () => {
+    document.addEventListener("DOMContentLoaded",()=>{
+      const code = detectLang();
+      langIndex = LANGS.indexOf(code);
+      setLang(code);
+      document.getElementById("langBtn").addEventListener("click",()=>{
         langIndex = (langIndex + 1) % LANGS.length;
         setLang(LANGS[langIndex]);
       });
-    }
-  });
-</script>
+    });
 
+    function initTradingView(locale){
+      document.getElementById("tv-indices").innerHTML = "";
+      document.getElementById("tv-commodities").innerHTML = "";
+      const w1=document.createElement("script");
+      w1.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+      w1.text=JSON.stringify({
+        "symbols":[
+          {"proName":"FOREXCOM:EURUSD","title":"EUR/USD"},
+          {"proName":"FOREXCOM:USDJPY","title":"USD/JPY"},
+          {"proName":"OANDA:SPX500USD","title":"S&P 500"},
+          {"proName":"NASDAQ:NDX","title":"NASDAQ 100"},
+          {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
+          {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],
+        "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,
+        "displayMode":"adaptive","locale":locale});
+      document.getElementById("tv-indices").appendChild(w1);
+
+      const w2=document.createElement("script");
+      w2.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+      w2.text=JSON.stringify({
+        "symbols":[
+          {"proName":"COMEX:GC1!","title":"Ouro"},
+          {"proName":"ICEEUR:BRN1!","title":"Petróleo Brent"},
+          {"proName":"CBOT:ZS1!","title":"Soja"},
+          {"proName":"ICEUS:KC1!","title":"Café"},
+          {"proName":"ICEUS:SB1!","title":"Açúcar"},
+          {"proName":"ICEUS:CT1!","title":"Algodão"},
+          {"proName":"COMEX:HG1!","title":"Cobre"},
+          {"proName":"SGX:FEF1!","title":"Minério de Ferro"}],
+        "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,
+        "displayMode":"adaptive","locale":locale});
+      document.getElementById("tv-commodities").appendChild(w2);
+    }
+  </script>
 </body>
 </html>
