@@ -1,53 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>出售 — BrazilTrad</title>
-  <link rel="stylesheet" href="../css/style.css">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>我要出售 — BrazilTrad</title>
+  <style>
+    :root{--brand:#0F4C5C;--card-bg:#fff;--page-bg:#f4f6f8;--muted:#666;--radius:14px;--shadow:0 10px 30px rgba(18,30,40,0.08);--maxw:720px}
+    *{box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
+    body{margin:0;background:var(--page-bg);color:#1f2933;padding:40px 20px}
+    .wrap{display:flex;align-items:center;justify-content:center}
+    .card{width:100%;max-width:var(--maxw);background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .topbar{background:var(--brand);padding:14px 20px;display:flex;align-items:center;gap:12px}
+    .logo{height:34px;display:block}
+    .title{color:#fff;font-weight:700;font-size:1.05rem}
+    .content{padding:28px 28px 36px}
+    h1{margin:0 0 12px;color:var(--brand);font-size:1.5rem}
+    p.lead{margin:0 0 20px;color:var(--muted);line-height:1.5}
+    form{display:grid;gap:14px}
+    label{font-size:0.9rem;color:#0b2430;font-weight:600}
+    input,textarea,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d3d7db;font-size:1rem;background:#fff}
+    textarea{min-height:90px;resize:vertical}
+    button{margin-top:6px;padding:12px 16px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:1rem}
+    .small{font-size:0.9rem;color:var(--muted)}
+  </style>
 </head>
 <body>
-  <header class="header"><div class="container nav"><a class="brand" href="../"><img src="../assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:44px"></a></div></header>
+  <div class="wrap"><div class="card">
+    <div class="topbar"><img id="logoImg" class="logo" alt="BrazilTrad"/><div class="title">BrazilTrad</div></div>
+    <div class="content">
+      <h1>我要出售</h1>
+      <p class="lead">告诉我们您的产品，我们会评估出口机会。</p>
 
-  <main class="section" style="text-align:center;padding-top:60px;">
-    <div class="container" style="max-width:760px;margin:0 auto;">
-      <h2>我要卖</h2>
-      <p>请告诉我们您的产品与产能。</p>
+      <form id="form" novalidate>
+        <input type="hidden" name="origem" value="vender">
+        <input type="hidden" name="lang" id="inputLang" value="zh">
+        <input type="hidden" name="page" value="Venda ZH">
 
-      <form id="form" style="text-align:left;display:grid;gap:12px;margin-top:18px;">
-        <input type="hidden" name="page" value="Sell ZH">
-        <label>姓名<input name="name" required></label>
-        <label>公司<input name="company"></label>
-        <label>邮箱<input name="email" type="email" required></label>
-        <label>电话<input name="phone"></label>
-        <label>产品<textarea name="product" rows="3"></textarea></label>
-        <label>产能<textarea name="volume" rows="2"></textarea></label>
+        <div><label>姓名</label><input name="nome" required placeholder="例如：张三"></div>
+        <div><label>公司</label><input name="empresa" placeholder="公司名称"></div>
+        <div><label>邮箱</label><input name="email" type="email" required placeholder="example@company.com"></div>
+        <div><label>电话</label><input name="telefone" placeholder="+86 / +55 ..."></div>
+        <div><label>国家</label><input name="pais" placeholder="来源国家"></div>
+        <div><label>目标市场</label><input name="mercado" placeholder="目标国家/地区"></div>
 
-        <div style="display:flex;gap:8px;justify-content:center;">
-          <button class="button" type="submit">发送</button>
-          <a class="button secondary" href="../">返回</a>
+        <div><label>产品类型</label>
+          <select name="tipo_produto"><option value="">— 选择 —</option><option>矿产</option><option>大豆</option><option>咖啡</option><option>糖</option><option>玉米</option><option>其他</option></select>
         </div>
+
+        <div><label>类别</label><input name="categoria" placeholder="例如：散装、加工"></div>
+        <div><label>产品</label><textarea name="produto" placeholder="描述"></textarea></div>
+        <div><label>产能 / 容量</label><textarea name="volume" placeholder="例如：25,000 吨"></textarea></div>
+
+        <button type="submit" id="btnSend">发送</button>
       </form>
 
-      <div id="msg" style="margin-top:14px;text-align:center;"></div>
+      <div class="small" id="msg"></div>
     </div>
-  </main>
-
-  <footer class="footer"><div class="container">© BrazilTrad</div></footer>
+  </div></div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec";
-    const TO_EMAIL = "rsequeira@braziltrad.com";
-    document.getElementById("form").addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      const data=Object.fromEntries(new FormData(e.target).entries());
-      try{await fetch(SCRIPT_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});}catch(err){console.warn(err);}
-      const subject=encodeURIComponent("BrazilTrad — Sell ZH");
-      const body=encodeURIComponent(Object.entries(data).map(([k,v])=>`${k}: ${v}`).join("\n"));
-      window.location.href=`mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
-      document.getElementById("msg").textContent="已发送 — 感谢您。";
-      e.target.reset();
-    });
+    const ENDPOINT="https://script.google.com/macros/s/AKfycbwfeNCFaF60e6knUS9lSiiFOD2JOUm_1UolNM0SP_Mek3tUgqSzHKBPBmCx2LHSFQh36Q/exec";
+    const logoTest="/braziltrad-site-testes/assets/img/braziltrad-logo.png", logoProd="/assets/img/braziltrad-logo.png";
+    document.getElementById('logoImg').src = window.location.hostname.includes("github") ? logoTest : logoProd;
+    (function setLang(){ document.getElementById("inputLang").value="zh"; })();
+
+    const form=document.getElementById("form"), msg=document.getElementById("msg"), btn=document.getElementById("btnSend");
+    form.addEventListener("submit", async function(e){ e.preventDefault(); msg.textContent=""; btn.disabled=true; btn.textContent="发送中..."; const fd=new FormData(form); try{ const res=await fetch(ENDPOINT,{method:"POST",body:fd}); if(!res.ok) throw new Error("Status "+res.status); msg.textContent="请求已发送，谢谢。"; form.reset(); }catch(err){ console.error(err); msg.textContent="发送失败，请重试。"; }finally{ btn.disabled=false; btn.textContent="发送"; } });
   </script>
 </body>
 </html>
