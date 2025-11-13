@@ -122,19 +122,19 @@
     const form = e.target;
     const data = new FormData(form);
     const endpoint = "https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec";
-    const mailto = "mailto:rsequeira@braziltrad.com?subject=BrazilTrad — Contato 🇧🇷&body=" 
-      + encodeURIComponent([...data.entries()].map(([k,v]) => `${k}: ${v}`).join("\n"));
 
-    // envia para planilha
     try {
-      await fetch(endpoint, { method: "POST", body: data });
-      // envia e-mail
-      window.open(mailto);
-      form.reset();
-      document.getElementById("successMsg").style.display = "block";
-      setTimeout(()=>document.getElementById("successMsg").style.display="none", 4000);
+      const response = await fetch(endpoint, { method: "POST", body: data });
+      if (response.ok) {
+        form.reset();
+        document.getElementById("successMsg").style.display = "block";
+        setTimeout(()=>document.getElementById("successMsg").style.display="none", 4000);
+      } else {
+        alert("Erro ao enviar. Tente novamente mais tarde.");
+      }
     } catch (err) {
-      alert("Erro ao enviar. Verifique sua conexão e tente novamente.");
+      alert("Erro de conexão. Verifique sua internet e tente novamente.");
+      console.error(err);
     }
   });
   </script>
