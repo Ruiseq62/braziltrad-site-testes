@@ -77,20 +77,22 @@
 </head>
 
 <body>
+  <!-- ===== BARRAS TRADINGVIEW ===== -->
   <div class="tradingview-widget-container main-bar">
     <div id="tv-indices"></div>
   </div>
-
   <div class="tradingview-widget-container commodities-bar">
     <div id="tv-commodities"></div>
   </div>
 
+  <!-- ===== BOTÃO DE IDIOMA ===== -->
   <button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
 
+  <!-- ===== CABEÇALHO ===== -->
   <header class="header">
     <div class="container nav">
       <a class="brand" href="./">
-        <img src="/assets/img/braziltrad-logo.png" alt="BrazilTrad" />
+        <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" />
         <div>
           <div class="title">BrazilTrad</div>
           <div class="slogan"><em>Conectando produtores brasileiros a mercados globais</em></div>
@@ -109,14 +111,15 @@
     </div>
   </header>
 
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main>
     <section class="hero">
       <div class="container">
         <h1>Conectando o Brasil ao mercado global de commodities</h1>
         <p>Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.</p>
         <div class="cta">
-          <a id="btn-comprar" class="button" href="/contato-compra.html">Quero comprar</a>
-          <a id="btn-vender" class="button secondary" href="/contato-venda.html">Quero vender</a>
+          <a id="btn-comprar" class="button" href="contato-compra.html">Quero comprar</a>
+          <a id="btn-vender" class="button secondary" href="contato-venda.html">Quero vender</a>
         </div>
       </div>
     </section>
@@ -145,17 +148,17 @@
         <h2>Produtos</h2>
         <div class="grid">
           <article class="card">
-            <img src="/assets/img/agricolas.png" alt="Agrícolas" />
+            <img src="assets/img/agricolas.png" alt="Agrícolas" />
             <h3>Agrícolas</h3>
             <p>Soja, milho, açúcar e café.</p>
           </article>
           <article class="card">
-            <img src="/assets/img/energeticas.png" alt="Energéticas" />
+            <img src="assets/img/energeticas.png" alt="Energéticas" />
             <h3>Energéticas</h3>
             <p>Etanol, diesel renovável, biomassa.</p>
           </article>
           <article class="card">
-            <img src="/assets/img/minerais.png" alt="Minerais" />
+            <img src="assets/img/minerais.png" alt="Minerais" />
             <h3>Minerais</h3>
             <p>Lítio, ferro, nióbio e cobre.</p>
           </article>
@@ -195,9 +198,10 @@
     </section>
   </main>
 
+  <!-- ===== RODAPÉ ===== -->
   <footer class="footer">
     <div class="inner container">
-      <img src="/assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:34px;width:auto;margin:0 auto 10px">
+      <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:34px;width:auto;margin:0 auto 10px">
       <div>© BrazilTrad. Conectando produtores brasileiros a mercados globais.</div>
       <div style="margin-top:8px;">
         🌐 <a href="https://braziltrad.com" target="_blank">braziltrad.com</a> |
@@ -208,7 +212,7 @@
     </div>
   </footer>
 
-  <!-- ===== SCRIPT MULTILÍNGUA ===== -->
+  <!-- ===== SCRIPT MULTILÍNGUA E BASE ===== -->
   <script>
 const LANGS=["pt","en","es","zh"];
 const FLAGS={pt:"🇧🇷 PT",en:"🇬🇧 EN",es:"🇪🇸 ES",zh:"🇨🇳 中文"};
@@ -219,52 +223,18 @@ const TRANSLATIONS={
  zh:{nav:["关于","服务","产品","市场","洞察","联系"],title:"连接巴西与全球大宗商品市场",lead:"提供可靠的金属与农产品中介服务，进行产地验证、合规与高效的FOB/CIF物流。",btnComprar:"我要买",btnVender:"我要卖"}
 };
 
-function basePath(){
-  const host=window.location.hostname;
-  if(host.includes("github")) return "/braziltrad-site-testes";
-  return "";
-}
+function basePath(){return window.location.hostname.includes("github") ? "/braziltrad-site-testes" : "";}
 
 function updateLinks(code){
-  // Detecta se está hospedado no GitHub Pages ou domínio final
-  const base = window.location.hostname.includes("github")
-    ? "/braziltrad-site-testes"
-    : "";
-
-  const btnComprar = document.getElementById("btn-comprar");
-  const btnVender = document.getElementById("btn-vender");
-  const contato = document.querySelector('a[href="#contact"]') ||
-                  document.querySelector('a[href*="contato"], a[href*="contact"]');
-
-  // Versão PT (raiz)
-  if (code === "pt") {
-    if (btnComprar) btnComprar.href = `${base}/contato-compra.html`;
-    if (btnVender) btnVender.href = `${base}/contato-venda.html`;
-    if (contato) contato.href = `${base}/contato.html`;
-  }
-
-  // Versão EN
-  else if (code === "en") {
-    if (btnComprar) btnComprar.href = `${base}/en/contact-buy.html`;
-    if (btnVender) btnVender.href = `${base}/en/contact-sell.html`;
-    if (contato) contato.href = `${base}/en/contact.html`;
-  }
-
-  // Versão ES
-  else if (code === "es") {
-    if (btnComprar) btnComprar.href = `${base}/es/compradores.html`;
-    if (btnVender) btnVender.href = `${base}/es/compradores.html`;
-    if (contato) contato.href = `${base}/es/contact.html`;
-  }
-
-  // Versão ZH
-  else if (code === "zh") {
-    if (btnComprar) btnComprar.href = `${base}/zh/contact-buy.html`;
-    if (btnVender) btnVender.href = `${base}/zh/contact-sell.html`;
-    if (contato) contato.href = `${base}/zh/contact.html`;
-  }
+  const base=basePath();
+  const btnComprar=document.getElementById("btn-comprar");
+  const btnVender=document.getElementById("btn-vender");
+  const contato=document.querySelector('a[href="#contact"]')||document.querySelector('a[href*="contato"], a[href*="contact"]');
+  if(code==="pt"){btnComprar.href=`${base}/contato-compra.html`;btnVender.href=`${base}/contato-venda.html`;if(contato) contato.href=`${base}/contato.html`;}
+  else if(code==="en"){btnComprar.href=`${base}/en/contact-buy.html`;btnVender.href=`${base}/en/contact-sell.html`;if(contato) contato.href=`${base}/en/contact.html`;}
+  else if(code==="es"){btnComprar.href=`${base}/es/compradores.html`;btnVender.href=`${base}/es/compradores.html`;if(contato) contato.href=`${base}/es/contact.html`;}
+  else if(code==="zh"){btnComprar.href=`${base}/zh/contact-buy.html`;btnVender.href=`${base}/zh/contact-sell.html`;if(contato) contato.href=`${base}/zh/contact.html`;}
 }
-
 
 function applyLang(code){
   const t=TRANSLATIONS[code];
@@ -319,6 +289,18 @@ function initTradingView(locale){
     "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,"displayMode":"adaptive","locale":locale});
   document.getElementById("tv-commodities").appendChild(w2);
 }
+</script>
+
+  <!-- ===== CORREÇÃO AUTOMÁTICA DE CAMINHOS ===== -->
+  <script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const isGitHub = window.location.hostname.includes("github");
+  const base = isGitHub ? "/braziltrad-site-testes" : "";
+  document.querySelectorAll('link[href^="./css"], link[href^="/css"]').forEach(link=>{link.href = base + "/css/style.css";});
+  document.querySelectorAll('img[src^="/assets"], img[src^="./assets"]').forEach(img=>{
+    img.src = base + "/" + img.getAttribute("src").replace(/^\.\//,"").replace(/^\//,"");
+  });
+});
 </script>
 </body>
 </html>
