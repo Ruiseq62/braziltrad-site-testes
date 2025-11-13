@@ -232,7 +232,7 @@ function updateLinks(code){
   const contato=document.querySelector('a[href="#contact"]')||document.querySelector('a[href*="contato"], a[href*="contact"]');
   if(code==="pt"){btnComprar.href=`${base}/contato-compra.html`;btnVender.href=`${base}/contato-venda.html`;if(contato) contato.href=`${base}/contato.html`;}
   else if(code==="en"){btnComprar.href=`${base}/en/contact-buy.html`;btnVender.href=`${base}/en/contact-sell.html`;if(contato) contato.href=`${base}/en/contact.html`;}
-  else if(code==="es"){btnComprar.href=`${base}/es/compradores.html`;btnVender.href=`${base}/es/compradores.html`;if(contato) contato.href=`${base}/es/contact.html`;}
+  else if(code==="es"){btnComprar.href=`${base}/es/compradores.html`;btnVender.href=`${base}/es/vendedores.html`;if(contato) contato.href=`${base}/es/contact.html`;}
   else if(code==="zh"){btnComprar.href=`${base}/zh/contact-buy.html`;btnVender.href=`${base}/zh/contact-sell.html`;if(contato) contato.href=`${base}/zh/contact.html`;}
 }
 
