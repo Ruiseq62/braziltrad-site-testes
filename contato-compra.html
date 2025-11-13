@@ -4,193 +4,85 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quero Comprar — BrazilTrad</title>
-
   <style>
-    :root{
-      --brand:#0F4C5C;
-      --card-bg:#ffffff;
-      --page-bg:#f4f6f8;
-      --muted:#666;
-      --radius:14px;
-      --shadow:0 10px 30px rgba(18,30,40,0.08);
-      --maxw:720px;
-    }
+    :root{--brand:#0F4C5C;--card-bg:#fff;--page-bg:#f4f6f8;--muted:#666;--radius:14px;--shadow:0 10px 30px rgba(18,30,40,0.08);--maxw:720px}
     *{box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
-    body{margin:0;background:var(--page-bg);color:#1f2933;padding:40px 20px;}
-    .wrap{display:flex;align-items:center;justify-content:center;}
+    body{margin:0;background:var(--page-bg);color:#1f2933;padding:40px 20px}
+    .wrap{display:flex;align-items:center;justify-content:center}
     .card{width:100%;max-width:var(--maxw);background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    
     .topbar{background:var(--brand);padding:14px 20px;display:flex;align-items:center;gap:12px}
-    .logo {height:34px;display:block}
+    .logo{height:34px;display:block}
     .title{color:#fff;font-weight:700;font-size:1.05rem}
-
     .content{padding:28px 28px 36px}
     h1{margin:0 0 12px;color:var(--brand);font-size:1.5rem}
     p.lead{margin:0 0 20px;color:var(--muted);line-height:1.5}
-
     form{display:grid;gap:14px}
     label{font-size:0.9rem;color:#0b2430;font-weight:600}
-    input,textarea,select{
-      width:100%;padding:12px 14px;border-radius:10px;
-      border:1px solid #d3d7db;font-size:1rem;background:#fff
-    }
+    input,textarea,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d3d7db;font-size:1rem;background:#fff}
     textarea{min-height:90px;resize:vertical}
-
-    button{
-      margin-top:6px;padding:12px 16px;border-radius:10px;border:0;
-      background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:1rem
-    }
-    .success{display:none;color:green;font-weight:700}
-    .error{display:none;color:#b00020;font-weight:700}
+    button{margin-top:6px;padding:12px 16px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:1rem}
     .small{font-size:0.9rem;color:var(--muted)}
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <div class="card">
-      
-      <!-- TOP BAR -->
       <div class="topbar">
         <img id="logoImg" class="logo" alt="BrazilTrad"/>
         <div class="title">BrazilTrad</div>
       </div>
-
-      <!-- CONTENT -->
       <div class="content">
-
         <h1>Quero Comprar</h1>
-        <p class="lead">
-          Complete os dados abaixo e a nossa equipa comercial irá conectar-te aos melhores fornecedores disponíveis.
-        </p>
+        <p class="lead">Complete os dados abaixo e a nossa equipa comercial irá conectar-te aos melhores fornecedores disponíveis.</p>
 
-        <form id="buyForm" novalidate>
-          
-          <!-- Meta -->
+        <form id="form" novalidate>
           <input type="hidden" name="origem" value="comprar">
           <input type="hidden" name="lang" id="inputLang" value="pt">
           <input type="hidden" name="page" value="Compra PT">
 
-          <div>
-            <label>Nome</label>
-            <input name="nome" required placeholder="Ex.: João Silva">
-          </div>
-
-          <div>
-            <label>Empresa</label>
-            <input name="empresa" placeholder="Nome da empresa">
-          </div>
-
-          <div>
-            <label>E-mail</label>
-            <input name="email" type="email" required placeholder="exemplo@empresa.com">
-          </div>
-
-          <div>
-            <label>Telefone</label>
-            <input name="telefone" placeholder="+351 ... / +55 ...">
-          </div>
-
-          <div>
-            <label>País</label>
-            <input name="pais" placeholder="País de atuação ou origem">
-          </div>
-
-          <div>
-            <label>Mercado alvo</label>
-            <input name="mercado" placeholder="País/região de destino">
-          </div>
-
-          <div>
-            <label>Tipo de produto</label>
+          <div><label>Nome</label><input name="nome" required placeholder="Ex.: João Silva"></div>
+          <div><label>Empresa</label><input name="empresa" placeholder="Nome da empresa"></div>
+          <div><label>E-mail</label><input name="email" type="email" required placeholder="exemplo@empresa.com"></div>
+          <div><label>Telefone</label><input name="telefone" placeholder="+351 / +55 ..."></div>
+          <div><label>País</label><input name="pais" placeholder="País de atuação"></div>
+          <div><label>Mercado alvo</label><input name="mercado" placeholder="País/região de destino"></div>
+          <div><label>Tipo de produto</label>
             <select name="tipo_produto">
               <option value="">— Selecionar —</option>
-              <option value="Minerais">Minerais</option>
-              <option value="Soja">Soja</option>
-              <option value="Café">Café</option>
-              <option value="Açúcar">Açúcar</option>
-              <option value="Milho">Milho</option>
-              <option value="Outros">Outros</option>
+              <option>Minerais</option><option>Soja</option><option>Café</option><option>Açúcar</option><option>Milho</option><option>Outros</option>
             </select>
           </div>
-
-          <div>
-            <label>Categoria</label>
-            <input name="categoria" placeholder="Ex.: Grão, processado, granel...">
-          </div>
-
-          <div>
-            <label>Produto de interesse</label>
-            <textarea name="produto" placeholder="Ex.: Soja em grão, milho..., etc."></textarea>
-          </div>
-
-          <div>
-            <label>Quantidade / Volume</label>
-            <textarea name="volume" placeholder="Ex.: 25.000 toneladas mensais"></textarea>
-          </div>
+          <div><label>Categoria</label><input name="categoria" placeholder="Ex.: grão, processado, granel"></div>
+          <div><label>Produto de interesse</label><textarea name="produto" placeholder="Descrição"></textarea></div>
+          <div><label>Quantidade / Volume</label><textarea name="volume" placeholder="Ex.: 25.000 toneladas"></textarea></div>
 
           <button type="submit" id="btnSend">Enviar pedido</button>
         </form>
 
-        <div class="small success" id="successMsg">✅ Pedido enviado com sucesso!</div>
-        <div class="small error" id="errorMsg">Erro ao enviar. Tenta novamente.</div>
-
+        <div class="small" id="msg"></div>
       </div>
-
     </div>
   </div>
 
   <script>
-    /* ENDPOINT */
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbwfeNCFaF60e6knUS9lSiiFOD2JOUm_1UolNM0SP_Mek3tUgqSzHKBPBmCx2LHSFQh36Q/exec";
-
-    /* LOGO para prod/test */
     const logoTest = "/braziltrad-site-testes/assets/img/braziltrad-logo.png";
     const logoProd = "/assets/img/braziltrad-logo.png";
-    const logoPath = window.location.hostname.includes("github") ? logoTest : logoProd;
-    document.getElementById('logoImg').src = logoPath;
+    document.getElementById('logoImg').src = window.location.hostname.includes("github") ? logoTest : logoProd;
+    (function setLang(){ const nav=(navigator.language||"pt").toLowerCase(); let code="pt"; if(nav.startsWith("en"))code="en";else if(nav.startsWith("es"))code="es";else if(nav.startsWith("zh"))code="zh"; document.getElementById("inputLang").value=code; })();
 
-    /* Detectar idioma */
-    (() => {
-      const nav = (navigator.language || "pt").toLowerCase();
-      let code = "pt";
-      if(nav.startsWith("en")) code = "en";
-      else if(nav.startsWith("es")) code = "es";
-      else if(nav.startsWith("zh")) code = "zh";
-      document.getElementById("inputLang").value = code;
-    })();
-
-    /* SUBMIT */
-    const form = document.getElementById("buyForm");
-    const successMsg = document.getElementById("successMsg");
-    const errorMsg = document.getElementById("errorMsg");
-    const btn = document.getElementById("btnSend");
-
-    form.addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      successMsg.style.display="none";
-      errorMsg.style.display="none";
-
-      btn.disabled = true;
-      btn.textContent = "Enviando...";
-
+    const form = document.getElementById("form"), msg=document.getElementById("msg"), btn=document.getElementById("btnSend");
+    form.addEventListener("submit", async function(e){
+      e.preventDefault(); msg.textContent=""; btn.disabled=true; btn.textContent="Enviando...";
       const fd = new FormData(form);
-
-      try {
+      try{
         const res = await fetch(ENDPOINT, { method:"POST", body: fd });
-        if (!res.ok) throw new Error("Falha: " + res.status);
-        
-        successMsg.style.display="block";
+        if(!res.ok) throw new Error("Status "+res.status);
+        msg.textContent="Pedido enviado — obrigado.";
         form.reset();
-      }
-      catch(err){
-        console.error(err);
-        errorMsg.style.display="block";
-      }
-      finally {
-        btn.disabled=false;
-        btn.textContent="Enviar pedido";
-      }
+      }catch(err){
+        console.error(err); msg.textContent="Erro ao enviar. Tenta novamente.";
+      }finally{ btn.disabled=false; btn.textContent="Enviar pedido"; }
     });
   </script>
 </body>
