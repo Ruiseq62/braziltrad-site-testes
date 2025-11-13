@@ -1,1 +1,65 @@
-
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrazilTrad — Contato</title>
+  <meta name="description" content="Entre em contato com a equipe BrazilTrad. Intermediação confiável e ágil.">
+  <style>
+    * { box-sizing: border-box; font-family: "Inter", sans-serif; }
+    body { background: #f9fafb; color: #222; margin: 0; padding: 0; }
+    header { background: #0F4C5C; color: white; text-align: center; padding: 16px; font-size: 1.2rem; font-weight: 600; }
+    main { max-width: 640px; margin: 60px auto; background: #fff; padding: 32px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    h1 { text-align: center; color: #0F4C5C; margin-bottom: 24px; font-size: 1.6rem; }
+    form { display: flex; flex-direction: column; gap: 16px; }
+    label { font-weight: 600; margin-bottom: 4px; }
+    input, textarea { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem; transition: border-color 0.2s; }
+    input:focus, textarea:focus { outline: none; border-color: #0F4C5C; }
+    button { background: #0F4C5C; color: white; border: none; border-radius: 8px; padding: 12px; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+    button:hover { background: #0d3e4b; }
+    .success { display: none; text-align: center; color: #0F4C5C; font-weight: 600; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <header>Contato — BrazilTrad</header>
+  <main>
+    <h1>Entre em contato</h1>
+    <form id="contactForm">
+      <input type="hidden" name="origem" value="Contato 🇧🇷">
+      <label>Nome / Empresa</label>
+      <input type="text" name="nome" required>
+      <label>E-mail</label>
+      <input type="email" name="email" required>
+      <label>Empresa</label>
+      <input type="text" name="empresa">
+      <label>País</label>
+      <input type="text" name="pais">
+      <label>Mensagem</label>
+      <textarea name="mensagem" rows="5" required></textarea>
+      <button type="submit">Enviar mensagem</button>
+      <div class="success" id="successMsg">✅ Mensagem enviada com sucesso!</div>
+    </form>
+  </main>
+  <script>
+  document.getElementById("contactForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const endpoint = "https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec";
+    try {
+      const response = await fetch(endpoint, { method: "POST", body: data });
+      if (response.ok) {
+        form.reset();
+        document.getElementById("successMsg").style.display = "block";
+        setTimeout(() => document.getElementById("successMsg").style.display = "none", 4000);
+      } else {
+        alert("Erro ao enviar. Tente novamente mais tarde.");
+      }
+    } catch (err) {
+      alert("Erro de conexão. Verifique sua internet e tente novamente.");
+      console.error(err);
+    }
+  });
+  </script>
+</body>
+</html>
