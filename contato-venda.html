@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Quero Vender — BrazilTrad</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quero Vender — BrazilTrad</title>
   <style>
     :root{--brand:#0F4C5C;--card-bg:#fff;--page-bg:#f4f6f8;--muted:#666;--radius:14px;--shadow:0 10px 30px rgba(18,30,40,0.08);--maxw:720px}
     *{box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
@@ -19,57 +21,125 @@
     input,textarea,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d3d7db;font-size:1rem;background:#fff}
     textarea{min-height:90px;resize:vertical}
     button{margin-top:6px;padding:12px 16px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:1rem}
-    .small{font-size:0.9rem;color:var(--muted)}
+    .small{font-size:0.9rem;color:var(--muted);margin-top:10px}
+    #msg{margin-top:10px;font-weight:600}
   </style>
 </head>
 <body>
-  <div class="wrap"><div class="card">
-    <div class="topbar"><img id="logoImg" class="logo" alt="BrazilTrad"/><div class="title">BrazilTrad</div></div>
-    <div class="content">
-      <h1>Quero Vender</h1>
-      <p class="lead">Conte-nos sobre o seu produto para que possamos avaliar oportunidades de exportação.</p>
+  <div class="wrap">
+    <div class="card">
+      <div class="topbar">
+        <img id="logoImg" class="logo" alt="BrazilTrad"/>
+        <div class="title">BrazilTrad</div>
+      </div>
 
-      <form id="form" novalidate>
-        <input type="hidden" name="origem" value="vender">
-        <input type="hidden" name="lang" id="inputLang" value="pt">
-        <input type="hidden" name="page" value="Venda PT">
+      <div class="content">
+        <h1>Quero Vender</h1>
+        <p class="lead">
+          Preencha os dados abaixo para que a nossa equipa possa avaliar o seu produto e conectá-lo aos compradores certos.
+        </p>
 
-        <div><label>Nome</label><input name="nome" required placeholder="Ex.: João Silva"></div>
-        <div><label>Empresa</label><input name="empresa" placeholder="Nome da empresa"></div>
-        <div><label>E-mail</label><input name="email" type="email" required placeholder="exemplo@empresa.com"></div>
-        <div><label>Telefone</label><input name="telefone" placeholder="+351 / +55 ..."></div>
-        <div><label>País</label><input name="pais" placeholder="País de origem"></div>
-        <div><label>Mercado alvo</label><input name="mercado" placeholder="País/região de interesse"></div>
+        <form id="form" novalidate>
+          <input type="hidden" name="origem" value="vender">
+          <input type="hidden" name="lang" id="inputLang" value="pt">
+          <input type="hidden" name="page" value="Venda PT">
 
-        <div><label>Tipo de produto</label>
-          <select name="tipo_produto"><option value="">— Selecionar —</option><option>Minerais</option><option>Soja</option><option>Café</option><option>Açúcar</option><option>Milho</option><option>Outros</option></select>
-        </div>
+          <div><label>Nome</label><input name="nome" required placeholder="Ex.: João Silva"></div>
+          <div><label>Empresa</label><input name="empresa" placeholder="Nome da empresa"></div>
+          <div><label>E-mail</label><input name="email" type="email" required placeholder="exemplo@empresa.com"></div>
+          <div><label>Telefone</label><input name="telefone" placeholder="+351 / +55 ..."></div>
+          <div><label>País</label><input name="pais" placeholder="País de origem / atuação"></div>
 
-        <div><label>Categoria</label><input name="categoria" placeholder="Ex.: grão, processado, granel"></div>
-        <div><label>Produto</label><textarea name="produto" placeholder="Descrição"></textarea></div>
-        <div><label>Capacidade / Volumes</label><textarea name="volume" placeholder="Ex.: 25.000 toneladas"></textarea></div>
+          <div>
+            <label>Tipo de produto</label>
+            <select name="tipo_produto">
+              <option value="">— Selecionar —</option>
+              <option>Minerais</option>
+              <option>Soja</option>
+              <option>Café</option>
+              <option>Açúcar</option>
+              <option>Milho</option>
+              <option>Outros</option>
+            </select>
+          </div>
 
-        <button type="submit" id="btnSend">Enviar</button>
-      </form>
+          <div><label>Categoria</label><input name="categoria" placeholder="Ex.: grão, processado, granel"></div>
 
-      <div class="small" id="msg"></div>
+          <div>
+            <label>Descrição do produto</label>
+            <textarea name="produto" placeholder="Detalhes, qualidade, especificações técnicas"></textarea>
+          </div>
+
+          <div>
+            <label>Quantidade disponível</label>
+            <textarea name="volume" placeholder="Ex.: 5.000 toneladas / 2 contêineres"></textarea>
+          </div>
+
+          <div>
+            <label>Mercado alvo / país de destino</label>
+            <input name="mercado" placeholder="Ex.: China, Europa, EUA">
+          </div>
+
+          <button type="submit" id="btnSend">Enviar proposta</button>
+        </form>
+
+        <div class="small" id="msg"></div>
+      </div>
     </div>
-  </div></div>
+  </div>
 
   <script>
+    // ---------------- CONFIG ----------------
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbynqCl3g5pLkyW4xB6IRD7vXAvNBZEbqQfvw20bCg2CJljnaxJnzOW1iYWFDi3eW7RRTw/exec";
+
     const logoTest = "/braziltrad-site-testes/assets/img/braziltrad-logo.png";
     const logoProd = "/assets/img/braziltrad-logo.png";
-    document.getElementById('logoImg').src = window.location.hostname.includes("github") ? logoTest : logoProd;
-    (function setLang(){ const nav=(navigator.language||"pt").toLowerCase(); let code="pt"; if(nav.startsWith("en"))code="en";else if(nav.startsWith("es"))code="es";else if(nav.startsWith("zh"))code="zh"; document.getElementById("inputLang").value=code; })();
+    document.getElementById("logoImg").src =
+      window.location.hostname.includes("github") ? logoTest : logoProd;
 
-    const form=document.getElementById("form"), msg=document.getElementById("msg"), btn=document.getElementById("btnSend");
+    // Detectar idioma
+    (function setLang(){
+      const nav = (navigator.language || "pt").toLowerCase();
+      let code = "pt";
+      if(nav.startsWith("en")) code = "en";
+      else if(nav.startsWith("es")) code = "es";
+      else if(nav.startsWith("zh")) code = "zh";
+      document.getElementById("inputLang").value = code;
+    })();
+
+    // ---------------- FORM ----------------
+    const form = document.getElementById("form");
+    const msg  = document.getElementById("msg");
+    const btn  = document.getElementById("btnSend");
+
     form.addEventListener("submit", async function(e){
-      e.preventDefault(); msg.textContent=""; btn.disabled=true; btn.textContent="Enviando...";
-      const fd=new FormData(form);
-      try{ const res=await fetch(ENDPOINT,{method:"POST",body:fd}); if(!res.ok) throw new Error("Status "+res.status); msg.textContent="Pedido enviado — obrigado."; form.reset(); }
-      catch(err){ console.error(err); msg.textContent="Erro ao enviar. Tenta novamente."; }
-      finally{ btn.disabled=false; btn.textContent="Enviar"; }
+      e.preventDefault();
+      msg.textContent = "";
+      btn.disabled = true;
+      btn.textContent = "Enviando...";
+
+      const fd = new FormData(form);
+
+      try{
+        await fetch(ENDPOINT, {
+          method: "POST",
+          body: fd,
+          mode: "no-cors"
+        });
+
+        msg.style.color = "green";
+        msg.textContent = "Proposta enviada — obrigado.";
+        form.reset();
+
+      }catch(err){
+        console.error(err);
+        msg.style.color = "#b00020";
+        msg.textContent = "Erro ao enviar. Tenta novamente.";
+      }
+      finally{
+        btn.disabled = false;
+        btn.textContent = "Enviar proposta";
+      }
     });
   </script>
 </body>
