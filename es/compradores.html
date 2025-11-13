@@ -1,53 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Compradores — BrazilTrad</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Quiero Comprar — BrazilTrad</title>
+  <style>
+    :root{--brand:#0F4C5C;--card-bg:#fff;--page-bg:#f4f6f8;--muted:#666;--radius:14px;--shadow:0 10px 30px rgba(18,30,40,0.08);--maxw:720px}
+    *{box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
+    body{margin:0;background:var(--page-bg);color:#1f2933;padding:40px 20px}
+    .wrap{display:flex;align-items:center;justify-content:center}
+    .card{width:100%;max-width:var(--maxw);background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .topbar{background:var(--brand);padding:14px 20px;display:flex;align-items:center;gap:12px}
+    .logo{height:34px;display:block}
+    .title{color:#fff;font-weight:700;font-size:1.05rem}
+    .content{padding:28px 28px 36px}
+    h1{margin:0 0 12px;color:var(--brand);font-size:1.5rem}
+    p.lead{margin:0 0 20px;color:var(--muted);line-height:1.5}
+    form{display:grid;gap:14px}
+    label{font-size:0.9rem;color:#0b2430;font-weight:600}
+    input,textarea,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d3d7db;font-size:1rem;background:#fff}
+    textarea{min-height:90px;resize:vertical}
+    button{margin-top:6px;padding:12px 16px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:1rem}
+    .small{font-size:0.9rem;color:var(--muted)}
+  </style>
 </head>
 <body>
-  <header class="header"><div class="container nav"><a class="brand" href="../"><img src="../assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:44px"></a></div></header>
+  <div class="wrap"><div class="card">
+    <div class="topbar"><img id="logoImg" class="logo" alt="BrazilTrad"/><div class="title">BrazilTrad</div></div>
+    <div class="content">
+      <h1>Quiero Comprar</h1>
+      <p class="lead">Complete el formulario para que podamos conectarle con proveedores.</p>
 
-  <main class="section" style="text-align:center;padding-top:60px;">
-    <div class="container" style="max-width:760px;margin:0 auto;">
-      <h2>Compradores</h2>
-      <p>Complete el formulario para contactarnos.</p>
+      <form id="form" novalidate>
+        <input type="hidden" name="origem" value="comprar">
+        <input type="hidden" name="lang" id="inputLang" value="es">
+        <input type="hidden" name="page" value="Compra ES">
 
-      <form id="form" style="text-align:left;display:grid;gap:12px;margin-top:18px;">
-        <input type="hidden" name="page" value="Compradores ES">
-        <label>Nombre<input name="nombre" required></label>
-        <label>Empresa<input name="empresa"></label>
-        <label>Email<input name="email" type="email" required></label>
-        <label>Teléfono<input name="telefono"></label>
-        <label>Producto de interés<textarea name="producto" rows="3"></textarea></label>
-        <label>Volumen<textarea name="volumen" rows="2"></textarea></label>
-
-        <div style="display:flex;gap:8px;justify-content:center;">
-          <button class="button" type="submit">Enviar</button>
-          <a class="button secondary" href="../">Volver</a>
+        <div><label>Nombre</label><input name="nome" required placeholder="Ej.: Juan Pérez"></div>
+        <div><label>Empresa</label><input name="empresa" placeholder="Nombre de la empresa"></div>
+        <div><label>Correo</label><input name="email" type="email" required placeholder="ejemplo@empresa.com"></div>
+        <div><label>Teléfono</label><input name="telefone" placeholder="+34 / +55 ..."></div>
+        <div><label>País</label><input name="pais" placeholder="País de operación"></div>
+        <div><label>Mercado objetivo</label><input name="mercado" placeholder="País/región destino"></div>
+        <div><label>Tipo de producto</label>
+          <select name="tipo_produto"><option value="">— Seleccionar —</option><option>Minerales</option><option>Soya</option><option>Café</option><option>Azúcar</option><option>Maíz</option><option>Otros</option></select>
         </div>
+        <div><label>Categoría</label><input name="categoria" placeholder="p.ej.: grano, procesado"></div>
+        <div><label>Producto de interés</label><textarea name="produto" placeholder="Descripción"></textarea></div>
+        <div><label>Cantidad / Volumen</label><textarea name="volume" placeholder="p.ej.: 25.000 toneladas"></textarea></div>
+
+        <button type="submit" id="btnSend">Enviar pedido</button>
       </form>
 
-      <div id="msg" style="margin-top:14px;text-align:center;"></div>
+      <div class="small" id="msg"></div>
     </div>
-  </main>
-
-  <footer class="footer"><div class="container">© BrazilTrad</div></footer>
+  </div></div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec";
-    const TO_EMAIL = "rsequeira@braziltrad.com";
-    document.getElementById("form").addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      const data=Object.fromEntries(new FormData(e.target).entries());
-      try{await fetch(SCRIPT_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});}catch(err){console.warn(err);}
-      const subject=encodeURIComponent("BrazilTrad — Compradores 🇪🇸");
-      const body=encodeURIComponent(Object.entries(data).map(([k,v])=>`${k}: ${v}`).join("\n"));
-      window.location.href=`mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
-      document.getElementById("msg").textContent="Gracias — mensaje enviado.";
-      e.target.reset();
-    });
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbwfeNCFaF60e6knUS9lSiiFOD2JOUm_1UolNM0SP_Mek3tUgqSzHKBPBmCx2LHSFQh36Q/exec";
+    const logoTest="/braziltrad-site-testes/assets/img/braziltrad-logo.png", logoProd="/assets/img/braziltrad-logo.png";
+    document.getElementById('logoImg').src = window.location.hostname.includes("github") ? logoTest : logoProd;
+    (function setLang(){ document.getElementById("inputLang").value="es"; })();
+
+    const form=document.getElementById("form"), msg=document.getElementById("msg"), btn=document.getElementById("btnSend");
+    form.addEventListener("submit", async function(e){ e.preventDefault(); msg.textContent=""; btn.disabled=true; btn.textContent="Enviando..."; const fd=new FormData(form); try{ const res=await fetch(ENDPOINT,{method:"POST",body:fd}); if(!res.ok) throw new Error("Status "+res.status); msg.textContent="Pedido enviado — gracias."; form.reset(); }catch(err){ console.error(err); msg.textContent="Error al enviar. Intenta de nuevo."; }finally{ btn.disabled=false; btn.textContent="Enviar pedido"; } });
   </script>
 </body>
 </html>
