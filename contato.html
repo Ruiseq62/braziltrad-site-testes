@@ -58,7 +58,7 @@
         </p>
 
         <form id="contactForm" novalidate>
-          <!-- Hidden meta -->
+          
           <input type="hidden" name="origem" value="contato">
           <input type="hidden" name="lang" id="inputLang" value="pt">
 
@@ -108,15 +108,15 @@
       return host.includes("github") ? "/braziltrad-site-testes" : "";
     }
 
-    // Logo path (test vs production)
+    // Logo path
     const logoTest = "/braziltrad-site-testes/assets/img/braziltrad-logo.png";
     const logoProd = "/assets/img/braziltrad-logo.png";
-    const logoPath = window.location.hostname.includes("github") ? logoTest : logoProd;
-    document.getElementById('logoImg').src = logoPath;
+    document.getElementById('logoImg').src =
+      window.location.hostname.includes("github") ? logoTest : logoProd;
 
-    // detect language for hidden field
+    // detect language
     (function setLang(){
-      const nav = (navigator.language || navigator.userLanguage || "pt").toLowerCase();
+      const nav = (navigator.language || "pt").toLowerCase();
       let code = "pt";
       if(nav.startsWith("en")) code = "en";
       else if(nav.startsWith("es")) code = "es";
@@ -145,22 +145,22 @@
         return;
       }
 
-      // build FormData
       const fd = new FormData(form);
 
-      // disable button
       btn.disabled = true;
       btn.textContent = "Enviando...";
 
       try {
-        const res = await fetch(ENDPOINT, { method: "POST", body: fd });
-        if (!res.ok) throw new Error("Resposta do servidor: " + res.status);
-        // try parse response (some deployments return JSON)
-        try { await res.json(); } catch(e) { /* ignore parse errors */ }
+        await fetch(ENDPOINT, {
+          method: "POST",
+          body: fd,
+          mode: "no-cors"
+        });
+
         successMsg.style.display = "block";
         form.reset();
-        // re-add lang
         document.getElementById("inputLang").value = (navigator.language||"pt").substring(0,2);
+
       } catch (err) {
         console.error("Erro envio:", err);
         errorMsg.textContent = "Erro ao enviar. Verifica a ligação e tenta novamente.";
