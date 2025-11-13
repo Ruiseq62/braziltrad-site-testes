@@ -1,70 +1,142 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contato — BrazilTrad</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f9fafb;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0F4C5C;
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+    }
+    main {
+      max-width: 640px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      color: #0F4C5C;
+      margin-bottom: 24px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #0F4C5C;
+    }
+    button {
+      background: #0F4C5C;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0d3e4b;
+    }
+    .success {
+      display: none;
+      text-align: center;
+      color: #0F4C5C;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- header (simplificado, mantém consistência com index) -->
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="./"><img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:44px"></a>
-      <nav><ul><li><a href="./">Início</a></li></ul></nav>
-    </div>
+  <header>
+    <h2>BrazilTrad — Contato</h2>
   </header>
 
-  <main class="section" style="padding-top:60px;text-align:center;">
-    <div class="container" style="max-width:720px;margin:0 auto;">
-      <h2>Contato</h2>
-      <p>Preencha o formulário e responderemos rapidamente.</p>
+  <main>
+    <h1>Entre em contato</h1>
+    <form id="contactForm">
+      <input type="hidden" name="origem" value="Contato 🇧🇷">
 
-      <form id="form" style="text-align:left;display:grid;gap:12px;margin-top:18px;">
-        <input name="page" type="hidden" value="Contato PT">
-        <label>Nome<input name="nome" required></label>
-        <label>Empresa<input name="empresa"></label>
-        <label>Email<input name="email" type="email" required></label>
-        <label>Telefone<input name="telefone"></label>
-        <label>Mensagem<textarea name="mensagem" rows="5" required></textarea></label>
+      <label>Nome / Empresa</label>
+      <input type="text" name="nome" required />
 
-        <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
-          <button type="submit" class="button">Enviar</button>
-          <a class="button secondary" href="./">Voltar</a>
-        </div>
-      </form>
+      <label>E-mail</label>
+      <input type="email" name="email" required />
 
-      <div id="msg" style="margin-top:14px;text-align:center;"></div>
-    </div>
+      <label>Empresa</label>
+      <input type="text" name="empresa" />
+
+      <label>País</label>
+      <input type="text" name="pais" />
+
+      <label>Produto</label>
+      <select name="produto" required>
+        <option value="">Selecione...</option>
+        <option value="Agrícolas">Agrícolas</option>
+        <option value="Energéticas">Energéticas</option>
+        <option value="Minerais">Minerais</option>
+        <option value="Outros">Outros</option>
+      </select>
+
+      <label>Mensagem</label>
+      <textarea name="mensagem" rows="4" required></textarea>
+
+      <button type="submit">Enviar mensagem</button>
+      <div class="success" id="successMsg">✅ Mensagem enviada com sucesso!</div>
+    </form>
   </main>
 
-  <footer class="footer" style="margin-top:40px;">
-    <div class="container">© BrazilTrad</div>
-  </footer>
-
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec";
-    const TO_EMAIL = "rsequeira@braziltrad.com";
+  document.getElementById("contactForm").addEventListener("submit", async function(e){
+    e.preventDefault();
 
-    document.getElementById("form").addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      const f = new FormData(e.target);
-      const data = Object.fromEntries(f.entries());
-      // send to Apps Script
-      try {
-        await fetch(SCRIPT_URL, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
-      } catch(err) {
-        console.warn("Apps Script POST falhou", err);
-      }
-      // mailto fallback
-      const subject = encodeURIComponent("BrazilTrad — Contato 🇧🇷");
-      const body = encodeURIComponent(`Nome: ${data.nome}\nEmpresa: ${data.empresa}\nEmail: ${data.email}\nTelefone: ${data.telefone}\nMensagem:\n${data.mensagem}`);
-      window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
+    const form = e.target;
+    const data = new FormData(form);
+    const endpoint = "https://script.google.com/macros/s/AKfycbyiWG0tLJPZmWV8ZsGVezmZTe5RIY7y2YESb74a0RaAJYmb2GhRXgMmR6GZw2NjOrq0uA/exec";
+    const mailto = "mailto:rsequeira@braziltrad.com?subject=BrazilTrad — Contato 🇧🇷&body=" 
+      + encodeURIComponent([...data.entries()].map(([k,v]) => `${k}: ${v}`).join("\n"));
 
-      const msg = document.getElementById("msg");
-      msg.textContent = "Obrigado — a sua mensagem foi enviada.";
-      e.target.reset();
-    });
+    // envia para planilha
+    try {
+      await fetch(endpoint, { method: "POST", body: data });
+      // envia e-mail
+      window.open(mailto);
+      form.reset();
+      document.getElementById("successMsg").style.display = "block";
+      setTimeout(()=>document.getElementById("successMsg").style.display="none", 4000);
+    } catch (err) {
+      alert("Erro ao enviar. Verifique sua conexão e tente novamente.");
+    }
+  });
   </script>
 </body>
 </html>
