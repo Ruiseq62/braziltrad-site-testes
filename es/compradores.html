@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Quiero Comprar — BrazilTrad</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiero Comprar — BrazilTrad</title>
   <style>
     :root{--brand:#0F4C5C;--card-bg:#fff;--page-bg:#f4f6f8;--muted:#666;--radius:14px;--shadow:0 10px 30px rgba(18,30,40,0.08);--maxw:720px}
     *{box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
@@ -19,49 +21,110 @@
     input,textarea,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d3d7db;font-size:1rem;background:#fff}
     textarea{min-height:90px;resize:vertical}
     button{margin-top:6px;padding:12px 16px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:1rem}
-    .small{font-size:0.9rem;color:var(--muted)}
+    .small{font-size:0.9rem;color:var(--muted);margin-top:10px}
+    #msg{margin-top:10px;font-weight:600}
   </style>
 </head>
 <body>
-  <div class="wrap"><div class="card">
-    <div class="topbar"><img id="logoImg" class="logo" alt="BrazilTrad"/><div class="title">BrazilTrad</div></div>
-    <div class="content">
-      <h1>Quiero Comprar</h1>
-      <p class="lead">Complete el formulario para que podamos conectarle con proveedores.</p>
+  <div class="wrap">
+    <div class="card">
+      <div class="topbar">
+        <img id="logoImg" class="logo" alt="BrazilTrad"/>
+        <div class="title">BrazilTrad</div>
+      </div>
 
-      <form id="form" novalidate>
-        <input type="hidden" name="origem" value="comprar">
-        <input type="hidden" name="lang" id="inputLang" value="es">
-        <input type="hidden" name="page" value="Compra ES">
+      <div class="content">
+        <h1>Quiero Comprar</h1>
+        <p class="lead">
+          Complete los datos abajo y nuestro equipo comercial le conectará con los mejores proveedores disponibles.
+        </p>
 
-        <div><label>Nombre</label><input name="nome" required placeholder="Ej.: Juan Pérez"></div>
-        <div><label>Empresa</label><input name="empresa" placeholder="Nombre de la empresa"></div>
-        <div><label>Correo</label><input name="email" type="email" required placeholder="ejemplo@empresa.com"></div>
-        <div><label>Teléfono</label><input name="telefone" placeholder="+34 / +55 ..."></div>
-        <div><label>País</label><input name="pais" placeholder="País de operación"></div>
-        <div><label>Mercado objetivo</label><input name="mercado" placeholder="País/región destino"></div>
-        <div><label>Tipo de producto</label>
-          <select name="tipo_produto"><option value="">— Seleccionar —</option><option>Minerales</option><option>Soya</option><option>Café</option><option>Azúcar</option><option>Maíz</option><option>Otros</option></select>
-        </div>
-        <div><label>Categoría</label><input name="categoria" placeholder="p.ej.: grano, procesado"></div>
-        <div><label>Producto de interés</label><textarea name="produto" placeholder="Descripción"></textarea></div>
-        <div><label>Cantidad / Volumen</label><textarea name="volume" placeholder="p.ej.: 25.000 toneladas"></textarea></div>
+        <form id="form" novalidate>
+          <input type="hidden" name="origem" value="comprar">
+          <input type="hidden" name="lang" value="es">
+          <input type="hidden" name="page" value="Compra ES">
 
-        <button type="submit" id="btnSend">Enviar pedido</button>
-      </form>
+          <div><label>Nombre</label><input name="nome" required placeholder="Ej.: Juan Pérez"></div>
+          <div><label>Empresa</label><input name="empresa" placeholder="Nombre de la empresa"></div>
+          <div><label>Correo electrónico</label><input name="email" type="email" required placeholder="su@email.com"></div>
+          <div><label>Teléfono</label><input name="telefone" placeholder="+34 / +55 ..."></div>
+          <div><label>País</label><input name="pais" placeholder="País de actuación"></div>
+          <div><label>Mercado objetivo</label><input name="mercado" placeholder="País/región de destino"></div>
 
-      <div class="small" id="msg"></div>
+          <div>
+            <label>Tipo de producto</label>
+            <select name="tipo_produto">
+              <option value="">— Seleccionar —</option>
+              <option>Minerales</option>
+              <option>Soja</option>
+              <option>Café</option>
+              <option>Azúcar</option>
+              <option>Maíz</option>
+              <option>Otros</option>
+            </select>
+          </div>
+
+          <div><label>Categoría</label><input name="categoria" placeholder="Ej.: grano, procesado, a granel"></div>
+
+          <div>
+            <label>Producto de interés</label>
+            <textarea name="produto" placeholder="Descripción"></textarea>
+          </div>
+
+          <div>
+            <label>Cantidad / Volumen</label>
+            <textarea name="volume" placeholder="Ej.: 25.000 toneladas"></textarea>
+          </div>
+
+          <button type="submit" id="btnSend">Enviar solicitud</button>
+        </form>
+
+        <div class="small" id="msg"></div>
+      </div>
     </div>
-  </div></div>
+  </div>
 
   <script>
-    const ENDPOINT = "https://script.google.com/macros/s/AKfycbwfeNCFaF60e6knUS9lSiiFOD2JOUm_1UolNM0SP_Mek3tUgqSzHKBPBmCx2LHSFQh36Q/exec";
-    const logoTest="/braziltrad-site-testes/assets/img/braziltrad-logo.png", logoProd="/assets/img/braziltrad-logo.png";
-    document.getElementById('logoImg').src = window.location.hostname.includes("github") ? logoTest : logoProd;
-    (function setLang(){ document.getElementById("inputLang").value="es"; })();
+    const ENDPOINT =
+      "https://script.google.com/macros/s/AKfycbynqCl3g5pLkyW4xB6IRD7vXAvNBZEbqQfvw20bCg2CJljnaxJnzOW1iYWFDi3eW7RRTw/exec";
 
-    const form=document.getElementById("form"), msg=document.getElementById("msg"), btn=document.getElementById("btnSend");
-    form.addEventListener("submit", async function(e){ e.preventDefault(); msg.textContent=""; btn.disabled=true; btn.textContent="Enviando..."; const fd=new FormData(form); try{ const res=await fetch(ENDPOINT,{method:"POST",body:fd}); if(!res.ok) throw new Error("Status "+res.status); msg.textContent="Pedido enviado — gracias."; form.reset(); }catch(err){ console.error(err); msg.textContent="Error al enviar. Intenta de nuevo."; }finally{ btn.disabled=false; btn.textContent="Enviar pedido"; } });
+    const logoTest = "/braziltrad-site-testes/assets/img/braziltrad-logo.png";
+    const logoProd = "/assets/img/braziltrad-logo.png";
+    document.getElementById("logoImg").src =
+      window.location.hostname.includes("github") ? logoTest : logoProd;
+
+    const form = document.getElementById("form");
+    const msg  = document.getElementById("msg");
+    const btn  = document.getElementById("btnSend");
+
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+      msg.textContent = "";
+      btn.disabled = true;
+      btn.textContent = "Enviando...";
+
+      const fd = new FormData(form);
+
+      try{
+        await fetch(ENDPOINT, {
+          method: "POST",
+          body: fd,
+          mode: "no-cors"
+        });
+
+        msg.style.color = "green";
+        msg.textContent = "Solicitud enviada — gracias.";
+        form.reset();
+
+      }catch(err){
+        msg.style.color = "#b00020";
+        msg.textContent = "Error al enviar. Inténtelo nuevamente.";
+      }
+      finally{
+        btn.disabled = false;
+        btn.textContent = "Enviar solicitud";
+      }
+    });
   </script>
 </body>
 </html>
