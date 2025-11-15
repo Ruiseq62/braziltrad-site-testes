@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contato — BrazilTrad</title>
-  <link rel="stylesheet" href="css/style.css">
 
   <style>
     body {
@@ -40,7 +39,7 @@
       font-weight: 500;
     }
 
-    input,textarea,select {
+    input,textarea {
       width:100%;
       padding:10px;
       margin-top:4px;
@@ -86,6 +85,7 @@
       font-weight:600;
       width:100%;
       display:block;
+      cursor:pointer;
     }
   </style>
 </head>
@@ -93,7 +93,7 @@
 <body>
 
   <h1>Contato</h1>
-  <p>Preencha o formulário abaixo e a nossa equipa entrará em contacto.</p>
+  <p>Preencha o formulário abaixo e entraremos em contacto.</p>
 
   <form id="contactForm" method="POST">
 
@@ -119,8 +119,7 @@
 
     <div id="formMsg" class="msg"></div>
 
-    <a id="backButton" href="https://ruiseq62.github.io/braziltrad-site-testes/">Voltar ao site</a>
-
+    <a id="backButton" onclick="history.back()">Voltar ao site</a>
 
   </form>
 
@@ -139,40 +138,50 @@
       const zohoData = new FormData(form);
 
       try {
-        /* 1) Envio para ZOHO */
+        /* 1) Envio para ZOHO CRM */
         const zohoRes = await fetch("https://crm.zoho.com/crm/WebToLeadForm", {
           method: "POST",
           body: zohoData
         });
         if (!zohoRes.ok) throw new Error("Erro Zoho");
 
+
         /* 2) Email para o Lead */
         const emailLead = new FormData();
         emailLead.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
         emailLead.append("email", form.Email.value);
         emailLead.append("from_name", "BrazilTrad");
-        emailLead.append("subject", "Recebemos sua mensagem");
-        emailLead.append(
-  "message",
-  "Olá " + form["Last Name"].value + ",\n\n" +
-  "Recebemos a sua mensagem! Em breve entraremos em contacto.\n\n" +
-  "BrazilTrad"
-);
+        emailLead.append("subject", "Recebemos a sua mensagem");
 
+        emailLead.append(
+          "message",
+          "Olá " + form['Last Name'].value + ",\n\n" +
+          "Obrigado pelo seu contato!\n" +
+          "Em breve nossa equipa retornará.\n\n" +
+          "BrazilTrad"
+        );
 
         await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           body: emailLead
         });
 
-        /* 3) Email para ADMIN */
+
+        /* 3) Email interno (apenas 1) */
         const emailAdmin = new FormData();
         emailAdmin.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
         emailAdmin.append("email", "rsequeira@braziltrad.com");
-        emailAdmin.append("from_name", "BrazilTrad — Novo Contato");
-        emailAdmin.append("subject", "Novo Contato — BrazilTrad");
-        emailAdmin.append("message",
-          `Novo lead:\n\nNome: ${form["Last Name"].value}\nEmail: ${form.Email.value}\nEmpresa: ${form.Company.value}\nMensagem: ${form.Description.value}`
+        emailAdmin.append("from_name", "BrazilTrad — Novo Lead");
+        emailAdmin.append("subject", "Novo Lead — Contato");
+
+        emailAdmin.append(
+          "message",
+          "Novo lead recebido:\n\n" +
+          "Nome: " + form['Last Name'].value + "\n" +
+          "Email: " + form.Email.value + "\n" +
+          "Empresa: " + form.Company.value + "\n" +
+          "Mensagem: " + form.Description.value + "\n\n" +
+          "Enviado automaticamente pelo site."
         );
 
         await fetch("https://api.web3forms.com/submit", {
@@ -180,12 +189,13 @@
           body: emailAdmin
         });
 
-        /* SUCESSO */
+
+        /* SUCESSO TOTAL */
         msg.textContent = "Mensagem enviada com sucesso!";
         msg.classList.add("success");
 
         form.reset();
-        backBtn.style.display = "block";
+        backBtn.style.display = "block"; // mostra botão depois do envio
 
       } catch (err) {
         console.error(err);
