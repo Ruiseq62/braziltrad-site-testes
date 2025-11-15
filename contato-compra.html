@@ -1,59 +1,117 @@
-<!-- Mesma estrutura do contato.html; só muda o select Vendedor/Comprador para preselect 'Comprador' -->
-<!doctype html>
-<html lang="pt"><!-- ... cabeçalho idêntico ao anterior ... -->
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Formulário para Compradores — BrazilTrad</title>
-<style>/* mesmo CSS do anterior */</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quero Comprar — BrazilTrad</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body{padding-top:40px;background:#f2f2f2;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    form{max-width:520px;margin:0 auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+    label{display:block;margin-top:14px;font-weight:600;color:#222}
+    input,textarea{width:100%;padding:10px;margin-top:4px;border:1px solid #ccc;border-radius:6px;font-family:inherit}
+    button{margin-top:18px;background:#0F4C5C;color:#fff;border:none;padding:12px 20px;border-radius:6px;cursor:pointer}
+    button:hover{background:#12697a}
+  </style>
 </head>
+
 <body>
-<h1>Formulário para Compradores</h1>
 
-<div id="leadFormPT">
-<form id="webform7111694000000588056" accept-charset="UTF-8">
-  <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
-  <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
-  <input type="hidden" name="actionType" value="TGVhZHM=">
-  <input type="hidden" name="returnURL" value="null">
+  <main class="container">
+    <h1 style="text-align:center;margin-bottom:20px;">Quero Comprar</h1>
 
-  <!-- Campos principais (igual ao anterior) -->
-  <!-- ... Empresa / Sobrenome / Email / ... -->
+    <form id="zohoBuyForm">
 
-  <!-- Vendedor / Comprador - PRESELECIONADO para Comprador -->
-  <div class="form-row">
-    <label for="VendedorComprador">Vendedor / Comprador</label>
-    <select id="VendedorComprador" name="Vendedor / Comprador">
-      <option value="-None-">-None-</option>
-      <option value="Vendedor">Vendedor</option>
-      <option value="Comprador" selected>Comprador</option>
-    </select>
-  </div>
+      <!-- Tokens Zoho -->
+      <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
+      <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
+      <input type="hidden" name="actionType" value="TGVhZHM=">
+      <input type="hidden" name="returnURL" value="">
 
-  <!-- resto dos campos idêntico -->
-  <div class="form-row"><button type="submit" class="btn">Enviar</button></div>
-</form>
-</div>
+      <!-- Campos técnicos Zoho -->
+      <input type="hidden" name="Last Name" id="hiddenLastName">
+      <input type="hidden" name="Rating" value="PT">
+      <input type="hidden" name="Lead_Type" value="Compra">
+      <input type="hidden" name="Vendedor_Comprador" value="Comprador">
 
-<div id="successBox" style="display:none">
-  <strong>Obrigado!</strong>
-  <p>A BrazilTrad vai entrar em contacto consigo muito em breve.</p>
-  <button class="btn" onclick="history.back()">Voltar ao Site</button>
-</div>
+      <label>Nome *</label>
+      <input type="text" id="nome" required>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+      <label>Email *</label>
+      <input type="email" id="email" name="Email" required>
+
+      <label>Empresa (opcional)</label>
+      <input type="text" id="company" name="Company">
+
+      <label>Celular</label>
+      <input type="text" id="cell" name="Mobile">
+
+      <label>Produto que deseja comprar</label>
+      <input type="text" id="product" name="Product">
+
+      <label>Volume mensal estimado</label>
+      <input type="text" id="volume" name="Volume">
+
+      <label>País de destino</label>
+      <input type="text" id="destination" name="Destination">
+
+      <label>Mensagem</label>
+      <textarea id="message" name="Description" rows="4"></textarea>
+
+      <button id="submitBtn" type="submit">Enviar</button>
+    </form>
+
+    <div id="successBox" style="display:none;margin-top:16px;padding:14px;border-radius:8px;background:#F5FAF5;border:1px solid #A9D3AB;">
+      <strong>Obrigado!</strong>
+      <p>A sua solicitação foi enviada com sucesso.</p>
+      <button onclick="location.href='index.html'" style="margin-top:8px;background:#12697a;color:#fff;padding:8px 12px;border-radius:6px;border:0;cursor:pointer;">
+        Voltar ao Site
+      </button>
+    </div>
+  </main>
+
 <script>
-/* usar os mesmos scripts do primeiro ficheiro; para poupar espaço omiti aqui, usa exactamente o script do contato.html */
-$(function(){
-  $("#webform7111694000000588056").on("submit", function(e){
+(function(){
+
+  const ZOHO_URL =
+    "https://crm.zoho.com/crm/WebToLeadForm" +
+    "?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13" +
+    "&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3" +
+    "&actionType=TGVhZHM=";
+
+  const form = document.getElementById("zohoBuyForm");
+  const hiddenLast = document.getElementById("hiddenLastName");
+  const successBox = document.getElementById("successBox");
+  const submitBtn = document.getElementById("submitBtn");
+  const nomeVisivel = document.getElementById("nome");
+
+  nomeVisivel.addEventListener("input", ()=> hiddenLast.value = nomeVisivel.value );
+
+  form.addEventListener("submit", async (e)=>{
     e.preventDefault();
-    // validações idênticas...
-    var formData = new FormData(this);
-    $.ajax({ url:"https://crm.zoho.com/crm/WebToLeadForm", type:"POST", data:formData, cache:false, contentType:false, processData:false,
-      success:function(){ $("#leadFormPT").hide(); $("#successBox").show(); },
-      error:function(){ alert("Ocorreu um erro ao enviar o formulário."); }
-    });
+
+    submitBtn.disabled=true;
+    submitBtn.style.opacity=0.6;
+
+    const fd = new FormData(form);
+    fd.append("Last Name", nomeVisivel.value);
+
+    try{
+      const resp = await fetch(ZOHO_URL, { method:"POST", body:fd, mode:"cors" });
+      if(resp.ok){
+        form.style.display="none";
+        successBox.style.display="block";
+      } else throw new Error();
+    }catch(err){
+      alert("Erro ao enviar. Tente novamente.");
+      submitBtn.disabled=false;
+      submitBtn.style.opacity=1;
+    }
   });
-});
+
+})();
 </script>
+
 </body>
 </html>
