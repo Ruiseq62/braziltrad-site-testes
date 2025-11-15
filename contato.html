@@ -152,9 +152,13 @@
         emailLead.append("email", form.Email.value);
         emailLead.append("from_name", "BrazilTrad");
         emailLead.append("subject", "Recebemos sua mensagem");
-        emailLead.append("message",
-          `Olá ${form["Last Name"].value},<br><br>Recebemos a sua mensagem! Em breve entraremos em contacto.<br><br>BrazilTrad`
-        );
+        emailLead.append(
+  "message",
+  "Olá " + form["Last Name"].value + ",\n\n" +
+  "Recebemos a sua mensagem! Em breve entraremos em contacto.\n\n" +
+  "BrazilTrad"
+);
+
 
         await fetch("https://api.web3forms.com/submit", {
           method: "POST",
