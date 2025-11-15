@@ -10,8 +10,12 @@
     body{padding-top:40px;background:#f2f2f2;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
     form{max-width:520px;margin:0 auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
     label{display:block;margin-top:14px;font-weight:600;color:#222}
-    input,textarea{width:100%;padding:10px;margin-top:4px;border:1px solid #ccc;border-radius:6px;font-family:inherit}
-    button{margin-top:18px;background:#0F4C5C;color:#fff;border:none;padding:12px 20px;border-radius:6px;cursor:pointer}
+    input,textarea,select{
+      width:100%;padding:10px;margin-top:4px;border:1px solid #ccc;border-radius:6px;font-family:inherit;
+    }
+    button{
+      margin-top:18px;background:#0F4C5C;color:#fff;border:none;padding:12px 20px;border-radius:6px;cursor:pointer
+    }
     button:hover{background:#12697a}
   </style>
 </head>
@@ -23,41 +27,51 @@
 
     <form id="zohoBuyForm">
 
-      <!-- Tokens Zoho -->
+      <!-- 🔒 Tokens do ZOHO -->
       <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
       <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
       <input type="hidden" name="actionType" value="TGVhZHM=">
       <input type="hidden" name="returnURL" value="">
 
-      <!-- Campos técnicos Zoho -->
-      <input type="hidden" name="Last Name" id="hiddenLastName">
+      <!-- 🔧 Campos técnicos exigidos pelo Zoho -->
+      <input type="hidden" name="Last Name" id="hiddenLast">
       <input type="hidden" name="Rating" value="PT">
       <input type="hidden" name="Lead_Type" value="Compra">
       <input type="hidden" name="Vendedor_Comprador" value="Comprador">
 
+      <!-- Campos Visíveis -->
       <label>Nome *</label>
       <input type="text" id="nome" required>
 
       <label>Email *</label>
-      <input type="email" id="email" name="Email" required>
+      <input type="email" name="Email" required>
 
       <label>Empresa (opcional)</label>
-      <input type="text" id="company" name="Company">
+      <input type="text" name="Company">
 
       <label>Celular</label>
-      <input type="text" id="cell" name="Mobile">
+      <input type="text" name="Mobile">
 
-      <label>Produto que deseja comprar</label>
-      <input type="text" id="product" name="Product">
+      <label>Produto que deseja comprar *</label>
+      <select name="Product" required>
+        <option value="">Selecione...</option>
+        <option value="Café">Café</option>
+        <option value="Soja">Soja</option>
+        <option value="Milho">Milho</option>
+        <option value="Minérios">Minérios</option>
+        <option value="Carnes">Carnes</option>
+        <option value="Açúcar">Açúcar</option>
+        <option value="Outros">Outros</option>
+      </select>
 
       <label>Volume mensal estimado</label>
-      <input type="text" id="volume" name="Volume">
+      <input type="text" name="Volume">
 
-      <label>País de destino</label>
-      <input type="text" id="destination" name="Destination">
+      <label>País de origem da carga</label>
+      <input type="text" name="Origin">
 
       <label>Mensagem</label>
-      <textarea id="message" name="Description" rows="4"></textarea>
+      <textarea name="Description" rows="4"></textarea>
 
       <button id="submitBtn" type="submit">Enviar</button>
     </form>
@@ -65,7 +79,8 @@
     <div id="successBox" style="display:none;margin-top:16px;padding:14px;border-radius:8px;background:#F5FAF5;border:1px solid #A9D3AB;">
       <strong>Obrigado!</strong>
       <p>A sua solicitação foi enviada com sucesso.</p>
-      <button onclick="location.href='index.html'" style="margin-top:8px;background:#12697a;color:#fff;padding:8px 12px;border-radius:6px;border:0;cursor:pointer;">
+      <button onclick="location.href='index.html'"
+        style="margin-top:8px;background:#12697a;color:#fff;padding:8px 12px;border-radius:6px;border:0;cursor:pointer;">
         Voltar ao Site
       </button>
     </div>
@@ -81,32 +96,36 @@
     "&actionType=TGVhZHM=";
 
   const form = document.getElementById("zohoBuyForm");
-  const hiddenLast = document.getElementById("hiddenLastName");
+  const hiddenLast = document.getElementById("hiddenLast");
   const successBox = document.getElementById("successBox");
   const submitBtn = document.getElementById("submitBtn");
-  const nomeVisivel = document.getElementById("nome");
+  const nomeInput = document.getElementById("nome");
 
-  nomeVisivel.addEventListener("input", ()=> hiddenLast.value = nomeVisivel.value );
+  // Atualiza Last Name automaticamente
+  nomeInput.addEventListener("input", ()=>{
+    hiddenLast.value = nomeInput.value;
+  });
 
   form.addEventListener("submit", async (e)=>{
     e.preventDefault();
 
-    submitBtn.disabled=true;
-    submitBtn.style.opacity=0.6;
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = 0.6;
 
     const fd = new FormData(form);
-    fd.append("Last Name", nomeVisivel.value);
+    fd.append("Last Name", nomeInput.value);
 
     try{
-      const resp = await fetch(ZOHO_URL, { method:"POST", body:fd, mode:"cors" });
+      const resp = await fetch(ZOHO_URL, { method:"POST", body:fd });
       if(resp.ok){
-        form.style.display="none";
-        successBox.style.display="block";
+        form.style.display = "none";
+        successBox.style.display = "block";
       } else throw new Error();
-    }catch(err){
+    }
+    catch(err){
       alert("Erro ao enviar. Tente novamente.");
-      submitBtn.disabled=false;
-      submitBtn.style.opacity=1;
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = 1;
     }
   });
 
