@@ -1,4 +1,4 @@
-<div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm" style="background-color:#fff;color:#000;max-width:600px;">
+<div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm" style="background-color:#fff;color:#000;max-width:600px;margin:0 auto;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -11,6 +11,8 @@
   .zcwf_col_fld{width:70%}
   input[type="text"], textarea, select{width:100%;padding:8px;border:1px solid #c0c6cc;border-radius:4px;font-size:14px}
   .formsubmit{background:linear-gradient(0deg,#0279FF,#00A3F3);color:#fff;border:none;padding:10px 16px;border-radius:4px;cursor:pointer}
+  .backbtn{background:#555;color:#fff;padding:8px 14px;border:none;border-radius:4px;margin-top:10px;cursor:pointer}
+  #successBox{display:none;background:#e8f8e8;border:1px solid #90c090;padding:15px;border-radius:6px;margin-top:20px;text-align:center}
   @media (max-width:600px){
     .zcwf_row{flex-direction:column}
     .zcwf_col_lab,.zcwf_col_fld{width:100%}
@@ -21,27 +23,41 @@
   Formulário de Contato
 </div>
 
-<form id="webform7111694000000588056"
-      name="WebToLeads7111694000000588056"
-      accept-charset="UTF-8"
-      data-bt-type="contato"
-      data-bt-lang="PT"
-      data-bt-return="/pt/obrigado.html">
+<div id="successBox">
+  <h3 style="margin-top:0">Obrigado!</h3>
+  <p>A sua mensagem foi enviada com sucesso.</p>
+  <button class="backbtn" onclick="history.back()">Voltar ao Site</button>
+</div>
 
+<form id="leadFormPT" name="WebToLeads7111694000000588056" accept-charset="UTF-8">
+
+  <!-- tokens obrigatórios do Zoho -->
   <input type="hidden" name="xnQsjsdp" value="3f1aa17b9adc2639d249333f02a8e2f7e5d315e2c9ff293a3ddfc8aaf567fd7f">
   <input type="hidden" name="zc_gad" id="zc_gad" value="">
   <input type="hidden" name="xmIwtLD" value="88dc1ea1bb6968af64ce12fec06b86b4bc6cf3e7a91491473cd9be3f7c3aee4fd03bfca2dd0f8ecec74a729114b215e4">
   <input type="hidden" name="actionType" value="TGVhZHM=">
-  <input type="hidden" name="returnURL" value="https://braziltrad.com/pt/obrigado.html">
+
+  <!-- Last Name preenchido automaticamente -->
+  <input type="hidden" name="Last Name" id="autoLastName">
+
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Nome *</label></div>
+    <div class="zcwf_col_fld">
+      <input type="text" id="NomeVisivel" required>
+    </div>
+  </div>
+
+  <script>
+    // copia Nome → Last Name (Zoho exige)
+    document.addEventListener('input', function(){
+      document.getElementById("autoLastName").value =
+        document.getElementById("NomeVisivel").value;
+    });
+  </script>
 
   <div class="zcwf_row">
     <div class="zcwf_col_lab"><label>Empresa *</label></div>
     <div class="zcwf_col_fld"><input type="text" name="Company" required></div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Sobrenome *</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Last Name" required></div>
   </div>
 
   <div class="zcwf_row">
@@ -121,4 +137,38 @@
   </div>
 
 </form>
-</div>
+
+<script>
+  // envio AJAX
+  $("#leadFormPT").on("submit", function(e){
+    e.preventDefault();
+
+    // valida Nome + Empresa
+    if ($("#NomeVisivel").val().trim() === "") {
+      alert("Por favor preencha o Nome.");
+      return;
+    }
+    if ($("input[name='Company']").val().trim() === "") {
+      alert("Por favor preencha a Empresa.");
+      return;
+    }
+
+    var formData = new FormData(this);
+
+    $.ajax({
+      url:"https://crm.zoho.com/crm/WebToLeadForm",
+      type:"POST",
+      data:formData,
+      cache:false,
+      contentType:false,
+      processData:false,
+      success:function(){
+        $("#leadFormPT").hide();
+        $("#successBox").show();
+      },
+      error:function(){
+        alert("Ocorreu um erro ao enviar o formulário.");
+      }
+    });
+  });
+</script>
