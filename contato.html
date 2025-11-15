@@ -7,143 +7,189 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    .langbar{
-      position:fixed;top:0;left:0;right:0;height:36px;
-      display:flex;align-items:center;justify-content:center;
-      gap:14px;background:#0F4C5C;color:#fff;
-      font:500 14px/1 Inter,system-ui,-apple-system;
-      z-index:10000
+    body{
+      padding-top:40px;
+      background:#f2f2f2;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
     }
-    .langbar a{color:#fff;text-decoration:none;opacity:.8;padding:6px 10px;border-radius:999px}
-    .langbar a.active,.langbar a:hover{background:rgba(255,255,255,.14);opacity:1}
-
-    body{padding-top:60px}
 
     form{
-      max-width:520px;margin:0 auto;background:#fff;
-      padding:30px;border-radius:12px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.05)
+      max-width:520px;
+      margin:0 auto;
+      background:#fff;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
     }
-    label{display:block;margin-top:12px;font-weight:500}
+
+    label{
+      display:block;
+      margin-top:14px;
+      font-weight:600;
+      color:#222;
+    }
+
     input,textarea{
-      width:100%;padding:10px;margin-top:4px;
-      border:1px solid #ccc;border-radius:6px;font-family:inherit
+      width:100%;
+      padding:10px;
+      margin-top:4px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      font-family:inherit;
     }
+
     button{
-      margin-top:16px;background:#0F4C5C;color:#fff;
-      border:none;padding:12px 20px;border-radius:6px;cursor:pointer
+      margin-top:18px;
+      background:#0F4C5C;
+      color:#fff;
+      border:none;
+      padding:12px 20px;
+      border-radius:6px;
+      cursor:pointer;
     }
-    button:hover{background:#12697a}
 
-    .msg{margin-top:16px;text-align:center;font-weight:600}
-    .success{color:#008f4c}
-    .error{color:#c62828}
+    button:hover{
+      background:#12697a;
+    }
+
+    .msg{
+      margin-top:16px;
+      text-align:center;
+      font-weight:600;
+    }
+
+    .success{
+      color:#008f4c;
+    }
+
+    .error{
+      color:#c62828;
+    }
   </style>
-
 </head>
 <body>
 
-  <!-- Barra de idioma -->
-  <div class="langbar">
-    <a href="#pt" data-lang-select="pt">🇧🇷 PT</a>
-    <a href="#en" data-lang-select="en">🇬🇧 EN</a>
-    <a href="#es" data-lang-select="es">🇪🇸 ES</a>
-    <a href="#zh" data-lang-select="zh">🇨🇳 中文</a>
-  </div>
-
   <main class="container">
-    <h1 data-i18n="title">Contato</h1>
-    <p data-i18n="desc" style="text-align:center">Preencha o formulário abaixo e nossa equipe entrará em contato.</p>
+    <h1 style="text-align:center;margin-bottom:20px;">Formulário de Contato</h1>
 
-    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="36b646fd-5467-4ff8-8a3a-9df90aae76fe">
-      <input type="hidden" name="form_origem" value="Contato">
-      <input type="hidden" name="idioma" value="pt">
+    <!-- FORMULÁRIO ZOHO -->
+    <form id="zohoContactForm" accept-charset="UTF-8" novalidate>
 
-      <label data-i18n="form.name">Nome</label>
-      <input type="text" name="name" required>
+      <!-- Tokens obrigatórios Zoho -->
+      <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
+      <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
+      <input type="hidden" name="actionType" value="TGVhZHM=">
+      <input type="hidden" name="returnURL" value="">
 
-      <label data-i18n="form.email">E-mail</label>
-      <input type="email" name="email" required>
+      <!-- Nome técnico obrigatório do Zoho -->
+      <input type="hidden" name="Last Name" id="hiddenLastName">
 
-      <label data-i18n="form.company">Empresa (opcional)</label>
-      <input type="text" name="company">
+      <!-- Idioma automático -->
+      <input type="hidden" name="Rating" value="PT">
 
-      <label data-i18n="form.cell">Celular</label>
-      <input type="text" name="cell">
+      <label>Nome *</label>
+      <input type="text" id="nome" required>
 
-      <label data-i18n="form.message">Mensagem</label>
-      <textarea name="message" rows="5" required></textarea>
+      <label>E-mail *</label>
+      <input type="email" id="email" name="Email" required>
 
-      <button type="submit" data-i18n="form.send">Enviar mensagem</button>
-      <div id="formMsg" class="msg"></div>
+      <label>Empresa (opcional)</label>
+      <input type="text" id="company" name="Company">
+
+      <label>Celular</label>
+      <input type="text" id="cell" name="Mobile">
+
+      <label>Mensagem</label>
+      <textarea id="message" name="Description" rows="4"></textarea>
+
+      <button id="submitBtn" type="submit">Enviar</button>
     </form>
+
+    <div id="successBox" style="display:none;margin-top:16px;padding:14px;border-radius:8px;background:#F5FAF5;border:1px solid #A9D3AB;">
+      <strong>Obrigado!</strong>
+      <p>A sua mensagem foi enviada com sucesso.</p>
+      <button onclick="location.href='index.html'" style="margin-top:8px;background:#12697a;color:#fff;padding:8px 12px;border-radius:6px;border:0;cursor:pointer;">
+        Voltar ao Site
+      </button>
+    </div>
   </main>
 
-  <footer class="footer" style="margin-top:60px;text-align:center;padding:20px;color:#444">
-    <div>© BrazilTrad — <span data-i18n="footer">Conectando produtores brasileiros a mercados globais.</span></div>
-    <div>✉️ <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a></div>
-  </footer>
+<script>
+(function(){
 
-  <script>
-    const I18N = {
-      pt:{title:"Contato",desc:"Preencha o formulário abaixo e nossa equipe entrará em contato.",
-        form:{name:"Nome",email:"E-mail",company:"Empresa (opcional)",cell:"Celular",message:"Mensagem",send:"Enviar mensagem"},
-        success:"Mensagem enviada com sucesso! Entraremos em contato em breve.",
-        error:"Erro ao enviar. Tente novamente.",
-        footer:"Conectando produtores brasileiros a mercados globais."}
-    };
+  const ZOHO_URL =
+    "https://crm.zoho.com/crm/WebToLeadForm" +
+    "?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13" +
+    "&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3" +
+    "&actionType=TGVhZHM=";
 
-    function setLanguage(lang){
-      const t=I18N.pt;
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
-        const path = el.dataset.i18n.split(".");
-        let val=t;
-        path.forEach(k=>val=val[k]);
-        el.textContent=val;
-      });
+  const form = document.getElementById("zohoContactForm");
+  const hiddenLast = document.getElementById("hiddenLastName");
+  const nomeVisivel = document.getElementById("nome");
+  const successBox = document.getElementById("successBox");
+  const submitBtn = document.getElementById("submitBtn");
+
+  // Preenche "Last Name" obrigatório do Zoho
+  nomeVisivel.addEventListener("input", ()=> {
+    hiddenLast.value = nomeVisivel.value;
+  });
+
+  form.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+
+    if(nomeVisivel.value.trim()===""){
+      alert("Por favor preencha o Nome.");
+      nomeVisivel.focus();
+      return;
+    }
+    const email=document.getElementById("email");
+    if(email.value.trim()===""){
+      alert("Por favor preencha o E-mail.");
+      email.focus();
+      return;
     }
 
-    setLanguage("pt");
+    submitBtn.disabled=true;
+    submitBtn.style.opacity=0.6;
 
-    // Envio Web3Forms + Google Sheets
-    document.getElementById("contactForm").addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      const form=e.target;
-      const data=new FormData(form);
-      const msg=document.getElementById("formMsg");
-      msg.textContent="";
+    const fd = new FormData();
+    fd.append("xnQsjsdp", form.querySelector("input[name='xnQsjsdp']").value);
+    fd.append("xmIwtLD", form.querySelector("input[name='xmIwtLD']").value);
+    fd.append("actionType", "TGVhZHM=");
+    fd.append("returnURL", "");
 
-      try{
-        const res=await fetch(form.action,{method:"POST",body:data});
+    fd.append("Last Name", hiddenLast.value || nomeVisivel.value);
+    fd.append("Email", email.value);
+    fd.append("Company", document.getElementById("company").value);
+    fd.append("Mobile", document.getElementById("cell").value);
+    fd.append("Description", document.getElementById("message").value);
+    fd.append("Rating", "PT");
 
-        // Dados para Google Sheets
-        const sheetData={
-          nome: form.name.value,
-          email: form.email.value,
-          empresa: form.company.value,
-          celular: form.cell.value,
-          mensagem: form.message.value,
-          idioma:"pt",
-          tipo:"Contato"
-        };
+    try{
+      const resp = await fetch(ZOHO_URL, {
+        method:"POST",
+        body:fd,
+        mode:"cors",
+        cache:"no-cache"
+      });
 
-        await fetch("https://script.google.com/macros/s/AKfycbz54mjdL83y4hUXPnPrwOtNxgwL5Q3TtrQ75yzljmpS-h8dSi50oCGojaSBGKGdxwkquQ/exec",{
-          method:"POST",
-          body:JSON.stringify(sheetData)
-        });
-
-        if(res.ok){
-          msg.textContent=I18N.pt.success;
-          msg.className="msg success";
-          form.reset();
-        }else throw new Error();
-      }catch{
-        msg.textContent=I18N.pt.error;
-        msg.className="msg error";
+      if(resp.ok){
+        form.style.display="none";
+        successBox.style.display="block";
+      } else {
+        throw new Error();
       }
-    });
-  </script>
+
+    }catch(err){
+      alert("Erro ao enviar. Verifique a ligação e tente novamente.");
+      console.error(err);
+      submitBtn.disabled=false;
+      submitBtn.style.opacity=1;
+    }
+  });
+
+})();
+</script>
 
 </body>
 </html>
