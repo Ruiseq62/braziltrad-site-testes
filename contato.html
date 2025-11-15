@@ -7,29 +7,40 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    body{
-      padding-top:40px;
-      background:#f2f2f2;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    body {
+      background: #f4f6f8;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      padding: 40px 12px;
     }
 
-    form{
-      max-width:520px;
-      margin:0 auto;
-      background:#fff;
-      padding:30px;
-      border-radius:12px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    form {
+      max-width: 520px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    label{
+    h1 {
+      text-align:center;
+      margin-bottom: 12px;
+      color: #0F4C5C;
+    }
+
+    p {
+      text-align:center;
+      margin-top: 0;
+      margin-bottom: 28px;
+    }
+
+    label {
       display:block;
-      margin-top:14px;
-      font-weight:600;
-      color:#222;
+      margin-top: 14px;
+      font-weight: 500;
     }
 
-    input,textarea{
+    input,textarea,select {
       width:100%;
       padding:10px;
       margin-top:4px;
@@ -38,158 +49,146 @@
       font-family:inherit;
     }
 
-    button{
-      margin-top:18px;
+    button {
+      margin-top:20px;
+      width:100%;
       background:#0F4C5C;
       color:#fff;
       border:none;
-      padding:12px 20px;
+      padding:14px;
       border-radius:6px;
       cursor:pointer;
+      font-size:16px;
+      font-weight:600;
     }
 
-    button:hover{
+    button:hover {
       background:#12697a;
     }
 
-    .msg{
+    .msg {
       margin-top:16px;
       text-align:center;
       font-weight:600;
     }
+    .success { color:#008f4c; }
+    .error { color:#c62828; }
 
-    .success{
-      color:#008f4c;
-    }
-
-    .error{
-      color:#c62828;
+    #backButton {
+      display:none;
+      margin-top:14px;
+      text-align:center;
+      background:#0F4C5C;
+      color:#fff;
+      padding:12px;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:600;
+      width:100%;
+      display:block;
     }
   </style>
 </head>
+
 <body>
 
-  <main class="container">
-    <h1 style="text-align:center;margin-bottom:20px;">Formulário de Contato</h1>
+  <h1>Contato</h1>
+  <p>Preencha o formulário abaixo e a nossa equipa entrará em contacto.</p>
 
-    <!-- FORMULÁRIO ZOHO -->
-    <form id="zohoContactForm" accept-charset="UTF-8" novalidate>
+  <form id="contactForm" method="POST">
 
-      <!-- Tokens obrigatórios Zoho -->
-      <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
-      <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
-      <input type="hidden" name="actionType" value="TGVhZHM=">
-      <input type="hidden" name="returnURL" value="">
+    <!-- CAMPOS ZOHO -->
+    <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
+    <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
+    <input type="hidden" name="actionType" value="TGVhZHM=">
+    <input type="hidden" name="returnURL" value="null">
 
-      <!-- Nome técnico obrigatório do Zoho -->
-      <input type="hidden" name="Last Name" id="hiddenLastName">
+    <label>Nome *</label>
+    <input type="text" name="Last Name" required>
 
-      <!-- Idioma automático -->
-      <input type="hidden" name="Rating" value="PT">
+    <label>E-mail *</label>
+    <input type="email" name="Email" required>
 
-      <label>Nome *</label>
-      <input type="text" id="nome" required>
+    <label>Empresa (opcional)</label>
+    <input type="text" name="Company">
 
-      <label>E-mail *</label>
-      <input type="email" id="email" name="Email" required>
+    <label>Mensagem *</label>
+    <textarea name="Description" rows="5" required></textarea>
 
-      <label>Empresa (opcional)</label>
-      <input type="text" id="company" name="Company">
+    <button type="submit">Enviar</button>
 
-      <label>Celular</label>
-      <input type="text" id="cell" name="Mobile">
+    <div id="formMsg" class="msg"></div>
 
-      <label>Mensagem</label>
-      <textarea id="message" name="Description" rows="4"></textarea>
+    <a id="backButton" href="/">Voltar ao site</a>
 
-      <button id="submitBtn" type="submit">Enviar</button>
-    </form>
+  </form>
 
-    <div id="successBox" style="display:none;margin-top:16px;padding:14px;border-radius:8px;background:#F5FAF5;border:1px solid #A9D3AB;">
-      <strong>Obrigado!</strong>
-      <p>A sua mensagem foi enviada com sucesso.</p>
-      <button onclick="location.href='index.html'" style="margin-top:8px;background:#12697a;color:#fff;padding:8px 12px;border-radius:6px;border:0;cursor:pointer;">
-        Voltar ao Site
-      </button>
-    </div>
-  </main>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
 
-<script>
-(function(){
+      const form = e.target;
+      const msg = document.getElementById("formMsg");
+      const backBtn = document.getElementById("backButton");
 
-  const ZOHO_URL =
-    "https://crm.zoho.com/crm/WebToLeadForm" +
-    "?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13" +
-    "&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3" +
-    "&actionType=TGVhZHM=";
+      msg.textContent = "";
+      msg.className = "msg";
+      backBtn.style.display = "none";
 
-  const form = document.getElementById("zohoContactForm");
-  const hiddenLast = document.getElementById("hiddenLastName");
-  const nomeVisivel = document.getElementById("nome");
-  const successBox = document.getElementById("successBox");
-  const submitBtn = document.getElementById("submitBtn");
+      const zohoData = new FormData(form);
 
-  // Preenche "Last Name" obrigatório do Zoho
-  nomeVisivel.addEventListener("input", ()=> {
-    hiddenLast.value = nomeVisivel.value;
-  });
+      try {
+        /* 1) Envio para ZOHO */
+        const zohoRes = await fetch("https://crm.zoho.com/crm/WebToLeadForm", {
+          method: "POST",
+          body: zohoData
+        });
+        if (!zohoRes.ok) throw new Error("Erro Zoho");
 
-  form.addEventListener("submit", async (e)=>{
-    e.preventDefault();
+        /* 2) Email para o Lead */
+        const emailLead = new FormData();
+        emailLead.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
+        emailLead.append("email", form.Email.value);
+        emailLead.append("from_name", "BrazilTrad");
+        emailLead.append("subject", "Recebemos sua mensagem");
+        emailLead.append("message",
+          `Olá ${form["Last Name"].value},<br><br>Recebemos a sua mensagem! Em breve entraremos em contacto.<br><br>BrazilTrad`
+        );
 
-    if(nomeVisivel.value.trim()===""){
-      alert("Por favor preencha o Nome.");
-      nomeVisivel.focus();
-      return;
-    }
-    const email=document.getElementById("email");
-    if(email.value.trim()===""){
-      alert("Por favor preencha o E-mail.");
-      email.focus();
-      return;
-    }
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: emailLead
+        });
 
-    submitBtn.disabled=true;
-    submitBtn.style.opacity=0.6;
+        /* 3) Email para ADMIN */
+        const emailAdmin = new FormData();
+        emailAdmin.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
+        emailAdmin.append("email", "rsequeira@braziltrad.com");
+        emailAdmin.append("from_name", "BrazilTrad — Novo Contato");
+        emailAdmin.append("subject", "Novo Contato — BrazilTrad");
+        emailAdmin.append("message",
+          `Novo lead:\n\nNome: ${form["Last Name"].value}\nEmail: ${form.Email.value}\nEmpresa: ${form.Company.value}\nMensagem: ${form.Description.value}`
+        );
 
-    const fd = new FormData();
-    fd.append("xnQsjsdp", form.querySelector("input[name='xnQsjsdp']").value);
-    fd.append("xmIwtLD", form.querySelector("input[name='xmIwtLD']").value);
-    fd.append("actionType", "TGVhZHM=");
-    fd.append("returnURL", "");
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: emailAdmin
+        });
 
-    fd.append("Last Name", hiddenLast.value || nomeVisivel.value);
-    fd.append("Email", email.value);
-    fd.append("Company", document.getElementById("company").value);
-    fd.append("Mobile", document.getElementById("cell").value);
-    fd.append("Description", document.getElementById("message").value);
-    fd.append("Rating", "PT");
+        /* SUCESSO */
+        msg.textContent = "Mensagem enviada com sucesso!";
+        msg.classList.add("success");
 
-    try{
-      const resp = await fetch(ZOHO_URL, {
-        method:"POST",
-        body:fd,
-        mode:"cors",
-        cache:"no-cache"
-      });
+        form.reset();
+        backBtn.style.display = "block";
 
-      if(resp.ok){
-        form.style.display="none";
-        successBox.style.display="block";
-      } else {
-        throw new Error();
+      } catch (err) {
+        console.error(err);
+        msg.textContent = "Erro ao enviar. Por favor tente novamente.";
+        msg.classList.add("error");
       }
-
-    }catch(err){
-      alert("Erro ao enviar. Verifique a ligação e tente novamente.");
-      console.error(err);
-      submitBtn.disabled=false;
-      submitBtn.style.opacity=1;
-    }
-  });
-
-})();
-</script>
+    });
+  </script>
 
 </body>
 </html>
