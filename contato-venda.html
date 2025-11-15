@@ -1,146 +1,124 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quero Vender — BrazilTrad</title>
-  <style>
-    :root{--brand:#0F4C5C;--card-bg:#fff;--page-bg:#f4f6f8;--muted:#666;--radius:14px;--shadow:0 10px 30px rgba(18,30,40,0.08);--maxw:720px}
-    *{box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
-    body{margin:0;background:var(--page-bg);color:#1f2933;padding:40px 20px}
-    .wrap{display:flex;align-items:center;justify-content:center}
-    .card{width:100%;max-width:var(--maxw);background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .topbar{background:var(--brand);padding:14px 20px;display:flex;align-items:center;gap:12px}
-    .logo{height:34px;display:block}
-    .title{color:#fff;font-weight:700;font-size:1.05rem}
-    .content{padding:28px 28px 36px}
-    h1{margin:0 0 12px;color:var(--brand);font-size:1.5rem}
-    p.lead{margin:0 0 20px;color:var(--muted);line-height:1.5}
-    form{display:grid;gap:14px}
-    label{font-size:0.9rem;color:#0b2430;font-weight:600}
-    input,textarea,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d3d7db;font-size:1rem;background:#fff}
-    textarea{min-height:90px;resize:vertical}
-    button{margin-top:6px;padding:12px 16px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:1rem}
-    .small{font-size:0.9rem;color:var(--muted);margin-top:10px}
-    #msg{margin-top:10px;font-weight:600}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="card">
-      <div class="topbar">
-        <img id="logoImg" class="logo" alt="BrazilTrad"/>
-        <div class="title">BrazilTrad</div>
-      </div>
+<div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm" style="background-color:#fff;color:#000;max-width:600px;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<META HTTP-EQUIV="content-type" CONTENT="text/html;charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-      <div class="content">
-        <h1>Quero Vender</h1>
-        <p class="lead">
-          Preencha os dados abaixo para que a nossa equipa possa avaliar o seu produto e conectá-lo aos compradores certos.
-        </p>
+<style>
+  html,body{margin:0}
+  #crmWebToEntityForm{padding:20px;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+  .zcwf_row{margin:12px 0;display:flex;align-items:flex-start}
+  .zcwf_col_lab{width:30%;font-size:13px;padding-right:8px}
+  .zcwf_col_fld{width:70%}
+  input[type="text"], textarea, select{width:100%;padding:8px;border:1px solid #c0c6cc;border-radius:4px;font-size:14px}
+  .formsubmit{background:linear-gradient(0deg,#0279FF,#00A3F3);color:#fff;border:none;padding:10px 16px;border-radius:4px;cursor:pointer}
+  @media (max-width:600px){
+    .zcwf_row{flex-direction:column}
+    .zcwf_col_lab,.zcwf_col_fld{width:100%}
+  }
+</style>
 
-        <form id="form" novalidate>
-          <input type="hidden" name="origem" value="vender">
-          <input type="hidden" name="lang" id="inputLang" value="pt">
-          <input type="hidden" name="page" value="Venda PT">
+<div class="zcwf_title" style="font-weight:bold;margin-bottom:10px;font-size:18px;">
+  Formulário para Vendedores
+</div>
 
-          <div><label>Nome</label><input name="nome" required placeholder="Ex.: João Silva"></div>
-          <div><label>Empresa</label><input name="empresa" placeholder="Nome da empresa"></div>
-          <div><label>E-mail</label><input name="email" type="email" required placeholder="exemplo@empresa.com"></div>
-          <div><label>Telefone</label><input name="telefone" placeholder="+351 / +55 ..."></div>
-          <div><label>País</label><input name="pais" placeholder="País de origem / atuação"></div>
+<form id="webform7111694000000588056"
+      name="WebToLeads7111694000000588056"
+      accept-charset="UTF-8"
+      data-bt-type="venda"
+      data-bt-lang="PT"
+      data-bt-return="/pt/obrigado-venda.html">
 
-          <div>
-            <label>Tipo de produto</label>
-            <select name="tipo_produto">
-              <option value="">— Selecionar —</option>
-              <option>Minerais</option>
-              <option>Soja</option>
-              <option>Café</option>
-              <option>Açúcar</option>
-              <option>Milho</option>
-              <option>Outros</option>
-            </select>
-          </div>
+  <input type="hidden" name="xnQsjsdp" value="3f1aa17b9adc2639d249333f02a8e2f7e5d315e2c9ff293a3ddfc8aaf567fd7f">
+  <input type="hidden" name="zc_gad" id="zc_gad" value="">
+  <input type="hidden" name="xmIwtLD" value="88dc1ea1bb6968af64ce12fec06b86b4bc6cf3e7a91491473cd9be3f7c3aee4fd03bfca2dd0f8ecec74a729114b215e4">
+  <input type="hidden" name="actionType" value="TGVhZHM=">
+  <input type="hidden" name="returnURL" value="https://braziltrad.com/pt/obrigado-venda.html">
 
-          <div><label>Categoria</label><input name="categoria" placeholder="Ex.: grão, processado, granel"></div>
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Empresa *</label></div>
+    <div class="zcwf_col_fld"><input type="text" name="Company" required></div>
+  </div>
 
-          <div>
-            <label>Descrição do produto</label>
-            <textarea name="produto" placeholder="Detalhes, qualidade, especificações técnicas"></textarea>
-          </div>
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Sobrenome *</label></div>
+    <div class="zcwf_col_fld"><input type="text" name="Last Name" required></div>
+  </div>
 
-          <div>
-            <label>Quantidade disponível</label>
-            <textarea name="volume" placeholder="Ex.: 5.000 toneladas / 2 contêineres"></textarea>
-          </div>
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>E-mail</label></div>
+    <div class="zcwf_col_fld"><input type="text" name="Email" ftype="email"></div>
+  </div>
 
-          <div>
-            <label>Mercado alvo / país de destino</label>
-            <input name="mercado" placeholder="Ex.: China, Europa, EUA">
-          </div>
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Celular</label></div>
+    <div class="zcwf_col_fld"><input type="text" name="Mobile"></div>
+  </div>
 
-          <button type="submit" id="btnSend">Enviar proposta</button>
-        </form>
-
-        <div class="small" id="msg"></div>
-      </div>
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Produto</label></div>
+    <div class="zcwf_col_fld">
+      <select name="Industry">
+        <option value="-None-">-None-</option>
+        <option value="Café">Café</option>
+        <option value="Soja">Soja</option>
+        <option value="Milho">Milho</option>
+        <option value="Minérios">Minérios</option>
+        <option value="Carnes">Carnes</option>
+        <option value="Açúcar">Açúcar</option>
+        <option value="Outros">Outros</option>
+      </select>
     </div>
   </div>
 
-  <script>
-    // ---------------- CONFIG ----------------
-    const ENDPOINT = "https://script.google.com/macros/s/AKfycbwx5P9NJQkJ_yPYLvtl3k_BVZjTHHrhP2BttnsEgygsCBmToDwhuGkh-h6oJuHbDkQs/exec";
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Vendedor / Comprador</label></div>
+    <div class="zcwf_col_fld">
+      <select name="Lead Source">
+        <option value="-None-">-None-</option>
+        <option value="Vendedor" selected>Vendedor</option>
+        <option value="Comprador">Comprador</option>
+      </select>
+    </div>
+  </div>
 
-    const logoTest = "/braziltrad-site-testes/assets/img/braziltrad-logo.png";
-    const logoProd = "/assets/img/braziltrad-logo.png";
-    document.getElementById("logoImg").src =
-      window.location.hostname.includes("github") ? logoTest : logoProd;
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Origem</label></div>
+    <div class="zcwf_col_fld"><input type="text" name="City"></div>
+  </div>
 
-    // Detectar idioma
-    (function setLang(){
-      const nav = (navigator.language || "pt").toLowerCase();
-      let code = "pt";
-      if(nav.startsWith("en")) code = "en";
-      else if(nav.startsWith("es")) code = "es";
-      else if(nav.startsWith("zh")) code = "zh";
-      document.getElementById("inputLang").value = code;
-    })();
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Destino</label></div>
+    <div class="zcwf_col_fld"><input type="text" name="Street"></div>
+  </div>
 
-    // ---------------- FORM ----------------
-    const form = document.getElementById("form");
-    const msg  = document.getElementById("msg");
-    const btn  = document.getElementById("btnSend");
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Volume (Toneladas)</label></div>
+    <div class="zcwf_col_fld"><input type="text" name="Annual Revenue"></div>
+  </div>
 
-    form.addEventListener("submit", async function(e){
-      e.preventDefault();
-      msg.textContent = "";
-      btn.disabled = true;
-      btn.textContent = "Enviando...";
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Idioma</label></div>
+    <div class="zcwf_col_fld">
+      <select name="Rating">
+        <option value="PT" selected>PT</option>
+        <option value="EN">EN</option>
+        <option value="ES">ES</option>
+        <option value="ZH">ZH</option>
+      </select>
+    </div>
+  </div>
 
-      const fd = new FormData(form);
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"><label>Mensagem</label></div>
+    <div class="zcwf_col_fld"><textarea name="Description" rows="4"></textarea></div>
+  </div>
 
-      try{
-        await fetch(ENDPOINT, {
-          method: "POST",
-          body: fd,
-          mode: "no-cors"
-        });
+  <div class="zcwf_row">
+    <div class="zcwf_col_lab"></div>
+    <div class="zcwf_col_fld">
+      <input type="submit" class="formsubmit" value="Enviar">
+    </div>
+  </div>
 
-        msg.style.color = "green";
-        msg.textContent = "Proposta enviada — obrigado.";
-        form.reset();
-
-      }catch(err){
-        console.error(err);
-        msg.style.color = "#b00020";
-        msg.textContent = "Erro ao enviar. Tenta novamente.";
-      }
-      finally{
-        btn.disabled = false;
-        btn.textContent = "Enviar proposta";
-      }
-    });
-  </script>
-</body>
-</html>
+</form>
+</div>
