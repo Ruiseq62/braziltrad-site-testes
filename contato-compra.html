@@ -4,46 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quero Comprar — BrazilTrad</title>
-  <link rel="stylesheet" href="css/style.css">
 
   <style>
-    body{padding-top:40px;background:#f2f2f2;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    form{max-width:520px;margin:0 auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
-    label{display:block;margin-top:14px;font-weight:600;color:#222}
-    input,textarea,select{
-      width:100%;padding:10px;margin-top:4px;border:1px solid #ccc;border-radius:6px;font-family:inherit;
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f5f5f5;
+      padding-top: 40px;
     }
-    button{
-      margin-top:18px;background:#0F4C5C;color:#fff;border:none;padding:12px 20px;border-radius:6px;cursor:pointer
+
+    form {
+      max-width: 520px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
     }
-    button:hover{background:#12697a}
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p.desc {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #555;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 24px;
+      background: #0F4C5C;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #12697a;
+    }
+
+    .msg {
+      margin-top: 18px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .success { color: #008f4c; }
+    .error { color: #c62828; }
+
   </style>
 </head>
-
 <body>
 
   <main class="container">
-    <h1 style="text-align:center;margin-bottom:20px;">Quero Comprar</h1>
+    <h1>Quero Comprar</h1>
+    <p class="desc">Preencha o formulário abaixo e nossa equipe entrará em contato.</p>
 
-    <form id="zohoBuyForm">
+    <form id="contactForm">
 
-      <!-- 🔒 Tokens do ZOHO -->
+      <!-- 🔹 Identificação Zoho -->
       <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
       <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
       <input type="hidden" name="actionType" value="TGVhZHM=">
-      <input type="hidden" name="returnURL" value="">
+      <input type="hidden" name="returnURL" value="null">
 
-      <!-- 🔧 Campos técnicos exigidos pelo Zoho -->
-      <input type="hidden" name="Last Name" id="hiddenLast">
-      <input type="hidden" name="Rating" value="PT">
-      <input type="hidden" name="Lead_Type" value="Compra">
-      <input type="hidden" name="Vendedor_Comprador" value="Comprador">
+      <!-- 👍 Campo obrigatório do Zoho -->
+      <input type="hidden" name="Lead Source" value="Comprador">
 
-      <!-- Campos Visíveis -->
+      <!-- 🔹 Campos do formulário -->
       <label>Nome *</label>
-      <input type="text" id="nome" required>
+      <input type="text" name="Last Name" required>
 
-      <label>Email *</label>
+      <label>E-mail *</label>
       <input type="email" name="Email" required>
 
       <label>Empresa (opcional)</label>
@@ -53,84 +108,83 @@
       <input type="text" name="Mobile">
 
       <label>Produto que deseja comprar *</label>
-      <select name="Product" required>
+      <select name="Industry" required>
         <option value="">Selecione...</option>
         <option value="Café">Café</option>
         <option value="Soja">Soja</option>
         <option value="Milho">Milho</option>
-        <option value="Minérios">Minérios</option>
         <option value="Carnes">Carnes</option>
+        <option value="Minérios">Minérios</option>
         <option value="Açúcar">Açúcar</option>
         <option value="Outros">Outros</option>
       </select>
 
       <label>Volume mensal estimado</label>
-      <input type="text" name="Volume">
+      <input type="text" name="Annual Revenue">
 
       <label>País de origem da carga</label>
-      <input type="text" name="Origin">
+      <input type="text" name="City">
 
-      <label>Mensagem</label>
-      <textarea name="Description" rows="4"></textarea>
+      <label>Mensagem *</label>
+      <textarea name="Description" rows="5" required></textarea>
 
-      <button id="submitBtn" type="submit">Enviar</button>
+      <button type="submit">Enviar</button>
+      <div id="formMsg" class="msg"></div>
     </form>
-
-    <div id="successBox" style="display:none;margin-top:16px;padding:14px;border-radius:8px;background:#F5FAF5;border:1px solid #A9D3AB;">
-      <strong>Obrigado!</strong>
-      <p>A sua solicitação foi enviada com sucesso.</p>
-      <button onclick="location.href='index.html'"
-        style="margin-top:8px;background:#12697a;color:#fff;padding:8px 12px;border-radius:6px;border:0;cursor:pointer;">
-        Voltar ao Site
-      </button>
-    </div>
   </main>
 
-<script>
-(function(){
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  const ZOHO_URL =
-    "https://crm.zoho.com/crm/WebToLeadForm" +
-    "?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13" +
-    "&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3" +
-    "&actionType=TGVhZHM=";
+      const form = e.target;
+      const msg = document.getElementById("formMsg");
+      msg.textContent = "";
+      msg.className = "msg";
 
-  const form = document.getElementById("zohoBuyForm");
-  const hiddenLast = document.getElementById("hiddenLast");
-  const successBox = document.getElementById("successBox");
-  const submitBtn = document.getElementById("submitBtn");
-  const nomeInput = document.getElementById("nome");
+      const data = new FormData(form);
 
-  // Atualiza Last Name automaticamente
-  nomeInput.addEventListener("input", ()=>{
-    hiddenLast.value = nomeInput.value;
-  });
+      try {
+        // 🔹 Enviar para Zoho CRM
+        const zohoRes = await fetch("https://crm.zoho.com/crm/WebToLeadForm", {
+          method: "POST",
+          body: data
+        });
 
-  form.addEventListener("submit", async (e)=>{
-    e.preventDefault();
+        if (!zohoRes.ok) throw new Error("Erro no Zoho");
 
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = 0.6;
+        // 🔹 Email Lead
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: new FormData(Object.assign(document.createElement("form"), {
+            access_key: "36b646fd-5467-4ff8-8a3a-9df90aae76fe",
+            email: form.Email.value,
+            subject: "Recebemos sua solicitação",
+            message: "Obrigado! A equipe BrazilTrad entrará em contato."
+          }))
+        });
 
-    const fd = new FormData(form);
-    fd.append("Last Name", nomeInput.value);
+        // 🔹 Email para você
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: new FormData(Object.assign(document.createElement("form"), {
+            access_key: "36b646fd-5467-4ff8-8a3a-9df90aae76fe",
+            email: "rsequeira@braziltrad.com",
+            subject: "Novo Lead — Quero Comprar",
+            message: "Um novo comprador preencheu o formulário."
+          }))
+        });
 
-    try{
-      const resp = await fetch(ZOHO_URL, { method:"POST", body:fd });
-      if(resp.ok){
-        form.style.display = "none";
-        successBox.style.display = "block";
-      } else throw new Error();
-    }
-    catch(err){
-      alert("Erro ao enviar. Tente novamente.");
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = 1;
-    }
-  });
+        msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contato.";
+        msg.classList.add("success");
+        form.reset();
 
-})();
-</script>
+      } catch (err) {
+        msg.textContent = "Erro ao enviar. Tente novamente.";
+        msg.classList.add("error");
+      }
+    });
+  </script>
 
 </body>
 </html>
