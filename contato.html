@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contato — BrazilTrad</title>
 
+  <link rel="stylesheet" href="css/style.css">
+
   <style>
     body {
-      background: #f4f6f8;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      padding: 40px 12px;
+      background:#f2f5f7;
+      font-family: Inter, Arial, sans-serif;
+      padding:40px 0;
     }
 
-    form {
+    .container {
       max-width: 520px;
       margin: 0 auto;
       background: #fff;
@@ -22,188 +24,205 @@
     }
 
     h1 {
-      text-align:center;
-      margin-bottom: 12px;
-      color: #0F4C5C;
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 28px;
+      color:#0F4C5C;
     }
 
-    p {
+    p.desc {
       text-align:center;
-      margin-top: 0;
-      margin-bottom: 28px;
+      margin-top:0;
+      margin-bottom:25px;
+      color:#555;
     }
 
     label {
-      display:block;
+      display: block;
       margin-top: 14px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    input,textarea {
-      width:100%;
-      padding:10px;
-      margin-top:4px;
-      border:1px solid #ccc;
-      border-radius:6px;
-      font-family:inherit;
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
     }
 
     button {
-      margin-top:20px;
-      width:100%;
-      background:#0F4C5C;
-      color:#fff;
-      border:none;
-      padding:14px;
-      border-radius:6px;
-      cursor:pointer;
-      font-size:16px;
-      font-weight:600;
+      margin-top: 22px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
-    button:hover {
-      background:#12697a;
+    #sendBtn {
+      background:#0F4C5C;
+      color:#fff;
+    }
+    #sendBtn:hover {
+      background:#12697A;
+    }
+
+    #backBtn {
+      background:#063F4E;
+      color:#fff;
+      margin-top:14px;
+      display:none; /* só aparece após sucesso */
     }
 
     .msg {
-      margin-top:16px;
+      margin-top:18px;
       text-align:center;
       font-weight:600;
+      display:none;
     }
     .success { color:#008f4c; }
     .error { color:#c62828; }
-
-    #backButton {
-      display:none;
-      margin-top:14px;
-      text-align:center;
-      background:#0F4C5C;
-      color:#fff;
-      padding:12px;
-      border-radius:6px;
-      text-decoration:none;
-      font-weight:600;
-      width:100%;
-      display:block;
-      cursor:pointer;
-    }
   </style>
 </head>
-
 <body>
 
+<div class="container">
   <h1>Contato</h1>
-  <p>Preencha o formulário abaixo e entraremos em contacto.</p>
+  <p class="desc">Preencha o formulário abaixo e entraremos em contacto.</p>
 
-  <form id="contactForm" method="POST">
-
-    <!-- CAMPOS ZOHO -->
-    <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
-    <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
-    <input type="hidden" name="actionType" value="TGVhZHM=">
-    <input type="hidden" name="returnURL" value="null">
-
+  <form id="contactForm">
     <label>Nome *</label>
-    <input type="text" name="Last Name" required>
+    <input type="text" name="name" required>
 
     <label>E-mail *</label>
-    <input type="email" name="Email" required>
+    <input type="email" name="email" required>
 
     <label>Empresa (opcional)</label>
-    <input type="text" name="Company">
+    <input type="text" name="company">
 
     <label>Mensagem *</label>
-    <textarea name="Description" rows="5" required></textarea>
+    <textarea name="message" rows="5" required></textarea>
 
-    <button type="submit">Enviar</button>
+    <button id="sendBtn" type="submit">Enviar</button>
+
+    <button id="backBtn" type="button">Voltar ao site</button>
 
     <div id="formMsg" class="msg"></div>
-
-    <a id="backButton" onclick="history.back()">Voltar ao site</a>
-
   </form>
+</div>
 
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
+<script>
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-      const form = e.target;
-      const msg = document.getElementById("formMsg");
-      const backBtn = document.getElementById("backButton");
+  const form = e.target;
+  const sendBtn = document.getElementById("sendBtn");
+  const backBtn = document.getElementById("backBtn");
+  const msgBox = document.getElementById("formMsg");
 
-      msg.textContent = "";
-      msg.className = "msg";
-      backBtn.style.display = "none";
+  sendBtn.disabled = true;
+  msgBox.style.display = "none";
 
-      const zohoData = new FormData(form);
+  const name = form.name.value;
+  const email = form.email.value;
+  const company = form.company.value || "";
+  const message = form.message.value;
 
-      try {
-        /* 1) Envio para ZOHO CRM */
-        const zohoRes = await fetch("https://crm.zoho.com/crm/WebToLeadForm", {
-          method: "POST",
-          body: zohoData
-        });
-        if (!zohoRes.ok) throw new Error("Erro Zoho");
+  try {
+      /* ---------------------------------------------
+         1) ENVIAR PARA O ZOHO
+      --------------------------------------------- */
+      const zohoUrl = "https://crm.zoho.com/crm/WebToLeadForm";
+      const zohoForm = new FormData();
 
+      zohoForm.append("xnQsjsdp","3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13");
+      zohoForm.append("xmIwtLD","55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3");
+      zohoForm.append("actionType","TGVhZHM=");
+      zohoForm.append("returnURL","null");
 
-        /* 2) Email para o Lead */
-        const emailLead = new FormData();
-        emailLead.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
-        emailLead.append("email", form.Email.value);
-        emailLead.append("from_name", "BrazilTrad");
-        emailLead.append("subject", "Recebemos a sua mensagem");
+      zohoForm.append("Last Name", name);
+      zohoForm.append("Email", email);
+      zohoForm.append("Company", company);
+      zohoForm.append("Description", message);
 
-        emailLead.append(
-          "message",
-          "Olá " + form['Last Name'].value + ",\n\n" +
-          "Obrigado pelo seu contato!\n" +
-          "Em breve nossa equipa retornará.\n\n" +
-          "BrazilTrad"
-        );
-
-        await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: emailLead
-        });
+      await fetch(zohoUrl, { method:"POST", body:zohoForm });
 
 
-        /* 3) Email interno (apenas 1) */
-        const emailAdmin = new FormData();
-        emailAdmin.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
-        emailAdmin.append("email", "rsequeira@braziltrad.com");
-        emailAdmin.append("from_name", "BrazilTrad — Novo Lead");
-        emailAdmin.append("subject", "Novo Lead — Contato");
+      /* ---------------------------------------------
+         2) EMAIL PARA O LEAD
+      --------------------------------------------- */
+      const leadEmail = new FormData();
+      leadEmail.append("access_key","36b646fd-5467-4ff8-8a3a-9df90aae76fe");
+      leadEmail.append("subject","Recebemos sua mensagem — BrazilTrad");
+      leadEmail.append("recipient", email); // ← agora envia para o lead
+      leadEmail.append("from_name","BrazilTrad");
+      leadEmail.append("message",
+        `Olá ${name},<br><br>
+        Recebemos a sua mensagem e entraremos em contacto muito em breve.<br><br>
+        Obrigado,<br>BrazilTrad`
+      );
 
-        emailAdmin.append(
-          "message",
-          "Novo lead recebido:\n\n" +
-          "Nome: " + form['Last Name'].value + "\n" +
-          "Email: " + form.Email.value + "\n" +
-          "Empresa: " + form.Company.value + "\n" +
-          "Mensagem: " + form.Description.value + "\n\n" +
-          "Enviado automaticamente pelo site."
-        );
-
-        await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: emailAdmin
-        });
+      await fetch("https://api.web3forms.com/submit", {
+        method:"POST",
+        body: leadEmail
+      });
 
 
-        /* SUCESSO TOTAL */
-        msg.textContent = "Mensagem enviada com sucesso!";
-        msg.classList.add("success");
+      /* ---------------------------------------------
+         3) EMAIL INTERNO PARA RUI
+      --------------------------------------------- */
+      const internalEmail = new FormData();
+      internalEmail.append("access_key","36b646fd-5467-4ff8-8a3a-9df90aae76fe");
+      internalEmail.append("subject","Novo contato recebido — BrazilTrad");
+      internalEmail.append("recipient","rsequeira@braziltrad.com");
+      internalEmail.append("from_name","BrazilTrad");
 
-        form.reset();
-        backBtn.style.display = "block"; // mostra botão depois do envio
+      internalEmail.append("message",
+        `Novo contato recebido:<br><br>
+        <b>Nome:</b> ${name}<br>
+        <b>Email:</b> ${email}<br>
+        <b>Empresa:</b> ${company}<br><br>
+        <b>Mensagem:</b><br>${message}`
+      );
 
-      } catch (err) {
-        console.error(err);
-        msg.textContent = "Erro ao enviar. Por favor tente novamente.";
-        msg.classList.add("error");
-      }
-    });
-  </script>
+      await fetch("https://api.web3forms.com/submit", {
+        method:"POST",
+        body: internalEmail
+      });
+
+
+      /* ---------------------------------------------
+         SUCESSO
+      --------------------------------------------- */
+      msgBox.textContent = "Mensagem enviada com sucesso!";
+      msgBox.className = "msg success";
+      msgBox.style.display = "block";
+
+      form.reset();
+
+      backBtn.style.display = "block";
+      sendBtn.disabled = false;
+
+
+  } catch (error) {
+      msgBox.textContent = "Erro ao enviar. Tente novamente.";
+      msgBox.className = "msg error";
+      msgBox.style.display = "block";
+      sendBtn.disabled = false;
+  }
+});
+
+
+/* ---------------------------------------------
+   BOTÃO VOLTAR AO SITE
+--------------------------------------------- */
+document.getElementById("backBtn").addEventListener("click", () => {
+    window.history.back();
+});
+</script>
 
 </body>
 </html>
