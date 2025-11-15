@@ -1,174 +1,162 @@
-<div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm" style="background-color:#fff;color:#000;max-width:600px;margin:0 auto;">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<META HTTP-EQUIV="content-type" CONTENT="text/html;charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formulário de Contato — BrazilTrad</title>
+<link rel="stylesheet" href="/css/site.css">
 <style>
-  html,body{margin:0}
-  #crmWebToEntityForm{padding:20px;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-  .zcwf_row{margin:12px 0;display:flex;align-items:flex-start}
-  .zcwf_col_lab{width:30%;font-size:13px;padding-right:8px}
-  .zcwf_col_fld{width:70%}
-  input[type="text"], textarea, select{width:100%;padding:8px;border:1px solid #c0c6cc;border-radius:4px;font-size:14px}
-  .formsubmit{background:linear-gradient(0deg,#0279FF,#00A3F3);color:#fff;border:none;padding:10px 16px;border-radius:4px;cursor:pointer}
-  .backbtn{background:#555;color:#fff;padding:8px 14px;border:none;border-radius:4px;margin-top:10px;cursor:pointer}
-  #successBox{display:none;background:#e8f8e8;border:1px solid #90c090;padding:15px;border-radius:6px;margin-top:20px;text-align:center}
-  @media (max-width:600px){
-    .zcwf_row{flex-direction:column}
-    .zcwf_col_lab,.zcwf_col_fld{width:100%}
-  }
+  /* pequeno estilo inline para o exemplo */
+  body{font-family:Arial,Helvetica,sans-serif;padding:30px;color:#222}
+  .form-row{margin:12px 0}
+  label{display:block;margin-bottom:6px;font-weight:600}
+  input[type=text],textarea,select{width:420px;padding:8px;border:1px solid #c0c6cc;border-radius:4px}
+  textarea{min-height:120px}
+  .btn{background:linear-gradient(#02acff,#006be4);color:#fff;border:0;padding:8px 14px;border-radius:6px;cursor:pointer}
+  #successBox{display:none;background:#F5FAF5;border:1px solid #A9D3AB;padding:14px;border-radius:6px;max-width:600px}
+  .backBtn{margin-top:10px;display:inline-block}
 </style>
+</head>
+<body>
+  <h1>Formulário de Contato</h1>
 
-<div class="zcwf_title" style="font-weight:bold;margin-bottom:10px;font-size:18px;">
-  Formulário de Contato
-</div>
+  <div id="leadFormPT">
+    <!-- INÍCIO: FORMULÁRIO DO ZOHO (não remover hidden inputs) -->
+    <form id="webform7111694000000588056" accept-charset="UTF-8">
+      <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
+      <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
+      <input type="hidden" name="actionType" value="TGVhZHM=">
+      <input type="hidden" name="returnURL" value="null">
+      <!-- Campos -->
+      <div class="form-row">
+        <label for="Company">Empresa <span style="color:red">*</span></label>
+        <input type="text" id="Company" name="Company" maxlength="200">
+      </div>
 
-<div id="successBox">
-  <h3 style="margin-top:0">Obrigado!</h3>
-  <p>A sua mensagem foi enviada com sucesso.</p>
-  <button class="backbtn" onclick="history.back()">Voltar ao Site</button>
-</div>
+      <div class="form-row">
+        <label for="Last_Name">Sobrenome <span style="color:red">*</span></label>
+        <input type="text" id="Last_Name" name="Last Name" maxlength="80">
+      </div>
 
-<form id="leadFormPT" name="WebToLeads7111694000000588056" accept-charset="UTF-8">
+      <div class="form-row">
+        <label for="Email">E-mail</label>
+        <input type="text" id="Email" name="Email" ftype="email" maxlength="100">
+      </div>
 
-  <!-- tokens obrigatórios do Zoho -->
-  <input type="hidden" name="xnQsjsdp" value="3f1aa17b9adc2639d249333f02a8e2f7e5d315e2c9ff293a3ddfc8aaf567fd7f">
-  <input type="hidden" name="zc_gad" id="zc_gad" value="">
-  <input type="hidden" name="xmIwtLD" value="88dc1ea1bb6968af64ce12fec06b86b4bc6cf3e7a91491473cd9be3f7c3aee4fd03bfca2dd0f8ecec74a729114b215e4">
-  <input type="hidden" name="actionType" value="TGVhZHM=">
+      <div class="form-row">
+        <label for="Mobile">Celular</label>
+        <input type="text" id="Mobile" name="Mobile" maxlength="30">
+      </div>
 
-  <!-- Last Name preenchido automaticamente -->
-  <input type="hidden" name="Last Name" id="autoLastName">
+      <div class="form-row">
+        <label for="Industry">Produto</label>
+        <select id="Industry" name="Industry">
+          <option value="-None-">-None-</option>
+          <option value="Caf&eacute;">Café</option>
+          <option value="Soja">Soja</option>
+          <option value="Milho">Milho</option>
+          <option value="Min&eacute;rios">Minérios</option>
+          <option value="Carnes">Carnes</option>
+          <option value="A&ccedil;&uacute;car">Açúcar</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Nome *</label></div>
-    <div class="zcwf_col_fld">
-      <input type="text" id="NomeVisivel" required>
-    </div>
+      <div class="form-row">
+        <label for="VendedorComprador">Vendedor / Comprador</label>
+        <!-- nome do campo usado no Zoho: "Vendedor / Comprador" (espaço e barra incluídos) -->
+        <select id="VendedorComprador" name="Vendedor / Comprador">
+          <option value="-None-">-None-</option>
+          <option value="Vendedor">Vendedor</option>
+          <option value="Comprador">Comprador</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="City">Origem</label>
+        <input type="text" id="City" name="City">
+      </div>
+
+      <div class="form-row">
+        <label for="Street">Destino</label>
+        <input type="text" id="Street" name="Street">
+      </div>
+
+      <div class="form-row">
+        <label for="Annual_Revenue">Volume (Toneladas)</label>
+        <input type="text" id="Annual_Revenue" name="Annual Revenue">
+      </div>
+
+      <div class="form-row">
+        <label for="Rating">Idioma</label>
+        <select id="Rating" name="Rating">
+          <option value="-None-">-None-</option>
+          <option value="PT">PT</option>
+          <option value="EN">EN</option>
+          <option value="ES">ES</option>
+          <option value="ZH">ZH</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="Description">Mensagem</label>
+        <textarea id="Description" name="Description"></textarea>
+      </div>
+
+      <div class="form-row">
+        <button type="submit" class="btn" id="submitBtn">Enviar</button>
+      </div>
+    </form>
+    <!-- FIM: FORMULÁRIO -->
   </div>
 
-  <script>
-    // copia Nome → Last Name (Zoho exige)
-    document.addEventListener('input', function(){
-      document.getElementById("autoLastName").value =
-        document.getElementById("NomeVisivel").value;
-    });
-  </script>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Empresa *</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Company" required></div>
+  <div id="successBox" role="status" aria-live="polite">
+    <strong>Obrigado!</strong>
+    <p>A BrazilTrad vai entrar em contacto consigo muito em breve.</p>
+    <button class="btn backBtn" id="backBtn">Voltar ao Site</button>
   </div>
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>E-mail</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Email" ftype="email"></div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Celular</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Mobile"></div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Produto</label></div>
-    <div class="zcwf_col_fld">
-      <select name="Industry">
-        <option value="-None-">-None-</option>
-        <option value="Café">Café</option>
-        <option value="Soja">Soja</option>
-        <option value="Milho">Milho</option>
-        <option value="Minérios">Minérios</option>
-        <option value="Carnes">Carnes</option>
-        <option value="Açúcar">Açúcar</option>
-        <option value="Outros">Outros</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Vendedor / Comprador</label></div>
-    <div class="zcwf_col_fld">
-      <select name="Lead Source">
-        <option value="-None-">-None-</option>
-        <option value="Vendedor">Vendedor</option>
-        <option value="Comprador">Comprador</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Origem</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="City"></div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Destino</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Street"></div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Volume (Toneladas)</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Annual Revenue"></div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Idioma</label></div>
-    <div class="zcwf_col_fld">
-      <select name="Rating">
-        <option value="PT" selected>PT</option>
-        <option value="EN">EN</option>
-        <option value="ES">ES</option>
-        <option value="ZH">ZH</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Mensagem</label></div>
-    <div class="zcwf_col_fld"><textarea name="Description" rows="4"></textarea></div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"></div>
-    <div class="zcwf_col_fld">
-      <input type="submit" class="formsubmit" value="Enviar">
-    </div>
-  </div>
-
-</form>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
-  // envio AJAX
-  $("#leadFormPT").on("submit", function(e){
+/* validações básicas */
+function validateForm(){
+  var company = $("#Company").val().trim();
+  var last = $("#Last_Name").val().trim();
+  if(company === ""){ alert("Por favor preencha a Empresa."); $("#Company").focus(); return false; }
+  if(last === ""){ alert("Por favor preencha o Sobrenome."); $("#Last_Name").focus(); return false; }
+  var email = $("#Email").val().trim();
+  if(email.length){
+    var at = email.indexOf("@"), dot = email.lastIndexOf(".");
+    if(at<1 || dot < at+2 || dot+2 >= email.length){ alert("Insira um endereço de e-mail válido."); $("#Email").focus(); return false; }
+  }
+  return true;
+}
+
+$(function(){
+  $("#webform7111694000000588056").on("submit", function(e){
     e.preventDefault();
-
-    // valida Nome + Empresa
-    if ($("#NomeVisivel").val().trim() === "") {
-      alert("Por favor preencha o Nome.");
-      return;
-    }
-    if ($("input[name='Company']").val().trim() === "") {
-      alert("Por favor preencha a Empresa.");
-      return;
-    }
-
+    if(!validateForm()) return;
     var formData = new FormData(this);
-
     $.ajax({
-      url:"https://crm.zoho.com/crm/WebToLeadForm",
-      type:"POST",
-      data:formData,
-      cache:false,
-      contentType:false,
-      processData:false,
-      success:function(){
+      url: "https://crm.zoho.com/crm/WebToLeadForm",
+      type: "POST",
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(res){
+        // mostrar mensagem de sucesso na mesma página
         $("#leadFormPT").hide();
         $("#successBox").show();
       },
-      error:function(){
+      error: function(){
         alert("Ocorreu um erro ao enviar o formulário.");
       }
     });
   });
+
+  $("#backBtn").on("click", function(){ history.back(); });
+});
 </script>
+</body>
+</html>
