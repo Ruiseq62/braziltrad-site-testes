@@ -1,162 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Formulário de Contato — BrazilTrad</title>
-<link rel="stylesheet" href="/css/site.css">
-<style>
-  /* pequeno estilo inline para o exemplo */
-  body{font-family:Arial,Helvetica,sans-serif;padding:30px;color:#222}
-  .form-row{margin:12px 0}
-  label{display:block;margin-bottom:6px;font-weight:600}
-  input[type=text],textarea,select{width:420px;padding:8px;border:1px solid #c0c6cc;border-radius:4px}
-  textarea{min-height:120px}
-  .btn{background:linear-gradient(#02acff,#006be4);color:#fff;border:0;padding:8px 14px;border-radius:6px;cursor:pointer}
-  #successBox{display:none;background:#F5FAF5;border:1px solid #A9D3AB;padding:14px;border-radius:6px;max-width:600px}
-  .backBtn{margin-top:10px;display:inline-block}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contato — BrazilTrad</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .langbar{
+      position:fixed;top:0;left:0;right:0;height:36px;
+      display:flex;align-items:center;justify-content:center;
+      gap:14px;background:#0F4C5C;color:#fff;
+      font:500 14px/1 Inter,system-ui,-apple-system;
+      z-index:10000
+    }
+    .langbar a{color:#fff;text-decoration:none;opacity:.8;padding:6px 10px;border-radius:999px}
+    .langbar a.active,.langbar a:hover{background:rgba(255,255,255,.14);opacity:1}
+
+    body{padding-top:60px}
+
+    form{
+      max-width:520px;margin:0 auto;background:#fff;
+      padding:30px;border-radius:12px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.05)
+    }
+    label{display:block;margin-top:12px;font-weight:500}
+    input,textarea{
+      width:100%;padding:10px;margin-top:4px;
+      border:1px solid #ccc;border-radius:6px;font-family:inherit
+    }
+    button{
+      margin-top:16px;background:#0F4C5C;color:#fff;
+      border:none;padding:12px 20px;border-radius:6px;cursor:pointer
+    }
+    button:hover{background:#12697a}
+
+    .msg{margin-top:16px;text-align:center;font-weight:600}
+    .success{color:#008f4c}
+    .error{color:#c62828}
+  </style>
+
 </head>
 <body>
-  <h1>Formulário de Contato</h1>
 
-  <div id="leadFormPT">
-    <!-- INÍCIO: FORMULÁRIO DO ZOHO (não remover hidden inputs) -->
-    <form id="webform7111694000000588056" accept-charset="UTF-8">
-      <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
-      <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
-      <input type="hidden" name="actionType" value="TGVhZHM=">
-      <input type="hidden" name="returnURL" value="null">
-      <!-- Campos -->
-      <div class="form-row">
-        <label for="Company">Empresa <span style="color:red">*</span></label>
-        <input type="text" id="Company" name="Company" maxlength="200">
-      </div>
+  <!-- Barra de idioma -->
+  <div class="langbar">
+    <a href="#pt" data-lang-select="pt">🇧🇷 PT</a>
+    <a href="#en" data-lang-select="en">🇬🇧 EN</a>
+    <a href="#es" data-lang-select="es">🇪🇸 ES</a>
+    <a href="#zh" data-lang-select="zh">🇨🇳 中文</a>
+  </div>
 
-      <div class="form-row">
-        <label for="Last_Name">Sobrenome <span style="color:red">*</span></label>
-        <input type="text" id="Last_Name" name="Last Name" maxlength="80">
-      </div>
+  <main class="container">
+    <h1 data-i18n="title">Contato</h1>
+    <p data-i18n="desc" style="text-align:center">Preencha o formulário abaixo e nossa equipe entrará em contato.</p>
 
-      <div class="form-row">
-        <label for="Email">E-mail</label>
-        <input type="text" id="Email" name="Email" ftype="email" maxlength="100">
-      </div>
+    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="36b646fd-5467-4ff8-8a3a-9df90aae76fe">
+      <input type="hidden" name="form_origem" value="Contato">
+      <input type="hidden" name="idioma" value="pt">
 
-      <div class="form-row">
-        <label for="Mobile">Celular</label>
-        <input type="text" id="Mobile" name="Mobile" maxlength="30">
-      </div>
+      <label data-i18n="form.name">Nome</label>
+      <input type="text" name="name" required>
 
-      <div class="form-row">
-        <label for="Industry">Produto</label>
-        <select id="Industry" name="Industry">
-          <option value="-None-">-None-</option>
-          <option value="Caf&eacute;">Café</option>
-          <option value="Soja">Soja</option>
-          <option value="Milho">Milho</option>
-          <option value="Min&eacute;rios">Minérios</option>
-          <option value="Carnes">Carnes</option>
-          <option value="A&ccedil;&uacute;car">Açúcar</option>
-          <option value="Outros">Outros</option>
-        </select>
-      </div>
+      <label data-i18n="form.email">E-mail</label>
+      <input type="email" name="email" required>
 
-      <div class="form-row">
-        <label for="VendedorComprador">Vendedor / Comprador</label>
-        <!-- nome do campo usado no Zoho: "Vendedor / Comprador" (espaço e barra incluídos) -->
-        <select id="VendedorComprador" name="Vendedor / Comprador">
-          <option value="-None-">-None-</option>
-          <option value="Vendedor">Vendedor</option>
-          <option value="Comprador">Comprador</option>
-        </select>
-      </div>
+      <label data-i18n="form.company">Empresa (opcional)</label>
+      <input type="text" name="company">
 
-      <div class="form-row">
-        <label for="City">Origem</label>
-        <input type="text" id="City" name="City">
-      </div>
+      <label data-i18n="form.cell">Celular</label>
+      <input type="text" name="cell">
 
-      <div class="form-row">
-        <label for="Street">Destino</label>
-        <input type="text" id="Street" name="Street">
-      </div>
+      <label data-i18n="form.message">Mensagem</label>
+      <textarea name="message" rows="5" required></textarea>
 
-      <div class="form-row">
-        <label for="Annual_Revenue">Volume (Toneladas)</label>
-        <input type="text" id="Annual_Revenue" name="Annual Revenue">
-      </div>
-
-      <div class="form-row">
-        <label for="Rating">Idioma</label>
-        <select id="Rating" name="Rating">
-          <option value="-None-">-None-</option>
-          <option value="PT">PT</option>
-          <option value="EN">EN</option>
-          <option value="ES">ES</option>
-          <option value="ZH">ZH</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <label for="Description">Mensagem</label>
-        <textarea id="Description" name="Description"></textarea>
-      </div>
-
-      <div class="form-row">
-        <button type="submit" class="btn" id="submitBtn">Enviar</button>
-      </div>
+      <button type="submit" data-i18n="form.send">Enviar mensagem</button>
+      <div id="formMsg" class="msg"></div>
     </form>
-    <!-- FIM: FORMULÁRIO -->
-  </div>
+  </main>
 
-  <div id="successBox" role="status" aria-live="polite">
-    <strong>Obrigado!</strong>
-    <p>A BrazilTrad vai entrar em contacto consigo muito em breve.</p>
-    <button class="btn backBtn" id="backBtn">Voltar ao Site</button>
-  </div>
+  <footer class="footer" style="margin-top:60px;text-align:center;padding:20px;color:#444">
+    <div>© BrazilTrad — <span data-i18n="footer">Conectando produtores brasileiros a mercados globais.</span></div>
+    <div>✉️ <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a></div>
+  </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-/* validações básicas */
-function validateForm(){
-  var company = $("#Company").val().trim();
-  var last = $("#Last_Name").val().trim();
-  if(company === ""){ alert("Por favor preencha a Empresa."); $("#Company").focus(); return false; }
-  if(last === ""){ alert("Por favor preencha o Sobrenome."); $("#Last_Name").focus(); return false; }
-  var email = $("#Email").val().trim();
-  if(email.length){
-    var at = email.indexOf("@"), dot = email.lastIndexOf(".");
-    if(at<1 || dot < at+2 || dot+2 >= email.length){ alert("Insira um endereço de e-mail válido."); $("#Email").focus(); return false; }
-  }
-  return true;
-}
+  <script>
+    const I18N = {
+      pt:{title:"Contato",desc:"Preencha o formulário abaixo e nossa equipe entrará em contato.",
+        form:{name:"Nome",email:"E-mail",company:"Empresa (opcional)",cell:"Celular",message:"Mensagem",send:"Enviar mensagem"},
+        success:"Mensagem enviada com sucesso! Entraremos em contato em breve.",
+        error:"Erro ao enviar. Tente novamente.",
+        footer:"Conectando produtores brasileiros a mercados globais."}
+    };
 
-$(function(){
-  $("#webform7111694000000588056").on("submit", function(e){
-    e.preventDefault();
-    if(!validateForm()) return;
-    var formData = new FormData(this);
-    $.ajax({
-      url: "https://crm.zoho.com/crm/WebToLeadForm",
-      type: "POST",
-      data: formData,
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: function(res){
-        // mostrar mensagem de sucesso na mesma página
-        $("#leadFormPT").hide();
-        $("#successBox").show();
-      },
-      error: function(){
-        alert("Ocorreu um erro ao enviar o formulário.");
+    function setLanguage(lang){
+      const t=I18N.pt;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const path = el.dataset.i18n.split(".");
+        let val=t;
+        path.forEach(k=>val=val[k]);
+        el.textContent=val;
+      });
+    }
+
+    setLanguage("pt");
+
+    // Envio Web3Forms + Google Sheets
+    document.getElementById("contactForm").addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      const form=e.target;
+      const data=new FormData(form);
+      const msg=document.getElementById("formMsg");
+      msg.textContent="";
+
+      try{
+        const res=await fetch(form.action,{method:"POST",body:data});
+
+        // Dados para Google Sheets
+        const sheetData={
+          nome: form.name.value,
+          email: form.email.value,
+          empresa: form.company.value,
+          celular: form.cell.value,
+          mensagem: form.message.value,
+          idioma:"pt",
+          tipo:"Contato"
+        };
+
+        await fetch("https://script.google.com/macros/s/AKfycbz54mjdL83y4hUXPnPrwOtNxgwL5Q3TtrQ75yzljmpS-h8dSi50oCGojaSBGKGdxwkquQ/exec",{
+          method:"POST",
+          body:JSON.stringify(sheetData)
+        });
+
+        if(res.ok){
+          msg.textContent=I18N.pt.success;
+          msg.className="msg success";
+          form.reset();
+        }else throw new Error();
+      }catch{
+        msg.textContent=I18N.pt.error;
+        msg.className="msg error";
       }
     });
-  });
+  </script>
 
-  $("#backBtn").on("click", function(){ history.back(); });
-});
-</script>
 </body>
 </html>
