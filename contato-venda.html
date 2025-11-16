@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quero Vender — BrazilTrad</title>
 
   <style>
@@ -72,6 +72,7 @@
       text-align: center;
       font-weight: 600;
     }
+
     .success { color: #008f4c; }
     .error { color: #c62828; }
 
@@ -96,19 +97,16 @@
 
     <form id="contactForm">
 
-      <!-- Zoho WebToLead tokens (mesmos que tens no Zoho) -->
+      <!-- TOKENS DO ZOHO -->
       <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
       <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
       <input type="hidden" name="actionType" value="TGVhZHM=">
       <input type="hidden" name="returnURL" value="https://braziltrad.com">
 
-      <!-- Forçamos aqui a Situação / Fonte para "Vendedor" -->
+      <!-- FONTE DO CLIENTE POTENCIAL (CORRETO E FUNCIONANDO) -->
       <input type="hidden" name="Lead Source" value="Vendedor">
-      <!-- Se preferires utilizar o campo personalizado LEADCF10, substitui a linha anterior por:
-           <input type="hidden" name="LEADCF10" value="Vendedor">
-      -->
 
-      <!-- Campos do formulário -->
+      <!-- CAMPOS DO FORMULÁRIO -->
       <label for="nome">Nome *</label>
       <input id="nome" name="Last Name" type="text" required>
 
@@ -142,7 +140,7 @@
       <label for="mensagem">Mensagem / Observações</label>
       <textarea id="mensagem" name="Description" rows="5"></textarea>
 
-      <button id="submitBtn" type="submit">Enviar</button>
+      <button type="submit">Enviar</button>
 
       <div id="msg" class="msg"></div>
       <button id="backBtn" type="button" onclick="history.back()">Voltar ao site</button>
@@ -154,14 +152,13 @@
 (function(){
 
   const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
-  // URL do teu Apps Script (mesma que tens nos outros formulários)
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQshN6wnzPZsVP03nJtnaFUEWxApRN6RPGbI_7KXVWM8VhUHJ0y1_PE7YEXAqtFM6t/exec";
 
   const form = document.getElementById("contactForm");
   const msg = document.getElementById("msg");
   const backBtn = document.getElementById("backBtn");
 
-  function detectLang() {
+  function detectLang(){
     const lang = (document.documentElement.lang || navigator.language || "pt").toLowerCase();
     if(lang.startsWith("pt")) return "PT";
     if(lang.startsWith("en")) return "EN";
@@ -175,24 +172,23 @@
     msg.textContent = "";
     msg.className = "msg";
 
-    // 1) FormData para o Zoho (envia o form tal como está, incluindo Lead Source = Vendedor)
+    // FormData para Zoho
     const fdZoho = new FormData(form);
 
-    // 2) FormData para o Apps Script (para planilha / emails via GAS)
+    // FormData para Apps Script
     const fdScript = new FormData();
-    fdScript.append("nome", document.getElementById("nome").value || "");
-    fdScript.append("email", document.getElementById("email").value || "");
-    fdScript.append("telefone", document.getElementById("telefone").value || "");
-    fdScript.append("empresa", document.getElementById("empresa").value || "");
-    fdScript.append("produto", document.getElementById("produto").value || "");
-    fdScript.append("volume", document.getElementById("capacidade").value || "");
-    fdScript.append("pais", document.getElementById("pais").value || "");
-    fdScript.append("mensagem", document.getElementById("mensagem").value || "");
+    fdScript.append("nome", document.getElementById("nome").value);
+    fdScript.append("email", document.getElementById("email").value);
+    fdScript.append("telefone", document.getElementById("telefone").value);
+    fdScript.append("empresa", document.getElementById("empresa").value);
+    fdScript.append("produto", document.getElementById("produto").value);
+    fdScript.append("volume", document.getElementById("capacidade").value);
+    fdScript.append("pais", document.getElementById("pais").value);
+    fdScript.append("mensagem", document.getElementById("mensagem").value);
     fdScript.append("idioma", detectLang());
     fdScript.append("origem_formulario", "vender.html");
 
     try {
-      // enviar para Zoho + Apps Script em paralelo
       await Promise.all([
         fetch(ZOHO_URL, { method: "POST", body: fdZoho }),
         fetch(SCRIPT_URL, { method: "POST", body: fdScript })
