@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contato — BrazilTrad</title>
-  <link rel="stylesheet" href="css/style.css">
 
   <style>
     body {
@@ -20,7 +18,7 @@
       background: #fff;
       padding: 30px;
       border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
       text-align: center;
     }
 
@@ -42,8 +40,7 @@
       margin-top: 12px;
     }
 
-    input,
-    textarea {
+    input, textarea {
       width: 100%;
       padding: 12px;
       margin-top: 5px;
@@ -75,13 +72,8 @@
       text-align: center;
     }
 
-    .success {
-      color: #008f4c;
-    }
-
-    .error {
-      color: #c62828;
-    }
+    .success { color: #008f4c; }
+    .error { color: #c62828; }
 
     #backBtn {
       display: none;
@@ -100,6 +92,46 @@
 
     <form id="contactForm">
 
+      <!-- Web3Forms -->
+      <input type="hidden" name="access_key" value="36b646fd-5467-4ff8-8a3a-9df90aae76fe">
+
+      <!-- Auto-resposta para o Lead -->
+      <input type="hidden" name="auto_reply_html" value="
+      <!DOCTYPE html>
+      <html><body style='margin:0; padding:0; background:#f5f6f7; font-family:Arial, Helvetica, sans-serif;'>
+      <table width='100%' cellpadding='0' cellspacing='0' style='background:#f5f6f7; padding:30px 0;'>
+      <tr><td align='center'>
+      <table width='600' cellpadding='0' cellspacing='0' style='background:#ffffff; border-radius:10px; padding:30px;'>
+      
+      <tr><td align='center' style='padding-bottom:20px;'>
+      <img src='https://ruiseq62.github.io/braziltrad-site-testes/assets/img/braziltrad-logo.png' width='150'>
+      </td></tr>
+
+      <tr><td align='center' style='font-size:22px; color:#0F4C5C; font-weight:700; padding-bottom:10px;'>
+      Obrigado pelo seu contato!
+      </td></tr>
+
+      <tr><td style='font-size:16px; color:#333; line-height:1.6; padding:0 10px 20px;'>
+      Recebemos a sua mensagem e a nossa equipa da BrazilTrad irá responder em breve.<br><br>
+      Agradecemos o seu interesse nos nossos serviços.
+      </td></tr>
+
+      <tr><td style='font-size:15px; color:#555; line-height:1.6; padding:0 10px;'>
+      Atenciosamente,<br>
+      <strong>Equipe BrazilTrad</strong><br>
+      <a href='https://braziltrad.com' style='color:#0F4C5C;'>braziltrad.com</a>
+      </td></tr>
+
+      </table>
+      </td></tr></table>
+      </body></html>
+      ">
+
+      <!-- Email interno -->
+      <input type="hidden" name="from_name" value="BrazilTrad – Website">
+      <input type="hidden" name="subject" value="Novo contato recebido — BrazilTrad">
+
+      <!-- Campos -->
       <label for="name">Nome *</label>
       <input type="text" id="name" name="name" required>
 
@@ -129,96 +161,42 @@
       msg.textContent = "";
       msg.className = "";
 
-      // Capturar os valores do Lead
-      const leadName = form.name.value.trim();
-      const leadEmail = form.email.value.trim();
-      const company = form.company.value.trim();
-      const message = form.message.value.trim();
-
-      // AUTO-REPLY (HTML para o LEAD)
-      const autoReplyHTML = `
-        <html>
-        <body style="font-family:Arial;padding:20px;">
-          <h2 style="color:#0F4C5C;">Olá, ${leadName}!</h2>
-          <p>Recebemos a sua mensagem e entraremos em contacto em breve.</p>
-          <hr>
-          <p style="font-size:12px;color:#777;">BrazilTrad — Exportação & Comércio Internacional</p>
-        </body>
-        </html>
-      `;
-
-      // E-mail interno
-      const internalHTML = `
-        <html><body>
-          <h3>Novo contato recebido:</h3>
-          <p><strong>Nome:</strong> ${leadName}</p>
-          <p><strong>Email:</strong> ${leadEmail}</p>
-          <p><strong>Empresa:</strong> ${company}</p>
-          <p><strong>Mensagem:</strong><br>${message}</p>
-        </body></html>
-      `;
-
-      // FORMDATA manual para evitar erros
-      const fd = new FormData();
-      fd.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
-
-      // Lead recebe este email (HTML)
-      fd.append("auto_reply_html", autoReplyHTML);
-
-      // Lead é o destinatário
-      fd.append("email", leadEmail);
-
-      // Envio interno
-      fd.append("from_name", "BrazilTrad Website");
-      fd.append("subject", "Novo contato recebido pelo site");
-      fd.append("message", internalHTML);
-
-      // Campos opcionais
-      fd.append("name", leadName);
-      fd.append("company", company);
+      const formData = new FormData(form);
 
       try {
-        // Web3Forms (email interno + lead)
-        const r = await fetch("https://api.web3forms.com/submit", {
+        // 1️⃣ Envia emails via Web3Forms
+        const resEmail = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
-          body: fd
+          body: formData
         });
 
-        const j = await r.json();
-        console.log(j);
+        if (!resEmail.ok) throw new Error("email_error");
 
-        if (!j.success) throw new Error("web3forms failed");
-
-        // Zoho
-        const zohoData = new FormData();
-        zohoData.append("Company", company);
-        zohoData.append("Last Name", leadName);
-        zohoData.append("Email", leadEmail);
-        zohoData.append("Description", message);
-        zohoData.append("Lead Source", "Contato Site");
+        // 2️⃣ Envia lead ao Zoho CRM
+        const zohoPayload = new FormData();
+        zohoPayload.append("Company", form.company.value);
+        zohoPayload.append("Last Name", form.name.value);
+        zohoPayload.append("Email", form.email.value);
+        zohoPayload.append("Description", form.message.value);
+        zohoPayload.append("Lead Source", "Contato Site");
 
         await fetch(
           "https://crm.zoho.com/crm/WebToLeadForm?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3&actionType=TGVhZHM=&returnURL=null",
-          {
-            method: "POST",
-            body: zohoData
-          }
+          { method: "POST", body: zohoPayload }
         );
 
+        // Sucesso
         msg.textContent = "Mensagem enviada com sucesso!";
         msg.classList.add("success");
         document.getElementById("backBtn").style.display = "block";
         form.reset();
 
       } catch (err) {
-        console.error(err);
         msg.textContent = "Erro ao enviar. Tente novamente.";
         msg.classList.add("error");
       }
-
     });
   </script>
 
 </body>
-
 </html>
