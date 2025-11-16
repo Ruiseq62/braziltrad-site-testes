@@ -93,28 +93,24 @@ button:hover {
 <div class="container">
 
 <h1>Contato</h1>
-<p class="subtitle">Preencha o formulário abaixo e entraremos em contacto.</p>
+<p class="subtitle">Preencha o formulário abaixo e entraremos em contato.</p>
 
 <form id="contactForm">
 
-    <!-- API KEY -->
-    <input type="hidden" name="apiKey" value="sf_b3eii9ka8989402jlh07k05b">
+    <!-- Identificação do formulário -->
+    <input type="hidden" name="formType" value="Contato — Site">
 
-    <!-- Email interno -->
-    <input type="hidden" name="email" value="rsequeira@braziltrad.com">
-
-    <!-- Email automático para lead -->
-    <input type="hidden" name="replyTo" value="@email">
-
-    <!-- Redirecionamento -->
-    <input type="hidden" name="redirectTo" value="https://braziltrad.com">
-
-    <!-- Campos -->
     <label for="name">Nome *</label>
     <input type="text" id="name" name="name" required>
 
     <label for="email">E-mail *</label>
     <input type="email" id="email" name="email" required>
+
+    <label for="phone">Telefone *</label>
+    <input type="text" id="phone" name="phone" required>
+
+    <label for="country">País de Atuação *</label>
+    <input type="text" id="country" name="country" required>
 
     <label for="company">Empresa (opcional)</label>
     <input type="text" id="company" name="company">
@@ -133,23 +129,29 @@ button:hover {
 
 <script>
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
-
     e.preventDefault();
-    const form = e.target;
 
+    const form = e.target;
     const msg = document.getElementById("msgStatus");
     msg.textContent = "";
     msg.className = "";
 
     let formData = new FormData(form);
 
+    // Enviar referência para deteção do idioma
+    formData.append("referer", document.referrer || window.location.pathname);
+
     try {
-        const res = await fetch("https://api.staticforms.dev/submit", {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbyLD3yMBZlWqmEK0oMmOy-NNLmaNc5HL5J1NoW5LJSU1dsKjxfPPj_7qhGuggGSKbDz/exec", {
             method: "POST",
             body: formData
         });
 
-        if (!res.ok) throw new Error();
+        const data = await res.json();
+
+        if (!res.ok || data.status !== "success") {
+            throw new Error("Erro no processamento");
+        }
 
         msg.textContent = "Mensagem enviada com sucesso!";
         msg.classList.add("success");
