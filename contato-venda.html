@@ -4,21 +4,30 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Quero Vender — BrazilTrad</title>
+
 <style>
   body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f1f5f4;padding:40px 10px}
-  .container{max-width:520px;margin:0 auto;background:#fff;padding:30px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,0.07);text-align:left}
+  .container{max-width:520px;margin:0 auto;background:#fff;padding:30px;border-radius:14px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.07);text-align:left}
   h1{color:#0F4C5C;margin:0 0 6px;font-size:26px;text-align:center}
   p.subtitle{color:#444;text-align:center;margin-bottom:18px}
   label{display:block;margin-top:12px;font-weight:600}
-  input,select,textarea{width:100%;padding:12px;margin-top:6px;border:1px solid #ccc;border-radius:6px;font-size:15px}
-  button{width:100%;margin-top:18px;padding:14px;background:#0F4C5C;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+  input,select,textarea{
+    width:100%;padding:12px;margin-top:6px;
+    border:1px solid #ccc;border-radius:6px;font-size:15px}
+  button{
+    width:100%;margin-top:18px;padding:14px;background:#0F4C5C;
+    color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
   button:hover{background:#12697a}
   #msg{margin-top:16px;text-align:center;font-weight:700}
   .success{color:#008f4c}.error{color:#c62828}
-  #backBtn{display:none;margin-top:12px;background:#0F4C5C;color:#fff;padding:10px;border-radius:6px;border:none;cursor:pointer}
+  #backBtn{
+    display:none;margin-top:12px;background:#0F4C5C;color:#fff;
+    padding:10px;border-radius:6px;border:none;cursor:pointer;width:100%;font-weight:600}
   .small{font-size:13px;color:#666;margin-top:8px;text-align:center}
 </style>
 </head>
+
 <body>
   <div class="container">
     <h1>Quero Vender</h1>
@@ -26,14 +35,14 @@
 
     <form id="sellForm">
 
-      <!-- Hidden Zoho WebToLead tokens (mesmos do formulário de contacto) -->
+      <!-- 🟦 Zoho WebToLead tokens (mesmos do contacto) -->
       <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
       <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
       <input type="hidden" name="actionType" value="TGVhZHM=">
       <input type="hidden" name="returnURL" value="https://braziltrad.com">
       <input type="hidden" name="Lead Source" value="Vendedor">
 
-      <!-- Form fields -->
+      <!-- Campos -->
       <label for="nome">Nome *</label>
       <input id="nome" name="Last Name" type="text" required>
 
@@ -69,19 +78,21 @@
 
       <button id="submitBtn" type="submit">Enviar</button>
 
-      <div id="msg" class=""></div>
+      <div id="msg"></div>
       <button id="backBtn" type="button" onclick="history.back()">Voltar ao site</button>
-      <div class="small">Os dados também serão registados no Zoho CRM e na nossa planilha interna.</div>
+
+      <div class="small">Os dados serão enviados ao Zoho CRM e à nossa planilha interna.</div>
     </form>
   </div>
 
 <script>
 (function(){
+
   const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQshN6wnzPZsVP03nJtnaFUEWxApRN6RPGbI_7KXVWM8VhUHJ0y1_PE7YEXAqtFM6t/exec";
 
   function detectLang(){
-    const lang = (document.documentElement.lang || navigator.language || "pt").toLowerCase();
+    const lang = (document.documentElement.lang || navigator.language).toLowerCase();
     if(lang.startsWith("pt")) return "PT";
     if(lang.startsWith("en")) return "EN";
     if(lang.startsWith("es")) return "ES";
@@ -89,51 +100,51 @@
     return "PT";
   }
 
-  // setar idioma se quiseres usar no Zoho (campo oculto não necessário aqui)
   const form = document.getElementById("sellForm");
   const msg = document.getElementById("msg");
   const backBtn = document.getElementById("backBtn");
 
   form.addEventListener("submit", async function(e){
     e.preventDefault();
-    msg.textContent = ""; msg.className = "";
+    msg.textContent=""; msg.className="";
 
-    // preparar FormData para Zoho (envio do formulário original)
+    // FormData para Zoho
     const fdZoho = new FormData(form);
 
-    // preparar FormData para o Apps Script (mesmos campos mapeados)
+    // FormData para o Apps Script (tudo mapeado)
     const fdScript = new FormData();
-    fdScript.append("nome", document.getElementById("nome").value);
-    fdScript.append("email", document.getElementById("email").value);
-    fdScript.append("telefone", document.getElementById("telefone").value);
-    fdScript.append("empresa", document.getElementById("empresa").value);
-    fdScript.append("produto", document.getElementById("produto").value);
-    fdScript.append("volume", document.getElementById("capacidade").value);
-    fdScript.append("pais", document.getElementById("pais").value);
-    fdScript.append("mensagem", document.getElementById("mensagem").value);
-    fdScript.append("idioma", detectLang());
+    fdScript.append("nome",      document.getElementById("nome").value);
+    fdScript.append("email",     document.getElementById("email").value);
+    fdScript.append("telefone",  document.getElementById("telefone").value);
+    fdScript.append("empresa",   document.getElementById("empresa").value);
+    fdScript.append("produto",   document.getElementById("produto").value);
+    fdScript.append("volume",    document.getElementById("capacidade").value);
+    fdScript.append("pais",      document.getElementById("pais").value);
+    fdScript.append("mensagem",  document.getElementById("mensagem").value);
+    fdScript.append("idioma",    detectLang());
     fdScript.append("origem_formulario", "vender.html");
 
-    try {
-      // enviar ambos em paralelo (Zoho + Apps Script)
+    try{
+      // Envio simultâneo
       await Promise.all([
-        fetch(ZOHO_URL, { method: "POST", body: fdZoho }),
-        fetch(SCRIPT_URL, { method: "POST", body: fdScript })
+        fetch(ZOHO_URL,   { method:"POST", body:fdZoho }),
+        fetch(SCRIPT_URL, { method:"POST", body:fdScript })
       ]);
 
-      msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contacto.";
+      msg.textContent="Mensagem enviada com sucesso! Em breve entraremos em contacto.";
       msg.classList.add("success");
       form.reset();
-      backBtn.style.display = "block";
+      backBtn.style.display="block";
 
-    } catch(err) {
+    }catch(err){
       console.error(err);
-      msg.textContent = "Erro ao enviar. Tente novamente.";
+      msg.textContent="Erro ao enviar. Tente novamente.";
       msg.classList.add("error");
     }
   });
 
 })();
 </script>
+
 </body>
 </html>
