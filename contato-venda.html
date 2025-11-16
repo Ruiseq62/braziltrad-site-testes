@@ -1,124 +1,139 @@
-<div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm" style="background-color:#fff;color:#000;max-width:600px;">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<META HTTP-EQUIV="content-type" CONTENT="text/html;charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Quero Vender — BrazilTrad</title>
 <style>
-  html,body{margin:0}
-  #crmWebToEntityForm{padding:20px;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-  .zcwf_row{margin:12px 0;display:flex;align-items:flex-start}
-  .zcwf_col_lab{width:30%;font-size:13px;padding-right:8px}
-  .zcwf_col_fld{width:70%}
-  input[type="text"], textarea, select{width:100%;padding:8px;border:1px solid #c0c6cc;border-radius:4px;font-size:14px}
-  .formsubmit{background:linear-gradient(0deg,#0279FF,#00A3F3);color:#fff;border:none;padding:10px 16px;border-radius:4px;cursor:pointer}
-  @media (max-width:600px){
-    .zcwf_row{flex-direction:column}
-    .zcwf_col_lab,.zcwf_col_fld{width:100%}
-  }
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f1f5f4;padding:40px 10px}
+  .container{max-width:520px;margin:0 auto;background:#fff;padding:30px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,0.07);text-align:left}
+  h1{color:#0F4C5C;margin:0 0 6px;font-size:26px;text-align:center}
+  p.subtitle{color:#444;text-align:center;margin-bottom:18px}
+  label{display:block;margin-top:12px;font-weight:600}
+  input,select,textarea{width:100%;padding:12px;margin-top:6px;border:1px solid #ccc;border-radius:6px;font-size:15px}
+  button{width:100%;margin-top:18px;padding:14px;background:#0F4C5C;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+  button:hover{background:#12697a}
+  #msg{margin-top:16px;text-align:center;font-weight:700}
+  .success{color:#008f4c}.error{color:#c62828}
+  #backBtn{display:none;margin-top:12px;background:#0F4C5C;color:#fff;padding:10px;border-radius:6px;border:none;cursor:pointer}
+  .small{font-size:13px;color:#666;margin-top:8px;text-align:center}
 </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quero Vender</h1>
+    <p class="subtitle">Preencha o formulário com os dados da sua oferta e a nossa equipa entrará em contacto.</p>
 
-<div class="zcwf_title" style="font-weight:bold;margin-bottom:10px;font-size:18px;">
-  Formulário para Vendedores
-</div>
+    <form id="sellForm">
 
-<form id="webform7111694000000588056"
-      name="WebToLeads7111694000000588056"
-      accept-charset="UTF-8"
-      data-bt-type="venda"
-      data-bt-lang="PT"
-      data-bt-return="/pt/obrigado-venda.html">
+      <!-- Hidden Zoho WebToLead tokens (mesmos do formulário de contacto) -->
+      <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
+      <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
+      <input type="hidden" name="actionType" value="TGVhZHM=">
+      <input type="hidden" name="returnURL" value="https://braziltrad.com">
+      <input type="hidden" name="Lead Source" value="Vendedor">
 
-  <input type="hidden" name="xnQsjsdp" value="3f1aa17b9adc2639d249333f02a8e2f7e5d315e2c9ff293a3ddfc8aaf567fd7f">
-  <input type="hidden" name="zc_gad" id="zc_gad" value="">
-  <input type="hidden" name="xmIwtLD" value="88dc1ea1bb6968af64ce12fec06b86b4bc6cf3e7a91491473cd9be3f7c3aee4fd03bfca2dd0f8ecec74a729114b215e4">
-  <input type="hidden" name="actionType" value="TGVhZHM=">
-  <input type="hidden" name="returnURL" value="https://braziltrad.com/pt/obrigado-venda.html">
+      <!-- Form fields -->
+      <label for="nome">Nome *</label>
+      <input id="nome" name="Last Name" type="text" required>
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Empresa *</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Company" required></div>
-  </div>
+      <label for="email">E-mail *</label>
+      <input id="email" name="Email" type="email" required>
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Sobrenome *</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Last Name" required></div>
-  </div>
+      <label for="telefone">Telefone</label>
+      <input id="telefone" name="Mobile" type="text">
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>E-mail</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Email" ftype="email"></div>
-  </div>
+      <label for="empresa">Empresa (opcional)</label>
+      <input id="empresa" name="Company" type="text">
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Celular</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Mobile"></div>
-  </div>
-
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Produto</label></div>
-    <div class="zcwf_col_fld">
-      <select name="Industry">
-        <option value="-None-">-None-</option>
+      <label for="produto">Produto que pretende vender *</label>
+      <select id="produto" name="Industry" required>
+        <option value="">Selecione...</option>
         <option value="Café">Café</option>
         <option value="Soja">Soja</option>
         <option value="Milho">Milho</option>
-        <option value="Minérios">Minérios</option>
         <option value="Carnes">Carnes</option>
+        <option value="Minérios">Minérios</option>
         <option value="Açúcar">Açúcar</option>
         <option value="Outros">Outros</option>
       </select>
-    </div>
+
+      <label for="capacidade">Capacidade mensal (ex.: 1000 t)</label>
+      <input id="capacidade" name="Annual Revenue" type="text">
+
+      <label for="pais">País de origem *</label>
+      <input id="pais" name="City" type="text" required>
+
+      <label for="mensagem">Mensagem / Observações</label>
+      <textarea id="mensagem" name="Description" rows="5"></textarea>
+
+      <button id="submitBtn" type="submit">Enviar</button>
+
+      <div id="msg" class=""></div>
+      <button id="backBtn" type="button" onclick="history.back()">Voltar ao site</button>
+      <div class="small">Os dados também serão registados no Zoho CRM e na nossa planilha interna.</div>
+    </form>
   </div>
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Vendedor / Comprador</label></div>
-    <div class="zcwf_col_fld">
-      <select name="Lead Source">
-        <option value="-None-">-None-</option>
-        <option value="Vendedor" selected>Vendedor</option>
-        <option value="Comprador">Comprador</option>
-      </select>
-    </div>
-  </div>
+<script>
+(function(){
+  const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQshN6wnzPZsVP03nJtnaFUEWxApRN6RPGbI_7KXVWM8VhUHJ0y1_PE7YEXAqtFM6t/exec";
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Origem</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="City"></div>
-  </div>
+  function detectLang(){
+    const lang = (document.documentElement.lang || navigator.language || "pt").toLowerCase();
+    if(lang.startsWith("pt")) return "PT";
+    if(lang.startsWith("en")) return "EN";
+    if(lang.startsWith("es")) return "ES";
+    if(lang.startsWith("zh")) return "ZH";
+    return "PT";
+  }
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Destino</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Street"></div>
-  </div>
+  // setar idioma se quiseres usar no Zoho (campo oculto não necessário aqui)
+  const form = document.getElementById("sellForm");
+  const msg = document.getElementById("msg");
+  const backBtn = document.getElementById("backBtn");
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Volume (Toneladas)</label></div>
-    <div class="zcwf_col_fld"><input type="text" name="Annual Revenue"></div>
-  </div>
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    msg.textContent = ""; msg.className = "";
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Idioma</label></div>
-    <div class="zcwf_col_fld">
-      <select name="Rating">
-        <option value="PT" selected>PT</option>
-        <option value="EN">EN</option>
-        <option value="ES">ES</option>
-        <option value="ZH">ZH</option>
-      </select>
-    </div>
-  </div>
+    // preparar FormData para Zoho (envio do formulário original)
+    const fdZoho = new FormData(form);
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"><label>Mensagem</label></div>
-    <div class="zcwf_col_fld"><textarea name="Description" rows="4"></textarea></div>
-  </div>
+    // preparar FormData para o Apps Script (mesmos campos mapeados)
+    const fdScript = new FormData();
+    fdScript.append("nome", document.getElementById("nome").value);
+    fdScript.append("email", document.getElementById("email").value);
+    fdScript.append("telefone", document.getElementById("telefone").value);
+    fdScript.append("empresa", document.getElementById("empresa").value);
+    fdScript.append("produto", document.getElementById("produto").value);
+    fdScript.append("volume", document.getElementById("capacidade").value);
+    fdScript.append("pais", document.getElementById("pais").value);
+    fdScript.append("mensagem", document.getElementById("mensagem").value);
+    fdScript.append("idioma", detectLang());
+    fdScript.append("origem_formulario", "vender.html");
 
-  <div class="zcwf_row">
-    <div class="zcwf_col_lab"></div>
-    <div class="zcwf_col_fld">
-      <input type="submit" class="formsubmit" value="Enviar">
-    </div>
-  </div>
+    try {
+      // enviar ambos em paralelo (Zoho + Apps Script)
+      await Promise.all([
+        fetch(ZOHO_URL, { method: "POST", body: fdZoho }),
+        fetch(SCRIPT_URL, { method: "POST", body: fdScript })
+      ]);
 
-</form>
-</div>
+      msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contacto.";
+      msg.classList.add("success");
+      form.reset();
+      backBtn.style.display = "block";
+
+    } catch(err) {
+      console.error(err);
+      msg.textContent = "Erro ao enviar. Tente novamente.";
+      msg.classList.add("error");
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
