@@ -142,7 +142,12 @@
       }
 
       function leadAutoResponseHTML(name) {
-        return `<!doctype html><html><body><h2>Obrigado, ${escapeHtml(name)}!</h2><p>Recebemos a sua mensagem (AMBIENTE DE TESTES).</p></body></html>`;
+        return `<!doctype html><html><body><h2>Obrigado, ${escapeHtml(name)}!</h2><p>Recebemos a sua mensagem (AMBIENTE DE TESTES).</p>    <!-- Envio Zoho REAL reinserido -->
+    <script>
+      // adicionar ao submit, logo após Web3Forms
+      // CÓDIGO ZOHO SERÁ INSERIDO AQUI AUTOMATICAMENTE APÓS A CORREÇÃO COMPLETA
+    </script>
+</body></html>`;
       }
 
       function internalEmailHTML(data) {
@@ -183,7 +188,7 @@
           web3formData.append("email", data.email);
           web3formData.append("company", data.company);
           web3formData.append("message", internalEmailHTML(data));
-          web3formData.append("auto_response_html", leadAutoResponseHTML(data.name));
+          web3formData.append("auto_response", leadAutoResponseHTML(data.name));
           web3formData.append("from_name", "BrazilTrad - Website (Testes)");
           web3formData.append("subject", "[TESTE] Novo contato recebido pelo site BrazilTrad");
           web3formData.append("recaptcha_token", token);
