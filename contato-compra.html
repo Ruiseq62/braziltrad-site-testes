@@ -1,126 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quero Comprar — BrazilTrad</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quero Comprar — BrazilTrad</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: #f5f5f5;
-      padding-top: 40px;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #f5f5f5;
+    padding-top: 40px;
+  }
+  form {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  }
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  p.desc {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #555;
+  }
+  label {
+    display: block;
+    margin-top: 14px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  button {
+    width: 100%;
+    margin-top: 24px;
+    background: #0F4C5C;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  button:hover {
+    background: #12697a;
+  }
+  .msg {
+    margin-top: 18px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .success { color: #008f4c; }
+  .error { color: #c62828; }
 
-    form {
-      max-width: 520px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-    }
+  #backBtn {
+    display:none;
+    margin-top:14px;
+    background:#0F4C5C;
+    color:white;
+    padding:12px;
+    border:none;
+    cursor:pointer;
+    border-radius:6px;
+    font-size:15px;
+  }
+</style>
 
-    h1 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    p.desc {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #555;
-    }
-
-    label {
-      display: block;
-      margin-top: 14px;
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 12px;
-      margin-top: 4px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    button {
-      width: 100%;
-      margin-top: 24px;
-      background: #0F4C5C;
-      color: #fff;
-      border: none;
-      padding: 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    button:hover {
-      background: #12697a;
-    }
-
-    .msg {
-      margin-top: 18px;
-      text-align: center;
-      font-weight: 600;
-    }
-    .success { color: #008f4c; }
-    .error { color: #c62828; }
-
-    #backBtn {
-      display:none;
-      margin-top:14px;
-      background:#0F4C5C;
-      color:white;
-      padding:12px;
-      border:none;
-      cursor:pointer;
-      border-radius:6px;
-      font-size:15px;
-    }
-
-  </style>
 </head>
 <body>
 
   <main class="container">
-    <h1>Quero Comprar</h1>
-    <p class="desc">Preencha o formulário abaixo e nossa equipe entrará em contato.</p>
+    <h1 id="title"></h1>
+    <p class="desc" id="subtitle"></p>
 
     <form id="contactForm">
 
-      <!-- Tokens Zoho (mesmos do formulário principal) -->
+      <!-- TOKENS DO ZOHO (não alterar) -->
       <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
       <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
       <input type="hidden" name="actionType" value="TGVhZHM=">
-
       <input type="hidden" name="returnURL" value="https://braziltrad.com">
       <input type="hidden" name="Lead Source" value="Comprador">
 
-      <!-- Campos do formulário -->
-      <label>Nome *</label>
+      <label id="labelNome"></label>
       <input type="text" name="Last Name" id="nome" required>
 
-      <label>E-mail *</label>
+      <label id="labelEmail"></label>
       <input type="email" name="Email" id="email" required>
 
-      <label>Empresa (opcional)</label>
+      <label id="labelEmpresa"></label>
       <input type="text" name="Company" id="empresa">
 
-      <label>Celular</label>
+      <label id="labelTelefone"></label>
       <input type="text" name="Mobile" id="telefone">
 
-      <label>Produto que deseja comprar *</label>
+      <label id="labelProduto"></label>
       <select name="Industry" id="produto" required>
-        <option value="">Selecione...</option>
+        <option value="">...</option>
         <option value="Café">Café</option>
         <option value="Soja">Soja</option>
         <option value="Milho">Milho</option>
@@ -130,76 +120,161 @@
         <option value="Outros">Outros</option>
       </select>
 
-      <label>Volume mensal estimado</label>
+      <label id="labelVolume"></label>
       <input type="text" name="Annual Revenue" id="volume">
 
-      <label>País de origem da carga</label>
-      <input type="text" name="City" id="pais">
+      <label id="labelPais"></label>
+      <input type="text" name="City" id="pais" required>
 
-      <label>Mensagem *</label>
+      <label id="labelMensagem"></label>
       <textarea name="Description" id="mensagem" rows="5" required></textarea>
 
-      <button type="submit">Enviar</button>
+      <button type="submit" id="btnEnviar"></button>
 
       <div id="formMsg" class="msg"></div>
-      <button id="backBtn" type="button" onclick="history.back()">Voltar ao site</button>
+      <button id="backBtn" type="button" onclick="history.back()"></button>
 
     </form>
   </main>
 
 <script>
-(function() {
+(function(){
+
+  /* ---------------------------
+     1) TRADUÇÃO DINÂMICA
+  ----------------------------*/
+
+  const translations = {
+    pt: {
+      title: "Quero Comprar",
+      subtitle: "Preencha o formulário abaixo e nossa equipe entrará em contato.",
+      nome: "Nome *",
+      email: "E-mail *",
+      empresa: "Empresa (opcional)",
+      telefone: "Celular",
+      produto: "Produto que deseja comprar *",
+      volume: "Volume mensal estimado",
+      pais: "País de origem da carga *",
+      mensagem: "Mensagem *",
+      enviar: "Enviar",
+      sucesso: "Mensagem enviada com sucesso! Em breve entraremos em contato.",
+      erro: "Erro ao enviar. Tente novamente.",
+      voltar: "Voltar ao site"
+    },
+    en: {
+      title: "I Want to Buy",
+      subtitle: "Fill out the form below and our team will contact you.",
+      nome: "Name *",
+      email: "Email *",
+      empresa: "Company (optional)",
+      telefone: "Phone",
+      produto: "Product you want to buy *",
+      volume: "Estimated monthly volume",
+      pais: "Country of origin *",
+      mensagem: "Message *",
+      enviar: "Send",
+      sucesso: "Message sent successfully! We will contact you shortly.",
+      erro: "Error sending message. Please try again.",
+      voltar: "Back to website"
+    },
+    es: {
+      title: "Quiero Comprar",
+      subtitle: "Complete el formulario y nuestro equipo se pondrá en contacto.",
+      nome: "Nombre *",
+      email: "Correo *",
+      empresa: "Empresa (opcional)",
+      telefone: "Teléfono",
+      produto: "Producto que desea comprar *",
+      volume: "Volumen mensual estimado",
+      pais: "País de origen *",
+      mensagem: "Mensaje *",
+      enviar: "Enviar",
+      sucesso: "Mensaje enviado correctamente. Nos pondremos en contacto pronto.",
+      erro: "Error al enviar. Intente nuevamente.",
+      voltar: "Volver al sitio"
+    },
+    zh: {
+      title: "我要采购",
+      subtitle: "请填写以下表格，我们的团队将尽快与您联系。",
+      nome: "名字 *",
+      email: "电子邮件 *",
+      empresa: "公司（可选）",
+      telefone: "电话",
+      produto: "想要采购的产品 *",
+      volume: "每月预计数量",
+      pais: "货物原产国 *",
+      mensagem: "留言 *",
+      enviar: "发送",
+      sucesso: "消息已成功发送！我们会尽快联系您。",
+      erro: "发送失败，请重试。",
+      voltar: "返回网站"
+    }
+  };
+
+  function detectLang(){
+    let lang = navigator.language.toLowerCase().substring(0,2);
+    if(!translations[lang]) lang = "pt";
+    return lang;
+  }
+
+  const lang = detectLang();
+  const t = translations[lang];
+
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("subtitle").textContent = t.subtitle;
+  document.getElementById("labelNome").textContent = t.nome;
+  document.getElementById("labelEmail").textContent = t.email;
+  document.getElementById("labelEmpresa").textContent = t.empresa;
+  document.getElementById("labelTelefone").textContent = t.telefone;
+  document.getElementById("labelProduto").textContent = t.produto;
+  document.getElementById("labelVolume").textContent = t.volume;
+  document.getElementById("labelPais").textContent = t.pais;
+  document.getElementById("labelMensagem").textContent = t.mensagem;
+  document.getElementById("btnEnviar").textContent = t.enviar;
+  document.getElementById("backBtn").textContent = t.voltar;
+
+  /* -------------------------------
+     2) ENVIO ZOHO + GOOGLE SCRIPT
+  --------------------------------*/
 
   const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQshN6wnzPZsVP03nJtnaFUEWxApRN6RPGbI_7KXVWM8VhUHJ0y1_PE7YEXAqtFM6t/exec";
-
-  function detectLang() {
-    const lang = (document.documentElement.lang || navigator.language).toLowerCase();
-    if (lang.startsWith("pt")) return "PT";
-    if (lang.startsWith("en")) return "EN";
-    if (lang.startsWith("es")) return "ES";
-    if (lang.startsWith("zh")) return "ZH";
-    return "PT";
-  }
 
   const form = document.getElementById("contactForm");
   const msg = document.getElementById("formMsg");
   const backBtn = document.getElementById("backBtn");
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", async (e)=>{
     e.preventDefault();
     msg.textContent = "";
-    msg.className = "msg";
 
-    // Envio Zoho
     const fdZoho = new FormData(form);
 
-    // Envio Apps Script
     const fdScript = new FormData();
     fdScript.append("nome", document.getElementById("nome").value);
     fdScript.append("email", document.getElementById("email").value);
     fdScript.append("telefone", document.getElementById("telefone").value);
-    fdScript.append("pais", document.getElementById("pais").value);
     fdScript.append("empresa", document.getElementById("empresa").value);
-    fdScript.append("mensagem", document.getElementById("mensagem").value);
     fdScript.append("produto", document.getElementById("produto").value);
     fdScript.append("volume", document.getElementById("volume").value);
-    fdScript.append("idioma", detectLang());
+    fdScript.append("pais", document.getElementById("pais").value);
+    fdScript.append("mensagem", document.getElementById("mensagem").value);
     fdScript.append("origem_formulario", "comprar.html");
+    fdScript.append("idioma", lang.toUpperCase());
 
     try {
       await Promise.all([
-        fetch(ZOHO_URL, { method: "POST", body: fdZoho }),
-        fetch(SCRIPT_URL, { method: "POST", body: fdScript })
+        fetch(ZOHO_URL, { method:"POST", body:fdZoho }),
+        fetch(SCRIPT_URL, { method:"POST", body:fdScript })
       ]);
 
-      msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contato.";
+      msg.textContent = t.sucesso;
       msg.classList.add("success");
       form.reset();
       backBtn.style.display = "block";
 
-    } catch (err) {
-      msg.textContent = "Erro ao enviar. Tente novamente.";
+    } catch {
+      msg.textContent = t.erro;
       msg.classList.add("error");
     }
   });
