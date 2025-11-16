@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contato — BrazilTrad</title>
+<link rel="stylesheet" href="css/style.css">
 
 <style>
 body {
@@ -11,6 +12,7 @@ body {
     background: #f1f5f4;
     padding: 40px 10px;
 }
+
 .container {
     max-width: 520px;
     margin: 0 auto;
@@ -18,68 +20,103 @@ body {
     padding: 30px;
     border-radius: 14px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-    text-align: center;
 }
+
 h1 {
     margin-bottom: 5px;
     color: #0F4C5C;
     font-size: 26px;
+    text-align: center;
 }
-p.subtitle { color:#444; margin-bottom:25px; }
-label { display:block; text-align:left; font-weight:600; margin-top:12px; }
+
+p.subtitle {
+    margin-bottom: 25px;
+    color: #444;
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
 input, textarea {
-    width:100%; padding:12px; margin-top:5px;
-    border:1px solid #ccc; border-radius:6px; font-size:15px;
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
 }
+
 button {
-    width:100%; margin-top:18px; padding:14px;
-    background:#0F4C5C; color:#fff;
-    border:none; border-radius:6px;
-    font-size:15px; font-weight:600; cursor:pointer;
+    width: 100%;
+    margin-top: 18px;
+    padding: 14px;
+    background: #0F4C5C;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
 }
-button:hover { background:#12697a; }
-#msgStatus { margin-top:18px; font-weight:600; }
-.success { color:#008f4c; }
-.error { color:#c62828; }
-#backBtn { display:none; margin-top:16px; background:#0F4C5C; }
+
+button:hover {
+    background: #12697a;
+}
+
+#msgStatus {
+    margin-top: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.success { color: #008f4c; }
+.error { color: #c62828; }
+
+#backBtn {
+    display: none;
+    margin-top: 16px;
+    background: #0F4C5C;
+}
 </style>
 </head>
 
 <body>
 <div class="container">
+    <h1>Contato</h1>
+    <p class="subtitle">Preencha o formulário abaixo e entraremos em contacto.</p>
 
-<h1>Contato</h1>
-<p class="subtitle">Preencha o formulário abaixo e entraremos em contato.</p>
+    <form id="contactForm">
+        
+        <!-- StaticForms -->
+        <input type="hidden" name="accessKey" value="sf_abc123def456ghi789">
 
-<form id="contactForm">
+        <!-- Email interno -->
+        <input type="hidden" name="replyTo" value="rsequeira@braziltrad.com">
 
-    <!-- Web3Forms access key -->
-    <input type="hidden" name="access_key" value="36b646fd-5467-4ff8-8a3a-9df90aae76fe">
+        <!-- Email do lead (recebe o autoresponder com HTML) -->
+        <input type="hidden" name="emailTemplate" value="default">
 
-    <!-- Email interno -->
-    <input type="hidden" name="from_name" value="Site BrazilTrad">
-    <input type="hidden" name="subject" value="Novo contato recebido — BrazilTrad">
+        <label>Nome *</label>
+        <input type="text" name="name" required>
 
-    <!-- Email HTML do lead (agora corretamente escondido DO EMAIL INTERNO) -->
-    <input type="hidden" name="email_reply_html" id="email_reply_html">
+        <label>E-mail *</label>
+        <input type="email" name="email" required>
 
-    <label for="name">Nome *</label>
-    <input type="text" id="name" name="name" required>
+        <label>Empresa</label>
+        <input type="text" name="company">
 
-    <label for="email">E-mail *</label>
-    <input type="email" id="email" name="email" required>
+        <label>Mensagem *</label>
+        <textarea name="message" rows="5" required></textarea>
 
-    <label for="company">Empresa (opcional)</label>
-    <input type="text" id="company" name="company">
+        <button type="submit">Enviar</button>
 
-    <label for="message">Mensagem *</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-
-    <button type="submit">Enviar</button>
-    <div id="msgStatus"></div>
-    <button id="backBtn" onclick="history.back()">Voltar ao site</button>
-
-</form>
+        <div id="msgStatus"></div>
+        <button id="backBtn" onclick="history.back()">Voltar ao site</button>
+    </form>
 </div>
 
 <script>
@@ -92,75 +129,27 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     msg.textContent = "";
     msg.className = "";
 
-    // Montar o HTML bonito do email do lead
-    const leadHTML = `
-<!DOCTYPE html>
-<html>
-<body style="margin:0; padding:0; background:#f5f6f7; font-family:Arial, Helvetica, sans-serif;">
-<table width="100%" cellpadding="0" cellspacing="0" style="padding:30px 0;">
-<tr><td align="center">
-<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff; border-radius:10px; padding:30px;">
-<tr><td align="center" style="padding-bottom:20px;">
-<img src="https://ruiseq62.github.io/braziltrad-site-testes/assets/img/braziltrad-logo.png" width="150">
-</td></tr>
-
-<tr><td align="center" style="font-size:22px; color:#0F4C5C; font-weight:700; padding-bottom:10px;">
-Obrigado pelo seu contato!
-</td></tr>
-
-<tr><td style="font-size:16px; color:#333; text-align:left;">
-Recebemos a sua mensagem e a nossa equipa da BrazilTrad irá responder em breve.<br><br>
-Agradecemos o seu interesse nos nossos serviços.<br><br>
-Atenciosamente,<br>
-<b>Equipe BrazilTrad</b><br>
-<a href="https://braziltrad.com">braziltrad.com</a>
-</td></tr>
-</table>
-</td></tr>
-</table>
-</body>
-</html>
-    `;
-
-    // Preencher o campo escondido com o HTML do email do lead
-    document.getElementById("email_reply_html").value = leadHTML;
-
-    // Prepara os dados para o Web3Forms
-    const formData = new FormData(form);
+    const data = new FormData(form);
 
     try {
-        // 1) Enviar ao Web3Forms
-        const rEmail = await fetch("https://api.web3forms.com/submit", {
+        const res = await fetch("https://api.staticforms.xyz/submit", {
             method: "POST",
-            body: formData
+            body: data
         });
 
-        if (!rEmail.ok) throw new Error("Erro ao enviar Web3Forms");
-
-        // 2) Enviar ao Zoho CRM
-        const zoho = new FormData();
-        zoho.append("Company", form.company.value);
-        zoho.append("Last Name", form.name.value);
-        zoho.append("Email", form.email.value);
-        zoho.append("Description", form.message.value);
-        zoho.append("Lead Source", "Contato Site");
-
-        await fetch(
-            "https://crm.zoho.com/crm/WebToLeadForm?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3&actionType=TGVhZHM=&returnURL=null",
-            { method: "POST", body: zoho }
-        );
+        if (!res.ok) throw new Error("Erro");
 
         msg.textContent = "Mensagem enviada com sucesso!";
         msg.classList.add("success");
+
         document.getElementById("backBtn").style.display = "block";
         form.reset();
 
-    } catch (error) {
+    } catch (err) {
         msg.textContent = "Erro ao enviar. Tente novamente.";
         msg.classList.add("error");
     }
 });
 </script>
-
 </body>
 </html>
