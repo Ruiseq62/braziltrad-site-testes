@@ -85,30 +85,30 @@
 
     <form id="contactForm">
 
-      <!-- 🔹 Zoho tokens -->
+      <!-- Zoho tokens -->
       <input type="hidden" name="xnQsjsdp" value="3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13">
       <input type="hidden" name="xmIwtLD" value="55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3">
       <input type="hidden" name="actionType" value="TGVhZHM=">
       <input type="hidden" name="returnURL" value="null">
 
-      <!-- 🔹 Campo obrigatório do Zoho -->
+      <!-- Origem no Zoho -->
       <input type="hidden" name="Lead Source" value="Comprador">
 
-      <!-- 🔹 Campos do formulário -->
+      <!-- Campos do formulário -->
       <label>Nome *</label>
-      <input type="text" name="Last Name" required>
+      <input type="text" name="Last Name" id="nome" required>
 
       <label>E-mail *</label>
-      <input type="email" name="Email" required>
+      <input type="email" name="Email" id="email" required>
 
       <label>Empresa (opcional)</label>
-      <input type="text" name="Company">
+      <input type="text" name="Company" id="empresa">
 
       <label>Celular</label>
-      <input type="text" name="Mobile">
+      <input type="text" name="Mobile" id="telefone">
 
       <label>Produto que deseja comprar *</label>
-      <select name="Industry" required>
+      <select name="Industry" id="produto" required>
         <option value="">Selecione...</option>
         <option value="Café">Café</option>
         <option value="Soja">Soja</option>
@@ -120,13 +120,13 @@
       </select>
 
       <label>Volume mensal estimado</label>
-      <input type="text" name="Annual Revenue">
+      <input type="text" name="Annual Revenue" id="volume">
 
       <label>País de origem da carga</label>
-      <input type="text" name="City">
+      <input type="text" name="City" id="pais">
 
       <label>Mensagem *</label>
-      <textarea name="Description" rows="5" required></textarea>
+      <textarea name="Description" id="mensagem" rows="5" required></textarea>
 
       <button type="submit">Enviar</button>
       <div id="formMsg" class="msg"></div>
@@ -134,82 +134,57 @@
   </main>
 
 <script>
-document.getElementById("contactForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+(function() {
 
-  const form = e.target;
-  const msg = document.getElementById("formMsg");
-  msg.textContent = "";
-  msg.className = "msg";
+  const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQshN6wnzPZsVP03nJtnaFUEWxApRN6RPGbI_7KXVWM8VhUHJ0y1_PE7YEXAqtFM6t/exec";
 
-  const zohoData = new FormData(form);
-
-  try {
-    /* -------------------------------------
-       1) Envio para ZOHO CRM
-    ------------------------------------- */
-    const zohoRes = await fetch("https://crm.zoho.com/crm/WebToLeadForm", {
-      method: "POST",
-      body: zohoData
-    });
-
-    if (!zohoRes.ok) throw new Error("Erro no Zoho");
-
-    /* -------------------------------------
-       2) ENVIAR EMAIL PARA O LEAD
-    ------------------------------------- */
-    const emailLead = new FormData();
-    emailLead.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
-    emailLead.append("from_name", "BrazilTrad");
-    emailLead.append("subject", "Recebemos sua solicitação");
-    emailLead.append("email", form.Email.value);
-    emailLead.append(
-      "message",
-      `Olá ${form["Last Name"].value}, obrigado pelo seu contato!
-A equipe BrazilTrad retornará em breve.`
-    );
-
-    await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: emailLead
-    });
-
-    /* -------------------------------------
-       3) E-MAIL PARA RSEQUEIRA@BRAZILTRAD.COM
-    ------------------------------------- */
-    const emailAdmin = new FormData();
-    emailAdmin.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
-    emailAdmin.append("from_name", "BrazilTrad — Novo Lead");
-    emailAdmin.append("subject", "Novo Lead — Quero Comprar");
-    emailAdmin.append("email", "rsequeira@braziltrad.com");
-    emailAdmin.append(
-      "message",
-      `Novo comprador:
-
-Nome: ${form["Last Name"].value}
-Email: ${form.Email.value}
-Empresa: ${form.Company.value}
-Produto: ${form.Industry.value}
-Mensagem: ${form.Description.value}`
-    );
-
-    await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: emailAdmin
-    });
-
-    /* -------------------------------------
-       4) Sucesso geral
-    ------------------------------------- */
-    msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contato.";
-    msg.classList.add("success");
-    form.reset();
-
-  } catch (err) {
-    msg.textContent = "Erro ao enviar. Tente novamente.";
-    msg.classList.add("error");
+  function detectLang() {
+    const lang = (document.documentElement.lang || navigator.language).toLowerCase();
+    if (lang.startsWith("pt")) return "PT";
+    if (lang.startsWith("en")) return "EN";
+    if (lang.startsWith("es")) return "ES";
+    if (lang.startsWith("zh")) return "ZH";
+    return "PT";
   }
-});
+
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("formMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    msg.textContent = "";
+    msg.className = "msg";
+
+    const fdZoho = new FormData(form);
+
+    const fdScript = new FormData();
+    fdScript.append("nome", document.getElementById("nome").value);
+    fdScript.append("email", document.getElementById("email").value);
+    fdScript.append("telefone", document.getElementById("telefone").value);
+    fdScript.append("pais", document.getElementById("pais").value);
+    fdScript.append("empresa", document.getElementById("empresa").value);
+    fdScript.append("mensagem", document.getElementById("mensagem").value);
+    fdScript.append("idioma", detectLang());
+    fdScript.append("origem_formulario", "comprar.html");
+
+    try {
+      await Promise.all([
+        fetch(ZOHO_URL, { method: "POST", body: fdZoho }),
+        fetch(SCRIPT_URL, { method: "POST", body: fdScript })
+      ]);
+
+      msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contato.";
+      msg.classList.add("success");
+      form.reset();
+
+    } catch (err) {
+      msg.textContent = "Erro ao enviar. Tente novamente.";
+      msg.classList.add("error");
+    }
+  });
+
+})();
 </script>
 
 </body>
