@@ -1,22 +1,125 @@
-<form action="https://api.staticforms.dev/submit" method="POST">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato – BrazilTrad</title>
 
-    <!-- API KEY -->
-    <input type="hidden" name="apiKey" value="sf_b3eii9ka8989402jlh07k05b">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f1f5f4;
+            font-family: Inter, Arial, sans-serif;
+        }
 
-    <!-- Destinatário interno (vai para rsequeira@braziltrad.com) -->
-    <input type="hidden" name="email" value="rsequeira@braziltrad.com">
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
 
-    <!-- Obrigatório para enviar email ao LEAD -->
-    <input type="hidden" name="replyTo" value="@email">
+        h1 {
+            text-align: center;
+            color: #0F4C5C;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
 
-    <!-- Botão voltar ao site -->
-    <input type="hidden" name="redirectTo" value="https://braziltrad.com">
+        label {
+            font-size: 14px;
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+        }
 
-    <!-- Campos do formulário -->
-    <input type="text" name="name" placeholder="Nome" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="text" name="company" placeholder="Empresa (opcional)">
-    <textarea name="message" placeholder="Mensagem" required></textarea>
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            font-family: Inter, Arial, sans-serif;
+        }
 
-    <button type="submit">Enviar</button>
-</form>
+        textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #0F4C5C;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 22px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d3f4e;
+        }
+
+        .erro {
+            margin-top: 15px;
+            text-align: center;
+            color: red;
+            font-weight: 600;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Contato</h1>
+    <p style="text-align:center; margin-top:-10px; margin-bottom:25px;">
+        Preencha o formulário abaixo e entraremos em contacto.
+    </p>
+
+    <form action="https://api.staticforms.dev/submit" method="POST">
+
+        <!-- API KEY -->
+        <input type="hidden" name="apiKey" value="sf_b3eii9ka8989402jlh07k05b">
+
+        <!-- Email interno -->
+        <input type="hidden" name="internalEmail" value="rsequeira@braziltrad.com">
+
+        <!-- Autoresponder vai para o email do LEAD -->
+        <input type="hidden" name="replyTo" value="@email">
+
+        <!-- Voltar ao site -->
+        <input type="hidden" name="redirectTo" value="https://braziltrad.com">
+
+        <!-- CAMPOS DO FORMULÁRIO -->
+
+        <label for="name">Nome *</label>
+        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+
+        <label for="email">E-mail *</label>
+        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+
+        <label for="company">Empresa (opcional)</label>
+        <input type="text" id="company" name="company" placeholder="Empresa">
+
+        <label for="message">Mensagem *</label>
+        <textarea id="message" name="message" placeholder="Digite a sua mensagem" required></textarea>
+
+        <button type="submit">Enviar</button>
+
+        <div class="erro">Erro ao enviar. Tente novamente.</div>
+    </form>
+</div>
+
+</body>
+</html>
