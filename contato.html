@@ -1,6 +1,3 @@
-<!-- Versão PARA O SITE DE TESTES (GitHub Pages)
-     Ajustada para funcionar em ruiseq62.github.io/braziltrad-site-testes -->
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -94,9 +91,7 @@
     <p class="subtitle">Ambiente de Testes — GitHub Pages</p>
 
     <form id="contactForm" novalidate>
-
       <input type="hidden" name="access_key" value="36b646fd-5467-4ff8-8a3a-9df90aae76fe">
-
       <input type="hidden" name="from_name" value="BrazilTrad - Website (Testes)">
       <input type="hidden" name="subject" value="[TESTE] Novo contato recebido pelo site BrazilTrad">
 
@@ -130,7 +125,6 @@
       const msg = document.getElementById("msgStatus");
       const backBtn = document.getElementById("backBtn");
 
-
       function escapeHtml(unsafe) {
         if (!unsafe && unsafe !== 0) return '';
         return String(unsafe)
@@ -142,18 +136,12 @@
       }
 
       function leadAutoResponseHTML(name) {
-        return `<!doctype html><html><body><h2>Obrigado, ${escapeHtml(name)}!</h2><p>Recebemos a sua mensagem (AMBIENTE DE TESTES).</p>    <!-- Envio Zoho REAL reinserido -->
-    <script>
-      // adicionar ao submit, logo após Web3Forms
-      // CÓDIGO ZOHO SERÁ INSERIDO AQUI AUTOMATICAMENTE APÓS A CORREÇÃO COMPLETA
-    </script>
-</body></html>`;
+        return `<!doctype html><html><body><h2>Obrigado, ${escapeHtml(name)}!</h2><p>Recebemos a sua mensagem (AMBIENTE DE TESTES).</p></body></html>`;
       }
 
       function internalEmailHTML(data) {
-        return `<html><body><h3>[TESTE] Novo contacto — BrazilTrad</h3><p><strong>Nome:</strong> ${escapeHtml(data.name)}</p><p><strong>Email:</strong> ${escapeHtml(data.email)}</p><p><strong>Empresa:</strong> ${escapeHtml(data.company || '-') }</p><p><strong>Mensagem:</strong><br>${escapeHtml(data.message)}</p></body></html>`;
+        return `<!doctype html><html><body><h3>[TESTE] Novo contacto — BrazilTrad</h3><p><strong>Nome:</strong> ${escapeHtml(data.name)}</p><p><strong>Email:</strong> ${escapeHtml(data.email)}</p><p><strong>Empresa:</strong> ${escapeHtml(data.company || '-') }</p><p><strong>Mensagem:</strong><br>${escapeHtml(data.message)}</p></body></html>`;
       }
-
 
       contactForm.addEventListener("submit", async function(e) {
         e.preventDefault();
@@ -186,9 +174,10 @@
           web3formData.append("access_key", web3formsKey);
           web3formData.append("name", data.name);
           web3formData.append("email", data.email);
+          web3formData.append("reply_to", data.email);
           web3formData.append("company", data.company);
           web3formData.append("message", internalEmailHTML(data));
-          web3formData.append("auto_response", leadAutoResponseHTML(data.name));
+          web3formData.append("auto_response_html", leadAutoResponseHTML(data.name));
           web3formData.append("from_name", "BrazilTrad - Website (Testes)");
           web3formData.append("subject", "[TESTE] Novo contato recebido pelo site BrazilTrad");
           web3formData.append("recaptcha_token", token);
@@ -200,36 +189,15 @@
           });
 
           const resJson = await resEmail.json();
-          if (!resEmail.ok || !resJson.success) {
-            throw new Error("web3forms_error");
-          }
+          if (!resJson.success) throw new Error("web3forms_error");
 
-          msg.textContent = "Mensagem enviada (TESTE)!";
-          msg.classList.add("success");
-          backBtn.style.display = "block";
-          contactForm.reset();
+          /* ---- ZOHO REAL ---- */
 
-        } catch (err) {
-          console.error(err);
-          msg.textContent = "Erro ao enviar (TESTE).";
-          msg.classList.add("error");
+          const zohoPayload = new FormData();
+          zohoPayload.append("Company", data.company);
+          zohoPayload.append("Last Name", data.name || "-");
+          zohoPayload.append("Email", data.email);
+          zohoPayload.append("Description", data.message);
+          zohoPayload.append("Lead Source", "Contato Site (TESTES)");
 
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = "1";
-        }
-      });
-
-      function grecaptchaExecute(siteKey, action) {
-        return new Promise((resolve, reject) => {
-          if (!window.grecaptcha || !grecaptcha.execute) return reject(new Error("reCAPTCHA não disponível"));
-          grecaptcha.ready(() => {
-            grecaptcha.execute(siteKey, { action }).then(resolve).catch(reject);
-          });
-        });
-      }
-
-    })();
-  </script>
-</body>
-</html>
+          await fetch("https://crm.zoho.com/crm/WebToLeadForm?xnQsjsdp=3fd1731c66fbf93ea4e8cba470
