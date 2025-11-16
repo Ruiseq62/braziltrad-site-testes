@@ -76,7 +76,7 @@
     <input type="hidden" name="Industry" value="-None-">
     <input type="hidden" name="Lead Source" value="-None-">
     <input type="hidden" name="Annual Revenue" value="">
-    <input type="hidden" id="rating" name="Rating" value="PT"> <!-- idioma -->
+    <input type="hidden" id="rating" name="Rating" value="PT">
 
     <button type="submit">Enviar</button>
 
@@ -90,9 +90,10 @@
 <script>
 (function(){
   const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLD3yMBZlWqmEK0oMmOy-NNLmaNc5HL5J1NoW5LJSU1dsKjxfPPj_7qhGuggGSKbDz/exec";
 
-  // Detectar idioma
+  // 🔥 URL CORRIGIDO
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQshN6wnzPZsVP03nJtnaFUEWxApRN6RPGbI_7KXVWM8VhUHJ0y1_PE7YEXAqtFM6t/exec";
+
   function detectLang() {
     const lang = (document.documentElement.lang || navigator.language).toLowerCase();
     if (lang.startsWith("pt")) return "PT";
@@ -101,9 +102,9 @@
     if (lang.startsWith("zh")) return "ZH";
     return "PT";
   }
+
   document.getElementById("rating").value = detectLang();
 
-  // Envio do formulário
   const form = document.getElementById("contactForm");
   const msg = document.getElementById("msgStatus");
   const backBtn = document.getElementById("backBtn");
@@ -114,7 +115,6 @@
     msg.textContent = "";
     msg.className = "";
 
-    // Dados para Apps Script
     const fdScript = new FormData();
     fdScript.append("nome", document.getElementById("name").value);
     fdScript.append("email", document.getElementById("email").value);
@@ -125,11 +125,9 @@
     fdScript.append("idioma", detectLang());
     fdScript.append("origem_formulario", "contato.html");
 
-    // Dados para o Zoho
     const fdZoho = new FormData(form);
 
     try {
-      // Enviar em paralelo
       await Promise.all([
         fetch(ZOHO_URL, { method: "POST", body: fdZoho }),
         fetch(SCRIPT_URL, { method: "POST", body: fdScript })
