@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contato — BrazilTrad (Testes)</title>
+  <title>Contato — BrazilTrad (Testes, sem reCAPTCHA)</title>
   <link rel="stylesheet" href="css/style.css">
 
   <style>
@@ -12,83 +12,23 @@
       background: #f1f5f4;
       padding: 40px 10px;
     }
-
-    .container {
-      max-width: 520px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-      text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 5px;
-      color: #0F4C5C;
-      font-size: 26px;
-    }
-
-    p.subtitle {
-      margin-bottom: 25px;
-      color: #444;
-    }
-
-    label {
-      display: block;
-      text-align: left;
-      font-weight: 600;
-      margin-top: 12px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 15px;
-      box-sizing: border-box;
-    }
-
-    button {
-      width: 100%;
-      margin-top: 18px;
-      padding: 14px;
-      background: #0F4C5C;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
+    .container { max-width: 520px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); text-align: center; }
+    h1 { margin-bottom: 5px; color: #0F4C5C; font-size: 26px; }
+    p.subtitle { margin-bottom: 25px; color: #444; }
+    label { display: block; text-align: left; font-weight: 600; margin-top: 12px; }
+    input, textarea { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
+    button { width: 100%; margin-top: 18px; padding: 14px; background: #0F4C5C; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: 600; }
     button:hover { background: #12697a; }
-
-    #msgStatus {
-      margin-top: 18px;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .success { color: #008f4c; }
-    .error   { color: #c62828; }
-
-    #backBtn {
-      display: none;
-      margin-top: 16px;
-      background: #0F4C5C;
-    }
-
-    .sr-only { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px,1px,1px,1px); white-space: nowrap; }
+    #msgStatus { margin-top: 18px; font-weight: 600; text-align: center; }
+    .success { color: #008f4c; } .error { color: #c62828; }
+    #backBtn { display: none; margin-top: 16px; background: #0F4C5C; }
   </style>
 </head>
 
 <body>
   <div class="container">
     <h1>Contato (Testes)</h1>
-    <p class="subtitle">Ambiente de Testes — GitHub Pages</p>
+    <p class="subtitle">Ambiente de Testes — Sem reCAPTCHA</p>
 
     <form id="contactForm" novalidate>
       <input type="hidden" name="access_key" value="36b646fd-5467-4ff8-8a3a-9df90aae76fe">
@@ -107,44 +47,30 @@
       <label for="message">Mensagem *</label>
       <textarea id="message" name="message" rows="5" required></textarea>
 
-      <input type="hidden" id="recaptcha_token" name="recaptcha_token" value="">
-
       <button type="submit">Enviar</button>
 
-      <div id="msgStatus" role="status" aria-live="polite"></div>
+      <div id="msgStatus"></div>
       <button id="backBtn" onclick="history.back()" type="button">Voltar ao site</button>
     </form>
   </div>
 
-  <script src="https://www.google.com/recaptcha/api.js?render=6LdZDQ4sAAAAAIXNM8i9WDlSj8cTq7WN2Zyp00Zk"></script>
-
   <script>
     (function() {
-      const web3formsKey = "36b646fd-5467-4ff8-8a3a-9df90aae76fe";
       const contactForm = document.getElementById("contactForm");
       const msg = document.getElementById("msgStatus");
       const backBtn = document.getElementById("backBtn");
 
       function escapeHtml(unsafe) {
         if (!unsafe && unsafe !== 0) return '';
-        return String(unsafe)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#039;");
+        return String(unsafe).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
       }
 
       function leadAutoResponseHTML(name) {
-        return `<!doctype html><html><body><h2>Obrigado, ${escapeHtml(name)}!</h2><p>Recebemos a sua mensagem (AMBIENTE DE TESTES).</p></body></html>`;
+        return `<!doctype html><html><body><h2>Obrigado, ${escapeHtml(name)}!</h2><p>Recebemos a sua mensagem (TESTES).</p></body></html>`;
       }
 
       function internalEmailHTML(data) {
         return `<!doctype html><html><body><h3>[TESTE] Novo contacto — BrazilTrad</h3><p><strong>Nome:</strong> ${escapeHtml(data.name)}</p><p><strong>Email:</strong> ${escapeHtml(data.email)}</p><p><strong>Empresa:</strong> ${escapeHtml(data.company || '-') }</p><p><strong>Mensagem:</strong><br>${escapeHtml(data.message)}</p></body></html>`;
-      }
-
-      // fix boundary
-      function _boundaryFix() { return ` `<!doctype html><html><body><h3>[TESTE] Novo contacto — BrazilTrad</h3><p><strong>Nome:</strong> ${escapeHtml(data.name)}</p><p><strong>Email:</strong> ${escapeHtml(data.email)}</p><p><strong>Empresa:</strong> ${escapeHtml(data.company || '-') }</p><p><strong>Mensagem:</strong><br>${escapeHtml(data.message)}</p></body></html>`;
       }
 
       contactForm.addEventListener("submit", async function(e) {
@@ -162,20 +88,16 @@
         submitBtn.style.opacity = "0.7";
 
         try {
-          const siteKey = "6LdZDQ4sAAAAAIXNM8i9WDlSj8cTq7WN2Zyp00Zk";
-          const token = await grecaptchaExecute(siteKey, 'contact_test');
-          document.getElementById("recaptcha_token").value = token;
-
           const data = {
             name: contactForm.name.value.trim(),
             email: contactForm.email.value.trim(),
             company: contactForm.company.value.trim(),
-            message: contactForm.message.value.trim(),
-            recaptcha_token: token
+            message: contactForm.message.value.trim()
           };
 
+          /* ---- Web3Forms ---- */
           const web3formData = new FormData();
-          web3formData.append("access_key", web3formsKey);
+          web3formData.append("access_key", "36b646fd-5467-4ff8-8a3a-9df90aae76fe");
           web3formData.append("name", data.name);
           web3formData.append("email", data.email);
           web3formData.append("reply_to", data.email);
@@ -184,7 +106,6 @@
           web3formData.append("auto_response_html", leadAutoResponseHTML(data.name));
           web3formData.append("from_name", "BrazilTrad - Website (Testes)");
           web3formData.append("subject", "[TESTE] Novo contato recebido pelo site BrazilTrad");
-          web3formData.append("recaptcha_token", token);
 
           const resEmail = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
@@ -196,7 +117,6 @@
           if (!resJson.success) throw new Error("web3forms_error");
 
           /* ---- ZOHO REAL ---- */
-
           const zohoPayload = new FormData();
           zohoPayload.append("Company", data.company);
           zohoPayload.append("Last Name", data.name || "-");
@@ -204,4 +124,27 @@
           zohoPayload.append("Description", data.message);
           zohoPayload.append("Lead Source", "Contato Site (TESTES)");
 
-          await fetch("https://crm.zoho.com/crm/WebToLeadForm?xnQsjsdp=3fd1731c66fbf93ea4e8cba470
+          await fetch("https://crm.zoho.com/crm/WebToLeadForm?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3&actionType=TGVhZHM=&returnURL=null", {
+            method: "POST",
+            body: zohoPayload
+          });
+
+          msg.textContent = "Mensagem enviada (TESTE)!";
+          msg.classList.add("success");
+          backBtn.style.display = "block";
+          contactForm.reset();
+
+        } catch (err) {
+          console.error(err);
+          msg.textContent = "Erro ao enviar (TESTE).";
+          msg.classList.add("error");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
