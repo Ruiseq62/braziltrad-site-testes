@@ -143,6 +143,10 @@
         return `<!doctype html><html><body><h3>[TESTE] Novo contacto — BrazilTrad</h3><p><strong>Nome:</strong> ${escapeHtml(data.name)}</p><p><strong>Email:</strong> ${escapeHtml(data.email)}</p><p><strong>Empresa:</strong> ${escapeHtml(data.company || '-') }</p><p><strong>Mensagem:</strong><br>${escapeHtml(data.message)}</p></body></html>`;
       }
 
+      // fix boundary
+      function _boundaryFix() { return ` `<!doctype html><html><body><h3>[TESTE] Novo contacto — BrazilTrad</h3><p><strong>Nome:</strong> ${escapeHtml(data.name)}</p><p><strong>Email:</strong> ${escapeHtml(data.email)}</p><p><strong>Empresa:</strong> ${escapeHtml(data.company || '-') }</p><p><strong>Mensagem:</strong><br>${escapeHtml(data.message)}</p></body></html>`;
+      }
+
       contactForm.addEventListener("submit", async function(e) {
         e.preventDefault();
         msg.textContent = "";
