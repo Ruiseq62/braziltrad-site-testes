@@ -134,8 +134,11 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   `;
 
   const formData = new FormData(form);
-  formData.append("reply_to", form.email.value);         // garantia que o destinatário é o lead
-  formData.append("auto_response_html", autoResponseHTML); // E-mail HTML bonito para o Lead
+  // AUTO-REPLY HTML CORRETO
+formData.append("auto_reply_html", autoResponseHTML);
+
+// GARANTE QUE O DESTINATÁRIO É O LEAD
+formData.append("reply_to", form.email.value);
 
   try {
     // 1️⃣ Enviar ao Web3Forms (2 e-mails: interno + lead)
