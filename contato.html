@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contato — BrazilTrad</title>
   <link rel="stylesheet" href="css/style.css">
 
   <style>
     body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #f1f5f4;
       padding: 40px 10px;
     }
@@ -48,6 +48,7 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 15px;
+      box-sizing: border-box;
     }
 
     button {
@@ -63,9 +64,7 @@
       font-weight: 600;
     }
 
-    button:hover {
-      background: #12697a;
-    }
+    button:hover { background: #12697a; }
 
     #msgStatus {
       margin-top: 18px;
@@ -73,42 +72,35 @@
       text-align: center;
     }
 
-    .success {
-      color: #008f4c;
-    }
-    .error {
-      color: #c62828;
-    }
+    .success { color: #008f4c; }
+    .error   { color: #c62828; }
 
     #backBtn {
       display: none;
       margin-top: 16px;
       background: #0F4C5C;
     }
+
+    /* email-preview hidden so doesn't show in page */
+    .sr-only { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px,1px,1px,1px); white-space: nowrap; }
   </style>
 </head>
 
 <body>
-
   <div class="container">
-
     <h1>Contato</h1>
     <p class="subtitle">Preencha o formulário abaixo e entraremos em contacto.</p>
 
-    <form id="contactForm">
+    <form id="contactForm" novalidate>
 
-      <!-- Web3Forms (email interno + email lead) -->
+      <!-- Web3Forms access key (envio de emails) -->
       <input type="hidden" name="access_key" value="36b646fd-5467-4ff8-8a3a-9df90aae76fe">
 
-      <!-- Email automático para o LEAD -->
-      <input type="hidden" name="auto_response"
-             value="Obrigado pelo seu contato! A BrazilTrad entrará em contato em breve.">
-
-      <!-- Email para rsequeira@braziltrad.com -->
+      <!-- hidden fields that Web3Forms will use (subject / from_name) -->
       <input type="hidden" name="from_name" value="BrazilTrad - Website">
       <input type="hidden" name="subject" value="Novo contato recebido pelo site BrazilTrad">
 
-      <!-- Campos -->
+      <!-- Campos visíveis -->
       <label for="name">Nome *</label>
       <input type="text" id="name" name="name" required>
 
@@ -121,63 +113,240 @@
       <label for="message">Mensagem *</label>
       <textarea id="message" name="message" rows="5" required></textarea>
 
+      <!-- recaptcha token (preenchido por JS) -->
+      <input type="hidden" id="recaptcha_token" name="recaptcha_token" value="">
+
       <button type="submit">Enviar</button>
 
-      <div id="msgStatus"></div>
-      <button id="backBtn" onclick="history.back()">Voltar ao site</button>
-
+      <div id="msgStatus" role="status" aria-live="polite"></div>
+      <button id="backBtn" onclick="history.back()" type="button">Voltar ao site</button>
     </form>
   </div>
 
+  <!-- reCAPTCHA v3 (site key pública) -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdZDQ4sAAAAAIXNM8i9WDlSj8cTq7WN2Zyp00Zk"></script>
+
   <script>
-    document.getElementById("contactForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const form = e.target;
+    (function() {
+      const web3formsKey = "36b646fd-5467-4ff8-8a3a-9df90aae76fe";
+      const contactForm = document.getElementById("contactForm");
       const msg = document.getElementById("msgStatus");
-      msg.textContent = "";
-      msg.className = "";
+      const backBtn = document.getElementById("backBtn");
 
-      const formData = new FormData(form);
+      // HTML template para Auto-Response (para o LEAD) - formato HTML moderno
+      function leadAutoResponseHTML(name) {
+        return `
+          <!doctype html>
+          <html>
+            <head>
+              <meta charset="utf-8"/>
+              <title>Recebemos a sua mensagem</title>
+            </head>
+            <body style="font-family:Arial,Helvetica,sans-serif;color:#222;margin:0;padding:0;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f4;padding:30px 0;">
+                <tr>
+                  <td align="center">
+                    <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;">
+                      <tr>
+                        <td style="padding:22px 28px;text-align:left;">
+                          <img src="https://braziltrad.com/assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:38px;">
+                          <h2 style="color:#0F4C5C;margin-top:18px;margin-bottom:8px;">Obrigado pelo seu contacto, ${escapeHtml(name)}!</h2>
+                          <p style="color:#444;line-height:1.5;">Recebemos a sua mensagem e a nossa equipa irá analisar e responder o mais breve possível.</p>
 
-      try {
-        // 1️⃣ Enviar ao Web3Forms (emails)
-        const resEmail = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: formData
-        });
+                          <p style="margin-top:18px;">
+                            <a href="https://braziltrad.com" style="display:inline-block;padding:10px 16px;border-radius:6px;text-decoration:none;background:#0F4C5C;color:#fff;font-weight:600;">
+                              Visitar BrazilTrad
+                            </a>
+                          </p>
 
-        if (!resEmail.ok) throw new Error("email_error");
-
-        // 2️⃣ Enviar ao Zoho
-        const zohoPayload = new FormData();
-        zohoPayload.append("Company", form.company.value);
-        zohoPayload.append("Last Name", form.name.value);
-        zohoPayload.append("Email", form.email.value);
-        zohoPayload.append("Description", form.message.value);
-        zohoPayload.append("Lead Source", "Contato Site");
-
-        await fetch(
-          "https://crm.zoho.com/crm/WebToLeadForm?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3&actionType=TGVhZHM=&returnURL=null",
-          {
-            method: "POST",
-            body: zohoPayload
-          }
-        );
-
-        // Sucesso
-        msg.textContent = "Mensagem enviada com sucesso!";
-        msg.classList.add("success");
-
-        document.getElementById("backBtn").style.display = "block";  
-        form.reset();
-
-      } catch (err) {
-        msg.textContent = "Erro ao enviar. Tente novamente.";
-        msg.classList.add("error");
+                          <hr style="border:none;border-top:1px solid #eee;margin:22px 0;">
+                          <p style="font-size:13px;color:#888;margin:0;">Atenciosamente,<br><strong>BrazilTrad</strong> — Exportação & Comércio Internacional</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </body>
+          </html>
+        `;
       }
-    });
+
+      // HTML template do e-mail interno (para rsequeira@braziltrad.com) - Web3Forms enviará este HTML como "message"
+      function internalEmailHTML(data) {
+        const now = new Date().toLocaleString();
+        return `
+          <html>
+            <body style="font-family:Arial,Helvetica,sans-serif;color:#222;">
+              <h3 style="color:#0F4C5C;margin-bottom:6px;">🔔 Novo contacto recebido — BrazilTrad</h3>
+              <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;border:1px solid #e6e6e6;">
+                <tr style="background:#fafafa"><td><strong>Nome</strong></td><td>${escapeHtml(data.name)}</td></tr>
+                <tr><td><strong>E-mail</strong></td><td>${escapeHtml(data.email)}</td></tr>
+                <tr style="background:#fafafa"><td><strong>Empresa</strong></td><td>${escapeHtml(data.company || '-')}</td></tr>
+                <tr><td style="vertical-align:top;"><strong>Mensagem</strong></td><td style="white-space:pre-wrap;">${escapeHtml(data.message)}</td></tr>
+                <tr style="background:#fafafa"><td><strong>Origem</strong></td><td>Contato Site</td></tr>
+                <tr><td><strong>Data/Hora</strong></td><td>${escapeHtml(now)}</td></tr>
+              </table>
+              <p style="font-size:12px;color:#777;margin-top:10px;">(Enviado automaticamente pelo formulário do site)</p>
+            </body>
+          </html>
+        `;
+      }
+
+      // Pequena função utilitária para escapar HTML nas templates
+      function escapeHtml(unsafe) {
+        if (!unsafe && unsafe !== 0) return '';
+        return String(unsafe)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // Quando o form for submetido: obter token reCAPTCHA v3 e então enviar
+      contactForm.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        msg.textContent = "";
+        msg.className = "";
+
+        // validação simples de campos HTML5
+        if (!contactForm.checkValidity()) {
+          contactForm.reportValidity();
+          return;
+        }
+
+        // desactivar botão enquanto processa
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.7";
+
+        try {
+          // 1) obter token reCAPTCHA v3
+          const siteKey = "6LdZDQ4sAAAAAIXNM8i9WDlSj8cTq7WN2Zyp00Zk"; // tua Site Key pública
+          const token = await grecaptchaExecute(siteKey, 'contact');
+
+          // preencher campo oculto para que possas validar no servidor (Apps Script) com a Secret Key
+          document.getElementById("recaptcha_token").value = token;
+
+          // Construir dados do formulário
+          const data = {
+            name: contactForm.name.value.trim(),
+            email: contactForm.email.value.trim(),
+            company: contactForm.company.value.trim(),
+            message: contactForm.message.value.trim(),
+            recaptcha_token: token
+          };
+
+          // 2) Enviar para Web3Forms (envio de e-mails)
+          // - email interno: internalEmailHTML(data)
+          // - auto_response: leadAutoResponseHTML(name)
+          const web3formData = new FormData();
+          web3formData.append("access_key", web3formsKey);
+          web3formData.append("name", data.name);
+          web3formData.append("email", data.email);
+          web3formData.append("company", data.company);
+          web3formData.append("message", data.message);
+
+          // usamos 'message' como email interno (HTML) — Web3Forms aceita HTML neste campo
+          web3formData.append("message_html", internalEmailHTML(data)); // campo adicional, em caso de suporte
+          web3formData.append("message", internalEmailHTML(data)); // fallback: usar message com HTML
+
+          // auto_response (HTML para o Lead)
+          web3formData.append("auto_response", leadAutoResponseHTML(data.name));
+
+          // from_name & subject (ocultos também no form markup)
+          web3formData.append("from_name", "BrazilTrad - Website");
+          web3formData.append("subject", "Novo contato recebido pelo site BrazilTrad");
+
+          // opcional: adicionar token reCAPTCHA também no payload Web3Forms (se quiseres registar)
+          web3formData.append("recaptcha_token", token);
+
+          // Chamada Web3Forms
+          const resEmail = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Accept": "application/json"
+            },
+            body: web3formData
+          });
+
+          // Web3Forms devolve JSON com success true/false
+          const resEmailJson = await resEmail.json();
+          if (!resEmail.ok || !resEmailJson.success) {
+            // continua o fluxo (tentamos enviar ao Zoho), mas avisamos no fim
+            console.warn("Web3Forms respondeu com erro:", resEmailJson);
+            throw new Error("web3forms_error");
+          }
+
+          // 3) Enviar ao Zoho (WebToLead) — mantive o teu endpoint
+          // Observação: Zoho WebToLead não verifica reCAPTCHA — para validar o token reCAPTCHA
+          // é necessário validar no servidor com a Secret Key (ver notas abaixo).
+          const zohoPayload = new FormData();
+          zohoPayload.append("Company", data.company);
+          zohoPayload.append("Last Name", data.name || "-");
+          zohoPayload.append("Email", data.email);
+          zohoPayload.append("Description", data.message);
+          zohoPayload.append("Lead Source", "Contato Site");
+          // incluo o token para que o teu Apps Script (ou backend) possa verificar se fizeres essa validação
+          zohoPayload.append("recaptcha_token", token);
+
+          await fetch(
+            "https://crm.zoho.com/crm/WebToLeadForm?xnQsjsdp=3fd1731c66fbf93ea4e8cba470a7d2c3236fa48b9105a4c2e169800c6460cf13&xmIwtLD=55bb49f2537e4ee9c2c0d22cdebef9a489a974853af1926bb998412b493ac61ffb6464561e419055979737b7f25d38f3&actionType=TGVhZHM=&returnURL=null",
+            {
+              method: "POST",
+              body: zohoPayload
+            }
+          );
+
+          // SUCESSO
+          msg.textContent = "Mensagem enviada com sucesso!";
+          msg.classList.add("success");
+          backBtn.style.display = "block";
+          contactForm.reset();
+
+        } catch (err) {
+          console.error(err);
+          msg.textContent = "Erro ao enviar. Tente novamente.";
+          msg.classList.add("error");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+        }
+      });
+
+      // wrapper para grecaptcha.execute com promise
+      function grecaptchaExecute(siteKey, action) {
+        return new Promise((resolve, reject) => {
+          if (!window.grecaptcha || !grecaptcha.execute) {
+            return reject(new Error("reCAPTCHA não carregado"));
+          }
+          grecaptcha.ready(function() {
+            grecaptcha.execute(siteKey, {action: action}).then(function(token) {
+              if (!token) return reject(new Error("token_invalido"));
+              resolve(token);
+            }).catch(reject);
+          });
+        });
+      }
+
+    })();
   </script>
 
+  <!--
+    NOTAS IMPORTANTES (LEIA):
+    1) A Site Key acima (6Ld...00Zk) é pública e está OK para o HTML.
+    2) NÃO coloque a Secret Key (chave secreta) neste ficheiro. A validação real do token reCAPTCHA
+       deve ser feita no servidor (Google reCAPTCHA verify API) usando a Secret Key:
+         POST https://www.google.com/recaptcha/api/siteverify
+         with secret=<SECRET_KEY>&response=<TOKEN>
+       -> Recomendado: validares esse token no teu Google Apps Script (se estiveres a usar Apps Script para tratar formulários),
+          e só então aceitar/processar o lead e inserir na CRM (ou devolver OK ao front-end).
+    3) Eu incluí o token no payload Zoho para conveniência (zohoPayload.append("recaptcha_token", token)),
+       mas Zoho não faz verificação automática — precisares de um endpoint que valide antes de gravar.
+    4) Se quiseres, eu faço a validação no teu Google Apps Script (só tens de colar aqui a tua Secret Key
+       *em privado* e eu mostro exactamente o trecho de Apps Script que valida e grava apenas se for válido).
+    5) Testa um envio real no teu domínio (braziltrad.com) e também no domínio de testes (ruiseq62.github.io).
+  -->
 </body>
 </html>
