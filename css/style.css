@@ -369,3 +369,36 @@ footer a:hover {
     margin-bottom: 22px !important;
   }
 }
+/* --------------------------------------------
+   MOBILE — Ajustes do HERO
+   -------------------------------------------- */
+@media (max-width: 768px) {
+  
+  .hero {
+    padding: 60px 16px 80px; /* menos espaço no topo */
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;       /* menor */
+    line-height: 1.25;
+    max-width: 90%;
+    margin: 0 auto 16px;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    max-width: 95%;
+    margin: 0 auto 24px;
+  }
+
+  .hero .btn-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero .btn-group a {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+}
