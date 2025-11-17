@@ -302,3 +302,70 @@ footer a:hover {
     display: none;
   }
 }
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr !important; /* 1 card por linha */
+    gap: 28px;
+  }
+
+  .card {
+    padding: 18px 18px 24px !important;
+    border-radius: 18px !important;
+  }
+
+  .card img {
+    width: 100%;
+    max-width: 240px;
+    height: 160px;
+    margin: 0 auto 12px;
+  }
+
+  .card h3 {
+    font-size: 1.35rem !important;
+  }
+
+  .card p {
+    font-size: 1.05rem !important;
+    line-height: 1.45 !important;
+  }
+}
+@media (max-width: 600px) {
+  .hero {
+    padding: 70px 20px 80px !important;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero p {
+    font-size: 1.1rem !important;
+    margin-top: 12px;
+    max-width: 90%;
+  }
+}
+@media (max-width: 600px) {
+  .cta {
+    flex-direction: column;
+    gap: 14px !important;
+  }
+
+  .cta .button {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 16px 20px !important;
+    font-size: 1.05rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .section {
+    padding: 60px 0 !important;
+  }
+
+  .section h2 {
+    font-size: 1.8rem !important;
+    margin-bottom: 22px !important;
+  }
+}
