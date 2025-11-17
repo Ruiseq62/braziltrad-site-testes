@@ -218,7 +218,7 @@ header nav ul li a:hover {
 
 .card {
   background: #ffffff;
-  padding: 22px;          /* antes era 18px */
+  padding: 24px 20px 32px;         /* antes era 18px */
   border-radius: var(--radius);
   box-shadow: var(--shadow-strong);
   transition: var(--transition);
