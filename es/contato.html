@@ -1,155 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contacto — BrazilTrad</title>
-  <meta name="description" content="Complete el formulario y nuestro equipo comercial se pondrá en contacto con usted en breve." />
-  <style>
-    :root{
-      --brand:#0F4C5C;
-      --card-bg:#ffffff;
-      --page-bg:#f4f6f8;
-      --muted:#666666;
-      --radius:14px;
-      --shadow:0 10px 30px rgba(18,30,40,0.08);
-      --maxw:720px;
-    }
-    *{box-sizing:border-box;font-family:Inter,Arial,Helvetica,sans-serif}
-    html,body{height:100%;margin:0;background:var(--page-bg);color:#1f2933}
-    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px 20px}
-    .card{width:100%;max-width:var(--maxw);background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .topbar{background:var(--brand);padding:14px 20px;display:flex;align-items:center;gap:12px}
-    .logo{height:34px;display:block}
-    .title{color:#fff;font-weight:700;font-size:1.05rem}
-    .content{padding:28px 28px 36px}
-    h1{margin:0 0 12px;color:var(--brand);font-size:1.5rem}
-    p.lead{margin:0 0 20px;color:var(--muted);line-height:1.5}
-    form{display:grid;grid-template-columns:1fr;gap:14px}
-    label{font-size:0.9rem;color:#0b2430;font-weight:600}
-    input[type="text"],input[type="email"],textarea{
-      width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d3d7db;font-size:1rem;background:#fff
-    }
-    textarea{min-height:140px;resize:vertical}
-    button{margin-top:6px;padding:12px 16px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;font-size:1rem}
-    .meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px}
-    .success{display:none;color:green;font-weight:700}
-    .error{display:none;color:#b00020;font-weight:700}
-    .small{font-size:0.9rem;color:var(--muted)}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contacto — BrazilTrad</title>
+
+<style>
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         background: #f1f5f4; padding: 40px 10px; }
+  .container { max-width: 520px; margin: 0 auto; background: #fff; padding: 30px;
+               border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); text-align: center; }
+  h1 { margin-bottom: 5px; color: #0F4C5C; font-size: 26px; }
+  p.subtitle { margin-bottom: 25px; color: #444; }
+  label { display:block; text-align:left; font-weight:600; margin-top:12px; }
+  input, textarea { width:100%; padding:12px; margin-top:5px; border:1px solid #ccc;
+                    border-radius:6px; font-size:15px; }
+  button { width:100%; margin-top:18px; padding:14px; background:#0F4C5C;
+           color:#fff; border:none; border-radius:6px; cursor:pointer;
+           font-size:15px; font-weight:600; }
+  button:hover { background:#12697a; }
+  #msgStatus { margin-top:18px; font-weight:600; text-align:center; }
+  .success { color:#008f4c; }
+  .error { color:#c62828; }
+  #backBtn { display:none; margin-top:16px; background:#0F4C5C; color:#fff;
+             border:none; padding:10px; border-radius:6px; cursor:pointer; }
+  .small { font-size:13px; color:#666; margin-top:6px; }
+</style>
+
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="topbar">
-        <img id="logoImg" class="logo" alt="BrazilTrad"/>
-        <div class="title">BrazilTrad</div>
-      </div>
 
-      <div class="content">
-        <h1>Contáctenos</h1>
-        <p class="lead">
-          Complete el siguiente formulario con sus datos.  
-          Nuestro equipo comercial analizará su solicitud y se pondrá en contacto con usted muy pronto.
-        </p>
+<div class="container">
+  <h1>Contacto</h1>
+  <p class="subtitle">Complete el formulario y nos pondremos en contacto con usted.</p>
 
-        <form id="contactForm" novalidate>
+  <form id="contactForm">
 
-          <input type="hidden" name="origem" value="contacto">
-          <input type="hidden" name="page" value="Contacto ES">
-          <input type="hidden" name="lang" id="inputLang" value="es">
+    <!-- Campos ocultos de Zoho -->
+    <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
+    <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
+    <input type="hidden" name="actionType" value="TGVhZHM=">
+    <input type="hidden" name="zc_gad" id="zc_gad" value="">
+    <input type="hidden" name="returnURL" value="https://braziltrad.com">
 
-          <div>
-            <label for="nome">Nombre / Empresa</label>
-            <input id="nome" name="nome" type="text" required placeholder="Ej.: Juan Pérez / Empresa X" />
-          </div>
+    <label for="name">Nombre *</label>
+    <input type="text" id="name" name="Last Name" required>
 
-          <div>
-            <label for="email">Correo electrónico</label>
-            <input id="email" name="email" type="email" required placeholder="su@email.com" />
-          </div>
+    <label for="email">Correo electrónico *</label>
+    <input type="email" id="email" name="Email" required>
 
-          <div>
-            <label for="empresa">Empresa (opcional)</label>
-            <input id="empresa" name="empresa" type="text" placeholder="Nombre de la empresa" />
-          </div>
+    <label for="phone">Teléfono *</label>
+    <input type="text" id="phone" name="Mobile" required>
 
-          <div>
-            <label for="pais">País</label>
-            <input id="pais" name="pais" type="text" placeholder="País de origen / actividad" />
-          </div>
+    <label for="country">País de operación *</label>
+    <input type="text" id="country" name="City" required>
 
-          <div>
-            <label for="mensagem">Mensaje</label>
-            <textarea id="mensagem" name="mensagem" required placeholder="Escriba su mensaje..."></textarea>
-          </div>
+    <label for="company">Empresa (opcional)</label>
+    <input type="text" id="company" name="Company">
 
-          <div class="meta">
-            <button type="submit" id="btnSend">Enviar mensaje</button>
-            <div class="small success" id="successMsg">✅ Mensaje enviado con éxito. ¡Gracias!</div>
-            <div class="small error" id="errorMsg">Error al enviar. Inténtelo nuevamente.</div>
-          </div>
-        </form>
+    <label for="message">Mensaje *</label>
+    <textarea id="message" name="Description" rows="5" required></textarea>
 
-        <p class="small" style="margin-top:12px">
-          Al enviar este formulario, usted acepta que su información será utilizada exclusivamente para procesar esta solicitud según nuestra <a href="/politica-privacidad.html" target="_blank">Política de Privacidad</a>.
-        </p>
-      </div>
-    </div>
-  </div>
+    <!-- Extras Zoho -->
+    <input type="hidden" name="Industry" value="-None-">
+    <input type="hidden" name="Lead Source" value="-None-">
+    <input type="hidden" name="Annual Revenue" value="">
+    <input type="hidden" id="rating" name="Rating" value="ES">
 
-  <script>
-    const ENDPOINT = 
-      "https://script.google.com/macros/s/AKfycbynqCl3g5pLkyW4xB6IRD7vXAvNBZEbqQfvw20bCg2CJljnaxJnzOW1iYWFDi3eW7RRTw/exec";
+    <button type="submit">Enviar</button>
 
-    const logoTest = "/braziltrad-site-testes/assets/img/braziltrad-logo.png";
-    const logoProd = "/assets/img/braziltrad-logo.png";
-    document.getElementById("logoImg").src =
-      window.location.hostname.includes("github") ? logoTest : logoProd;
+    <div id="msgStatus"></div>
+    <button id="backBtn" type="button" onclick="history.back()">Volver al sitio</button>
+    <div class="small">Al enviar, los datos ingresan directamente al Zoho CRM.</div>
 
-    const form = document.getElementById("contactForm");
-    const btn = document.getElementById("btnSend");
-    const successMsg = document.getElementById("successMsg");
-    const errorMsg = document.getElementById("errorMsg");
+  </form>
+</div>
 
-    form.addEventListener("submit", async function(e){
-      e.preventDefault();
-      successMsg.style.display="none";
-      errorMsg.style.display="none";
+<script>
+(function(){
+  const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQshN6wnzPZsVP03nJtnaFUEWxApRN6RPGbI_7KXVWM8VhUHJ0y1_PE7YEXAqtFM6t/exec";
 
-      const nome = form.nome.value.trim();
-      const email = form.email.value.trim();
-      const mensagem = form.mensagem.value.trim();
-      if(!nome || !email || !mensagem){
-        errorMsg.textContent = "Por favor complete los campos obligatorios.";
-        errorMsg.style.display = "block";
-        return;
-      }
+  function detectLang() {
+    const lang = (document.documentElement.lang || navigator.language).toLowerCase();
+    if (lang.startsWith("es")) return "ES";
+    if (lang.startsWith("pt")) return "PT";
+    if (lang.startsWith("en")) return "EN";
+    if (lang.startsWith("zh")) return "ZH";
+    return "ES";
+  }
 
-      const fd = new FormData(form);
+  document.getElementById("rating").value = detectLang();
 
-      btn.disabled = true;
-      btn.textContent = "Enviando...";
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("msgStatus");
+  const backBtn = document.getElementById("backBtn");
 
-      try {
-        await fetch(ENDPOINT, {
-          method: "POST",
-          body: fd,
-          mode: "no-cors"
-        });
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
 
-        successMsg.style.display = "block";
-        form.reset();
-        document.getElementById("inputLang").value = "es";
+    msg.textContent = "";
+    msg.className = "";
 
-      } catch (err) {
-        errorMsg.textContent = "Error al enviar. Inténtelo nuevamente.";
-        errorMsg.style.display = "block";
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "Enviar mensaje";
-      }
-    });
-  </script>
+    const fdScript = new FormData();
+    fdScript.append("nome", document.getElementById("name").value);
+    fdScript.append("email", document.getElementById("email").value);
+    fdScript.append("telefone", document.getElementById("phone").value);
+    fdScript.append("pais", document.getElementById("country").value);
+    fdScript.append("empresa", document.getElementById("company").value);
+    fdScript.append("mensagem", document.getElementById("message").value);
+    fdScript.append("idioma", detectLang());
+    fdScript.append("origem_formulario", "contacto.html");
+
+    const fdZoho = new FormData(form);
+
+    try {
+      await Promise.all([
+        fetch(ZOHO_URL, { method: "POST", body: fdZoho }),
+        fetch(SCRIPT_URL, { method: "POST", body: fdScript })
+      ]);
+
+      msg.textContent = "¡Mensaje enviado con éxito!";
+      msg.classList.add("success");
+
+      form.reset();
+      document.getElementById("rating").value = detectLang();
+      backBtn.style.display = "block";
+
+    } catch (err) {
+      console.error(err);
+      msg.textContent = "Error al enviar. Inténtelo nuevamente.";
+      msg.classList.add("error");
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
