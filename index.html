@@ -553,26 +553,34 @@ function initTradingView(locale){
   });
   document.getElementById("tv-indices").appendChild(w1);
 
-  const w2=document.createElement("script");
-  w2.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape-new.js";
-  w2.text=JSON.stringify({
-    "symbols":[
-      {"proName":"COMEX:GC1!","title":"Gold"},
-      {"proName":"ICEEUR:BRN1!","title":"Brent Oil"},
-      {"proName":"CBOT:ZS1!","title":"Soybeans"},
-      {"proName":"ICEUS:KC1!","title":"Coffee"},
-      {"proName":"ICEUS:SB1!","title":"Sugar"},
-      {"proName":"ICEUS:CT1!","title":"Cotton"},
-      {"proName":"COMEX:HG1!","title":"Copper"},
-      {"proName":"SGX:FEF1!","title":"Iron Ore"}
-    ],
-    "showSymbolLogo":true,
-    "colorTheme":"light",
-    "isTransparent":false,
-    "displayMode":"adaptive",
-    "locale":locale
-  });
-  document.getElementById("tv-commodities").appendChild(w2);
+////// ⬇️ COMEÇA AQUI — WIDGET COMMODITIES CORRETO
+
+const w2 = document.createElement("script");
+w2.src = "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+w2.async = true;
+
+w2.text = JSON.stringify({
+  "symbols": [
+    { "proName": "COMEX:GC1!", "title": "Gold" },
+    { "proName": "ICEEUR:BRN1!", "title": "Brent Oil" },
+    { "proName": "CBOT:ZS1!", "title": "Soybeans" },
+    { "proName": "ICEUS:KC1!", "title": "Coffee" },
+    { "proName": "ICEUS:SB1!", "title": "Sugar" },
+    { "proName": "ICEUS:CT1!", "title": "Cotton" },
+    { "proName": "COMEX:HG1!", "title": "Copper" },
+    { "proName": "SGX:FEF1!", "title": "Iron Ore" }
+  ],
+  "showSymbolLogo": false,
+  "colorTheme": "light",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "locale": locale
+});
+
+document.getElementById("tv-commodities").appendChild(w2);
+
+////// ⬆️ TERMINA AQUI — WIDGET COMMODITIES CORRETO
+
 }
   </script>
 
