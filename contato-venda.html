@@ -1,152 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quero Vender — BrazilTrad</title>
+  <title>I Want to Sell — BrazilTrad</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: #f5f5f5;
-      padding-top: 40px;
-    }
-
-    form {
-      max-width: 520px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    p.desc {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #555;
-    }
-
-    label {
-      display: block;
-      margin-top: 14px;
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 12px;
-      margin-top: 4px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    button {
-      width: 100%;
-      margin-top: 24px;
-      background: #0F4C5C;
-      color: #fff;
-      border: none;
-      padding: 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    button:hover {
-      background: #12697a;
-    }
-
-    .msg {
-      margin-top: 18px;
-      text-align: center;
-      font-weight: 600;
-    }
-
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #f5f5f5; padding-top: 40px; }
+    form { max-width: 520px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+    h1 { text-align: center; font-size: 28px; margin-bottom: 10px; }
+    p.desc { text-align: center; margin-bottom: 25px; color: #555; }
+    label { display: block; margin-top: 14px; font-weight: 600; font-size: 14px; }
+    input, textarea, select { width: 100%; padding: 12px; margin-top: 4px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+    button { width: 100%; margin-top: 24px; background: #0F4C5C; color: #fff; border: none; padding: 14px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600; }
+    button:hover { background: #12697a; }
+    .msg { margin-top: 18px; text-align: center; font-weight: 600; }
     .success { color: #008f4c; }
     .error { color: #c62828; }
-
-    #backBtn {
-      display:none;
-      margin-top:14px;
-      background:#0F4C5C;
-      color:white;
-      padding:12px;
-      border:none;
-      cursor:pointer;
-      border-radius:6px;
-      font-size:15px;
-    }
+    #backBtn { display:none; margin-top:14px; background:#0F4C5C; color:white; padding:12px; border:none; cursor:pointer; border-radius:6px; font-size:15px; }
   </style>
 </head>
 <body>
 
-  <main class="container">
-    <h1>Quero Vender</h1>
-    <p class="desc">Preencha o formulário com os dados da sua oferta e a nossa equipa entrará em contacto.</p>
+<main class="container">
+  <h1>I Want to Sell</h1>
+  <p class="desc">Fill in your offer details and our team will contact you shortly.</p>
 
-    <form id="contactForm">
+  <form id="contactForm">
 
-      <!-- TOKENS DO ZOHO -->
-      <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
-      <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
-      <input type="hidden" name="actionType" value="TGVhZHM=">
-      <input type="hidden" name="returnURL" value="https://braziltrad.com">
+    <!-- Zoho tokens -->
+    <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
+    <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
+    <input type="hidden" name="actionType" value="TGVhZHM=">
+    <input type="hidden" name="returnURL" value="https://braziltrad.com">
 
-      <!-- FONTE DO CLIENTE POTENCIAL (CORRETO E FUNCIONANDO) -->
-      <input type="hidden" name="Lead Source" value="Vendedor">
+    <input type="hidden" name="Lead Source" value="Seller">
 
-      <!-- CAMPOS DO FORMULÁRIO -->
-      <label for="nome">Nome *</label>
-      <input id="nome" name="Last Name" type="text" required>
+    <label for="nome">Name *</label>
+    <input id="nome" name="Last Name" type="text" required>
 
-      <label for="email">E-mail *</label>
-      <input id="email" name="Email" type="email" required>
+    <label for="email">Email *</label>
+    <input id="email" name="Email" type="email" required>
 
-      <label for="telefone">Telefone</label>
-      <input id="telefone" name="Mobile" type="text">
+    <label for="telefone">Mobile</label>
+    <input id="telefone" name="Mobile" type="text">
 
-      <label for="empresa">Empresa (opcional)</label>
-      <input id="empresa" name="Company" type="text">
+    <label for="empresa">Company (optional)</label>
+    <input id="empresa" name="Company" type="text">
 
-      <label for="produto">Produto que pretende vender *</label>
-      <select id="produto" name="Industry" required>
-        <option value="">Selecione...</option>
-        <option value="Café">Café</option>
-        <option value="Soja">Soja</option>
-        <option value="Milho">Milho</option>
-        <option value="Carnes">Carnes</option>
-        <option value="Minérios">Minérios</option>
-        <option value="Açúcar">Açúcar</option>
-        <option value="Outros">Outros</option>
-      </select>
+    <label for="produto">Product you want to sell *</label>
+    <select id="produto" name="Industry" required>
+      <option value="">Select...</option>
+      <option value="Café">Coffee</option>
+      <option value="Soja">Soy</option>
+      <option value="Milho">Corn</option>
+      <option value="Carnes">Meat</option>
+      <option value="Minérios">Minerals</option>
+      <option value="Açúcar">Sugar</option>
+      <option value="Outros">Others</option>
+    </select>
 
-      <label for="capacidade">Capacidade mensal (ex.: 1000 t)</label>
-      <input id="capacidade" name="Annual Revenue" type="text">
+    <label for="capacidade">Monthly capacity (e.g., 1000 t)</label>
+    <input id="capacidade" name="Annual Revenue" type="text">
 
-      <label for="pais">País de origem *</label>
-      <input id="pais" name="City" type="text" required>
+    <label for="pais">Country of origin *</label>
+    <input id="pais" name="City" type="text" required>
 
-      <label for="mensagem">Mensagem / Observações</label>
-      <textarea id="mensagem" name="Description" rows="5"></textarea>
+    <label for="mensagem">Message / Notes</label>
+    <textarea id="mensagem" name="Description" rows="5"></textarea>
 
-      <button type="submit">Enviar</button>
+    <button type="submit">Send</button>
 
-      <div id="msg" class="msg"></div>
-      <button id="backBtn" type="button" onclick="history.back()">Voltar ao site</button>
+    <div id="msg" class="msg"></div>
+    <button id="backBtn" type="button" onclick="history.back()">Back to site</button>
 
-    </form>
-  </main>
+  </form>
+</main>
 
 <script>
 (function(){
@@ -154,28 +83,19 @@
   const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwFo6HUJP6IpOmCAthcYtG89kwQKlU6Cj0G7Ph3mKlqMTUtTD5jMHcFoXCfEQ_glT4J/exec";
 
+  function detectLang(){ return "EN"; }
+
   const form = document.getElementById("contactForm");
   const msg = document.getElementById("msg");
   const backBtn = document.getElementById("backBtn");
-
-  function detectLang(){
-    const lang = (document.documentElement.lang || navigator.language || "pt").toLowerCase();
-    if(lang.startsWith("pt")) return "PT";
-    if(lang.startsWith("en")) return "EN";
-    if(lang.startsWith("es")) return "ES";
-    if(lang.startsWith("zh")) return "ZH";
-    return "PT";
-  }
 
   form.addEventListener("submit", async function(e){
     e.preventDefault();
     msg.textContent = "";
     msg.className = "msg";
 
-    // FormData para Zoho
     const fdZoho = new FormData(form);
 
-    // FormData para Apps Script
     const fdScript = new FormData();
     fdScript.append("nome", document.getElementById("nome").value);
     fdScript.append("email", document.getElementById("email").value);
@@ -185,8 +105,8 @@
     fdScript.append("volume", document.getElementById("capacidade").value);
     fdScript.append("pais", document.getElementById("pais").value);
     fdScript.append("mensagem", document.getElementById("mensagem").value);
-    fdScript.append("idioma", detectLang());
-    fdScript.append("origem_formulario", "vender.html");
+    fdScript.append("idioma", "EN");
+    fdScript.append("origem_formulario", "sell.html");
 
     try {
       await Promise.all([
@@ -194,14 +114,13 @@
         fetch(SCRIPT_URL, { method: "POST", body: fdScript })
       ]);
 
-      msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contacto.";
+      msg.textContent = "Message sent successfully! Our team will contact you shortly.";
       msg.classList.add("success");
       form.reset();
       backBtn.style.display = "block";
 
     } catch(err) {
-      console.error(err);
-      msg.textContent = "Erro ao enviar. Tente novamente.";
+      msg.textContent = "Error sending message. Please try again.";
       msg.classList.add("error");
     }
   });
