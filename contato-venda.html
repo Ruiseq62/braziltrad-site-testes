@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quero Comprar — BrazilTrad</title>
+  <title>Quero Vender — BrazilTrad</title>
 
   <style>
     body {
@@ -72,6 +72,7 @@
       text-align: center;
       font-weight: 600;
     }
+
     .success { color: #008f4c; }
     .error { color: #c62828; }
 
@@ -86,40 +87,40 @@
       border-radius:6px;
       font-size:15px;
     }
-
   </style>
 </head>
 <body>
 
   <main class="container">
-    <h1>Quero Comprar</h1>
-    <p class="desc">Preencha o formulário abaixo e nossa equipe entrará em contato.</p>
+    <h1>Quero Vender</h1>
+    <p class="desc">Preencha o formulário com os dados da sua oferta e a nossa equipa entrará em contacto.</p>
 
     <form id="contactForm">
 
-      <!-- Tokens Zoho (mesmos do formulário principal) -->
+      <!-- TOKENS DO ZOHO -->
       <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
       <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
       <input type="hidden" name="actionType" value="TGVhZHM=">
-
       <input type="hidden" name="returnURL" value="https://braziltrad.com">
-      <input type="hidden" name="Lead Source" value="Comprador">
 
-      <!-- Campos do formulário -->
-      <label>Nome *</label>
-      <input type="text" name="Last Name" id="nome" required>
+      <!-- FONTE DO CLIENTE POTENCIAL (CORRETO E FUNCIONANDO) -->
+      <input type="hidden" name="Lead Source" value="Vendedor">
 
-      <label>E-mail *</label>
-      <input type="email" name="Email" id="email" required>
+      <!-- CAMPOS DO FORMULÁRIO -->
+      <label for="nome">Nome *</label>
+      <input id="nome" name="Last Name" type="text" required>
 
-      <label>Empresa (opcional)</label>
-      <input type="text" name="Company" id="empresa">
+      <label for="email">E-mail *</label>
+      <input id="email" name="Email" type="email" required>
 
-      <label>Celular</label>
-      <input type="text" name="Mobile" id="telefone">
+      <label for="telefone">Telefone</label>
+      <input id="telefone" name="Mobile" type="text">
 
-      <label>Produto que deseja comprar *</label>
-      <select name="Industry" id="produto" required>
+      <label for="empresa">Empresa (opcional)</label>
+      <input id="empresa" name="Company" type="text">
+
+      <label for="produto">Produto que pretende vender *</label>
+      <select id="produto" name="Industry" required>
         <option value="">Selecione...</option>
         <option value="Café">Café</option>
         <option value="Soja">Soja</option>
@@ -130,62 +131,62 @@
         <option value="Outros">Outros</option>
       </select>
 
-      <label>Volume mensal estimado</label>
-      <input type="text" name="Annual Revenue" id="volume">
+      <label for="capacidade">Capacidade mensal (ex.: 1000 t)</label>
+      <input id="capacidade" name="Annual Revenue" type="text">
 
-      <label>País de origem da carga</label>
-      <input type="text" name="City" id="pais">
+      <label for="pais">País de origem *</label>
+      <input id="pais" name="City" type="text" required>
 
-      <label>Mensagem *</label>
-      <textarea name="Description" id="mensagem" rows="5" required></textarea>
+      <label for="mensagem">Mensagem / Observações</label>
+      <textarea id="mensagem" name="Description" rows="5"></textarea>
 
       <button type="submit">Enviar</button>
 
-      <div id="formMsg" class="msg"></div>
+      <div id="msg" class="msg"></div>
       <button id="backBtn" type="button" onclick="history.back()">Voltar ao site</button>
 
     </form>
   </main>
 
 <script>
-(function() {
+(function(){
 
   const ZOHO_URL = "https://crm.zoho.com/crm/WebToLeadForm";
-
-  // SEU SCRIPT_URL ATUAL
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwFo6HUJP6IpOmCAthcYtG89kwQKlU6Cj0G7Ph3mKlqMTUtTD5jMHcFoXCfEQ_glT4J/exec";
 
-  function detectLang() {
-    const lang = (document.documentElement.lang || navigator.language).toLowerCase();
-    if (lang.startsWith("pt")) return "PT";
-    if (lang.startsWith("en")) return "EN";
-    if (lang.startsWith("es")) return "ES";
-    if (lang.startsWith("zh")) return "ZH";
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("msg");
+  const backBtn = document.getElementById("backBtn");
+
+  function detectLang(){
+    const lang = (document.documentElement.lang || navigator.language || "pt").toLowerCase();
+    if(lang.startsWith("pt")) return "PT";
+    if(lang.startsWith("en")) return "EN";
+    if(lang.startsWith("es")) return "ES";
+    if(lang.startsWith("zh")) return "ZH";
     return "PT";
   }
 
-  const form = document.getElementById("contactForm");
-  const msg = document.getElementById("formMsg");
-  const backBtn = document.getElementById("backBtn");
-
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", async function(e){
     e.preventDefault();
     msg.textContent = "";
     msg.className = "msg";
 
+    // FormData para Zoho
     const fdZoho = new FormData(form);
 
+    // FormData para Apps Script
     const fdScript = new FormData();
     fdScript.append("nome", document.getElementById("nome").value);
     fdScript.append("email", document.getElementById("email").value);
     fdScript.append("telefone", document.getElementById("telefone").value);
-    fdScript.append("pais", document.getElementById("pais").value);
     fdScript.append("empresa", document.getElementById("empresa").value);
-    fdScript.append("mensagem", document.getElementById("mensagem").value);
     fdScript.append("produto", document.getElementById("produto").value);
-    fdScript.append("volume", document.getElementById("volume").value);
+    fdScript.append("volume", document.getElementById("capacidade").value);
+    fdScript.append("pais", document.getElementById("pais").value);
+    fdScript.append("mensagem", document.getElementById("mensagem").value);
     fdScript.append("idioma", detectLang());
-    fdScript.append("origem_formulario", "comprar.html");
+    fdScript.append("origem_formulario", "vender.html");
 
     try {
       await Promise.all([
@@ -193,12 +194,13 @@
         fetch(SCRIPT_URL, { method: "POST", body: fdScript })
       ]);
 
-      msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contato.";
+      msg.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contacto.";
       msg.classList.add("success");
       form.reset();
       backBtn.style.display = "block";
 
-    } catch (err) {
+    } catch(err) {
+      console.error(err);
       msg.textContent = "Erro ao enviar. Tente novamente.";
       msg.classList.add("error");
     }
@@ -206,6 +208,5 @@
 
 })();
 </script>
-
 </body>
 </html>
