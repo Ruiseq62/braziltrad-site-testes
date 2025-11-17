@@ -203,6 +203,10 @@ header nav ul li a:hover {
   gap: 32px;
 }
 
+/* -------------------------------------------------
+   CARDS (CORRIGIDO)
+--------------------------------------------------- */
+
 .card {
   background: #ffffff;
   padding: 28px;
@@ -218,12 +222,12 @@ header nav ul li a:hover {
 }
 
 .card img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  margin: 0 auto 18px;
-  display: block;
+  width: 160px !important;
+  height: 160px !important;
+  object-fit: cover !important;
+  border-radius: var(--radius) !important;
+  margin: 0 auto 18px !important;
+  display: block !important;
 }
 
 .card h3 {
@@ -236,7 +240,6 @@ header nav ul li a:hover {
   font-size: 1.05rem;
   color: #666;
 }
-
 
 /* -------------------------------------------------
    FOOTER
