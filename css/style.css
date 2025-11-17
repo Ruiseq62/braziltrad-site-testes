@@ -209,7 +209,7 @@ header nav ul li a:hover {
 
 .card {
   background: #ffffff;
-  padding: 28px;
+  padding: 18px; /* menor para dar mais destaque à imagem */
   border-radius: var(--radius);
   box-shadow: var(--shadow-strong);
   transition: var(--transition);
@@ -222,13 +222,14 @@ header nav ul li a:hover {
 }
 
 .card img {
-  width: 160px !important;
-  height: 160px !important;
+  width: 180px !important;
+  height: 180px !important;
   object-fit: cover !important;
   border-radius: var(--radius) !important;
-  margin: 0 auto 18px !important;
+  margin: 0 auto 12px !important;
   display: block !important;
 }
+
 
 .card h3 {
   font-size: 1.4rem;
