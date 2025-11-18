@@ -622,6 +622,64 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
 });
   </script>
+    </script>   <!-- este é o script que já existe -->
 
+    <!-- 🔥 NOVO SCRIPT DO MENU DINÂMICO AQUI 🔥 -->
+    <script>
+      // Detecta o idioma atual com base na URL
+      function getCurrentLang() {
+        const path = window.location.pathname;
+
+        if (path.startsWith("/en/")) return "en";
+        if (path.startsWith("/es/")) return "es";
+        if (path.startsWith("/zh/")) return "zh";
+        return "pt"; // padrão
+      }
+
+      const currentLang = getCurrentLang();
+
+      // Define caminhos DINÂMICOS
+      const BASE = window.location.pathname.includes("braziltrad-site-testes")
+        ? "/braziltrad-site-testes"
+        : "";
+
+      const menuPaths = {
+        pt: {
+          docs: BASE + "/documentos.html",
+          links: BASE + "/links-uteis.html",
+          contact: BASE + "/contact.html"
+        },
+        en: {
+          docs: BASE + "/en/documents.html",
+          links: BASE + "/en/useful-links.html",
+          contact: BASE + "/en/contact.html"
+        },
+        es: {
+          docs: BASE + "/es/documentos.html",
+          links: BASE + "/es/links-utiles.html",
+          contact: BASE + "/es/contact.html"
+        },
+        zh: {
+          docs: BASE + "/zh/documents_zh.html",
+          links: BASE + "/zh/useful-links.html",
+          contact: BASE + "/zh/contact.html"
+        }
+      };
+
+      function applyMenuLinks(lang) {
+        const docsLink = document.querySelector('[data-key="nav_docs"]');
+        const utilLink = document.querySelector('[data-key="nav_links"]');
+        const contactLink = document.querySelector('[data-key="nav_contact"]');
+
+        if (docsLink) docsLink.href = menuPaths[lang].docs;
+        if (utilLink) utilLink.href = menuPaths[lang].links;
+        if (contactLink) contactLink.href = menuPaths[lang].contact;
+      }
+
+      applyMenuLinks(currentLang);
+    </script>
+
+</body>
+</html>
 </body>
 </html>
