@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Documents — BrazilTrad</title>
+  <link rel="stylesheet" href="/assets/css/braziltrad-docs.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">BT</div>
+      <div>
+        <div class="h1">Documents</div>
+        <div class="small">Export templates and forms</div>
+      </div>
+    </header>
+
+    <main class="grid grid-2">
+      <section class="card">
+        <div class="controls">
+          <input id="search" class="input" placeholder="Search…" />
+          <select id="category" class="select">
+            <option value="">All categories</option>
+            <option value="commercial">Commercial</option>
+            <option value="logistics">Logistics</option>
+            <option value="contracts">Contracts</option>
+            <option value="guides">Guides</option>
+          </select>
+          <button class="btn" id="clearFilters">Clear</button>
+        </div>
+
+        <div id="docsList" class="docs-list"></div>
+      </section>
+
+      <aside class="card">
+        <h3>Export Starter Kit</h3>
+        <p class="small">Receive by email: Proforma + Invoice + Packing List.</p>
+        <input id="leadEmail" class="input" placeholder="your@email.com" />
+        <button class="btn" id="downloadPack">Receive</button>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/assets/js/docs.js"></script>
+</body>
+</html>
