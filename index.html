@@ -608,48 +608,41 @@ document.getElementById("tv-commodities").appendChild(w2);
   <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Detecta idioma usando a PASTA da URL
-  function getLangFromURL() {
-    const path = window.location.pathname;
-
-    if (path.includes("/en/")) return "en";
-    if (path.includes("/es/")) return "es";
-    if (path.includes("/zh/")) return "zh";
-    return "pt";
+  // Detecta idioma pela URL
+  function getLang() {
+    const p = window.location.pathname;
+    if (p.startsWith("/en/")) return "en";
+    if (p.startsWith("/es/")) return "es";
+    if (p.startsWith("/zh/")) return "zh";
+    return "pt"; 
   }
 
-  const lang = getLangFromURL();
+  const lang = getLang();
 
-  // Caminhos CORRETOS por idioma
+  // Caminhos corretos por idioma
   const paths = {
-    pt: {
-      docs: "documentos.html",
-      links: "links-uteis.html"
-    },
-    en: {
-      docs: "documents.html",
-      links: "useful-links.html"
-    },
-    es: {
-      docs: "documentos.html",
-      links: "links-utiles.html"
-    },
-    zh: {
-      docs: "documents_zh.html",
-      links: "useful-links.html"
-    }
+    pt: { docs: "documentos.html", links: "links-uteis.html", contact: "#contact" },
+    en: { docs: "documents.html", links: "useful-links.html", contact: "#contact" },
+    es: { docs: "documentos.html", links: "links-utiles.html", contact: "#contact" },
+    zh: { docs: "documents_zh.html", links: "useful-links.html", contact: "#contact" }
   };
 
-  // Ajusta os links do menu dinamicamente
+  // Atualiza Documentos
   const docsLink = document.querySelector(".nav-docs");
-  const linksLink = document.querySelector(".nav-links");
-
   if (docsLink) docsLink.href = `/${lang}/${paths[lang].docs}`;
+
+  // Atualiza Links Úteis
+  const linksLink = document.querySelector(".nav-links");
   if (linksLink) linksLink.href = `/${lang}/${paths[lang].links}`;
 
-  // Correção do botão de idioma já existente
+  // Mantém Contato funcional em todas as línguas
+  const contactLink = document.querySelector('a[href="#contact"]');
+  if (contactLink) contactLink.href = "/index.html#contact";
+
+  // Botão de idioma
   const langBtn = document.getElementById("langBtn");
   if (langBtn) {
+
     const next = { pt: "en", en: "es", es: "zh", zh: "pt" };
     langBtn.textContent = "🌎 " + lang.toUpperCase();
 
@@ -658,6 +651,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = `/${target}/index.html`;
     });
   }
+
 });
 </script>
 
