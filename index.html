@@ -605,61 +605,60 @@ document.getElementById("tv-commodities").appendChild(w2);
 ////// ⬆️ TERMINA AQUI — WIDGET COMMODITIES CORRETO
 
 }
-  </script>
-
-  <!-- ===== FIX PATHS ===== -->
   <script>
-  // Detecta idioma pela pasta
-  function getCurrentLang() {
-    const p = window.location.pathname;
+document.addEventListener("DOMContentLoaded", () => {
 
-    if (p.includes("/en/")) return "en";
-    if (p.includes("/es/")) return "es";
-    if (p.includes("/zh/")) return "zh";
+  // Detecta idioma usando a PASTA da URL
+  function getLangFromURL() {
+    const path = window.location.pathname;
+
+    if (path.includes("/en/")) return "en";
+    if (path.includes("/es/")) return "es";
+    if (path.includes("/zh/")) return "zh";
     return "pt";
   }
 
-  const lang = getCurrentLang();
+  const lang = getLangFromURL();
 
-  // Detecta o base path (GitHub Pages vs servidor real)
-  const BASE = window.location.pathname.includes("braziltrad-site-testes")
-      ? "/braziltrad-site-testes"
-      : "";
-
-  const menuPaths = {
+  // Caminhos CORRETOS por idioma
+  const paths = {
     pt: {
-      docs: BASE + "/documentos.html",
-      links: BASE + "/links-uteis.html",
-      contact: BASE + "/contact.html"
+      docs: "documentos.html",
+      links: "links-uteis.html"
     },
     en: {
-      docs: BASE + "/en/documents.html",
-      links: BASE + "/en/useful-links.html",
-      contact: BASE + "/en/contact.html"
+      docs: "documents.html",
+      links: "useful-links.html"
     },
     es: {
-      docs: BASE + "/es/documentos.html",
-      links: BASE + "/es/links-utiles.html",
-      contact: BASE + "/es/contact.html"
+      docs: "documentos.html",
+      links: "links-utiles.html"
     },
     zh: {
-      docs: BASE + "/zh/documents_zh.html",
-      links: BASE + "/zh/useful-links.html",
-      contact: BASE + "/zh/contact.html"
+      docs: "documents_zh.html",
+      links: "useful-links.html"
     }
   };
 
-  function applyMenuLinks() {
-    const docs = document.querySelector('[data-key="nav_docs"]');
-    const links = document.querySelector('[data-key="nav_links"]');
-    const contact = document.querySelector('[data-key="nav_contact"]');
+  // Ajusta os links do menu dinamicamente
+  const docsLink = document.querySelector(".nav-docs");
+  const linksLink = document.querySelector(".nav-links");
 
-    if (docs) docs.href = menuPaths[lang].docs;
-    if (links) links.href = menuPaths[lang].links;
-    if (contact) contact.href = menuPaths[lang].contact;
+  if (docsLink) docsLink.href = `/${lang}/${paths[lang].docs}`;
+  if (linksLink) linksLink.href = `/${lang}/${paths[lang].links}`;
+
+  // Correção do botão de idioma já existente
+  const langBtn = document.getElementById("langBtn");
+  if (langBtn) {
+    const next = { pt: "en", en: "es", es: "zh", zh: "pt" };
+    langBtn.textContent = "🌎 " + lang.toUpperCase();
+
+    langBtn.addEventListener("click", () => {
+      const target = next[lang];
+      window.location.href = `/${target}/index.html`;
+    });
   }
-
-  applyMenuLinks();
+});
 </script>
 
 
