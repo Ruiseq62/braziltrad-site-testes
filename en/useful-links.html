@@ -2,37 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Useful Links — BrazilTrad</title>
+  <link rel="stylesheet" href="../css/style.css">
 
-  <link rel="stylesheet" href="../assets/css/braziltrad-docs.css">
+  <style>
+    body {font-family: Inter, Arial, sans-serif;background:#f8f8f8;padding:30px 20px 60px;}
+    h1{text-align:center;color:#0F4C5C;margin-bottom:30px;}
+    .section{margin:40px auto;max-width:900px;background:#fff;padding:25px 30px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.08);}
+    .section h2{color:#0F4C5C;border-left:6px solid #CFAF6B;padding-left:10px;margin-bottom:15px;}
+    ul.links{list-style:none;padding:0;margin:0;}
+    ul.links li{margin:10px 0;padding:8px 0;border-bottom:1px solid #eee;}
+    ul.links li a{text-decoration:none;font-size:1.05rem;color:#0F4C5C;font-weight:600;}
+    ul.links li a:hover{color:#CFAF6B;}
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>BT</h1>
-    <h2>Useful Links</h2>
-    <p>Tools, official agencies and export portals</p>
 
-    <div class="search-bar">
-      <input id="searchInput" type="text" placeholder="Search...">
-      <div class="category-select">
-        <select id="categoryFilter">
-          <option value="">All</option>
-          <option value="gov">Government</option>
-          <option value="market">Markets</option>
-          <option value="finance">Finance</option>
-          <option value="orgs">Organizations</option>
-        </select>
-      </div>
-      <button id="linkClear" class="btn">Clear</button>
-    </div>
+  <h1>Useful Links</h1>
 
-    <main>
-      <div id="linksArea"></div>
-    </main>
+  <div class="section">
+    <h2>🏛️ Institutions & Government</h2>
+    <ul class="links">
+      <li><a href="https://www.gov.br/agricultura" target="_blank">MAPA — Ministry of Agriculture</a></li>
+      <li><a href="https://www.gov.br/receitafederal" target="_blank">Brazilian Federal Revenue</a></li>
+      <li><a href="https://www.gov.br/economia" target="_blank">Ministry of Economy</a></li>
+      <li><a href="https://www.ibge.gov.br" target="_blank">IBGE — Statistics</a></li>
+      <li><a href="https://www.bcb.gov.br" target="_blank">Brazilian Central Bank</a></li>
+    </ul>
   </div>
 
-  <script src="../assets/js/links.js"></script>
+  <div class="section">
+    <h2>📈 Markets & Commodity Prices</h2>
+    <ul class="links">
+      <li><a href="https://www.tradingview.com" target="_blank">TradingView — Charts & Prices</a></li>
+      <li><a href="https://www.b3.com.br" target="_blank">B3 — Agro</a></li>
+      <li><a href="https://www.cmegroup.com" target="_blank">CME Group</a></li>
+      <li><a href="https://www.lme.com" target="_blank">LME — London Metal Exchange</a></li>
+      <li><a href="https://www.ice.com" target="_blank">ICE — Intercontinental Exchange</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🚢 Logistics & Export</h2>
+    <ul class="links">
+      <li><a href="https://www.gov.br/antaq" target="_blank">ANTAQ — Waterway Transportation Agency</a></li>
+      <li><a href="https://www.gov.br/infraestrutura/pt-br/assuntos/portos" target="_blank">Brazilian Ports</a></li>
+      <li><a href="https://portal.siscomex.gov.br" target="_blank">Siscomex</a></li>
+      <li><a href="https://radar-aduaneiro.com.br" target="_blank">Customs Radar</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛡️ Compliance & Certifications</h2>
+    <ul class="links">
+      <li><a href="https://www.sgs.com" target="_blank">SGS</a></li>
+      <li><a href="https://group.bureauveritas.com" target="_blank">Bureau Veritas</a></li>
+      <li><a href="https://www.iso.org" target="_blank">ISO Certifications</a></li>
+      <li><a href="https://www.fatf-gafi.org" target="_blank">FATF — AML & KYC Rules</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📘 Official Documents</h2>
+    <ul class="links">
+      <li><a href="https://iccwbo.org/resources-for-business/incoterms-rules/" target="_blank">Incoterms — ICC</a></li>
+      <li><a href="https://iccwbo.org" target="_blank">International Contract Models</a></li>
+      <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior" target="_blank">Export Regulations</a></li>
+    </ul>
+  </div>
+
 </body>
 </html>
