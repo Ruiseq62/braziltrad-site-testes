@@ -396,16 +396,58 @@ function initTradingView(locale){
 }
 </script>
 
-  <!-- ===== CORREÇÃO AUTOMÁTICA DE CAMINHOS ===== -->
-  <script>
-document.addEventListener("DOMContentLoaded",()=>{
-  const isGitHub = window.location.hostname.includes("github");
-  const base = isGitHub ? "/braziltrad-site-testes" : "";
-  document.querySelectorAll('link[href^="./css"], link[href^="/css"]').forEach(link=>{link.href = base + "/css/style.css";});
-  document.querySelectorAll('img[src^="/assets"], img[src^="./assets"]').forEach(img=>{
-    img.src = base + "/" + img.getAttribute("src").replace(/^\.\//,"").replace(/^\//,"");
-  });
+<!-- ===== FALLBACK DE NAVEGAÇÃO (Documentos / Links Úteis) ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  try {
+    const base = (window.location.hostname.includes("github")) ? "/braziltrad-site-testes" : "";
+
+    const langFromStorage = () => {
+      const saved = localStorage.getItem("bt_lang");
+      if (saved) return saved;
+      const n = (navigator.language || "pt").substring(0,2);
+      return ["pt","en","es","zh"].includes(n) ? n : "pt";
+    };
+
+    const docMap = {
+      pt: "/documentos.html",
+      en: "/en/documents.html",
+      es: "/es/documentos.html",
+      zh: "/zh/documents_cz.html"
+    };
+
+    const linksMap = {
+      pt: "/links-uteis.html",
+      en: "/en/links-uteis.html",
+      es: "/es/links-uteis.html",
+      zh: "/zh/links-uteis.html"
+    };
+
+    const safeNavigate = (path) => { window.location.href = base + path; };
+
+    // Documentos
+    document.querySelectorAll('.doc-link').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = langFromStorage();
+        safeNavigate(docMap[lang] || docMap.pt);
+      });
+    });
+
+    // Links Úteis
+    document.querySelectorAll('.links-link').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = langFromStorage();
+        safeNavigate(linksMap[lang] || linksMap.pt);
+      });
+    });
+  } catch(err) {
+    console.error("Fallback nav handler error:", err);
+  }
 });
 </script>
+
 </body>
 </html>
+
