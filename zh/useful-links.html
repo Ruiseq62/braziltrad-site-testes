@@ -1,38 +1,77 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Enlaces Útiles — BrazilTrad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实用链接 — BrazilTrad</title>
+  <link rel="stylesheet" href="../css/style.css">
 
-  <link rel="stylesheet" href="../assets/css/braziltrad-docs.css">
+  <style>
+    body {font-family: Inter, Arial, sans-serif;background:#f8f8f8;padding:30px 20px 60px;}
+    h1{text-align:center;color:#0F4C5C;margin-bottom:30px;}
+    .section{margin:40px auto;max-width:900px;background:#fff;padding:25px 30px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.08);}
+    .section h2{color:#0F4C5C;border-left:6px solid #CFAF6B;padding-left:10px;margin-bottom:15px;}
+    ul.links{list-style:none;padding:0;margin:0;}
+    ul.links li{margin:10px 0;padding:8px 0;border-bottom:1px solid #eee;}
+    ul.links li a{text-decoration:none;font-size:1.05rem;color:#0F4C5C;font-weight:600;}
+    ul.links li a:hover{color:#CFAF6B;}
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>BT</h1>
-    <h2>Enlaces Útiles</h2>
-    <p>Herramientas, organismos oficiales y portales de exportación</p>
 
-    <div class="search-bar">
-      <input id="searchInput" type="text" placeholder="Buscar...">
-      <div class="category-select">
-        <select id="categoryFilter">
-          <option value="">Todas</option>
-          <option value="gov">Gobierno</option>
-          <option value="market">Mercados</option>
-          <option value="finance">Finanzas</option>
-          <option value="orgs">Organizaciones</option>
-        </select>
-      </div>
-      <button id="linkClear" class="btn">Limpiar</button>
-    </div>
+  <h1>实用链接</h1>
 
-    <main>
-      <div id="linksArea"></div>
-    </main>
+  <div class="section">
+    <h2>🏛️ 政府与机构</h2>
+    <ul class="links">
+      <li><a href="https://www.gov.br/agricultura" target="_blank">MAPA — 巴西农业部</a></li>
+      <li><a href="https://www.gov.br/receitafederal" target="_blank">巴西联邦税务局</a></li>
+      <li><a href="https://www.gov.br/economia" target="_blank">经济部</a></li>
+      <li><a href="https://www.ibge.gov.br" target="_blank">IBGE — 巴西统计局</a></li>
+      <li><a href="https://www.bcb.gov.br" target="_blank">巴西中央银行</a></li>
+    </ul>
   </div>
 
-  <script src="../assets/js/links.js"></script>
+  <div class="section">
+    <h2>📈 市场与大宗商品价格</h2>
+    <ul class="links">
+      <li><a href="https://www.tradingview.com" target="_blank">TradingView — 图表与行情</a></li>
+      <li><a href="https://www.b3.com.br" target="_blank">B3 — 农产品市场</a></li>
+      <li><a href="https://www.cmegroup.com" target="_blank">CME 芝加哥交易所</a></li>
+      <li><a href="https://www.lme.com" target="_blank">LME 伦敦金属交易所</a></li>
+      <li><a href="https://www.ice.com" target="_blank">ICE 国际交易所</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🚢 物流与出口</h2>
+    <ul class="links">
+      <li><a href="https://www.gov.br/antaq" target="_blank">ANTAQ — 水路运输局</a></li>
+      <li><a href="https://www.gov.br/infraestrutura/pt-br/assuntos/portos" target="_blank">巴西港口</a></li>
+      <li><a href="https://portal.siscomex.gov.br" target="_blank">Siscomex 出口系统</a></li>
+      <li><a href="https://radar-aduaneiro.com.br" target="_blank">海关雷达</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛡️ 合规与认证</h2>
+    <ul class="links">
+      <li><a href="https://www.sgs.com" target="_blank">SGS 国际检验机构</a></li>
+      <li><a href="https://group.bureauveritas.com" target="_blank">Bureau Veritas 必维国际</a></li>
+      <li><a href="https://www.iso.org" target="_blank">ISO 国际认证</a></li>
+      <li><a href="https://www.fatf-gafi.org" target="_blank">FATF — 反洗钱与 KYC 规则</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📘 官方文件</h2>
+    <ul class="links">
+      <li><a href="https://iccwbo.org/resources-for-business/incoterms-rules/" target="_blank">Incoterms 国际贸易术语</a></li>
+      <li><a href="https://iccwbo.org" target="_blank">国际合同模板</a></li>
+      <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior" target="_blank">出口法规</a></li>
+    </ul>
+  </div>
+
 </body>
 </html>
