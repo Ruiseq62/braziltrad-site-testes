@@ -124,7 +124,20 @@
 </div>
 
 <script>
-  // Detecta o idioma atual com base na URL
+  function getBasePath() {
+    const host = window.location.host;
+
+    // Se está no GitHub Pages → usar subdiretório
+    if (host.includes("github.io")) {
+      return "/braziltrad-site-testes";
+    }
+
+    // Se está no domínio de produção → raiz
+    return "";
+  }
+
+  const BASE = getBasePath();
+
   function getCurrentLang() {
     const path = window.location.pathname;
 
@@ -133,8 +146,6 @@
     if (path.includes("/zh/")) return "zh";
     return "pt";
   }
-
-  const BASE = "/braziltrad-site-testes";
 
   const currentLang = getCurrentLang();
 
@@ -161,8 +172,8 @@
     const docsLink = document.querySelector('[data-key="nav_docs"]');
     const utilLink = document.querySelector('[data-key="nav_links"]');
 
-    if (docsLink) docsLink.href = menuPaths[lang].docs;
-    if (utilLink) utilLink.href = menuPaths[lang].links;
+    docsLink.href = menuPaths[lang].docs;
+    utilLink.href = menuPaths[lang].links;
   }
 
   applyMenuLinks(currentLang);
