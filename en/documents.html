@@ -1,51 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Documents — BrazilTrad</title>
-
-  <link rel="stylesheet" href="../assets/css/braziltrad-docs.css" />
+  <meta name="description" content="Essential documents for international commodity operations: contracts, templates, operational guides, compliance and due diligence materials.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 40px; }
+    .doc-section { padding: 40px 20px; }
+    .doc-grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 20px;
+    }
+    .doc-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .doc-card h3 {
+      color: #0F4C5C;
+      margin-bottom: 12px;
+    }
+    .doc-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 1.8;
+    }
+    .doc-card a {
+      color: #0F4C5C;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>BT</h1>
-    <h2>Documents</h2>
-    <p>Export, compliance and logistics materials</p>
 
-    <!-- Search + Filter -->
-    <div class="search-bar">
-      <input id="search" class="input" type="text" placeholder="Search..." />
+  <section class="doc-section container">
+    <h2 style="font-size:2rem;color:#0F4C5C;margin-bottom:20px;">Key Documents</h2>
+    <p style="margin-bottom:30px;color:#333;max-width:700px;">
+      Below you will find the essential documents commonly used in international commodity operations: agreements, templates, operational guides and compliance materials.
+    </p>
 
-      <div class="category-select">
-        <select id="category" class="input">
-          <option value="">All categories</option>
-          <option value="commercial">Commercial</option>
-          <option value="logistics">Logistics</option>
-          <option value="contracts">Contracts</option>
-          <option value="guides">Guides</option>
-        </select>
+    <div class="doc-grid">
+
+      <!-- Contracts -->
+      <div class="doc-card">
+        <h3>Contracts & Templates</h3>
+        <ul>
+          <li><a href="#">📄 NDA — Non-Disclosure Agreement</a></li>
+          <li><a href="#">📄 NCNDA — Non Circumvention / Non Disclosure</a></li>
+          <li><a href="#">📄 LOI — Letter of Intent</a></li>
+          <li><a href="#">📄 ICPO — Irrevocable Corporate Purchase Order</a></li>
+        </ul>
       </div>
 
-      <button id="clearFilters" class="btn">Clear</button>
+      <!-- Guides -->
+      <div class="doc-card">
+        <h3>Operational Guides</h3>
+        <ul>
+          <li><a href="#">📘 International Buyer Guide</a></li>
+          <li><a href="#">📘 Brazilian Supplier Guide</a></li>
+          <li><a href="#">📘 Export Procedures for Small Producers</a></li>
+        </ul>
+      </div>
+
+      <!-- Compliance -->
+      <div class="doc-card">
+        <h3>Compliance & Procedures</h3>
+        <ul>
+          <li><a href="#">📝 Compliance Policy</a></li>
+          <li><a href="#">📝 Due Diligence Procedures (KYC/KYB)</a></li>
+          <li><a href="#">📝 Documentation Checklist</a></li>
+        </ul>
+      </div>
+
     </div>
+  </section>
 
-    <!-- Documents list -->
-    <main>
-      <div id="docsList"></div>
-    </main>
-
-    <!-- Export kit -->
-    <aside class="card">
-      <h3>Export Starter Kit</h3>
-      <p class="small">Receive a pack with Proforma + Invoice + Packing List.</p>
-      <input id="leadEmail" class="input" placeholder="your@email.com" />
-      <button class="btn" id="downloadPack">Get</button>
-    </aside>
-  </div>
-
-  <!-- Load correct JS -->
-  <script src="../assets/js/docs-en.js"></script>
 </body>
 </html>
