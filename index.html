@@ -297,14 +297,51 @@ function updateLinks(code){
   // Botões Comprar / Vender / Contato
   const btnComprar = document.getElementById("btn-comprar");
   const btnVender = document.getElementById("btn-vender");
-  const contato = document.querySelector('a[href="#contact"]') 
-               || document.querySelector('a[href*="contato"], a[href*="contact"]');
+  const contato = document.querySelector('a[href="#contact"]')
+                || document.querySelector('a[href*="contato"], a[href*="contact"]');
 
   if(code === "pt"){
-    btnComprar.href = `${base}/contato-compra.html`;
-    btnVender.href = `${base}/contato-venda.html`;
-    if(contato) contato.href = `${base}/contato.html`;
+    if(btnComprar) btnComprar.href = `${base}/contato-compra.html`;
+    if(btnVender)  btnVender.href  = `${base}/contato-venda.html`;
+    if(contato)    contato.href     = `${base}/contato.html`;
   }
+  else if(code === "en"){
+    if(btnComprar) btnComprar.href = `${base}/en/contact-buy.html`;
+    if(btnVender)  btnVender.href  = `${base}/en/contact-sell.html`;
+    if(contato)    contato.href     = `${base}/en/contact.html`;
+  }
+  else if(code === "es"){
+    if(btnComprar) btnComprar.href = `${base}/es/compradores.html`;
+    if(btnVender)  btnVender.href  = `${base}/es/vendedores.html`;
+    if(contato)    contato.href     = `${base}/es/contato.html`;
+  }
+  else if(code === "zh"){
+    if(btnComprar) btnComprar.href = `${base}/zh/contact-buy.html`;
+    if(btnVender)  btnVender.href  = `${base}/zh/contact-sell.html`;
+    if(contato)    contato.href     = `${base}/zh/contact.html`;
+  }
+
+  // ====== LINKS: Documentos ======
+  const docLink = document.querySelector(".doc-link");
+
+  if(docLink){
+    if(code === "pt") docLink.href = `${base}/documentos.html`;
+    if(code === "en") docLink.href = `${base}/en/documents.html`;
+    if(code === "es") docLink.href = `${base}/es/documentos.html`;
+    if(code === "zh") docLink.href = `${base}/zh/documents_zh.html`;
+  }
+
+  // ====== LINKS: Links Úteis ======
+  const linkLink = document.querySelector(".links-link");
+
+  if(linkLink){
+    if(code === "pt") linkLink.href = `${base}/links.html`;
+    if(code === "en") linkLink.href = `${base}/en/useful-links.html`;
+    if(code === "es") linkLink.href = `${base}/es/enlaces-utiles.html`;
+    if(code === "zh") linkLink.href = `${base}/zh/useful-links.html`;
+  }
+
+
   else if(code === "en"){
     btnComprar.href = `${base}/en/contact-buy.html`;
     btnVender.href = `${base}/en/contact-sell.html`;
