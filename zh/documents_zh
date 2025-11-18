@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>文件 — BrazilTrad</title>
+  <link rel="stylesheet" href="/assets/css/braziltrad-docs.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">BT</div>
+      <div>
+        <div class="h1">文件</div>
+        <div class="small">出口模板与表格</div>
+      </div>
+    </header>
+
+    <main class="grid grid-2">
+      <section class="card">
+        <div class="controls">
+          <input id="search" class="input" placeholder="搜索…" />
+          <select id="category" class="select">
+            <option value="">所有类别</option>
+            <option value="commercial">商业文件</option>
+            <option value="logistics">物流文件</option>
+            <option value="contracts">合同</option>
+            <option value="guides">指南</option>
+          </select>
+          <button class="btn" id="clearFilters">清除</button>
+        </div>
+
+        <div id="docsList" class="docs-list"></div>
+      </section>
+
+      <aside class="card">
+        <h3>出口入门包</h3>
+        <p class="small">通过邮箱接收 Proforma + Invoice + Packing List。</p>
+        <input id="leadEmail" class="input" placeholder="你的邮箱" />
+        <button class="btn" id="downloadPack">接收</button>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/assets/js/docs.js"></script>
+</body>
+</html>
