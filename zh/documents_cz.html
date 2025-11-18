@@ -2,83 +2,49 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>文件资料 — BrazilTrad</title>
-  <meta name="description" content="国际大宗商品贸易中常用的重要文件：合同模板、操作指南、合规与尽职调查资料。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>文件 — BrazilTrad</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    body { padding-top: 40px; }
-    .doc-section { padding: 40px 20px; }
-    .doc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 20px;
-    }
+    .docs-container { max-width: 900px; margin: 40px auto; padding: 20px; }
+    h1 { text-align:center; margin-bottom:10px; }
+    h2 { margin-top:40px; margin-bottom:15px; }
     .doc-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      background:#fff; padding:18px 22px; border-radius:8px;
+      margin-bottom:12px; border:1px solid #e5e5e5;
+      display:flex; justify-content:space-between; align-items:center;
     }
-    .doc-card h3 {
-      color: #0F4C5C;
-      margin-bottom: 12px;
-    }
-    .doc-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      line-height: 1.8;
-    }
-    .doc-card a {
-      color: #0F4C5C;
-      text-decoration: none;
-    }
+    .doc-card a { color:#0F4C5C; font-weight:600; text-decoration:none; }
   </style>
 </head>
 
 <body>
+  <div class="docs-container">
+    <h1>文件与认证</h1>
+    <p style="text-align:center;opacity:.8">BrazilTrad 国际贸易业务中使用的官方文件。</p>
 
-  <section class="doc-section container">
-    <h2 style="font-size:2rem;color:#0F4C5C;margin-bottom:20px;">文件资料</h2>
-    <p style="margin-bottom:30px;color:#333;max-width:700px;">
-      以下为国际大宗商品贸易中常用的重要文件，包括合同模板、操作指南以及合规/尽职调查相关材料。
-    </p>
+    <h2>📄 公司文件</h2>
+    <div class="doc-card"><span>公司简介</span><a href="../pdf/zh-profile.pdf">PDF</a></div>
+    <div class="doc-card"><span>产品目录</span><a href="../pdf/zh-portfolio.pdf">PDF</a></div>
+    <div class="doc-card"><span>企业注册证书</span><a href="../pdf/zh-registration.pdf">PDF</a></div>
+    <div class="doc-card"><span>合规与 KYC 政策</span><a href="../pdf/zh-compliance.pdf">PDF</a></div>
 
-    <div class="doc-grid">
+    <h2>🛃 出口文件</h2>
+    <div class="doc-card"><span>产品规格书</span><a href="../pdf/zh-spec.pdf">PDF</a></div>
+    <div class="doc-card"><span>原产地证书 CO</span><a href="../pdf/zh-co.pdf">PDF</a></div>
+    <div class="doc-card"><span>植物检疫证书</span><a href="../pdf/zh-phyto.pdf">PDF</a></div>
+    <div class="doc-card"><span>装箱单（Packing List）</span><a href="../pdf/zh-packing.pdf">PDF</a></div>
+    <div class="doc-card"><span>商业发票</span><a href="../pdf/zh-invoice.pdf">PDF</a></div>
 
-      <!-- 合同 -->
-      <div class="doc-card">
-        <h3>合同与模板</h3>
-        <ul>
-          <li><a href="#">📄 NDA — 保密协议</a></li>
-          <li><a href="#">📄 NCNDA — 防绕行/保密协议</a></li>
-          <li><a href="#">📄 LOI — 意向书</a></li>
-          <li><a href="#">📄 ICPO — 不可撤销采购订单</a></li>
-        </ul>
-      </div>
+    <h2>🔍 尽职调查与合规</h2>
+    <div class="doc-card"><span>KYC / AML 表格</span><a href="../pdf/zh-kyc.pdf">PDF</a></div>
+    <div class="doc-card"><span>供应商尽职调查清单</span><a href="../pdf/zh-dd.pdf">PDF</a></div>
+    <div class="doc-card"><span>ESG 合规声明</span><a href="../pdf/zh-esg.pdf">PDF</a></div>
 
-      <!-- 指南 -->
-      <div class="doc-card">
-        <h3>操作指南</h3>
-        <ul>
-          <li><a href="#">📘 国际买家指南</a></li>
-          <li><a href="#">📘 巴西供应商指南</a></li>
-          <li><a href="#">📘 小型生产者出口流程</a></li>
-        </ul>
-      </div>
-
-      <!-- 合规 -->
-      <div class="doc-card">
-        <h3>合规与流程</h3>
-        <ul>
-          <li><a href="#">📝 合规政策</a></li>
-          <li><a href="#">📝 尽职调查流程（KYC/KYB）</a></li>
-          <li><a href="#">📝 文件清单</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
+    <h2>🚢 物流与操作文件</h2>
+    <div class="doc-card"><span>FOB 装船流程</span><a href="../pdf/zh-fob.pdf">PDF</a></div>
+    <div class="doc-card"><span>巴西港口操作指南</span><a href="../pdf/zh-port.pdf">PDF</a></div>
+    <div class="doc-card"><span>BrazilTrad 出口指南</span><a href="../pdf/zh-export.pdf">PDF</a></div>
+  </div>
 </body>
 </html>
