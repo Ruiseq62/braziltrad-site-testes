@@ -124,47 +124,35 @@
 </div>
 
 <script>
-  function getBasePath() {
-    const host = window.location.host;
-
-    // Se está no GitHub Pages → usar subdiretório
-    if (host.includes("github.io")) {
-      return "/braziltrad-site-testes";
-    }
-
-    // Se está no domínio de produção → raiz
-    return "";
-  }
-
-  const BASE = getBasePath();
-
+  // Detecta o idioma com base no caminho completo
   function getCurrentLang() {
     const path = window.location.pathname;
 
     if (path.includes("/en/")) return "en";
     if (path.includes("/es/")) return "es";
     if (path.includes("/zh/")) return "zh";
-    return "pt";
+
+    return "pt"; // padrão
   }
 
   const currentLang = getCurrentLang();
 
   const menuPaths = {
     pt: {
-      docs: `${BASE}/documentos.html`,
-      links: `${BASE}/links-uteis.html`
+      docs: "/braziltrad-site-testes/documentos.html",
+      links: "/braziltrad-site-testes/links-uteis.html"
     },
     en: {
-      docs: `${BASE}/en/documents.html`,
-      links: `${BASE}/en/useful-links.html`
+      docs: "/braziltrad-site-testes/en/documents.html",
+      links: "/braziltrad-site-testes/en/useful-links.html"
     },
     es: {
-      docs: `${BASE}/es/documentos.html`,
-      links: `${BASE}/es/links-utiles.html`
+      docs: "/braziltrad-site-testes/es/documentos.html",
+      links: "/braziltrad-site-testes/es/links-utiles.html"
     },
     zh: {
-      docs: `${BASE}/zh/documents_zh.html`,
-      links: `${BASE}/zh/useful-links.html`
+      docs: "/braziltrad-site-testes/zh/documents_zh.html",
+      links: "/braziltrad-site-testes/zh/useful-links.html"
     }
   };
 
@@ -172,13 +160,12 @@
     const docsLink = document.querySelector('[data-key="nav_docs"]');
     const utilLink = document.querySelector('[data-key="nav_links"]');
 
-    docsLink.href = menuPaths[lang].docs;
-    utilLink.href = menuPaths[lang].links;
+    if (docsLink) docsLink.href = menuPaths[lang].docs;
+    if (utilLink) utilLink.href = menuPaths[lang].links;
   }
 
   applyMenuLinks(currentLang);
 </script>
-
 
 </header>
 
