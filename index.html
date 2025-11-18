@@ -6,84 +6,23 @@
   <title>BrazilTrad — Conectando o Brasil ao mercado global de commodities</title>
   <meta name="description" content="Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.">
   <link rel="stylesheet" href="./css/style.css">
-
   <style>
-    @media (max-width:420px){
-      body{margin-top:95px !important;}
-      .lang-btn{top:86px;}
-    }
-
-    .tradingview-widget-container.main-bar {
-      position: fixed !important;
-      top: 0; left: 0;
-      width: 100%; height: 38px;
-      background: #ffffff !important;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      z-index: 99999;
-    }
-
-    .tradingview-widget-container.commodities-bar {
-      position: fixed !important;
-      top: 38px; left: 0;
-      width: 100%; height: 38px;
-      background: #0F4C5C !important;
-      color: #ffffff !important;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      z-index: 99998;
-    }
-
+    /* small fixes for header bars and language button */
+    @media (max-width:420px){ body{margin-top:95px !important;} .lang-btn{top:86px;} }
+    .tradingview-widget-container.main-bar { position: fixed !important; top: 0; left: 0; width: 100%; height: 38px; background: #ffffff !important; border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 6px rgba(0,0,0,0.06); z-index: 99999; }
+    .tradingview-widget-container.commodities-bar { position: fixed !important; top: 38px; left: 0; width: 100%; height: 38px; background: #0F4C5C !important; color: #ffffff !important; border-bottom: 1px solid rgba(255,255,255,0.15); box-shadow: 0 2px 6px rgba(0,0,0,0.08); z-index: 99998; }
     body { margin-top: 86px !important; }
-
-    .lang-btn {
-      position: fixed; top: 90px; right: 20px;
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.15);
-      border-radius: 25px;
-      padding: 6px 16px;
-      font-size: 0.9rem; color: #0F4C5C;
-      font-weight: 500;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-      transition: all 0.25s ease;
-      z-index: 1000000;
-    }
-
-    .lang-btn:hover {
-      background: #f7f7f7;
-      color: #0b3d47;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
-    footer {
-      background: #0F4C5C !important;
-      color: #ffffff !important;
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    footer a {
-      color: #ffffff !important;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-      opacity: 0.85;
-    }
+    .lang-btn { position: fixed; top: 90px; right: 20px; background: #ffffff; border: 1px solid rgba(0,0,0,0.15); border-radius: 25px; padding: 6px 16px; font-size: 0.9rem; color: #0F4C5C; font-weight: 500; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.12); transition: all 0.25s ease; z-index: 1000000; }
+    .lang-btn:hover { background: #f7f7f7; color: #0b3d47; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+    footer { background: #0F4C5C !important; color: #ffffff !important; padding: 40px 0; text-align: center; }
+    footer a { color: #ffffff !important; text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; opacity: 0.85; }
   </style>
 </head>
-
 <body>
   <!-- ===== BARRAS TRADINGVIEW ===== -->
-  <div class="tradingview-widget-container main-bar">
-    <div id="tv-indices"></div>
-  </div>
-  <div class="tradingview-widget-container commodities-bar">
-    <div id="tv-commodities"></div>
-  </div>
+  <div class="tradingview-widget-container main-bar"><div id="tv-indices"></div></div>
+  <div class="tradingview-widget-container commodities-bar"><div id="tv-commodities"></div></div>
 
   <!-- ===== BOTÃO DE IDIOMA ===== -->
   <button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
@@ -105,9 +44,9 @@
           <li><a href="#products">Produtos</a></li>
           <li><a href="#markets">Mercados</a></li>
           <li><a href="#insights">Insights</a></li>
+          <!-- classes obrigatórias para o script multilíngue funcionar -->
           <li><a class="doc-link" href="#">Documentos</a></li>
           <li><a class="links-link" href="#">Links Úteis</a></li>
-
           <li><a href="#contact">Contato</a></li>
         </ul>
       </nav>
@@ -118,8 +57,8 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1>Conectando o Brasil ao mercado global de commodities</h1>
-        <p>Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.</p>
+        <h1 class="hero-title">Conectando o Brasil ao mercado global de commodities</h1>
+        <p class="hero-lead">Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.</p>
         <div class="cta">
           <a id="btn-comprar" class="button" href="contato-compra.html">Quero comprar</a>
           <a id="btn-vender" class="button secondary" href="contato-venda.html">Quero vender</a>
@@ -127,78 +66,12 @@
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <h2>Sobre a BrazilTrad</h2>
-        <p>Somos um parceiro brasileiro confiável para compradores internacionais. Atuamos com due diligence, auditoria de fornecedores e coordenação logística sob Incoterms.</p>
-      </div>
-    </section>
-
-    <section id="services" class="section">
-      <div class="container">
-        <h2>Serviços</h2>
-        <ul class="list">
-          <li>Intermediação ponta a ponta entre produtor e comprador.</li>
-          <li>Due diligence: origem, documentação, compliance e KYC.</li>
-          <li>Logística FOB/CIF via portos brasileiros.</li>
-          <li>Negociação internacional: contratos, L/C, T/T.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="products" class="section">
-      <div class="container">
-        <h2>Produtos</h2>
-        <div class="grid">
-          <article class="card">
-            <img src="assets/img/agricolas.png" alt="Agrícolas" />
-            <h3>Agrícolas</h3>
-            <p>Soja, milho, açúcar e café.</p>
-          </article>
-          <article class="card">
-            <img src="assets/img/energeticas.png" alt="Energéticas" />
-            <h3>Energéticas</h3>
-            <p>Etanol, diesel renovável, biomassa.</p>
-          </article>
-          <article class="card">
-            <img src="assets/img/minerais.png" alt="Minerais" />
-            <h3>Minerais</h3>
-            <p>Lítio, ferro, nióbio e cobre.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="markets" class="section">
-      <div class="container">
-        <h2>Mercados</h2>
-        <ul class="list">
-          <li>Ásia: foco em China e Índia (minerais e agrícolas).</li>
-          <li>EUA/UE: contratos com requisitos ESG e compliance.</li>
-          <li>Rede de fornecedores qualificados no Brasil.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="insights" class="section">
-      <div class="container">
-        <h2>Insights</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>Panorama do Lítio em 2025</h3>
-            <p>Demanda crescente na Ásia e novas rotas logísticas via Santos.</p>
-          </article>
-          <article class="card">
-            <h3>Exportações agrícolas do Brasil</h3>
-            <p>Soja e açúcar com contratos FOB competitivos para China e Índia.</p>
-          </article>
-          <article class="card">
-            <h3>Nióbio brasileiro</h3>
-            <p>Aplicações em ligas especiais e tendências de demanda para eletrificação.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <!-- Seções exemplo (mantém as tuas) -->
+    <section id="about" class="section"><div class="container"><h2>Sobre a BrazilTrad</h2><p>Somos um parceiro brasileiro confiável para compradores internacionais. Atuamos com due diligence, auditoria de fornecedores e coordenação logística sob Incoterms.</p></div></section>
+    <section id="services" class="section"><div class="container"><h2>Serviços</h2><ul class="list"><li>Intermediação ponta a ponta entre produtor e comprador.</li><li>Due diligence: origem, documentação, compliance e KYC.</li><li>Logística FOB/CIF via portos brasileiros.</li><li>Negociação internacional: contratos, L/C, T/T.</li></ul></div></section>
+    <section id="products" class="section"><div class="container"><h2>Produtos</h2><div class="grid"><article class="card"><img src="assets/img/agricolas.png" alt="Agrícolas" /><h3>Agrícolas</h3><p>Soja, milho, açúcar e café.</p></article><article class="card"><img src="assets/img/energeticas.png" alt="Energéticas" /><h3>Energéticas</h3><p>Etanol, diesel renovável, biomassa.</p></article><article class="card"><img src="assets/img/minerais.png" alt="Minerais" /><h3>Minerais</h3><p>Lítio, ferro, nióbio e cobre.</p></article></div></div></section>
+    <section id="markets" class="section"><div class="container"><h2>Mercados</h2><ul class="list"><li>Ásia: foco em China e Índia (minerais e agrícolas).</li><li>EUA/UE: contratos com requisitos ESG e compliance.</li><li>Rede de fornecedores qualificados no Brasil.</li></ul></div></section>
+    <section id="insights" class="section"><div class="container"><h2>Insights</h2><div class="grid"><article class="card"><h3>Panorama do Lítio em 2025</h3><p>Demanda crescente na Ásia e novas rotas logísticas via Santos.</p></article><article class="card"><h3>Exportações agrícolas do Brasil</h3><p>Soja e açúcar com contratos FOB competitivos para China e Índia.</p></article><article class="card"><h3>Nióbio brasileiro</h3><p>Aplicações em ligas especiais e tendências de demanda para eletrificação.</p></article></div></div></section>
   </main>
 
   <!-- ===== RODAPÉ ===== -->
@@ -215,154 +88,48 @@
     </div>
   </footer>
 
-  <!-- ===== SCRIPT MULTILÍNGUA E BASE ===== -->
+  <!-- ===== SCRIPTS (colocados no fim para garantir DOM pronto) ===== -->
   <script>
-const LANGS=["pt","en","es","zh"];
-const FLAGS={pt:"🇧🇷 PT",en:"🇬🇧 EN",es:"🇪🇸 ES",zh:"🇨🇳 中文"};
+// ===== CONFIG =====
+const LANGS = ["pt","en","es","zh"];
+const FLAGS = {pt:"🇧🇷 PT", en:"🇬🇧 EN", es:"🇪🇸 ES", zh:"🇨🇳 中文"};
 const TRANSLATIONS = {
-  pt: {
-    nav: [
-      "Sobre",
-      "Serviços",
-      "Produtos",
-      "Mercados",
-      "Insights",
-      "Documentos",
-      "Links Úteis",
-      "Contato"
-    ],
-    title: "Conectando o Brasil ao mercado global de commodities",
-    lead: "Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.",
-    btnComprar: "Quero comprar",
-    btnVender: "Quero vender"
-  },
-
-  en: {
-    nav: [
-      "About",
-      "Services",
-      "Products",
-      "Markets",
-      "Insights",
-      "Documents",
-      "Useful Links",
-      "Contact"
-    ],
-    title: "Connecting Brazil to the global commodities market",
-    lead: "Reliable intermediation of metals and agricultural products, with origin verification, compliance and efficient FOB/CIF logistics.",
-    btnComprar: "I want to buy",
-    btnVender: "I want to sell"
-  },
-
-  es: {
-    nav: [
-      "Sobre",
-      "Servicios",
-      "Productos",
-      "Mercados",
-      "Insights",
-      "Documentos",
-      "Enlaces Útiles",
-      "Contacto"
-    ],
-    title: "Conectando a Brasil con el mercado global de commodities",
-    lead: "Intermediación confiable de metales y agrícolas, con verificación de origen, cumplimiento y logística eficiente FOB/CIF.",
-    btnComprar: "Quiero comprar",
-    btnVender: "Quiero vender"
-  },
-
-  zh: {
-    nav: [
-      "关于",
-      "服务",
-      "产品",
-      "市场",
-      "洞察",
-      "文件",
-      "实用链接",
-      "联系"
-    ],
-    title: "连接巴西与全球大宗商品市场",
-    lead: "提供可靠的金属与农产品中介服务，进行产地验证、合规与高效的FOB/CIF物流。",
-    btnComprar: "我要买",
-    btnVender: "我要卖"
-  }
+  pt:{nav:["Sobre","Serviços","Produtos","Mercados","Insights","Contato"], title:"Conectando o Brasil ao mercado global de commodities", lead:"Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.", btnComprar:"Quero comprar", btnVender:"Quero vender"},
+  en:{nav:["About","Services","Products","Markets","Insights","Contact"], title:"Connecting Brazil to the global commodities market", lead:"Reliable intermediation of metals and agricultural products, with origin verification, compliance and efficient FOB/CIF logistics.", btnComprar:"I want to buy", btnVender:"I want to sell"},
+  es:{nav:["Sobre","Servicios","Productos","Mercados","Insights","Contacto"], title: "Conectando a Brasil con el mercado global de commodities", lead:"Intermediación confiable de metales y agrícolas, con verificación de origen, cumplimiento y logística eficiente FOB/CIF.", btnComprar:"Quiero comprar", btnVender:"Quiero vender"},
+  zh:{nav:["关于","服务","产品","市场","洞察","联系"], title:"连接巴西与全球大宗商品市场", lead:"提供可靠的金属与农产品中介服务，进行产地验证、合规与高效的FOB/CIF物流。", btnComprar:"我要买", btnVender:"我要卖"}
 };
 
+function basePath(){ return window.location.hostname.includes("github") ? "/braziltrad-site-testes" : ""; }
 
-function basePath(){return window.location.hostname.includes("github") ? "/braziltrad-site-testes" : "";}
-
+// Atualiza botões / links conforme idioma
 function updateLinks(code){
   const base = basePath();
-
-  // Botões Comprar / Vender / Contato
+  // comprar / vender / contato
   const btnComprar = document.getElementById("btn-comprar");
   const btnVender = document.getElementById("btn-vender");
-  const contato = document.querySelector('a[href="#contact"]')
-                || document.querySelector('a[href*="contato"], a[href*="contact"]');
+  const contato = document.querySelector('a[href="#contact"]') || document.querySelector('a[href*="contato"], a[href*="contact"]');
 
   if(code === "pt"){
     if(btnComprar) btnComprar.href = `${base}/contato-compra.html`;
-    if(btnVender)  btnVender.href  = `${base}/contato-venda.html`;
-    if(contato)    contato.href     = `${base}/contato.html`;
-  }
-  else if(code === "en"){
+    if(btnVender) btnVender.href = `${base}/contato-venda.html`;
+    if(contato) contato.href = `${base}/contato.html`;
+  } else if(code === "en"){
     if(btnComprar) btnComprar.href = `${base}/en/contact-buy.html`;
-    if(btnVender)  btnVender.href  = `${base}/en/contact-sell.html`;
-    if(contato)    contato.href     = `${base}/en/contact.html`;
-  }
-  else if(code === "es"){
-    if(btnComprar) btnComprar.href = `${base}/es/compradores.html`;
-    if(btnVender)  btnVender.href  = `${base}/es/vendedores.html`;
-    if(contato)    contato.href     = `${base}/es/contato.html`;
-  }
-  else if(code === "zh"){
-    if(btnComprar) btnComprar.href = `${base}/zh/contact-buy.html`;
-    if(btnVender)  btnVender.href  = `${base}/zh/contact-sell.html`;
-    if(contato)    contato.href     = `${base}/zh/contact.html`;
-  }
-
-  // ====== LINKS: Documentos ======
-  const linksLink = document.querySelector(".links-link");
-
-  if(docLink){
-    if(code === "pt") docLink.href = `${base}/documentos.html`;
-    if(code === "en") docLink.href = `${base}/en/documents.html`;
-    if(code === "es") docLink.href = `${base}/es/documentos.html`;
-    if(code === "zh") docLink.href = `${base}/zh/documents_zh.html`;
-  }
-
-  // ====== LINKS: Links Úteis ======
-  const linkLink = document.querySelector(".links-link");
-
-if(linkLink){
-    if(code === "pt") linkLink.href = `${base}/links-uteis.html`;
-    if(code === "en") linkLink.href = `${base}/en/useful-links.html`;
-    if(code === "es") linkLink.href = `${base}/es/enlaces-utiles.html`;
-    if(code === "zh") linkLink.href = `${base}/zh/useful-links.html`;
-}
-
-
-  else if(code === "en"){
-    btnComprar.href = `${base}/en/contact-buy.html`;
-    btnVender.href = `${base}/en/contact-sell.html`;
+    if(btnVender) btnVender.href = `${base}/en/contact-sell.html`;
     if(contato) contato.href = `${base}/en/contact.html`;
-  }
-  else if(code === "es"){
-    btnComprar.href = `${base}/es/compradores.html`;
-    btnVender.href = `${base}/es/vendedores.html`;
+  } else if(code === "es"){
+    if(btnComprar) btnComprar.href = `${base}/es/compradores.html`;
+    if(btnVender) btnVender.href = `${base}/es/vendedores.html`;
     if(contato) contato.href = `${base}/es/contato.html`;
-  }
-  else if(code === "zh"){
-    btnComprar.href = `${base}/zh/contact-buy.html`;
-    btnVender.href = `${base}/zh/contact-sell.html`;
+  } else if(code === "zh"){
+    if(btnComprar) btnComprar.href = `${base}/zh/contact-buy.html`;
+    if(btnVender) btnVender.href = `${base}/zh/contact-sell.html`;
     if(contato) contato.href = `${base}/zh/contact.html`;
   }
 
-  // 🌎 LINKS DE DOCUMENTOS POR IDIOMA
-  const documentosLink = document.querySelector('a[href*="documentos"], a[href*="documents"]');
-  const linksUteisLink = document.querySelector('a[href*="links"], a[href*="uteis"]');
-
+  // Documentos
+  const documentosLink = document.querySelector("a.doc-link");
   if(documentosLink){
     if(code === "pt") documentosLink.href = `${base}/documentos.html`;
     if(code === "en") documentosLink.href = `${base}/en/documents.html`;
@@ -370,122 +137,80 @@ if(linkLink){
     if(code === "zh") documentosLink.href = `${base}/zh/documents_cz.html`;
   }
 
+  // Links Úteis
+  const linksLink = document.querySelector("a.links-link");
   if(linksLink){
     if(code === "pt") linksLink.href = `${base}/links-uteis.html`;
     if(code === "en") linksLink.href = `${base}/en/useful-links.html`;
     if(code === "es") linksLink.href = `${base}/es/enlaces-utiles.html`;
     if(code === "zh") linksLink.href = `${base}/zh/useful-links.html`;
+  }
 }
-}
-
 
 function applyLang(code){
-  const t=TRANSLATIONS[code];
-  document.querySelectorAll('header nav ul li a').forEach((a,i)=>a.textContent=t.nav[i]);
-  document.querySelector(".hero h1").textContent=t.title;
-  document.querySelector(".hero p").textContent=t.lead;
-  document.getElementById("btn-comprar").textContent=t.btnComprar;
-  document.getElementById("btn-vender").textContent=t.btnVender;
-  document.getElementById("langBtn").textContent="🌎 "+FLAGS[code];
+  const t = TRANSLATIONS[code] || TRANSLATIONS.pt;
+  // nav text
+  document.querySelectorAll('header nav ul li a').forEach((a,i)=>{ if(t.nav[i]) a.textContent = t.nav[i]; });
+  // hero
+  const heroTitle = document.querySelector('.hero-title'); if(heroTitle) heroTitle.textContent = t.title;
+  const heroLead = document.querySelector('.hero-lead'); if(heroLead) heroLead.textContent = t.lead;
+  const btnC = document.getElementById('btn-comprar'); if(btnC) btnC.textContent = t.btnComprar;
+  const btnV = document.getElementById('btn-vender'); if(btnV) btnV.textContent = t.btnVender;
+  const langBtn = document.getElementById('langBtn'); if(langBtn) langBtn.textContent = '🌎 ' + (FLAGS[code]||FLAGS.pt);
   updateLinks(code);
   initTradingView(code);
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
-  const saved=localStorage.getItem("bt_lang");
-  let code=saved||"pt";
-  if(!LANGS.includes(code)){const n=(navigator.language||"pt").substring(0,2);code=LANGS.includes(n)?n:"pt";}
-  let i=LANGS.indexOf(code);
-  applyLang(code);
-  document.getElementById("langBtn").addEventListener("click",()=>{i=(i+1)%LANGS.length;applyLang(LANGS[i]);localStorage.setItem("bt_lang",LANGS[i]);});
-  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{const id=a.getAttribute("href").substring(1);const el=document.getElementById(id);if(el){e.preventDefault();window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-100,behavior:"smooth"});}}));
-});
-</script>
-
-  <!-- ===== SCRIPT TRADINGVIEW ===== -->
-  <script>
+// Inicialização do TradingView (cria os scripts dinamicamente)
 function initTradingView(locale){
-  document.getElementById("tv-indices").innerHTML="";
-  document.getElementById("tv-commodities").innerHTML="";
-  const w1=document.createElement("script");
-  w1.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-  w1.text=JSON.stringify({"symbols":[
-    {"proName":"FOREXCOM:EURUSD","title":"EUR/USD"},
-    {"proName":"FOREXCOM:USDJPY","title":"USD/JPY"},
-    {"proName":"OANDA:SPX500USD","title":"S&P 500"},
-    {"proName":"NASDAQ:NDX","title":"NASDAQ 100"},
-    {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
-    {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],
-    "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,"displayMode":"adaptive","locale":locale});
-  document.getElementById("tv-indices").appendChild(w1);
-  const w2=document.createElement("script");
-  w2.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-  w2.text=JSON.stringify({"symbols":[
-    {"proName":"COMEX:GC1!","title":"Ouro"},
-    {"proName":"ICEEUR:BRN1!","title":"Petróleo Brent"},
-    {"proName":"CBOT:ZS1!","title":"Soja"},
-    {"proName":"ICEUS:KC1!","title":"Café"},
-    {"proName":"ICEUS:SB1!","title":"Açúcar"},
-    {"proName":"ICEUS:CT1!","title":"Algodão"},
-    {"proName":"COMEX:HG1!","title":"Cobre"},
-    {"proName":"SGX:FEF1!","title":"Minério de Ferro"}],
-    "showSymbolLogo":true,"colorTheme":"light","isTransparent":false,"displayMode":"adaptive","locale":locale});
-  document.getElementById("tv-commodities").appendChild(w2);
+  try{
+    const tvIndices = document.getElementById('tv-indices');
+    const tvCommod = document.getElementById('tv-commodities');
+    if(tvIndices) tvIndices.innerHTML = '';
+    if(tvCommod) tvCommod.innerHTML = '';
+
+    const w1 = document.createElement('script');
+    w1.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+    w1.text = JSON.stringify({"symbols":[{"proName":"FOREXCOM:EURUSD","title":"EUR/USD"},{"proName":"FOREXCOM:USDJPY","title":"USD/JPY"},{"proName":"OANDA:SPX500USD","title":"S&P 500"},{"proName":"NASDAQ:NDX","title":"NASDAQ 100"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"BITSTAMP:ETHUSD","title":"Ethereum"}],"showSymbolLogo":true,"colorTheme":"light","isTransparent":false,"displayMode":"adaptive","locale":locale});
+    if(tvIndices) tvIndices.appendChild(w1);
+
+    const w2 = document.createElement('script');
+    w2.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+    w2.text = JSON.stringify({"symbols":[{"proName":"COMEX:GC1!","title":"Ouro"},{"proName":"ICEEUR:BRN1!","title":"Petróleo Brent"},{"proName":"CBOT:ZS1!","title":"Soja"},{"proName":"ICEUS:KC1!","title":"Café"},{"proName":"ICEUS:SB1!","title":"Açúcar"},{"proName":"ICEUS:CT1!","title":"Algodão"},{"proName":"COMEX:HG1!","title":"Cobre"},{"proName":"SGX:FEF1!","title":"Minério de Ferro"}],"showSymbolLogo":true,"colorTheme":"light","isTransparent":false,"displayMode":"adaptive","locale":locale});
+    if(tvCommod) tvCommod.appendChild(w2);
+  }catch(e){console.warn('TradingView init error', e);} 
 }
-</script>
 
-<!-- ===== FALLBACK DE NAVEGAÇÃO (Documentos / Links Úteis) ===== -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  try {
-    const base = (window.location.hostname.includes("github")) ? "/braziltrad-site-testes" : "";
+// correções de caminhos relativas para GitHub Pages (mantém compatibilidade)
+function correctPathsForGitHub(){
+  const isGitHub = window.location.hostname.includes('github');
+  const base = isGitHub ? '/braziltrad-site-testes' : '';
+  document.querySelectorAll('link[href^="./css"], link[href^="/css"]').forEach(link=>{ link.href = base + '/css/style.css'; });
+  document.querySelectorAll('img[src^="/assets"], img[src^="./assets"]').forEach(img=>{ img.src = base + '/' + img.getAttribute('src').replace(/^\.\//,'').replace(/^\//,''); });
+}
 
-    const langFromStorage = () => {
-      const saved = localStorage.getItem("bt_lang");
-      if (saved) return saved;
-      const n = (navigator.language || "pt").substring(0,2);
-      return ["pt","en","es","zh"].includes(n) ? n : "pt";
-    };
+// Inicialização depois do DOM carregar
+document.addEventListener('DOMContentLoaded', ()=>{
+  correctPathsForGitHub();
+  // linguagem inicial (salva em localStorage)
+  const saved = localStorage.getItem('bt_lang');
+  let code = saved || (navigator.language||'pt').substring(0,2);
+  if(!LANGS.includes(code)) code = 'pt';
 
-    const docMap = {
-      pt: "/documentos.html",
-      en: "/en/documents.html",
-      es: "/es/documentos.html",
-      zh: "/zh/documents_cz.html"
-    };
+  applyLang(code);
 
-    const linksMap = {
-      pt: "/links-uteis.html",
-      en: "/en/useful-links.html",
-      es: "/es/enlaces-utiles.html",
-      zh: "/zh/useful-links.html"
-    };
-
-    const safeNavigate = (path) => { window.location.href = base + path; };
-
-    // Documentos
-    document.querySelectorAll('.doc-link').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        const lang = langFromStorage();
-        safeNavigate(docMap[lang] || docMap.pt);
-      });
-    });
-
-    // Links Úteis
-    document.querySelectorAll('.links-link').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        const lang = langFromStorage();
-        safeNavigate(linksMap[lang] || linksMap.pt);
-      });
-    });
-  } catch(err) {
-    console.error("Fallback nav handler error:", err);
+  // ciclo de idioma no botão
+  const langBtn = document.getElementById('langBtn');
+  if(langBtn){
+    let idx = LANGS.indexOf(code);
+    langBtn.addEventListener('click', ()=>{ idx = (idx + 1) % LANGS.length; const next = LANGS[idx]; applyLang(next); localStorage.setItem('bt_lang', next); });
   }
+
+  // smooth scroll for anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{ const id = a.getAttribute('href').substring(1); const el = document.getElementById(id); if(el){ e.preventDefault(); window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' }); } }));
 });
+
 </script>
 
 </body>
 </html>
-
