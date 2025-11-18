@@ -292,15 +292,54 @@ const TRANSLATIONS = {
 function basePath(){return window.location.hostname.includes("github") ? "/braziltrad-site-testes" : "";}
 
 function updateLinks(code){
-  const base=basePath();
-  const btnComprar=document.getElementById("btn-comprar");
-  const btnVender=document.getElementById("btn-vender");
-  const contato=document.querySelector('a[href="#contact"]')||document.querySelector('a[href*="contato"], a[href*="contact"]');
-  if(code==="pt"){btnComprar.href=`${base}/contato-compra.html`;btnVender.href=`${base}/contato-venda.html`;if(contato) contato.href=`${base}/contato.html`;}
-  else if(code==="en"){btnComprar.href=`${base}/en/contact-buy.html`;btnVender.href=`${base}/en/contact-sell.html`;if(contato) contato.href=`${base}/en/contact.html`;}
-  else if(code==="es"){btnComprar.href=`${base}/es/compradores.html`;btnVender.href=`${base}/es/vendedores.html`;if(contato) contato.href=`${base}/es/contato.html`;}
-  else if(code==="zh"){btnComprar.href=`${base}/zh/contact-buy.html`;btnVender.href=`${base}/zh/contact-sell.html`;if(contato) contato.href=`${base}/zh/contact.html`;}
+  const base = basePath();
+
+  // Botões Comprar / Vender / Contato
+  const btnComprar = document.getElementById("btn-comprar");
+  const btnVender = document.getElementById("btn-vender");
+  const contato = document.querySelector('a[href="#contact"]') 
+               || document.querySelector('a[href*="contato"], a[href*="contact"]');
+
+  if(code === "pt"){
+    btnComprar.href = `${base}/contato-compra.html`;
+    btnVender.href = `${base}/contato-venda.html`;
+    if(contato) contato.href = `${base}/contato.html`;
+  }
+  else if(code === "en"){
+    btnComprar.href = `${base}/en/contact-buy.html`;
+    btnVender.href = `${base}/en/contact-sell.html`;
+    if(contato) contato.href = `${base}/en/contact.html`;
+  }
+  else if(code === "es"){
+    btnComprar.href = `${base}/es/compradores.html`;
+    btnVender.href = `${base}/es/vendedores.html`;
+    if(contato) contato.href = `${base}/es/contato.html`;
+  }
+  else if(code === "zh"){
+    btnComprar.href = `${base}/zh/contact-buy.html`;
+    btnVender.href = `${base}/zh/contact-sell.html`;
+    if(contato) contato.href = `${base}/zh/contact.html`;
+  }
+
+  // 🌎 LINKS DE DOCUMENTOS POR IDIOMA
+  const documentosLink = document.querySelector('a[href*="documentos"], a[href*="documents"]');
+  const linksUteisLink = document.querySelector('a[href*="links"], a[href*="uteis"]');
+
+  if(documentosLink){
+    if(code === "pt") documentosLink.href = `${base}/documentos.html`;
+    if(code === "en") documentosLink.href = `${base}/en/documents.html`;
+    if(code === "es") documentosLink.href = `${base}/es/documentos.html`;
+    if(code === "zh") documentosLink.href = `${base}/zh/documents_cz.html`;
+  }
+
+  if(linksUteisLink){
+    if(code === "pt") linksUteisLink.href = `${base}/links-uteis.html`;
+    if(code === "en") linksUteisLink.href = `${base}/en/links-uteis.html`;
+    if(code === "es") linksUteisLink.href = `${base}/es/links-uteis.html`;
+    if(code === "zh") linksUteisLink.href = `${base}/zh/links-uteis.html`;
+  }
 }
+
 
 function applyLang(code){
   const t=TRANSLATIONS[code];
