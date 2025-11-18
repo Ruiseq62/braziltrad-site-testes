@@ -323,7 +323,7 @@ function updateLinks(code){
   }
 
   // ====== LINKS: Documentos ======
-  const docLink = document.querySelector(".doc-link");
+  const linksLink = document.querySelector(".links-link");
 
   if(docLink){
     if(code === "pt") docLink.href = `${base}/documentos.html`;
@@ -370,12 +370,12 @@ function updateLinks(code){
     if(code === "zh") documentosLink.href = `${base}/zh/documents_cz.html`;
   }
 
-  if(linksUteisLink){
-    if(code === "pt") linksUteisLink.href = `${base}/links-uteis.html`;
-    if(code === "en") linksUteisLink.href = `${base}/en/useful-links.html`;
-    if(code === "es") linksUteisLink.href = `${base}/es/enlaces-utiles.html`;
-    if(code === "zh") linksUteisLink.href = `${base}/zh/useful-links.html`;
-  }
+  if(linksLink){
+    if(code === "pt") linksLink.href = `${base}/links-uteis.html`;
+    if(code === "en") linksLink.href = `${base}/en/useful-links.html`;
+    if(code === "es") linksLink.href = `${base}/es/enlaces-utiles.html`;
+    if(code === "zh") linksLink.href = `${base}/zh/useful-links.html`;
+}
 }
 
 
