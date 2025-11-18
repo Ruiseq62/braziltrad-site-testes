@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Enlaces Útiles — BrazilTrad</title>
+  <link rel="stylesheet" href="/assets/css/braziltrad-docs.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">BT</div>
+      <div>
+        <div class="h1">Enlaces Útiles</div>
+        <div class="small">Herramientas, organismos oficiales y portales de exportación</div>
+      </div>
+    </header>
+
+    <main class="card">
+      <div class="controls">
+        <input id="linkSearch" class="input" placeholder="Buscar…" />
+        <select id="linkCategory" class="select">
+          <option value="">Todas</option>
+          <option value="gov">Gobierno</option>
+          <option value="finance">Cambio</option>
+          <option value="market">Mercado</option>
+          <option value="orgs">Organizaciones</option>
+        </select>
+        <button id="linkClear" class="btn">Limpiar</button>
+      </div>
+
+      <div id="linksArea"></div>
+    </main>
+  </div>
+
+  <script src="/assets/js/links.js"></script>
+</body>
+</html>
