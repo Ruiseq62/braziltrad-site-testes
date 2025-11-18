@@ -128,30 +128,32 @@
   function getCurrentLang() {
     const path = window.location.pathname;
 
-    if (path.startsWith("/en/")) return "en";
-    if (path.startsWith("/es/")) return "es";
-    if (path.startsWith("/zh/")) return "zh";
-    return "pt"; // padrão
+    if (path.includes("/en/")) return "en";
+    if (path.includes("/es/")) return "es";
+    if (path.includes("/zh/")) return "zh";
+    return "pt";
   }
+
+  const BASE = "/braziltrad-site-testes";
 
   const currentLang = getCurrentLang();
 
   const menuPaths = {
     pt: {
-      docs: "/documentos.html",
-      links: "/links-uteis.html"
+      docs: `${BASE}/documentos.html`,
+      links: `${BASE}/links-uteis.html`
     },
     en: {
-      docs: "/en/documents.html",
-      links: "/en/useful-links.html"
+      docs: `${BASE}/en/documents.html`,
+      links: `${BASE}/en/useful-links.html`
     },
     es: {
-      docs: "/es/documentos.html",
-      links: "/es/links-utiles.html"
+      docs: `${BASE}/es/documentos.html`,
+      links: `${BASE}/es/links-utiles.html`
     },
     zh: {
-      docs: "/zh/documents_zh.html",
-      links: "/zh/useful-links.html"
+      docs: `${BASE}/zh/documents_zh.html`,
+      links: `${BASE}/zh/useful-links.html`
     }
   };
 
@@ -165,6 +167,7 @@
 
   applyMenuLinks(currentLang);
 </script>
+
 
 </header>
 
