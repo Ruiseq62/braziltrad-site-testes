@@ -1,48 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
   <title>Documentos — BrazilTrad</title>
-  <link rel="stylesheet" href="assets/css/braziltrad-docs.css">
+  <meta name="description" content="Documentos essenciais para compradores e vendedores internacionais: contratos, guias operacionais, compliance e due diligence.">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body { padding-top: 40px; }
+    .doc-section { padding: 40px 20px; }
+    .doc-grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 20px;
+    }
+    .doc-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .doc-card h3 {
+      color: #0F4C5C;
+      margin-bottom: 12px;
+    }
+    .doc-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 1.8;
+    }
+    .doc-card a {
+      color: #0F4C5C;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo">BT</div>
-      <div>
-        <div class="h1">Documentos</div>
-        <div class="small">Modelos e formulários de exportação</div>
+
+  <section class="doc-section container">
+    <h2 style="font-size:2rem;color:#0F4C5C;margin-bottom:20px;">Documentos Úteis</h2>
+    <p style="margin-bottom:30px;color:#333;max-width:700px;">
+      Abaixo encontrará os principais documentos utilizados em operações internacionais de commodities: contratos, acordos, guias e materiais de compliance.
+    </p>
+
+    <div class="doc-grid">
+
+      <!-- Contratos -->
+      <div class="doc-card">
+        <h3>Contratos & Modelos</h3>
+        <ul>
+          <li><a href="#">📄 NDA — Acordo de Confidencialidade</a></li>
+          <li><a href="#">📄 NCNDA — Non Circumvention / Non Disclosure</a></li>
+          <li><a href="#">📄 LOI — Carta de Intenção</a></li>
+          <li><a href="#">📄 ICPO — Ordem Irrevogável de Compra</a></li>
+        </ul>
       </div>
-    </header>
 
-    <main class="grid grid-2">
-      <section class="card">
-        <div class="controls">
-          <input id="search" class="input" placeholder="Pesquisar…" />
-          <select id="category" class="select">
-            <option value="">Todas as categorias</option>
-            <option value="commercial">Comerciais</option>
-            <option value="logistics">Logística</option>
-            <option value="contracts">Contratos</option>
-            <option value="guides">Guias</option>
-          </select>
-          <button class="btn" id="clearFilters">Limpar</button>
-        </div>
+      <!-- Guias -->
+      <div class="doc-card">
+        <h3>Guias Operacionais</h3>
+        <ul>
+          <li><a href="#">📘 Guia do Comprador Internacional</a></li>
+          <li><a href="#">📘 Guia do Fornecedor Brasileiro</a></li>
+          <li><a href="#">📘 Exportação para Pequenos Produtores</a></li>
+        </ul>
+      </div>
 
-        <div id="docsList" class="docs-list"></div>
-      </section>
+      <!-- Compliance -->
+      <div class="doc-card">
+        <h3>Compliance & Processos</h3>
+        <ul>
+          <li><a href="#">📝 Política de Compliance</a></li>
+          <li><a href="#">📝 Procedimentos de Due Diligence (KYC/KYB)</a></li>
+          <li><a href="#">📝 Checklist de Documentação</a></li>
+        </ul>
+      </div>
 
-      <aside class="card">
-        <h3>Kit inicial de exportação</h3>
-        <p class="small">Receba por email um pack com Proforma + Invoice + Packing List.</p>
-        <input id="leadEmail" class="input" placeholder="seu@email.com" />
-        <button class="btn" id="downloadPack">Receber</button>
-      </aside>
-    </main>
-  </div>
+    </div>
+  </section>
 
-  <script src="assets/js/docs-pt.js"></script>
 </body>
 </html>
