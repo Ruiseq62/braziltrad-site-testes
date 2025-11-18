@@ -2,84 +2,51 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Documentos — BrazilTrad</title>
-  <meta name="description" content="Documentos esenciales para compradores y vendedores internacionales: contratos, guías operativas, compliance y due diligence.">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    body { padding-top: 40px; }
-    .doc-section { padding: 40px 20px; }
-    .doc-grid {
-      display: grid; 
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 20px;
-    }
+    .docs-container { max-width: 900px; margin: 40px auto; padding: 20px; }
+    h1 { text-align:center; margin-bottom:10px; }
+    h2 { margin-top:40px; margin-bottom:15px; }
     .doc-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      background:#fff; padding:18px 22px; border-radius:8px;
+      margin-bottom:12px; border:1px solid #e5e5e5;
+      display:flex; justify-content:space-between; align-items:center;
     }
-    .doc-card h3 {
-      color: #0F4C5C;
-      margin-bottom: 12px;
-    }
-    .doc-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      line-height: 1.8;
-    }
-    .doc-card a {
-      color: #0F4C5C;
-      text-decoration: none;
-    }
+    .doc-card a { color:#0F4C5C; font-weight:600; text-decoration:none; }
   </style>
 </head>
 
 <body>
-
-  <section class="doc-section container">
-    <h2 style="font-size:2rem;color:#0F4C5C;margin-bottom:20px;">Documentos Útiles</h2>
-    <p style="margin-bottom:30px;color:#333;max-width:700px;">
-      Acceda aquí a los principales documentos utilizados en operaciones internacionales de commodities:
-      contratos, acuerdos, guías y materiales de compliance.
+  <div class="docs-container">
+    <h1>Documentos & Certificaciones</h1>
+    <p style="text-align:center;opacity:.8">
+      Documentos oficiales utilizados en las operaciones internacionales de BrazilTrad.
     </p>
 
-    <div class="doc-grid">
+    <h2>📄 Documentos Corporativos</h2>
+    <div class="doc-card"><span>Presentación Corporativa</span><a href="../pdf/es-presentacion.pdf">PDF</a></div>
+    <div class="doc-card"><span>Portafolio de Productos</span><a href="../pdf/es-portafolio.pdf">PDF</a></div>
+    <div class="doc-card"><span>Certificado de Registro Empresarial</span><a href="../pdf/es-registro.pdf">PDF</a></div>
+    <div class="doc-card"><span>Política de Cumplimiento & KYC</span><a href="../pdf/es-compliance.pdf">PDF</a></div>
 
-      <!-- Contratos -->
-      <div class="doc-card">
-        <h3>Contratos & Modelos</h3>
-        <ul>
-          <li><a href="#">📄 NDA — Acuerdo de Confidencialidad</a></li>
-          <li><a href="#">📄 NCNDA — No Circumvention / Non Disclosure</a></li>
-          <li><a href="#">📄 LOI — Carta de Intención</a></li>
-          <li><a href="#">📄 ICPO — Orden Irrevocable de Compra</a></li>
-        </ul>
-      </div>
+    <h2>🛃 Documentación de Exportación</h2>
+    <div class="doc-card"><span>Hoja Técnica del Producto</span><a href="../pdf/es-ficha.pdf">PDF</a></div>
+    <div class="doc-card"><span>Certificado de Origen</span><a href="../pdf/es-co.pdf">PDF</a></div>
+    <div class="doc-card"><span>Certificado Fitosanitario</span><a href="../pdf/es-fito.pdf">PDF</a></div>
+    <div class="doc-card"><span>Packing List</span><a href="../pdf/es-packing-list.pdf">PDF</a></div>
+    <div class="doc-card"><span>Factura Comercial</span><a href="../pdf/es-invoice.pdf">PDF</a></div>
 
-      <!-- Guías -->
-      <div class="doc-card">
-        <h3>Guías Operativas</h3>
-        <ul>
-          <li><a href="#">📘 Guía del Comprador Internacional</a></li>
-          <li><a href="#">📘 Guía del Vendedor Brasileño</a></li>
-          <li><a href="#">📘 Exportación para Pequeños Productores</a></li>
-        </ul>
-      </div>
+    <h2>🔍 Due Diligence & Compliance</h2>
+    <div class="doc-card"><span>Formulario KYC / AML</span><a href="../pdf/es-kyc.pdf">PDF</a></div>
+    <div class="doc-card"><span>Checklist de Due Diligence</span><a href="../pdf/es-dd.pdf">PDF</a></div>
+    <div class="doc-card"><span>Declaración ESG</span><a href="../pdf/es-esg.pdf">PDF</a></div>
 
-      <!-- Compliance -->
-      <div class="doc-card">
-        <h3>Compliance & Procesos</h3>
-        <ul>
-          <li><a href="#">📝 Política de Compliance</a></li>
-          <li><a href="#">📝 Procedimientos de Due Diligence (KYC/KYB)</a></li>
-          <li><a href="#">📝 Checklist Documental</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
+    <h2>🚢 Logística & Operaciones</h2>
+    <div class="doc-card"><span>Procedimiento de Carga FOB</span><a href="../pdf/es-fob.pdf">PDF</a></div>
+    <div class="doc-card"><span>Guía de Procedimientos Portuarios</span><a href="../pdf/es-portos.pdf">PDF</a></div>
+    <div class="doc-card"><span>Guía de Exportación BrazilTrad</span><a href="../pdf/es-export.pdf">PDF</a></div>
+  </div>
 </body>
 </html>
