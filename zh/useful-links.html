@@ -1,39 +1,38 @@
-<!doctype html>
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>实用链接 — BrazilTrad</title>
-  <link rel="stylesheet" href="/assets/css/braziltrad-docs.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enlaces Útiles — BrazilTrad</title>
+
+  <link rel="stylesheet" href="../assets/css/braziltrad-docs.css">
 </head>
 
 <body>
   <div class="container">
-    <header class="header">
-      <div class="logo">BT</div>
-      <div>
-        <div class="h1">实用链接</div>
-        <div class="small">工具、官方机构与出口门户</div>
-      </div>
-    </header>
+    <h1>BT</h1>
+    <h2>Enlaces Útiles</h2>
+    <p>Herramientas, organismos oficiales y portales de exportación</p>
 
-    <main class="card">
-      <div class="controls">
-        <input id="linkSearch" class="input" placeholder="搜索…" />
-        <select id="linkCategory" class="select">
-          <option value="">全部</option>
-          <option value="gov">政府机构</option>
-          <option value="finance">汇率</option>
-          <option value="market">市场</option>
-          <option value="orgs">组织</option>
+    <div class="search-bar">
+      <input id="searchInput" type="text" placeholder="Buscar...">
+      <div class="category-select">
+        <select id="categoryFilter">
+          <option value="">Todas</option>
+          <option value="gov">Gobierno</option>
+          <option value="market">Mercados</option>
+          <option value="finance">Finanzas</option>
+          <option value="orgs">Organizaciones</option>
         </select>
-        <button id="linkClear" class="btn">清除</button>
       </div>
+      <button id="linkClear" class="btn">Limpiar</button>
+    </div>
 
+    <main>
       <div id="linksArea"></div>
     </main>
   </div>
 
-  <script src="assets/js/docs.js"></script>
+  <script src="../assets/js/links.js"></script>
 </body>
 </html>
