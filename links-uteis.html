@@ -1,39 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Links Úteis — BrazilTrad</title>
-  <link rel="stylesheet" href="/assets/css/braziltrad-docs.css">
+
+  <!-- CSS correto -->
+  <link rel="stylesheet" href="assets/css/braziltrad-docs.css">
 </head>
 
 <body>
   <div class="container">
-    <header class="header">
-      <div class="logo">BT</div>
-      <div>
-        <div class="h1">Links Úteis</div>
-        <div class="small">Ferramentas, órgãos oficiais e portais de exportação</div>
-      </div>
-    </header>
+    <h1>BT</h1>
+    <h2>Links Úteis</h2>
+    <p>Ferramentas, órgãos oficiais e portais de exportação</p>
 
-    <main class="card">
-      <div class="controls">
-        <input id="linkSearch" class="input" placeholder="Pesquisar…" />
-        <select id="linkCategory" class="select">
+    <div class="search-bar">
+      <input id="searchInput" type="text" placeholder="Pesquisar...">
+      <div class="category-select">
+        <select id="categoryFilter">
           <option value="">Todas</option>
           <option value="gov">Governo</option>
-          <option value="finance">Câmbio</option>
           <option value="market">Mercados</option>
+          <option value="finance">Finanças</option>
           <option value="orgs">Organizações</option>
         </select>
-        <button id="linkClear" class="btn">Limpar</button>
       </div>
+      <button id="linkClear" class="btn">Limpar</button>
+    </div>
 
+    <main>
       <div id="linksArea"></div>
     </main>
   </div>
 
-  <script src="assets/js/docs.js"></script>
+  <!-- JS correto -->
+  <script src="assets/js/links.js"></script>
 </body>
 </html>
