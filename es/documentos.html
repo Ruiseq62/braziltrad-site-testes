@@ -1,48 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
   <title>Documentos — BrazilTrad</title>
-  <link rel="stylesheet" href="/assets/css/braziltrad-docs.css">
+  <meta name="description" content="Documentos esenciales para compradores y vendedores internacionales: contratos, guías operativas, compliance y due diligence.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 40px; }
+    .doc-section { padding: 40px 20px; }
+    .doc-grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 20px;
+    }
+    .doc-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .doc-card h3 {
+      color: #0F4C5C;
+      margin-bottom: 12px;
+    }
+    .doc-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 1.8;
+    }
+    .doc-card a {
+      color: #0F4C5C;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo">BT</div>
-      <div>
-        <div class="h1">Documentos</div>
-        <div class="small">Modelos y formularios de exportación</div>
+
+  <section class="doc-section container">
+    <h2 style="font-size:2rem;color:#0F4C5C;margin-bottom:20px;">Documentos Útiles</h2>
+    <p style="margin-bottom:30px;color:#333;max-width:700px;">
+      Acceda aquí a los principales documentos utilizados en operaciones internacionales de commodities:
+      contratos, acuerdos, guías y materiales de compliance.
+    </p>
+
+    <div class="doc-grid">
+
+      <!-- Contratos -->
+      <div class="doc-card">
+        <h3>Contratos & Modelos</h3>
+        <ul>
+          <li><a href="#">📄 NDA — Acuerdo de Confidencialidad</a></li>
+          <li><a href="#">📄 NCNDA — No Circumvention / Non Disclosure</a></li>
+          <li><a href="#">📄 LOI — Carta de Intención</a></li>
+          <li><a href="#">📄 ICPO — Orden Irrevocable de Compra</a></li>
+        </ul>
       </div>
-    </header>
 
-    <main class="grid grid-2">
-      <section class="card">
-        <div class="controls">
-          <input id="search" class="input" placeholder="Buscar…" />
-          <select id="category" class="select">
-            <option value="">Todas las categorías</option>
-            <option value="commercial">Comerciales</option>
-            <option value="logistics">Logística</option>
-            <option value="contracts">Contratos</option>
-            <option value="guides">Guías</option>
-          </select>
-          <button class="btn" id="clearFilters">Limpiar</button>
-        </div>
+      <!-- Guías -->
+      <div class="doc-card">
+        <h3>Guías Operativas</h3>
+        <ul>
+          <li><a href="#">📘 Guía del Comprador Internacional</a></li>
+          <li><a href="#">📘 Guía del Vendedor Brasileño</a></li>
+          <li><a href="#">📘 Exportación para Pequeños Productores</a></li>
+        </ul>
+      </div>
 
-        <div id="docsList" class="docs-list"></div>
-      </section>
+      <!-- Compliance -->
+      <div class="doc-card">
+        <h3>Compliance & Procesos</h3>
+        <ul>
+          <li><a href="#">📝 Política de Compliance</a></li>
+          <li><a href="#">📝 Procedimientos de Due Diligence (KYC/KYB)</a></li>
+          <li><a href="#">📝 Checklist Documental</a></li>
+        </ul>
+      </div>
 
-      <aside class="card">
-        <h3>Kit inicial de exportación</h3>
-        <p class="small">Reciba por correo Proforma + Invoice + Packing List.</p>
-        <input id="leadEmail" class="input" placeholder="correo@ejemplo.com" />
-        <button class="btn" id="downloadPack">Recibir</button>
-      </aside>
-    </main>
-  </div>
+    </div>
+  </section>
 
-  <script src="../assets/js/docs-es.js"></script>
 </body>
 </html>
