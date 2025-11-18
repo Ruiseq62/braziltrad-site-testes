@@ -1,48 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>文件 — BrazilTrad</title>
-  <link rel="stylesheet" href="/assets/css/braziltrad-docs.css">
+  <meta charset="UTF-8">
+  <title>文件资料 — BrazilTrad</title>
+  <meta name="description" content="国际大宗商品贸易中常用的重要文件：合同模板、操作指南、合规与尽职调查资料。">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding-top: 40px; }
+    .doc-section { padding: 40px 20px; }
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 20px;
+    }
+    .doc-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .doc-card h3 {
+      color: #0F4C5C;
+      margin-bottom: 12px;
+    }
+    .doc-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 1.8;
+    }
+    .doc-card a {
+      color: #0F4C5C;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo">BT</div>
-      <div>
-        <div class="h1">文件</div>
-        <div class="small">出口模板与表格</div>
+
+  <section class="doc-section container">
+    <h2 style="font-size:2rem;color:#0F4C5C;margin-bottom:20px;">文件资料</h2>
+    <p style="margin-bottom:30px;color:#333;max-width:700px;">
+      以下为国际大宗商品贸易中常用的重要文件，包括合同模板、操作指南以及合规/尽职调查相关材料。
+    </p>
+
+    <div class="doc-grid">
+
+      <!-- 合同 -->
+      <div class="doc-card">
+        <h3>合同与模板</h3>
+        <ul>
+          <li><a href="#">📄 NDA — 保密协议</a></li>
+          <li><a href="#">📄 NCNDA — 防绕行/保密协议</a></li>
+          <li><a href="#">📄 LOI — 意向书</a></li>
+          <li><a href="#">📄 ICPO — 不可撤销采购订单</a></li>
+        </ul>
       </div>
-    </header>
 
-    <main class="grid grid-2">
-      <section class="card">
-        <div class="controls">
-          <input id="search" class="input" placeholder="搜索…" />
-          <select id="category" class="select">
-            <option value="">所有类别</option>
-            <option value="commercial">商业文件</option>
-            <option value="logistics">物流文件</option>
-            <option value="contracts">合同</option>
-            <option value="guides">指南</option>
-          </select>
-          <button class="btn" id="clearFilters">清除</button>
-        </div>
+      <!-- 指南 -->
+      <div class="doc-card">
+        <h3>操作指南</h3>
+        <ul>
+          <li><a href="#">📘 国际买家指南</a></li>
+          <li><a href="#">📘 巴西供应商指南</a></li>
+          <li><a href="#">📘 小型生产者出口流程</a></li>
+        </ul>
+      </div>
 
-        <div id="docsList" class="docs-list"></div>
-      </section>
+      <!-- 合规 -->
+      <div class="doc-card">
+        <h3>合规与流程</h3>
+        <ul>
+          <li><a href="#">📝 合规政策</a></li>
+          <li><a href="#">📝 尽职调查流程（KYC/KYB）</a></li>
+          <li><a href="#">📝 文件清单</a></li>
+        </ul>
+      </div>
 
-      <aside class="card">
-        <h3>出口入门包</h3>
-        <p class="small">通过邮箱接收 Proforma + Invoice + Packing List。</p>
-        <input id="leadEmail" class="input" placeholder="你的邮箱" />
-        <button class="btn" id="downloadPack">接收</button>
-      </aside>
-    </main>
-  </div>
+    </div>
+  </section>
 
-  <script src="../assets/js/docs-zh.js"></script>
 </body>
 </html>
