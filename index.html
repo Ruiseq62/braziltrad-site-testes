@@ -89,27 +89,41 @@
   <button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
 
   <!-- ===== CABEÇALHO ===== -->
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="./">
-        <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" />
-        <div>
-          <div class="title">BrazilTrad</div>
-          <div class="slogan" data-key="header_slogan"><em>Conectando produtores brasileiros a mercados globais</em></div>
+  <!-- ===== CABEÇALHO ===== -->
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="./">
+      <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" />
+      <div>
+        <div class="title">BrazilTrad</div>
+        <div class="slogan" data-key="header_slogan">
+          <em>Conectando produtores brasileiros a mercados globais</em>
         </div>
-      </a>
-      <nav>
-        <ul>
-          <li><a data-key="nav_about" href="#about">Sobre</a></li>
-          <li><a data-key="nav_services" href="#services">Serviços</a></li>
-          <li><a data-key="nav_products" href="#products">Produtos</a></li>
-          <li><a data-key="nav_markets" href="#markets">Mercados</a></li>
-          <li><a data-key="nav_insights" href="#insights">Insights</a></li>
-          <li><a data-key="nav_contact" href="#contact">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+      </div>
+    </a>
+
+    <nav>
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Abrir menu">
+        ☰
+      </button>
+
+      <ul id="mainNav" class="nav-list">
+        <li><a data-key="nav_about" href="#about">Sobre</a></li>
+        <li><a data-key="nav_services" href="#services">Serviços</a></li>
+        <li><a data-key="nav_products" href="#products">Produtos</a></li>
+        <li><a data-key="nav_markets" href="#markets">Mercados</a></li>
+        <li><a data-key="nav_insights" href="#insights">Insights</a></li>
+
+        <!-- NOVAS ABAS -->
+        <li><a data-key="nav_docs" href="documentos.html">Documentos</a></li>
+        <li><a data-key="nav_links" href="links-uteis.html">Links Úteis</a></li>
+
+        <li><a data-key="nav_contact" href="#contact">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
   <!-- ===== HERO ===== -->
   <main>
