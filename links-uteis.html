@@ -2,39 +2,124 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Links Úteis — BrazilTrad</title>
+  <link rel="stylesheet" href="css/style.css">
 
-  <!-- CSS correto -->
-  <link rel="stylesheet" href="assets/css/braziltrad-docs.css">
+  <style>
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 30px 20px 60px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0F4C5C;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      margin: 40px auto;
+      max-width: 900px;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .section h2 {
+      color: #0F4C5C;
+      border-left: 6px solid #CFAF6B;
+      padding-left: 10px;
+      margin-bottom: 15px;
+    }
+
+    ul.links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.links li {
+      margin: 10px 0;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    ul.links li a {
+      text-decoration: none;
+      font-size: 1.05rem;
+      color: #0F4C5C;
+      font-weight: 600;
+    }
+
+    ul.links li a:hover {
+      color: #CFAF6B;
+    }
+
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>BT</h1>
-    <h2>Links Úteis</h2>
-    <p>Ferramentas, órgãos oficiais e portais de exportação</p>
 
-    <div class="search-bar">
-      <input id="searchInput" type="text" placeholder="Pesquisar...">
-      <div class="category-select">
-        <select id="categoryFilter">
-          <option value="">Todas</option>
-          <option value="gov">Governo</option>
-          <option value="market">Mercados</option>
-          <option value="finance">Finanças</option>
-          <option value="orgs">Organizações</option>
-        </select>
-      </div>
-      <button id="linkClear" class="btn">Limpar</button>
-    </div>
+  <h1>Links Úteis</h1>
 
-    <main>
-      <div id="linksArea"></div>
-    </main>
+  <!-- Instituições & Governos -->
+  <div class="section">
+    <h2>🏛️ Instituições & Governos</h2>
+    <ul class="links">
+      <li><a href="https://www.gov.br/agricultura" target="_blank">MAPA — Ministério da Agricultura</a></li>
+      <li><a href="https://www.gov.br/receitafederal" target="_blank">Receita Federal do Brasil</a></li>
+      <li><a href="https://www.gov.br/economia" target="_blank">Ministério da Economia</a></li>
+      <li><a href="https://www.ibge.gov.br" target="_blank">IBGE</a></li>
+      <li><a href="https://www.bcb.gov.br" target="_blank">Banco Central do Brasil</a></li>
+    </ul>
   </div>
 
-  <!-- JS correto -->
-  <script src="assets/js/links.js"></script>
+  <!-- Mercados & Preços -->
+  <div class="section">
+    <h2>📈 Mercados & Preços de Commodities</h2>
+    <ul class="links">
+      <li><a href="https://www.tradingview.com" target="_blank">TradingView — Gráficos e preços</a></li>
+      <li><a href="https://www.b3.com.br" target="_blank">B3 — Agro</a></li>
+      <li><a href="https://www.cmegroup.com" target="_blank">CME Group</a></li>
+      <li><a href="https://www.lme.com" target="_blank">LME — London Metal Exchange</a></li>
+      <li><a href="https://www.ice.com" target="_blank">ICE — Intercontinental Exchange</a></li>
+    </ul>
+  </div>
+
+  <!-- Logística & Exportação -->
+  <div class="section">
+    <h2>🚢 Logística & Exportação</h2>
+    <ul class="links">
+      <li><a href="https://www.gov.br/antaq" target="_blank">ANTAQ — Agência Nacional de Transportes Aquaviários</a></li>
+      <li><a href="https://www.gov.br/infraestrutura/pt-br/assuntos/portos" target="_blank">Portos do Brasil</a></li>
+      <li><a href="https://portal.siscomex.gov.br" target="_blank">Siscomex</a></li>
+      <li><a href="https://radar-aduaneiro.com.br" target="_blank">Radar Aduaneiro</a></li>
+    </ul>
+  </div>
+
+  <!-- Compliance -->
+  <div class="section">
+    <h2>🛡️ Compliance & Certificações</h2>
+    <ul class="links">
+      <li><a href="https://www.sgs.com" target="_blank">SGS</a></li>
+      <li><a href="https://group.bureauveritas.com" target="_blank">Bureau Veritas</a></li>
+      <li><a href="https://www.iso.org" target="_blank">ISO — Certificações</a></li>
+      <li><a href="https://www.fatf-gafi.org" target="_blank">GAFI — Regras AML & KYC</a></li>
+    </ul>
+  </div>
+
+  <!-- Documentos Oficiais -->
+  <div class="section">
+    <h2>📘 Documentos Oficiais</h2>
+    <ul class="links">
+      <li><a href="https://iccwbo.org/resources-for-business/incoterms-rules/" target="_blank">Incoterms — ICC</a></li>
+      <li><a href="https://iccwbo.org" target="_blank">Modelos de contratos internacionais</a></li>
+      <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior" target="_blank">Regras de Exportação</a></li>
+    </ul>
+  </div>
+
 </body>
 </html>
