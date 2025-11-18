@@ -43,6 +43,6 @@
     </main>
   </div>
 
-  <script src="../js/docs-zh.js"></script>
+  <script src="../assets/js/docs-zh.js"></script>
 </body>
 </html>
