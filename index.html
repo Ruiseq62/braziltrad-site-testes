@@ -609,77 +609,59 @@ document.getElementById("tv-commodities").appendChild(w2);
 
   <!-- ===== FIX PATHS ===== -->
   <script>
-document.addEventListener("DOMContentLoaded",()=>{
-  const isGitHub = window.location.hostname.includes("github");
-  const base = isGitHub ? "/braziltrad-site-testes" : "";
+  // Detecta idioma pela pasta
+  function getCurrentLang() {
+    const p = window.location.pathname;
 
-  document.querySelectorAll('link[href^="./css"], link[href^="/css"]').forEach(link=>{
-    link.href = base + "/css/style.css";
-  });
+    if (p.includes("/en/")) return "en";
+    if (p.includes("/es/")) return "es";
+    if (p.includes("/zh/")) return "zh";
+    return "pt";
+  }
 
-  document.querySelectorAll('img[src^="/assets"], img[src^="./assets"]').forEach(img=>{
-    img.src = base + "/" + img.getAttribute("src").replace(/^\.\//,"").replace(/^\//,"");
-  });
-});
-  </script>
-    </script>   <!-- este é o script que já existe -->
+  const lang = getCurrentLang();
 
-    <!-- 🔥 NOVO SCRIPT DO MENU DINÂMICO AQUI 🔥 -->
-    <script>
-      // Detecta o idioma atual com base na URL
-      function getCurrentLang() {
-        const path = window.location.pathname;
+  // Detecta o base path (GitHub Pages vs servidor real)
+  const BASE = window.location.pathname.includes("braziltrad-site-testes")
+      ? "/braziltrad-site-testes"
+      : "";
 
-        if (path.startsWith("/en/")) return "en";
-        if (path.startsWith("/es/")) return "es";
-        if (path.startsWith("/zh/")) return "zh";
-        return "pt"; // padrão
-      }
+  const menuPaths = {
+    pt: {
+      docs: BASE + "/documentos.html",
+      links: BASE + "/links-uteis.html",
+      contact: BASE + "/contact.html"
+    },
+    en: {
+      docs: BASE + "/en/documents.html",
+      links: BASE + "/en/useful-links.html",
+      contact: BASE + "/en/contact.html"
+    },
+    es: {
+      docs: BASE + "/es/documentos.html",
+      links: BASE + "/es/links-utiles.html",
+      contact: BASE + "/es/contact.html"
+    },
+    zh: {
+      docs: BASE + "/zh/documents_zh.html",
+      links: BASE + "/zh/useful-links.html",
+      contact: BASE + "/zh/contact.html"
+    }
+  };
 
-      const currentLang = getCurrentLang();
+  function applyMenuLinks() {
+    const docs = document.querySelector('[data-key="nav_docs"]');
+    const links = document.querySelector('[data-key="nav_links"]');
+    const contact = document.querySelector('[data-key="nav_contact"]');
 
-      // Define caminhos DINÂMICOS
-      const BASE = window.location.pathname.includes("braziltrad-site-testes")
-        ? "/braziltrad-site-testes"
-        : "";
+    if (docs) docs.href = menuPaths[lang].docs;
+    if (links) links.href = menuPaths[lang].links;
+    if (contact) contact.href = menuPaths[lang].contact;
+  }
 
-      const menuPaths = {
-        pt: {
-          docs: BASE + "/documentos.html",
-          links: BASE + "/links-uteis.html",
-          contact: BASE + "/contact.html"
-        },
-        en: {
-          docs: BASE + "/en/documents.html",
-          links: BASE + "/en/useful-links.html",
-          contact: BASE + "/en/contact.html"
-        },
-        es: {
-          docs: BASE + "/es/documentos.html",
-          links: BASE + "/es/links-utiles.html",
-          contact: BASE + "/es/contact.html"
-        },
-        zh: {
-          docs: BASE + "/zh/documents_zh.html",
-          links: BASE + "/zh/useful-links.html",
-          contact: BASE + "/zh/contact.html"
-        }
-      };
+  applyMenuLinks();
+</script>
 
-      function applyMenuLinks(lang) {
-        const docsLink = document.querySelector('[data-key="nav_docs"]');
-        const utilLink = document.querySelector('[data-key="nav_links"]');
-        const contactLink = document.querySelector('[data-key="nav_contact"]');
 
-        if (docsLink) docsLink.href = menuPaths[lang].docs;
-        if (utilLink) utilLink.href = menuPaths[lang].links;
-        if (contactLink) contactLink.href = menuPaths[lang].contact;
-      }
-
-      applyMenuLinks(currentLang);
-    </script>
-
-</body>
-</html>
 </body>
 </html>
