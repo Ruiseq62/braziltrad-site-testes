@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Documents — BrazilTrad</title>
 
-  <!-- Correct CSS path -->
-  <link rel="stylesheet" href="../assets/css/braziltrad-docs.css">
+  <link rel="stylesheet" href="../assets/css/braziltrad-docs.css" />
 </head>
 
 <body>
@@ -15,31 +14,38 @@
     <h2>Documents</h2>
     <p>Export, compliance and logistics materials</p>
 
-    <!-- Search & Filter -->
+    <!-- Search + Filter -->
     <div class="search-bar">
-      <input id="searchInput" type="text" placeholder="Search...">
+      <input id="search" class="input" type="text" placeholder="Search..." />
 
       <div class="category-select">
-        <select id="categoryFilter">
-          <option value="">All</option>
-          <option value="export">Export</option>
+        <select id="category" class="input">
+          <option value="">All categories</option>
+          <option value="commercial">Commercial</option>
           <option value="logistics">Logistics</option>
-          <option value="finance">Finance</option>
-          <option value="compliance">Compliance</option>
           <option value="contracts">Contracts</option>
+          <option value="guides">Guides</option>
         </select>
       </div>
 
-      <button id="docClear" class="btn">Clear</button>
+      <button id="clearFilters" class="btn">Clear</button>
     </div>
 
-    <!-- Document list -->
+    <!-- Documents list -->
     <main>
-      <div id="docsArea"></div>
+      <div id="docsList"></div>
     </main>
+
+    <!-- Export kit -->
+    <aside class="card">
+      <h3>Export Starter Kit</h3>
+      <p class="small">Receive a pack with Proforma + Invoice + Packing List.</p>
+      <input id="leadEmail" class="input" placeholder="your@email.com" />
+      <button class="btn" id="downloadPack">Get</button>
+    </aside>
   </div>
 
-  <!-- Correct JS path -->
+  <!-- Load correct JS -->
   <script src="../assets/js/docs-en.js"></script>
 </body>
 </html>
