@@ -47,7 +47,7 @@
           <!-- classes obrigatórias para o script multilíngue funcionar -->
           <li><a class="doc-link" href="#">Documentos</a></li>
           <li><a class="links-link" href="#">Links Úteis</a></li>
-          <li><a href="#contact">Contato</a></li>
+          <li><a class="contact-link" href="#contact">Contato</a></li>
         </ul>
       </nav>
     </div>
@@ -120,7 +120,7 @@ function updateLinks(code){
   // comprar / vender / contato
   const btnComprar = document.getElementById("btn-comprar");
   const btnVender = document.getElementById("btn-vender");
-  const contato = document.querySelector('a[href="#contact"]') || document.querySelector('a[href*="contato"], a[href*="contact"]');
+ const contato = document.querySelector("a.contact-link");
 
   if(code === "pt"){
     if(btnComprar) btnComprar.href = `${base}/contato-compra.html`;
