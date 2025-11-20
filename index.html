@@ -94,22 +94,35 @@
 const LANGS = ["pt","en","es","zh"];
 const FLAGS = {pt:"🇧🇷 PT", en:"🇬🇧 EN", es:"🇪🇸 ES", zh:"🇨🇳 中文"};
 const TRANSLATIONS = {
- pt:{
-  nav:["Sobre","Serviços","Produtos","Mercados","Insights","Documentos","Links Úteis","Contato"],
-  ...
-},
-en:{
-  nav:["About","Services","Products","Markets","Insights","Documents","Useful Links","Contact"],
-  ...
-},
-es:{
-  nav:["Sobre","Servicios","Productos","Mercados","Insights","Documentos","Enlaces Útiles","Contacto"],
-  ...
-},
-zh:{
-  nav:["关于","服务","产品","市场","洞察","文件","实用链接","联系"],
-  ...
-},
+  pt:{
+    nav:["Sobre","Serviços","Produtos","Mercados","Insights","Documentos","Links Úteis","Contato"],
+    title:"Conectando o Brasil ao mercado global de commodities",
+    lead:"Intermediação confiável de metais e agrícolas, com verificação de origem, compliance e logística eficiente sob FOB/CIF.",
+    btnComprar:"Quero comprar",
+    btnVender:"Quero vender"
+  },
+  en:{
+    nav:["About","Services","Products","Markets","Insights","Documents","Useful Links","Contact"],
+    title:"Connecting Brazil to the global commodities market",
+    lead:"Reliable intermediation of metals and agricultural products, with origin verification, compliance and efficient FOB/CIF logistics.",
+    btnComprar:"I want to buy",
+    btnVender:"I want to sell"
+  },
+  es:{
+    nav:["Sobre","Servicios","Productos","Mercados","Insights","Documentos","Enlaces Útiles","Contacto"],
+    title:"Conectando a Brasil con el mercado global de commodities",
+    lead:"Intermediación confiable de metales y agrícolas, con verificación de origen, cumplimiento y logística eficiente FOB/CIF.",
+    btnComprar:"Quiero comprar",
+    btnVender:"Quiero vender"
+  },
+  zh:{
+    nav:["关于","服务","产品","市场","洞察","文件","实用链接","联系"],
+    title:"连接巴西与全球大宗商品市场",
+    lead:"提供可靠的金属与农产品中介服务，进行产地验证、合规与高效的FOB/CIF物流。",
+    btnComprar:"我要买",
+    btnVender:"我要卖"
+  }
+}; // ← ESSA CHAVE FINAL ESTAVA A FALTAR
 
 
 function basePath(){ return window.location.hostname.includes("github") ? "/braziltrad-site-testes" : ""; }
