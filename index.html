@@ -568,15 +568,12 @@ function applyTranslations(lang) {
       keys.forEach(k => value = value[k]);
       if (value !== undefined) el.textContent = value;
     } catch (e) {
-      console.warn("Chave de tradução não encontrada:", key);
-    }
-  });
+  console.warn("Chave de tradução não encontrada:", key);
+}
+});
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const savedLang = localStorage.getItem("lang") || "pt";
-  applyTranslations(savedLang);
-});
+
 function changeLanguage(lang) {
   localStorage.setItem("lang", lang);
   applyTranslations(lang);
