@@ -1,79 +1,651 @@
-body {
-  font-family: Inter, Arial, sans-serif;
-  background: #f6f6f6;
+/* =================================================
+   1. VARIÁVEIS
+================================================= */
+:root {
+  --primary: #0F4C5C;
+  --primary-dark: #0b3d47;
+  --text: #1a1a1a;
+  --text-light: #555;
+  --bg: #ffffff;
+  --radius: 16px;
+  --shadow-strong: 0 10px 28px rgba(0,0,0,0.12);
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.06);
+  --transition: 0.25s ease;
+}
+
+/* =================================================
+   2. RESET
+================================================= */
+* {
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* =================================================
+   3. LAYOUT GLOBAL
+================================================= */
 .container {
-  max-width: 900px;
-  margin: auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-h1, h2, h3 {
-  color: #0F4C5C;
+.section {
+  padding: 80px 0;
 }
 
-.search-bar {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 10px;
+.section .container {
+  max-width: 1100px;
 }
 
-.search-bar input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.category-select select {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.doc-card {
-  padding: 20px;
-  margin: 20px 0;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background: #fff;
-}
-
-.doc-card-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #0F4C5C;
-}
-
-.small {
-  color: #666;
-  font-size: 14px;
-}
-
-.btn {
-  background: #0F4C5C;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  margin-right: 10px;
-}
-
-.btn-secondary {
-  background: #ddd;
-  color: #333;
-}
-
-footer {
-  margin-top: 50px;
-  padding: 20px;
+.section h2 {
   text-align: center;
-  color: #666;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  margin: 10px auto 25px;
+  border-radius: 2px;
+}
+
+.section p,
+.section li {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #2e2e2e;
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 20px;
+}
+
+.section ul {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+/* =================================================
+   4. HEADER
+================================================= */
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.header .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.brand img {
+  height: 42px;
+}
+
+.brand .title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.brand .slogan {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+header nav ul {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+header nav ul li a:hover {
+  color: var(--primary);
+}
+
+/* =================================================
+   5. HERO
+================================================= */
+.hero {
+  padding: 80px 20px 100px;
+  background: #f4f7f9;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  max-width: 840px;
+  margin: 0 auto 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 760px;
+  margin: 20px auto 0;
+  line-height: 1.6;
+  color: #555;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* =================================================
+   6. BOTÕES
+================================================= */
+.button {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 14px 26px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: var(--transition);
+  box-shadow: var(--shadow-strong);
+}
+
+.button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.button.secondary {
+  background: #ffffff;
+  color: var(--primary-dark);
+  border: 2px solid var(--primary);
+}
+
+.button.secondary:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* =================================================
+   7. GRID + CARDS (PRODUTOS)
+================================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 24px 20px 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-strong);
+  transition: var(--transition);
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+.card img {
+  width: 100%;
+  max-width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 20px 0 10px;
+}
+
+.card p {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: #555;
+}
+
+/* =================================================
+   8. SERVIÇOS EM CARDS
+================================================= */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.service-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow-soft);
+  text-align: left;
+}
+
+.service-card h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: var(--primary);
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* =================================================
+   9. BOTÕES DE IDIOMA
+================================================= */
+.lang-switch-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.lang-switch-group button,
+.bt-lang-btn {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+}
+
+.lang-switch-group button:hover,
+.bt-lang-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* =================================================
+   10. FOOTER
+================================================= */
+.footer {
+  background: linear-gradient(180deg, #0F4C5C, #083842);
+  padding: 60px 0 40px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.footer div {
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =================================================
+   11. MEDIA QUERIES
+================================================= */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 16px 80px;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+  }
+
+  .cta {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  header nav ul {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .section h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta .button {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+/* ============================= */
+/* ✅ FIX DEFINITIVO — PRODUTOS */
+/* ============================= */
+
+#products {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background: #ffffff;
+}
+
+#products .container {
+  max-width: 1200px;
+}
+
+#products .grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+#products .card {
+  display: block;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  text-align: center;
+  overflow: hidden;
+}
+
+#products .card img {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 18px;
+  border-radius: 14px;
+}
+
+#products .card h3 {
+  font-size: 1.4rem;
+  margin: 10px 0 6px;
+  color: #0F4C5C;
+}
+
+#products .card p {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+/* ✅ MOBILE */
+@media (max-width: 600px) {
+  #products .grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  #products .card img {
+    height: 170px;
+  }
+}
+.bloco-impacto {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;             /* ✅ LIMITA A ALTURA */
+  margin: 90px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  background: #000;          /* ✅ fundo caso a imagem falhe */
+}
+
+..bloco-impacto img {
+  width: 100%;
+  height: auto;      /* ✅ MOSTRA A IMAGEM INTEIRA */
+  object-fit: contain;
+  display: block;
+}
+
+.bloco-impacto {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;              /* ✅ AGORA A ALTURA SE ADAPTA */
+  margin: 90px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  background: #000;
+}
+
+.bloco-impacto img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.bloco-impacto p {
+  font-size: 1.15rem;
+  opacity: 0.92;
+  max-width: 720px;
+}
+.impacto-card {
+  position: absolute;
+  max-width: 520px;
+  background: linear-gradient(135deg, rgba(9,36,61,0.96), rgba(9,36,61,0.85));
+  color: #fff;
+  padding: 28px 30px;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+}
+
+.impacto-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.impacto-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.impacto-card li {
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+  opacity: 0.95;
+}
+
+/* POSIÇÕES */
+.card-top {
+  top: 8%;
+  left: 4%;
+}
+
+.card-middle {
+  top: 40%;
+  right: 4%;
+}
+
+.impacto-footer {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(9,36,61,0.96), rgba(9,36,61,0.85));
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+.bloco-impacto {
+  position: relative;
+}
+
+.impact-text {
+  position: absolute;
+  color: white;
+  max-width: 420px;
+  background: rgba(0,0,0,0.55);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.impacto-problema {
+  top: 40px;
+  left: 40px;
+}
+
+.impacto-solucao {
+  bottom: 120px;
+  right: 40px;
+}
+
+.impact-footer {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  background: rgba(0,0,0,0.6);
+  padding: 12px 24px;
+  border-radius: 30px;
+}
+/* === CORREÇÃO DEFINITIVA DO BLOCO IMPACTO === */
+
+.bloco-impacto {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 90px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,.25);
+  background: #000;
+}
+
+.bloco-impacto img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* TEXTO SOBRE A IMAGEM */
+.overlay-texto {
+  position: absolute;
+  z-index: 5;
+  background: rgba(8, 32, 55, 0.88);
+  color: #fff;
+  padding: 28px 32px;
+  border-radius: 14px;
+  max-width: 420px;
+}
+
+.overlay-texto h2 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.overlay-texto ul {
+  padding-left: 18px;
+}
+
+.overlay-texto li {
+  margin-bottom: 8px;
+}
+
+/* POSIÇÕES */
+.overlay-texto.problema {
+  top: 40px;
+  left: 40px;
+}
+
+.overlay-texto.solucao {
+  bottom: 100px;
+  right: 40px;
+}
+
+/* TEXTO FINAL */
+.overlay-footer {
+  position: absolute;
+  z-index: 6;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(5, 20, 40, 0.9);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .overlay-texto {
+    position: relative;
+    max-width: 100%;
+    margin: 14px;
+  }
+
+  .overlay-footer {
+    position: relative;
+    transform: none;
+    margin: 20px auto;
+  }
 }
