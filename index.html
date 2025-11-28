@@ -843,28 +843,21 @@ function applyLang(code){
 
 
 // ===== INIT FINAL =====
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
 
-  // ✅ DETETA IDIOMA DO NAVEGADOR
   const navLang = (navigator.language || navigator.userLanguage || 'pt').substring(0,2);
   const code = (["pt","en","es","zh"].includes(navLang)) ? navLang : "pt";
 
-  // ✅ APLICA TUDO (INCLUSIVE INSTITUCIONAL)
   applyLang(code);
 
-  // ✅ BOTÃO 🌎 GLOBAL
   let idx = LANGS.indexOf(code);
-  document.getElementById('langBtn').addEventListener('click', function(){
+  document.getElementById('langBtn').addEventListener('click', function () {
     idx = (idx + 1) % LANGS.length;
     applyLang(LANGS[idx]);
   });
 
-});
-
-
+}); // 👈 SÓ ESTE fechamento
 
 </script>
-
-
 </body>
 </html>
