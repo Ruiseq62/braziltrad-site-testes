@@ -187,7 +187,35 @@
     <!-- ===== INSTITUCIONAL (INÍCIO) ===== -->
    
     <!-- ===== FIM DO INSTITUCIONAL ===== -->
+<section id="institutional" class="section" style="background:#fff;">
+  <div class="container">
 
+    <h2 data-i18n="institutional.title" style="text-align:center;margin-bottom:20px;"></h2>
+
+    <h3 data-i18n="institutional.who.title"></h3>
+    <p data-i18n="institutional.who.p1"></p>
+    <p data-i18n="institutional.who.p2"></p>
+
+    <h3 data-i18n="institutional.what.title"></h3>
+    <ul>
+      <li data-i18n="institutional.what.i1"></li>
+      <li data-i18n="institutional.what.i2"></li>
+      <li data-i18n="institutional.what.i3"></li>
+      <li data-i18n="institutional.what.i4"></li>
+    </ul>
+
+    <p>
+      <strong data-i18n="institutional.sectors.label"></strong>
+      <span data-i18n="institutional.sectors.text"></span>
+    </p>
+
+    <p>
+      <strong>Braziltrad</strong><br>
+      <span data-i18n="institutional.closing"></span>
+    </p>
+
+  </div>
+</section>
     <!-- ===== SERVIÇOS ===== -->
 <section id="services" class="section" style="background:#ffffff;">
   <div class="container">
@@ -728,31 +756,34 @@ const titles = {
 function applyLang(code){
 
   // ✅ ISTO É O QUE ESTÁ A FALTAR NO TEU SITE
+ // ===== FUNÇÃO PRINCIPAL =====
+function applyLang(code){
+
+  // ✅ 1) APLICA AS TRADUÇÕES data-i18n (INSTITUCIONAL)
   applyTranslations(code);
 
   const body = document.body;
   const t    = TRANSLATIONS[code] || TRANSLATIONS.pt;
 
-  // 1. Congela viewport
+  // ✅ 2) CONGELA VIEWPORT
   body.style.height   = body.offsetHeight + "px";
   body.style.overflow = "hidden";
 
-  // MENU
+  // ✅ 3) MENU
   document.querySelectorAll('header nav ul li a')
     .forEach((a,i)=>{ if(t.nav[i]) a.textContent = t.nav[i]; });
 
-  // HERO
+  // ✅ 4) HERO
   document.querySelector('.hero-title').textContent = t.title;
   document.querySelector('.hero-lead').textContent  = t.lead;
 
-  // BOTÕES HERO
+  // ✅ 5) BOTÕES HERO
   document.getElementById('btn-comprar').textContent = t.btnComprar;
   document.getElementById('btn-vender').textContent  = t.btnVender;
 
-  // PRODUTOS (TÍTULO, TEXTO, BADGES)
+  // ✅ 6) PRODUTOS
   if (t.products) {
     const cards = document.querySelectorAll('#products .card');
-
     const leadEl = document.querySelector('#products .lead');
     if (leadEl) leadEl.textContent = t.products.lead;
 
@@ -770,15 +801,15 @@ function applyLang(code){
     });
   }
 
-  // BOTÃO 🌎
+  // ✅ 7) BOTÃO 🌎
   document.getElementById('langBtn').textContent = '🌎 ' + FLAGS[code];
 
-  // SEO
+  // ✅ 8) SEO
   const seo = SEO[code];
   document.title = seo.title;
   document.getElementById('seo-desc').setAttribute("content", seo.desc);
 
-  // TÍTULOS DAS SEÇÕES
+  // ✅ 9) TÍTULOS DAS SEÇÕES
   if(document.getElementById("bt-title"))
     document.getElementById("bt-title").textContent = titles[code].institutional;
 
@@ -794,13 +825,13 @@ function applyLang(code){
   if(document.getElementById("ins-title"))
     document.getElementById("ins-title").textContent = titles[code].insights;
 
-  // LINKS
+  // ✅ 10) LINKS
   updateLinks(code);
 
-  // PERSISTÊNCIA
+  // ✅ 11) PERSISTÊNCIA
   localStorage.setItem('bt_lang', code);
 
-  // TradingView + desbloqueio
+  // ✅ 12) TradingView + desbloqueio
   setTimeout(() => {
     initTradingView(code);
     requestAnimationFrame(() => {
@@ -810,43 +841,26 @@ function applyLang(code){
   }, 400);
 }
 
-// ===== INIT FINAL (FORÇA IDIOMA DO NAVEGADOR) =====
+
+// ===== INIT FINAL =====
 document.addEventListener('DOMContentLoaded', function(){
 
-  // ✅ DETETA DIRETO DO NAVEGADOR (IGNORA CACHE)
+  // ✅ DETETA IDIOMA DO NAVEGADOR
   const navLang = (navigator.language || navigator.userLanguage || 'pt').substring(0,2);
   const code = (["pt","en","es","zh"].includes(navLang)) ? navLang : "pt";
 
-  // ✅ APLICA O IDIOMA IMEDIATAMENTE
+  // ✅ APLICA TUDO (INCLUSIVE INSTITUCIONAL)
   applyLang(code);
 
-  // ✅ BOTÃO 🌎 CONTINUA A FUNCIONAR
+  // ✅ BOTÃO 🌎 GLOBAL
   let idx = LANGS.indexOf(code);
   document.getElementById('langBtn').addEventListener('click', function(){
     idx = (idx + 1) % LANGS.length;
     applyLang(LANGS[idx]);
   });
 
-  // ✅ SCROLL SUAVE APENAS PARA ÂNCORAS REAIS
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(e){
-
-      const target = a.getAttribute('href');
-      if (!target || target === "#" || target.length < 2) return;
-
-      const id = target.substring(1);
-      const el = document.getElementById(id);
-      if(el){
-        e.preventDefault();
-        window.scrollTo({
-          top: el.getBoundingClientRect().top + window.scrollY - 100,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
 });
+
 
 
 </script>
