@@ -854,9 +854,12 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('langBtn').addEventListener('click', function () {
     idx = (idx + 1) % LANGS.length;
     applyLang(LANGS[idx]);
+ });
+      }
+    });
   });
 
-/ 👈 SÓ ESTE fechamento
+});
 
 </script>
 </body>
