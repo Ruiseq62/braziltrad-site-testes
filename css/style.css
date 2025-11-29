@@ -867,12 +867,12 @@ header nav ul li a:hover {
   font-family: "Noto Sans SC", Inter, Arial, sans-serif !important;
   line-height: 1.35 !important;
 }
-/* ===== FIX DEFINITIVO — TEXTOS SOBRE A IMAGEM NO MOBILE ===== */
+/* ===== AJUSTE FINO — TEXTOS SOBRE A IMAGEM NO MOBILE (COMPACTO) ===== */
 
 @media (max-width: 768px){
 
   .bloco-impacto {
-    height: 520px;
+    height: 420px;   /* antes estava 520px */
     position: relative;
   }
 
@@ -880,29 +880,48 @@ header nav ul li a:hover {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
-    height: auto;
-    padding: 16px;
+    width: 92%;
+    padding: 10px 12px;   /* menos padding */
     box-sizing: border-box;
     text-align: center;
+
+    font-size: 13px;     /* reduz o corpo geral */
+    line-height: 1.25;
+  }
+
+  .bloco-impacto .overlay-texto h2 {
+    font-size: 15px;     /* título menor */
+    margin-bottom: 6px;
+  }
+
+  .bloco-impacto .overlay-texto ul {
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .bloco-impacto .overlay-texto li {
+    font-size: 12.5px;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
 
   /* PROBLEMA EM CIMA */
   .bloco-impacto .overlay-texto.problema {
-    top: 16px;
+    top: 10px;
   }
 
   /* SOLUÇÃO EM BAIXO */
   .bloco-impacto .overlay-texto.solucao {
-    bottom: 80px;
+    bottom: 56px;
   }
 
   /* FRASE FINAL NO FUNDO */
   .bloco-impacto .overlay-footer {
-    bottom: 20px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    width: 90%;
+    width: 92%;
+    font-size: 12px;
   }
 }
