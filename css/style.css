@@ -867,3 +867,42 @@ header nav ul li a:hover {
   font-family: "Noto Sans SC", Inter, Arial, sans-serif !important;
   line-height: 1.35 !important;
 }
+/* ===== FIX DEFINITIVO — TEXTOS SOBRE A IMAGEM NO MOBILE ===== */
+
+@media (max-width: 768px){
+
+  .bloco-impacto {
+    height: 520px;
+    position: relative;
+  }
+
+  .bloco-impacto .overlay-texto {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: auto;
+    padding: 16px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* PROBLEMA EM CIMA */
+  .bloco-impacto .overlay-texto.problema {
+    top: 16px;
+  }
+
+  /* SOLUÇÃO EM BAIXO */
+  .bloco-impacto .overlay-texto.solucao {
+    bottom: 80px;
+  }
+
+  /* FRASE FINAL NO FUNDO */
+  .bloco-impacto .overlay-footer {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+  }
+}
