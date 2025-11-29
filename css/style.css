@@ -649,3 +649,22 @@ header nav ul li a:hover {
     margin: 20px auto;
   }
 }
+.bloco-impacto {
+  position: relative;
+  max-height: 720px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.bloco-impacto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ajuste fino só para desktop grande */
+@media (min-width: 1200px) {
+  .bloco-impacto {
+    max-height: 640px;
+  }
+}
