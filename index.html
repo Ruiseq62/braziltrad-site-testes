@@ -738,50 +738,31 @@ const titles = {
 };
 
 // ===== FUNÇÃO PRINCIPAL (SEM SALTINHO / SEM TRAVAR) =====
-function applyLang(code){
+function applyLang(code) {
 
-  // ✅ ISTO É O QUE ESTÁ A FALTAR NO TEU SITE
-  applyTranslations(code);
+  const t = TRANSLATIONS[code] || TRANSLATIONS.pt;
 
-  const body = document.body;
-  const t    = TRANSLATIONS[code] || TRANSLATIONS.pt;
+  // ✅ TRADUZ TODOS OS ELEMENTOS COM data-i18n
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    const parts = key.split(".");
+    let value = t;
 
-  // 1. Congela viewport
-  body.style.height   = body.offsetHeight + "px";
-  body.style.overflow = "hidden";
+    try {
+      parts.forEach(k => value = value[k]);
+      if (value !== undefined) el.textContent = value;
+    } catch (e) {
+      console.warn("Chave inválida:", key);
+    }
+  });
 
-  // MENU
-  document.querySelectorAll('header nav ul li a')
-    .forEach((a,i)=>{ if(t.nav[i]) a.textContent = t.nav[i]; });
+  // ✅ BOTÃO 🌍
+  document.getElementById("langBtn").textContent = "🌍 " + FLAGS[code];
 
-  // HERO
-  document.querySelector('.hero-title').textContent = t.title;
-  document.querySelector('.hero-lead').textContent  = t.lead;
+  // ✅ GUARDA IDIOMA
+  localStorage.setItem("bt_lang", code);
+}
 
-  // BOTÕES HERO
-  document.getElementById('btn-comprar').textContent = t.btnComprar;
-  document.getElementById('btn-vender').textContent  = t.btnVender;
-
-  // PRODUTOS (TÍTULO, TEXTO, BADGES)
-  if (t.products) {
-    const cards = document.querySelectorAll('#products .card');
-
-    const leadEl = document.querySelector('#products .lead');
-    if (leadEl) leadEl.textContent = t.products.lead;
-
-    cards.forEach((card, i) => {
-      const data = t.products.cards[i];
-      if (!data) return;
-
-      const h3 = card.querySelector('h3');
-      const p  = card.querySelector('p');
-      const b  = card.querySelector('.badge');
-
-      if (h3) h3.textContent = data.title;
-      if (p)  p.textContent  = data.text;
-      if (b)  b.textContent  = data.badge;
-    });
-  }
 
   // BOTÃO 🌎
   document.getElementById('langBtn').textContent = '🌎 ' + FLAGS[code];
