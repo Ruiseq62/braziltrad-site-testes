@@ -791,3 +791,71 @@ header nav ul li a:hover {
     height: 220px;
   }
 }
+/* ===== SOLUÇÃO DEFINITIVA ANTI-SALTO (NÍVEL PRODUÇÃO) ===== */
+
+.bloco-impacto {
+  position: relative;
+  height: 720px;       /* ALTURA FIXA DO BLOCO */
+  overflow: hidden;
+}
+
+/* TODAS AS CAIXAS SAEM DO FLUXO */
+.bloco-impacto .overlay-texto,
+.bloco-impacto .overlay-footer {
+  position: absolute;
+}
+
+/* CAIXA ESQUERDA */
+.bloco-impacto .overlay-texto.problema {
+  top: 60px;
+  left: 60px;
+  width: 360px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-family: Inter, Arial, sans-serif;
+  line-height: 1.35;
+}
+
+/* CAIXA DIREITA */
+.bloco-impacto .overlay-texto.solucao {
+  bottom: 90px;
+  right: 60px;
+  width: 360px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-family: Inter, Arial, sans-serif;
+  line-height: 1.35;
+}
+
+/* FRASE FINAL */
+.bloco-impacto .overlay-footer {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+  .bloco-impacto {
+    height: 480px;
+  }
+
+  .bloco-impacto .overlay-texto.problema,
+  .bloco-impacto .overlay-texto.solucao {
+    width: 90%;
+    left: 5%;
+    right: auto;
+    height: 220px;
+  }
+
+  .bloco-impacto .overlay-texto.solucao {
+    top: auto;
+    bottom: 80px;
+  }
+}
