@@ -710,3 +710,32 @@ header nav ul li a:hover {
     min-height: 480px;
   }
 }
+/* ===== TRAVA DEFINITIVA DAS CAIXAS DE TEXTO (ANTI-SALTO) ===== */
+
+.bloco-impacto {
+  position: relative;
+}
+
+/* Caixa esquerda (Problema) */
+.bloco-impacto .overlay-texto.problema {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Caixa direita (Solução) */
+.bloco-impacto .overlay-texto.solucao {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .bloco-impacto .overlay-texto.problema,
+  .bloco-impacto .overlay-texto.solucao {
+    min-height: 200px;
+  }
+}
