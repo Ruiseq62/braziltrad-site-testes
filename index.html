@@ -569,12 +569,16 @@ function applyTranslations(lang) {
 
     try {
       keys.forEach(k => value = value[k]);
-      if (value !== undefined) el.textContent = value;
+      if (value !== undefined) {
+        el.textContent = value;
+      }
     } catch (e) {
-      console.warn("Chave de tradução não encontrada:", key);
+      console.warn("Chave não encontrada:", key);
     }
   });
 }
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem("lang") || "pt";
