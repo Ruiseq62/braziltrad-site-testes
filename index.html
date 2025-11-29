@@ -787,7 +787,26 @@
     });
     tvCommod.appendChild(w2);
   }
+function applyLangSafe(code){
+  const body = document.body;
+  const height = body.offsetHeight;
 
+  // Congela a altura atual
+  body.style.height = height + "px";
+  body.style.overflow = "hidden";
+
+  requestAnimationFrame(() => {
+    applyLang(code);
+
+
+
+    // Liberta após renderização
+    setTimeout(() => {
+      body.style.height = "";
+      body.style.overflow = "";
+    }, 50);
+  });
+}
   // ===== FUNÇÃO PRINCIPAL =====
   function applyLang(code) {
     const t = TRANSLATIONS[code] || TRANSLATIONS.pt;
@@ -873,7 +892,8 @@
     let code = localStorage.getItem("bt_lang") || navLang;
     if(!["pt","en","es","zh"].includes(code)) code = "pt";
 
-    applyLang(code);
+    applyLangSafe(code);
+
 
     // Botão global de idioma
     let idx = LANGS.indexOf(code);
@@ -881,7 +901,8 @@
     if(langBtn){
       langBtn.addEventListener('click', function(){
         idx = (idx + 1) % LANGS.length;
-        applyLang(LANGS[idx]);
+        applyLangSafe(LANGS[idx]);
+
       });
     }
 
