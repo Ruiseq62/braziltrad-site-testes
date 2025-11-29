@@ -1012,3 +1012,58 @@ header nav ul li a:hover {
   }
 
 }
+/* ===== MOBILE — BLOQUEIO TOTAL DAS CAIXAS GRANDES ===== */
+
+@media (max-width: 768px){
+
+  .bloco-impacto *{
+    box-sizing: border-box !important;
+  }
+
+  .bloco-impacto{
+    position: relative !important;
+    height: 300px !important;
+    overflow: hidden !important;
+  }
+
+  .bloco-impacto img{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* ❌ FORÇA OCULTAÇÃO ABSOLUTA */
+  .bloco-impacto .overlay-texto,
+  .bloco-impacto .overlay-texto.problema,
+  .bloco-impacto .overlay-texto.solucao{
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* ✅ MANTÉM APENAS A FRASE FINAL */
+  .bloco-impacto .overlay-footer{
+    position: absolute !important;
+    bottom: 12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    background: rgba(15, 76, 92, 0.96) !important;
+    color: #fff !important;
+
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    border-radius: 999px !important;
+
+    width: auto !important;
+    max-width: 90% !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+  }
+
+}
