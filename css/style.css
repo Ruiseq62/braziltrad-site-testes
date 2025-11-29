@@ -867,61 +867,51 @@ header nav ul li a:hover {
   font-family: "Noto Sans SC", Inter, Arial, sans-serif !important;
   line-height: 1.35 !important;
 }
-/* ===== MOBILE ULTRA COMPACTO — TEXTOS MÍNIMOS SOBRE A IMAGEM ===== */
+/* ===== MOBILE LIMPO — SEM LISTAS SOBRE A IMAGEM ===== */
 
 @media (max-width: 768px){
 
   .bloco-impacto {
-    height: 360px;   /* imagem mais visível */
+    height: 320px;
     position: relative;
   }
 
+  /* CAIXAS PEQUENAS */
   .bloco-impacto .overlay-texto {
-    position: absolute;
+    width: 90%;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
-    padding: 6px 8px;     /* mínimo */
-    box-sizing: border-box;
+    padding: 8px 12px;
     text-align: center;
-
-    font-size: 11px;     /* TEXTO BEM PEQUENO */
-    line-height: 1.15;
   }
 
+  /* ✅ APENAS OS TÍTULOS FICAM VISÍVEIS */
   .bloco-impacto .overlay-texto h2 {
-    font-size: 12px;     
-    margin-bottom: 4px;
-  }
-
-  .bloco-impacto .overlay-texto ul {
+    font-size: 14px;
     margin: 0;
-    padding: 0;
   }
 
-  .bloco-impacto .overlay-texto li {
-    font-size: 11px;
-    line-height: 1.15;
-    margin-bottom: 2px;
+  /* ❌ ESCONDE AS LISTAS NO MOBILE */
+  .bloco-impacto .overlay-texto ul {
+    display: none;
   }
 
-  /* PROBLEMA EM CIMA */
+  /* POSIÇÕES */
   .bloco-impacto .overlay-texto.problema {
-    top: 6px;
+    top: 8px;
   }
 
-  /* SOLUÇÃO EM BAIXO */
   .bloco-impacto .overlay-texto.solucao {
-    bottom: 42px;
+    bottom: 44px;
   }
 
   /* FRASE FINAL */
   .bloco-impacto .overlay-footer {
+    font-size: 11px;
     bottom: 8px;
+    width: 92%;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
-    font-size: 11px;
     text-align: center;
   }
 }
