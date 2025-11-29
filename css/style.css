@@ -668,3 +668,28 @@ header nav ul li a:hover {
     max-height: 640px;
   }
 }
+/* ===== TRAVA DEFINITIVA DO HEADER CONTRA SALTOS DE IDIOMA ===== */
+
+.header {
+  min-height: 88px;   /* fixa a altura base */
+  max-height: 88px;
+  display: flex;
+  align-items: center;
+}
+
+.header .nav {
+  height: 88px;
+  display: flex;
+  align-items: center;
+}
+
+.header nav ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;   /* impede quebra de linha */
+  gap: 18px;           /* espaçamento fixo */
+}
+
+.header nav ul li a {
+  white-space: nowrap;  /* impede “Enlaces Útiles” de quebrar */
+}
