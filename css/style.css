@@ -867,12 +867,12 @@ header nav ul li a:hover {
   font-family: "Noto Sans SC", Inter, Arial, sans-serif !important;
   line-height: 1.35 !important;
 }
-/* ===== AJUSTE FINO — TEXTOS SOBRE A IMAGEM NO MOBILE (COMPACTO) ===== */
+/* ===== MOBILE ULTRA COMPACTO — TEXTOS MÍNIMOS SOBRE A IMAGEM ===== */
 
 @media (max-width: 768px){
 
   .bloco-impacto {
-    height: 420px;   /* antes estava 520px */
+    height: 360px;   /* imagem mais visível */
     position: relative;
   }
 
@@ -880,48 +880,48 @@ header nav ul li a:hover {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 92%;
-    padding: 10px 12px;   /* menos padding */
+    width: 90%;
+    padding: 6px 8px;     /* mínimo */
     box-sizing: border-box;
     text-align: center;
 
-    font-size: 13px;     /* reduz o corpo geral */
-    line-height: 1.25;
+    font-size: 11px;     /* TEXTO BEM PEQUENO */
+    line-height: 1.15;
   }
 
   .bloco-impacto .overlay-texto h2 {
-    font-size: 15px;     /* título menor */
-    margin-bottom: 6px;
+    font-size: 12px;     
+    margin-bottom: 4px;
   }
 
   .bloco-impacto .overlay-texto ul {
-    padding-left: 0;
     margin: 0;
+    padding: 0;
   }
 
   .bloco-impacto .overlay-texto li {
-    font-size: 12.5px;
-    line-height: 1.2;
-    margin-bottom: 4px;
+    font-size: 11px;
+    line-height: 1.15;
+    margin-bottom: 2px;
   }
 
   /* PROBLEMA EM CIMA */
   .bloco-impacto .overlay-texto.problema {
-    top: 10px;
+    top: 6px;
   }
 
   /* SOLUÇÃO EM BAIXO */
   .bloco-impacto .overlay-texto.solucao {
-    bottom: 56px;
+    bottom: 42px;
   }
 
-  /* FRASE FINAL NO FUNDO */
+  /* FRASE FINAL */
   .bloco-impacto .overlay-footer {
-    bottom: 12px;
+    bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
+    width: 90%;
+    font-size: 11px;
     text-align: center;
-    width: 92%;
-    font-size: 12px;
   }
 }
