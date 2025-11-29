@@ -969,3 +969,46 @@ header nav ul li a:hover {
     padding: 6px 10px !important;
   }
 }
+/* ===== MOBILE — BLOCO IMPACTO LIMPO, SEM CAIXAS ===== */
+
+@media (max-width: 768px){
+
+  .bloco-impacto{
+    position: relative !important;
+    height: 300px !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+  }
+
+  .bloco-impacto img{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* ❌ REMOVE TOTALMENTE AS CAIXAS NO MOBILE */
+  .bloco-impacto .overlay-texto{
+    display: none !important;
+  }
+
+  /* ✅ SÓ A FRASE FINAL */
+  .bloco-impacto .overlay-footer{
+    position: absolute !important;
+    bottom: 12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    background: rgba(15, 76, 92, 0.95) !important;
+    color: #fff !important;
+
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    border-radius: 999px !important;
+
+    width: auto !important;
+    max-width: 90% !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+  }
+
+}
