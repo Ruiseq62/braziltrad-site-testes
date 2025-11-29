@@ -915,3 +915,57 @@ header nav ul li a:hover {
     text-align: center;
   }
 }
+/* ===== MOBILE FORÇADO — LIMPO DEFINITIVO (OVERRIDE TOTAL) ===== */
+
+@media (max-width: 768px){
+
+  .bloco-impacto{
+    height: 300px !important;
+    overflow: hidden !important;
+  }
+
+  .bloco-impacto img{
+    object-fit: cover !important;
+    height: 100% !important;
+  }
+
+  .bloco-impacto .overlay-texto{
+    width: 90% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 6px 10px !important;
+    text-align: center !important;
+    max-height: 40px !important;
+    overflow: hidden !important;
+  }
+
+  .bloco-impacto .overlay-texto h2{
+    font-size: 13px !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+  }
+
+  /* ✅ ESCONDE MESMO AS LISTAS */
+  .bloco-impacto .overlay-texto ul,
+  .bloco-impacto .overlay-texto li{
+    display: none !important;
+  }
+
+  .bloco-impacto .overlay-texto.problema{
+    top: 6px !important;
+  }
+
+  .bloco-impacto .overlay-texto.solucao{
+    bottom: 42px !important;
+  }
+
+  .bloco-impacto .overlay-footer{
+    font-size: 11px !important;
+    bottom: 6px !important;
+    width: 92% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+    padding: 6px 10px !important;
+  }
+}
