@@ -926,6 +926,32 @@ function applyLangSafe(code){
     });
   });
   </script>
+<script>
+  function removeImpactBoxesMobile(){
+    if(window.innerWidth <= 768){
+      const caixas = document.querySelectorAll(
+        ".bloco-impacto .overlay-texto, .bloco-impacto .overlay-texto.problema, .bloco-impacto .overlay-texto.solucao"
+      );
+      caixas.forEach(caixa => {
+        caixa.remove();
+      });
+    }
+  }
 
+  // Executa ao carregar
+  document.addEventListener("DOMContentLoaded", removeImpactBoxesMobile);
+
+  // Executa ao mudar de idioma
+  const originalApplyLang = window.applyLang;
+  window.applyLang = function(code){
+    if(originalApplyLang) originalApplyLang(code);
+    setTimeout(removeImpactBoxesMobile, 50);
+  };
+
+  // Executa se rodar o ecrã
+  window.addEventListener("resize", removeImpactBoxesMobile);
+</script>
+
+  
 </body>
 </html>
