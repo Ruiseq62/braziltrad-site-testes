@@ -741,6 +741,10 @@ const titles = {
 function applyLang(code) {
 
   const t = TRANSLATIONS[code] || TRANSLATIONS.pt;
+  // SEO
+  const seo = SEO[code];
+  document.title = seo.title;
+  document.getElementById('seo-desc').setAttribute("content", seo.desc);
 
   // ✅ TRADUZ TODOS OS ELEMENTOS COM data-i18n
   document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -764,11 +768,7 @@ function applyLang(code) {
 }
 
 
-  // SEO
-  const seo = SEO[code];
-  document.title = seo.title;
-  document.getElementById('seo-desc').setAttribute("content", seo.desc);
-
+  
   // TÍTULOS DAS SEÇÕES
   if(document.getElementById("bt-title"))
     document.getElementById("bt-title").textContent = titles[code].institutional;
