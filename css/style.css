@@ -693,3 +693,20 @@ header nav ul li a:hover {
 .header nav ul li a {
   white-space: nowrap;  /* impede “Enlaces Útiles” de quebrar */
 }
+/* ===== TRAVA DEFINITIVA CONTRA SALTOS NO BLOCO DE IMAGEM ===== */
+
+.bloco-impacto {
+  min-height: 720px;   /* Desktop */
+}
+
+@media (max-width: 1024px){
+  .bloco-impacto {
+    min-height: 620px;
+  }
+}
+
+@media (max-width: 768px){
+  .bloco-impacto {
+    min-height: 480px;
+  }
+}
