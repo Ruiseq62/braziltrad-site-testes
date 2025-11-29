@@ -739,3 +739,34 @@ header nav ul li a:hover {
     min-height: 200px;
   }
 }
+/* ===== BLOQUEIO DEFINITIVO DAS CAIXAS (ANTI-SALTO TOTAL) ===== */
+
+.bloco-impacto {
+  position: relative;
+}
+
+/* CAIXA ESQUERDA - PROBLEMA */
+.bloco-impacto .overlay-texto.problema {
+  height: 300px;              /* ALTURA FIXA DEFINITIVA */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* CAIXA DIREITA - SOLUÇÃO */
+.bloco-impacto .overlay-texto.solucao {
+  height: 300px;              /* ALTURA FIXA DEFINITIVA */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+  .bloco-impacto .overlay-texto.problema,
+  .bloco-impacto .overlay-texto.solucao {
+    height: 220px;
+  }
+}
