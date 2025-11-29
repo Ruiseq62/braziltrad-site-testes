@@ -859,3 +859,11 @@ header nav ul li a:hover {
     bottom: 80px;
   }
 }
+/* === ESTABILIZAÇÃO FINAL DO CHINÊS (ANTI-SALTO DEFINITIVO) === */
+
+:lang(zh) body,
+:lang(zh) .overlay-texto,
+:lang(zh) .overlay-footer {
+  font-family: "Noto Sans SC", Inter, Arial, sans-serif !important;
+  line-height: 1.35 !important;
+}
