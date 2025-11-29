@@ -770,3 +770,24 @@ header nav ul li a:hover {
     height: 220px;
   }
 }
+/* ===== ANTI-SALTO DEFINITIVO PARA CHINÊS ===== */
+
+.bloco-impacto .overlay-texto {
+  height: 300px;                /* altura fixa */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+
+  /* TRAVA DE MÉTRICA DE TEXTO */
+  line-height: 1.35;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .bloco-impacto .overlay-texto {
+    height: 220px;
+  }
+}
