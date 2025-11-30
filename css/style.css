@@ -612,3 +612,54 @@ header nav ul li a:hover {
   color: #0F4C5C;
   font-size: 0.9rem;
 }
+.docs-hero {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.docs-hero h1 {
+  font-size: 2rem;
+  color: #0F4C5C;
+  margin-bottom: 8px;
+}
+
+.docs-hero p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.docs-section {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.docs-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #0F4C5C;
+}
+
+.docs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.docs-list li {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.docs-list a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #0F4C5C;
+  font-size: 0.9rem;
+}
