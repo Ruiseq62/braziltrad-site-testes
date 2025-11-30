@@ -537,3 +537,8 @@ header nav ul li a:hover {
   }
 
 }
+.lang-btn{
+  padding: 11px 24px !important;
+  font-size: 1.05rem !important;
+  border-radius: 32px !important;
+}
