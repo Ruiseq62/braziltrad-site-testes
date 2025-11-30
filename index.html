@@ -134,15 +134,33 @@
 <body>
 
   <!-- ===== BARRAS TRADINGVIEW ===== -->
-  <div class="tradingview-widget-container main-bar">
-    <div id="tv-indices"></div>
-  </div>
+  <div class="tv-top-bar">
+  <script type="text/javascript"
+    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+    "symbols": [
+      { "proName": "TVC:GOLD", "title": "Ouro" },
+      { "proName": "NYMEX:CL1!", "title": "Petróleo" },
+      { "proName": "CBOT:ZS1!", "title": "Soja" },
+      { "proName": "CBOT:ZC1!", "title": "Milho" },
+      { "proName": "ICEUS:KC1!", "title": "Café" },
+      { "proName": "ICEUS:SB1!", "title": "Açúcar" }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "light",
+    "isTransparent": false,
+    "displayMode": "adaptive",
+    "locale": "pt"
+  }
+  </script>
+</div>
+
 
   <div class="tradingview-widget-container commodities-bar">
   <div class="tradingview-widget-container__widget"></div>
 
   <script type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js"
+          src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
           async>
   {
     "symbols": [
