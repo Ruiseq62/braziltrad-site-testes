@@ -899,7 +899,8 @@
     let code = localStorage.getItem("bt_lang") || navLang;
     if(!["pt","en","es","zh"].includes(code)) code = "pt";
 
-    applyLangSafe(code);
+    applyLang(code);
+
 
 
     // Botão global de idioma
