@@ -139,8 +139,26 @@
   </div>
 
   <div class="tradingview-widget-container commodities-bar">
-    <div id="tv-commodities"></div>
-  </div>
+  <div class="tradingview-widget-container__widget"></div>
+
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker.js" async>
+  {
+    "symbols": [
+      { "proName": "TVC:GOLD", "title": "Ouro" },
+      { "proName": "NYMEX:CL1!", "title": "Petróleo" },
+      { "proName": "CBOT:ZS1!", "title": "Soja" },
+      { "proName": "CBOT:ZC1!", "title": "Milho" },
+      { "proName": "ICEUS:KC1!", "title": "Café" },
+      { "proName": "ICEUS:SB1!", "title": "Açúcar" }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "light",
+    "isTransparent": false,
+    "locale": "pt"
+  }
+  </script>
+</div>
+
 
   <!-- ===== BOTÃO DE IDIOMA ===== -->
   <button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
