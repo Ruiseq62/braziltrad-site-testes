@@ -134,51 +134,13 @@
 <body>
 
   <!-- ===== BARRAS TRADINGVIEW ===== -->
-  <div class="tv-top-bar">
-  <script type="text/javascript"
-    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-    "symbols": [
-      { "proName": "TVC:GOLD", "title": "Ouro" },
-      { "proName": "NYMEX:CL1!", "title": "Petróleo" },
-      { "proName": "CBOT:ZS1!", "title": "Soja" },
-      { "proName": "CBOT:ZC1!", "title": "Milho" },
-      { "proName": "ICEUS:KC1!", "title": "Café" },
-      { "proName": "ICEUS:SB1!", "title": "Açúcar" }
-    ],
-    "showSymbolLogo": true,
-    "colorTheme": "light",
-    "isTransparent": false,
-    "displayMode": "adaptive",
-    "locale": "pt"
-  }
-  </script>
-</div>
-
+  <div class="tradingview-widget-container main-bar">
+    <div id="tv-indices"></div>
+  </div>
 
   <div class="tradingview-widget-container commodities-bar">
-  <div class="tradingview-widget-container__widget"></div>
-
-  <script type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-          async>
-  {
-    "symbols": [
-      { "proName": "TVC:GOLD",  "title": "Ouro" },
-      { "proName": "NYMEX:CL1!", "title": "Petróleo WTI" },
-      { "proName": "CBOT:ZS1!", "title": "Soja" },
-      { "proName": "CBOT:ZC1!", "title": "Milho" },
-      { "proName": "ICEUS:KC1!", "title": "Café" },
-      { "proName": "ICEUS:SB1!", "title": "Açúcar" }
-    ],
-    "showSymbolLogo": true,
-    "colorTheme": "light",
-    "isTransparent": false,
-    "locale": "pt"
-  }
-  </script>
-</div>
-
+    <div id="tv-commodities"></div>
+  </div>
 
   <!-- ===== BOTÃO DE IDIOMA ===== -->
   <button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
@@ -831,6 +793,73 @@
     }
   }
 
+  function initTradingView(locale){
+    const tvIndices = document.getElementById('tv-indices');
+    const tvCommod  = document.getElementById('tv-commodities');
+
+    if(tvIndices) tvIndices.innerHTML = '';
+    if(tvCommod)  tvCommod.innerHTML  = '';
+
+    const w1 = document.createElement('script');
+    w1.src  = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+    w1.text = JSON.stringify({
+      symbols:[
+        {proName:"FOREXCOM:EURUSD", title:"EUR/USD"},
+        {proName:"FOREXCOM:USDJPY", title:"USD/JPY"},
+        {proName:"OANDA:SPX500USD", title:"S&P 500"},
+        {proName:"NASDAQ:NDX",      title:"NASDAQ 100"},
+        {proName:"BITSTAMP:BTCUSD", title:"Bitcoin"},
+        {proName:"BITSTAMP:ETHUSD", title:"Ethereum"}
+      ],
+      showSymbolLogo:true,
+      colorTheme:"light",
+      isTransparent:false,
+      displayMode:"adaptive",
+      locale: locale
+    });
+    tvIndices.appendChild(w1);
+
+    const w2 = document.createElement('script');
+    w2.src  = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+    w2.text = JSON.stringify({
+      symbols:[
+        {proName:"COMEX:GC1!",    title:"Ouro"},
+        {proName:"ICEEUR:BRN1!",  title:"Petróleo Brent"},
+        {proName:"CBOT:ZS1!",     title:"Soja"},
+        {proName:"ICEUS:KC1!",    title:"Café"},
+        {proName:"ICEUS:SB1!",    title:"Açúcar"},
+        {proName:"ICEUS:CT1!",    title:"Algodão"},
+        {proName:"COMEX:HG1!",    title:"Cobre"},
+        {proName:"SGX:FEF1!",     title:"Minério de Ferro"}
+      ],
+      showSymbolLogo:true,
+      colorTheme:"light",
+      isTransparent:false,
+      displayMode:"adaptive",
+      locale: locale
+    });
+    tvCommod.appendChild(w2);
+  }
+function applyLangSafe(code){
+  const body = document.body;
+  const height = body.offsetHeight;
+
+  // Congela a altura atual
+  body.style.height = height + "px";
+  body.style.overflow = "hidden";
+
+  requestAnimationFrame(() => {
+    applyLang(code);
+
+
+
+    // Liberta após renderização
+    setTimeout(() => {
+      body.style.height = "";
+      body.style.overflow = "";
+    }, 50);
+  });
+}
   // ===== FUNÇÃO PRINCIPAL =====
   function applyLang(code) {
     document.documentElement.setAttribute("lang", code);
@@ -905,7 +934,7 @@
     updateLinks(code);
 
     // TRADINGVIEW
-    // initTradingView(code);
+    initTradingView(code);
 
     // PERSISTÊNCIA
     localStorage.setItem("bt_lang", code);
@@ -917,8 +946,7 @@
     let code = localStorage.getItem("bt_lang") || navLang;
     if(!["pt","en","es","zh"].includes(code)) code = "pt";
 
-    applyLang(code);
-
+    applyLangSafe(code);
 
 
     // Botão global de idioma
