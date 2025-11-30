@@ -433,640 +433,107 @@ header nav ul li a:hover {
     height: 170px;
   }
 }
-.bloco-impacto {
+/* =================================================
+   BLOCO IMPACTO — VERSÃO FINAL LIMPA (PRODUÇÃO)
+================================================= */
+
+.bloco-impacto{
   position: relative;
   width: 100%;
   max-width: 1200px;
-  height: auto;             /* ✅ LIMITA A ALTURA */
+  height: 720px;
   margin: 90px auto;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-  background: #000;          /* ✅ fundo caso a imagem falhe */
-}
-
-..bloco-impacto img {
-  width: 100%;
-  height: auto;      /* ✅ MOSTRA A IMAGEM INTEIRA */
-  object-fit: contain;
-  display: block;
-}
-
-.bloco-impacto {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  height: auto;              /* ✅ AGORA A ALTURA SE ADAPTA */
-  margin: 90px auto;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-  background: #000;
-}
-
-.bloco-impacto img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.bloco-impacto p {
-  font-size: 1.15rem;
-  opacity: 0.92;
-  max-width: 720px;
-}
-.impacto-card {
-  position: absolute;
-  max-width: 520px;
-  background: linear-gradient(135deg, rgba(9,36,61,0.96), rgba(9,36,61,0.85));
-  color: #fff;
-  padding: 28px 30px;
-  border-radius: 14px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-  backdrop-filter: blur(4px);
-}
-
-.impacto-card h3 {
-  margin-bottom: 12px;
-  font-size: 1.55rem;
-  font-weight: 700;
-}
-
-.impacto-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.impacto-card li {
-  font-size: 1.02rem;
-  margin-bottom: 6px;
-  opacity: 0.95;
-}
-
-/* POSIÇÕES */
-.card-top {
-  top: 8%;
-  left: 4%;
-}
-
-.card-middle {
-  top: 40%;
-  right: 4%;
-}
-
-.impacto-footer {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, rgba(9,36,61,0.96), rgba(9,36,61,0.85));
-  color: #fff;
-  padding: 14px 30px;
-  border-radius: 999px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-}
-.bloco-impacto {
-  position: relative;
-}
-
-.impact-text {
-  position: absolute;
-  color: white;
-  max-width: 420px;
-  background: rgba(0,0,0,0.55);
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.impacto-problema {
-  top: 40px;
-  left: 40px;
-}
-
-.impacto-solucao {
-  bottom: 120px;
-  right: 40px;
-}
-
-.impact-footer {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  background: rgba(0,0,0,0.6);
-  padding: 12px 24px;
-  border-radius: 30px;
-}
-/* === CORREÇÃO DEFINITIVA DO BLOCO IMPACTO === */
-
-.bloco-impacto {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin: 90px auto;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 25px 50px rgba(0,0,0,.25);
   background: #000;
 }
 
-.bloco-impacto img {
-  width: 100%;
-  height: auto;
-  display: block;
-  position: relative;
-  z-index: 1;
-}
-
-/* TEXTO SOBRE A IMAGEM */
-.overlay-texto {
-  position: absolute;
-  z-index: 5;
-  background: rgba(8, 32, 55, 0.88);
-  color: #fff;
-  padding: 28px 32px;
-  border-radius: 14px;
-  max-width: 420px;
-}
-
-.overlay-texto h2 {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
-}
-
-.overlay-texto ul {
-  padding-left: 18px;
-}
-
-.overlay-texto li {
-  margin-bottom: 8px;
-}
-
-/* POSIÇÕES */
-.overlay-texto.problema {
-  top: 40px;
-  left: 40px;
-}
-
-.overlay-texto.solucao {
-  bottom: 100px;
-  right: 40px;
-}
-
-/* TEXTO FINAL */
-.overlay-footer {
-  position: absolute;
-  z-index: 6;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(5, 20, 40, 0.9);
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 1.05rem;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .overlay-texto {
-    position: relative;
-    max-width: 100%;
-    margin: 14px;
-  }
-
-  .overlay-footer {
-    position: relative;
-    transform: none;
-    margin: 20px auto;
-  }
-}
-.bloco-impacto {
-  position: relative;
-  max-height: 720px;
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.bloco-impacto img {
+.bloco-impacto img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Ajuste fino só para desktop grande */
-@media (min-width: 1200px) {
-  .bloco-impacto {
-    max-height: 640px;
-  }
-}
-/* ===== TRAVA DEFINITIVA DO HEADER CONTRA SALTOS DE IDIOMA ===== */
-
-.header {
-  min-height: 88px;   /* fixa a altura base */
-  max-height: 88px;
-  display: flex;
-  align-items: center;
-}
-
-.header .nav {
-  height: 88px;
-  display: flex;
-  align-items: center;
-}
-
-.header nav ul {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;   /* impede quebra de linha */
-  gap: 18px;           /* espaçamento fixo */
-}
-
-.header nav ul li a {
-  white-space: nowrap;  /* impede “Enlaces Útiles” de quebrar */
-}
-/* ===== TRAVA DEFINITIVA CONTRA SALTOS NO BLOCO DE IMAGEM ===== */
-
-.bloco-impacto {
-  min-height: 720px;   /* Desktop */
-}
-
-@media (max-width: 1024px){
-  .bloco-impacto {
-    min-height: 620px;
-  }
-}
-
-@media (max-width: 768px){
-  .bloco-impacto {
-    min-height: 480px;
-  }
-}
-/* ===== TRAVA DEFINITIVA DAS CAIXAS DE TEXTO (ANTI-SALTO) ===== */
-
-.bloco-impacto {
-  position: relative;
-}
-
-/* Caixa esquerda (Problema) */
-.bloco-impacto .overlay-texto.problema {
-  min-height: 260px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Caixa direita (Solução) */
-.bloco-impacto .overlay-texto.solucao {
-  min-height: 260px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Mobile */
-@media (max-width: 768px){
-  .bloco-impacto .overlay-texto.problema,
-  .bloco-impacto .overlay-texto.solucao {
-    min-height: 200px;
-  }
-}
-/* ===== BLOQUEIO DEFINITIVO DAS CAIXAS (ANTI-SALTO TOTAL) ===== */
-
-.bloco-impacto {
-  position: relative;
-}
-
-/* CAIXA ESQUERDA - PROBLEMA */
-.bloco-impacto .overlay-texto.problema {
-  height: 300px;              /* ALTURA FIXA DEFINITIVA */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* CAIXA DIREITA - SOLUÇÃO */
-.bloco-impacto .overlay-texto.solucao {
-  height: 300px;              /* ALTURA FIXA DEFINITIVA */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* MOBILE */
-@media (max-width: 768px){
-  .bloco-impacto .overlay-texto.problema,
-  .bloco-impacto .overlay-texto.solucao {
-    height: 220px;
-  }
-}
-/* ===== ANTI-SALTO DEFINITIVO PARA CHINÊS ===== */
-
-.bloco-impacto .overlay-texto {
-  height: 300px;                /* altura fixa */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-
-  /* TRAVA DE MÉTRICA DE TEXTO */
-  line-height: 1.35;
-  font-family: Inter, Arial, sans-serif;
-  font-weight: 500;
-}
-
-/* Mobile */
-@media (max-width: 768px){
-  .bloco-impacto .overlay-texto {
-    height: 220px;
-  }
-}
-/* ===== SOLUÇÃO DEFINITIVA ANTI-SALTO (NÍVEL PRODUÇÃO) ===== */
-
-.bloco-impacto {
-  position: relative;
-  height: 720px;       /* ALTURA FIXA DO BLOCO */
-  overflow: hidden;
-}
-
-/* TODAS AS CAIXAS SAEM DO FLUXO */
-.bloco-impacto .overlay-texto,
-.bloco-impacto .overlay-footer {
+/* CAIXAS DE TEXTO */
+.bloco-impacto .overlay-texto{
   position: absolute;
+  background: rgba(8, 32, 55, 0.9);
+  color: #fff;
+  padding: 26px 28px;
+  border-radius: 14px;
+  width: 360px;
+  height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-family: Inter, Arial, sans-serif;
+  line-height: 1.35;
 }
 
-/* CAIXA ESQUERDA */
-.bloco-impacto .overlay-texto.problema {
+.bloco-impacto .overlay-texto h2{
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.bloco-impacto .overlay-texto li{
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+}
+
+/* POSIÇÕES DESKTOP */
+.bloco-impacto .overlay-texto.problema{
   top: 60px;
   left: 60px;
-  width: 360px;
-  height: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  font-family: Inter, Arial, sans-serif;
-  line-height: 1.35;
 }
 
-/* CAIXA DIREITA */
-.bloco-impacto .overlay-texto.solucao {
+.bloco-impacto .overlay-texto.solucao{
   bottom: 90px;
   right: 60px;
-  width: 360px;
-  height: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  font-family: Inter, Arial, sans-serif;
-  line-height: 1.35;
 }
 
 /* FRASE FINAL */
-.bloco-impacto .overlay-footer {
+.bloco-impacto .overlay-footer{
+  position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  background: rgba(8, 32, 55, 0.95);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+  max-width: 90%;
 }
 
-/* MOBILE */
-@media (max-width: 768px){
-  .bloco-impacto {
-    height: 480px;
-  }
-
-  .bloco-impacto .overlay-texto.problema,
-  .bloco-impacto .overlay-texto.solucao {
-    width: 90%;
-    left: 5%;
-    right: auto;
-    height: 220px;
-  }
-
-  .bloco-impacto .overlay-texto.solucao {
-    top: auto;
-    bottom: 80px;
-  }
-}
-/* === ESTABILIZAÇÃO FINAL DO CHINÊS (ANTI-SALTO DEFINITIVO) === */
-
-:lang(zh) body,
-:lang(zh) .overlay-texto,
-:lang(zh) .overlay-footer {
-  font-family: "Noto Sans SC", Inter, Arial, sans-serif !important;
-  line-height: 1.35 !important;
-}
-/* ===== MOBILE LIMPO — SEM LISTAS SOBRE A IMAGEM ===== */
-
+/* =================================================
+   MOBILE — LIMPO, SEM CAIXAS GRANDES
+================================================= */
 @media (max-width: 768px){
 
-  .bloco-impacto {
-    height: 320px;
-    position: relative;
+  .bloco-impacto{
+    height: 300px;
   }
 
-  /* CAIXAS PEQUENAS */
-  .bloco-impacto .overlay-texto {
-    width: 90%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 12px;
-    text-align: center;
+  .bloco-impacto img{
+    object-fit: cover;
   }
 
-  /* ✅ APENAS OS TÍTULOS FICAM VISÍVEIS */
-  .bloco-impacto .overlay-texto h2 {
-    font-size: 14px;
-    margin: 0;
-  }
-
-  /* ❌ ESCONDE AS LISTAS NO MOBILE */
-  .bloco-impacto .overlay-texto ul {
+  /* REMOVE AS CAIXAS NO MOBILE */
+  .bloco-impacto .overlay-texto{
     display: none;
   }
 
-  /* POSIÇÕES */
-  .bloco-impacto .overlay-texto.problema {
-    top: 8px;
-  }
-
-  .bloco-impacto .overlay-texto.solucao {
-    bottom: 44px;
-  }
-
-  /* FRASE FINAL */
-  .bloco-impacto .overlay-footer {
-    font-size: 11px;
-    bottom: 8px;
-    width: 92%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-  }
-}
-/* ===== MOBILE FORÇADO — LIMPO DEFINITIVO (OVERRIDE TOTAL) ===== */
-
-@media (max-width: 768px){
-
-  .bloco-impacto{
-    height: 300px !important;
-    overflow: hidden !important;
-  }
-
-  .bloco-impacto img{
-    object-fit: cover !important;
-    height: 100% !important;
-  }
-
-  .bloco-impacto .overlay-texto{
-    width: 90% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    padding: 6px 10px !important;
-    text-align: center !important;
-    max-height: 40px !important;
-    overflow: hidden !important;
-  }
-
-  .bloco-impacto .overlay-texto h2{
-    font-size: 13px !important;
-    margin: 0 !important;
-    line-height: 1.1 !important;
-  }
-
-  /* ✅ ESCONDE MESMO AS LISTAS */
-  .bloco-impacto .overlay-texto ul,
-  .bloco-impacto .overlay-texto li{
-    display: none !important;
-  }
-
-  .bloco-impacto .overlay-texto.problema{
-    top: 6px !important;
-  }
-
-  .bloco-impacto .overlay-texto.solucao{
-    bottom: 42px !important;
-  }
-
+  /* MANTÉM APENAS A FRASE FINAL */
   .bloco-impacto .overlay-footer{
-    font-size: 11px !important;
-    bottom: 6px !important;
-    width: 92% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    text-align: center !important;
-    padding: 6px 10px !important;
-  }
-}
-/* ===== MOBILE — BLOCO IMPACTO LIMPO, SEM CAIXAS ===== */
-
-@media (max-width: 768px){
-
-  .bloco-impacto{
-    position: relative !important;
-    height: 300px !important;
-    overflow: hidden !important;
-    border-radius: 18px !important;
+    bottom: 12px;
+    font-size: 13px;
+    padding: 10px 16px;
   }
 
-  .bloco-impacto img{
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
-
-  /* ❌ REMOVE TOTALMENTE AS CAIXAS NO MOBILE */
-  .bloco-impacto .overlay-texto{
-    display: none !important;
-  }
-
-  /* ✅ SÓ A FRASE FINAL */
-  .bloco-impacto .overlay-footer{
-    position: absolute !important;
-    bottom: 12px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-
-    background: rgba(15, 76, 92, 0.95) !important;
-    color: #fff !important;
-
-    padding: 10px 16px !important;
-    font-size: 13px !important;
-    border-radius: 999px !important;
-
-    width: auto !important;
-    max-width: 90% !important;
-    text-align: center !important;
-    line-height: 1.2 !important;
-  }
-
-}
-/* ===== MOBILE — BLOQUEIO TOTAL DAS CAIXAS GRANDES ===== */
-
-@media (max-width: 768px){
-
-  .bloco-impacto *{
-    box-sizing: border-box !important;
-  }
-
-  .bloco-impacto{
-    position: relative !important;
-    height: 300px !important;
-    overflow: hidden !important;
-  }
-
-  .bloco-impacto img{
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
-
-  /* ❌ FORÇA OCULTAÇÃO ABSOLUTA */
-  .bloco-impacto .overlay-texto,
-  .bloco-impacto .overlay-texto.problema,
-  .bloco-impacto .overlay-texto.solucao{
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    height: 0 !important;
-    width: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  /* ✅ MANTÉM APENAS A FRASE FINAL */
-  .bloco-impacto .overlay-footer{
-    position: absolute !important;
-    bottom: 12px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-
-    background: rgba(15, 76, 92, 0.96) !important;
-    color: #fff !important;
-
-    padding: 10px 16px !important;
-    font-size: 13px !important;
-    border-radius: 999px !important;
-
-    width: auto !important;
-    max-width: 90% !important;
-    text-align: center !important;
-    line-height: 1.2 !important;
-  }
-
-}
-.hero .cta{
-  margin-top: 60px !important;
 }
