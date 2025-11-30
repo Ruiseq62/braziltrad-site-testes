@@ -545,6 +545,5 @@ header nav ul li a:hover {
 .hero .cta{
   margin-top: 40px;
 }
-.links-link {
-  white-space: nowrap;
-}
+.links-link { white-space: nowrap; 
+            }
