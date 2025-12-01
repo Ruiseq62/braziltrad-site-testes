@@ -575,6 +575,11 @@ header nav ul li a:hover {
   font-size: 1.05rem !important;
   border-radius: 32px !important;
 }
+.lang-btn {
+  width: 110px;
+  text-align: center;
+}
+
 .hero .cta{
   margin-top: 40px;
 }
