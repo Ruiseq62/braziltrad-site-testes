@@ -97,6 +97,18 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.header nav ul {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.header {
+  min-height: 86px;
+}
+
+.header nav ul li {
+  flex-shrink: 0;
+}
 
 .brand {
   display: flex;
