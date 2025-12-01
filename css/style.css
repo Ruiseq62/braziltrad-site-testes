@@ -91,12 +91,13 @@ body {
   top: 0;
   z-index: 9999;
 
-  height: 92px;
-  min-height: 92px;
-  max-height: 92px;
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
   overflow: hidden;
-  padding: 0; /* remove variação vertical */
+  padding: 0;
 }
+
 
 /* Trava alinhamento interno */
 .header nav {
@@ -730,5 +731,5 @@ body.lang-lock {
 
 /* Dá espaço artificial no topo para compensar o widget */
 body {
-  padding-top: 92px; /* ajuste fino se necessário */
+  padding-top: 68px; /* ajuste fino se necessário */
 }
