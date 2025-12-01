@@ -83,13 +83,30 @@ body {
 /* =================================================
    4. HEADER
 ================================================= */
+/* 🔒 HEADER DEFINITIVAMENTE TRAVADO (ANTI-SALTO) */
 .header {
   background: #ffffff;
   border-bottom: 1px solid rgba(0,0,0,0.06);
-  padding: 14px 0;
   position: sticky;
   top: 0;
   z-index: 9999;
+
+  height: 92px;
+  min-height: 92px;
+  max-height: 92px;
+  overflow: hidden;
+  padding: 0; /* remove variação vertical */
+}
+
+/* Trava alinhamento interno */
+.header nav {
+  height: 40px;
+  min-height: 40px;
+}
+
+/* Segurança extra */
+.header * {
+  line-height: 1.2;
 }
 
 .header .nav {
@@ -102,9 +119,6 @@ body {
   white-space: nowrap;
 }
 
-.header {
-  min-height: 86px;
-}
 
 .header nav ul li {
   flex-shrink: 0;
@@ -716,5 +730,5 @@ body.lang-lock {
 
 /* Dá espaço artificial no topo para compensar o widget */
 body {
-  padding-top: 74px; /* ajuste fino se necessário */
+  padding-top: 92px; /* ajuste fino se necessário */
 }
