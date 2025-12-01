@@ -701,3 +701,7 @@ header nav ul li a:hover {
   color: #0F4C5C;
   font-size: 0.9rem;
 }
+html.lang-lock,
+body.lang-lock {
+  overflow: hidden !important;
+}
