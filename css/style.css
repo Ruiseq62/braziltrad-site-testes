@@ -752,3 +752,6 @@ html {
   margin-top: 24px;
   margin-bottom: 12px;
 }
+#export-insurance .card {
+  min-height: 280px;
+}
