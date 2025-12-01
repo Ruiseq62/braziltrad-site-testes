@@ -695,11 +695,6 @@ function applyLangSafe(code){
   });
 }
 
-  // ===== FUNÇÃO PRINCIPAL =====
-  function applyLang(code) {
-    document.documentElement.setAttribute("lang", code);
-    const t = TRANSLATIONS[code] || TRANSLATIONS.pt;
-
     // MENU
     const navLinks = document.querySelectorAll('header nav ul li a');
     navLinks.forEach((a,i)=>{
