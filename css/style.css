@@ -743,3 +743,12 @@ html {
 .section {
   scroll-margin-top: 90px;
 }
+#export-insurance h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+#export-insurance h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
