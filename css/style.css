@@ -705,3 +705,16 @@ html.lang-lock,
 body.lang-lock {
   overflow: hidden !important;
 }
+/* 🔒 Tira o widget do fluxo normal para impedir reflow */
+.market-widget-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+/* Dá espaço artificial no topo para compensar o widget */
+body {
+  padding-top: 74px; /* ajuste fino se necessário */
+}
