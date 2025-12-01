@@ -113,6 +113,11 @@ body {
   padding-left: 0.4ch;
   padding-right: 0.4ch;
 }
+.header .slogan {
+  min-height: 20px;
+  line-height: 20px;
+}
+
 .brand {
   display: flex;
   align-items: center;
