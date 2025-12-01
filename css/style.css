@@ -733,3 +733,13 @@ body.lang-lock {
 body {
   padding-top: 68px; /* ajuste fino se necessário */
 }
+/* === CORREÇÃO DEFINITIVA DOS SALTOS DE IDIOMA === */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* altura real do header */
+}
+
+.section {
+  scroll-margin-top: 90px;
+}
