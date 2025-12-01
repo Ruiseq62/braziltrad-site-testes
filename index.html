@@ -1002,24 +1002,31 @@
   }
 function applyLangSafe(code){
   const body = document.body;
-  const height = body.offsetHeight;
+  const scrollY = window.scrollY;
 
-  // Congela a altura atual
-  body.style.height = height + "px";
-  body.style.overflow = "hidden";
+  // Trava o site exatamente na posição atual
+  body.style.position = "fixed";
+  body.style.top = `-${scrollY}px`;
+  body.style.width = "100%";
+  body.style.left = "0";
+  body.style.right = "0";
 
   requestAnimationFrame(() => {
     applyLang(code);
 
-
-
-    // Liberta após renderização
     setTimeout(() => {
-      body.style.height = "";
-      body.style.overflow = "";
-    }, 50);
+      body.style.position = "";
+      body.style.top = "";
+      body.style.width = "";
+      body.style.left = "";
+      body.style.right = "";
+
+      // Restaura exatamente o mesmo ponto da página
+      window.scrollTo(0, scrollY);
+    }, 80);
   });
 }
+
   // ===== FUNÇÃO PRINCIPAL =====
   function applyLang(code) {
     document.documentElement.setAttribute("lang", code);
