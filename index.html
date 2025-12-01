@@ -1001,29 +1001,33 @@
     tvCommod.appendChild(w2);
   }
 function applyLangSafe(code){
+  const html = document.documentElement;
   const body = document.body;
   const scrollY = window.scrollY;
 
-  // Trava o site exatamente na posição atual
+  // ✅ BLOQUEIO TOTAL DE REPAINT
+  html.classList.add("lang-lock");
+  body.classList.add("lang-lock");
+
+  // ✅ TRAVA POSIÇÃO ABSOLUTA
   body.style.position = "fixed";
   body.style.top = `-${scrollY}px`;
   body.style.width = "100%";
-  body.style.left = "0";
-  body.style.right = "0";
 
   requestAnimationFrame(() => {
     applyLang(code);
 
     setTimeout(() => {
+      // ✅ SOLTA TUDO DE UMA SÓ VEZ
+      html.classList.remove("lang-lock");
+      body.classList.remove("lang-lock");
+
       body.style.position = "";
       body.style.top = "";
       body.style.width = "";
-      body.style.left = "";
-      body.style.right = "";
 
-      // Restaura exatamente o mesmo ponto da página
       window.scrollTo(0, scrollY);
-    }, 80);
+    }, 120);
   });
 }
 
