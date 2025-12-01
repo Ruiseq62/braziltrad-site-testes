@@ -109,7 +109,10 @@ body {
 .header nav ul li {
   flex-shrink: 0;
 }
-
+.header nav ul li a {
+  padding-left: 0.4ch;
+  padding-right: 0.4ch;
+}
 .brand {
   display: flex;
   align-items: center;
