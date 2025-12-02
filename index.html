@@ -1288,30 +1288,28 @@ function applyLangSafe(code){
   </script>
 <script>
 (function () {
-  const insurance = document.querySelector('#export-insurance');
-  if (!insurance) return;
+  let lastScrollY = 0;
 
-  function lockInsuranceHeight() {
-    insurance.style.height = 'auto'; // deixa calcular primeiro
-    const h = insurance.offsetHeight;
-    insurance.style.minHeight = h + 'px';
-    insurance.style.maxHeight = h + 'px';
-  }
-
-  // 1. Ao carregar
-  window.addEventListener('load', lockInsuranceHeight);
-
-  // 2. Ao trocar idioma
-  document.addEventListener('bt:langChanged', function () {
-    setTimeout(lockInsuranceHeight, 80);
+  // Antes de mudar idioma → guarda a posição
+  document.addEventListener('bt:langChanging', function () {
+    lastScrollY = window.scrollY;
+    document.body.classList.add('no-scroll');
   });
 
-  // 3. Ao redimensionar o ecrã
-  window.addEventListener('resize', function () {
-    setTimeout(lockInsuranceHeight, 80);
+  // Depois de mudar idioma → restaura exatamente onde estava
+  document.addEventListener('bt:langChanged', function () {
+    setTimeout(() => {
+      window.scrollTo({
+        top: lastScrollY,
+        left: 0,
+        behavior: 'instant'
+      });
+      document.body.classList.remove('no-scroll');
+    }, 50);
   });
 })();
 </script>
+
 
 
 </body>
