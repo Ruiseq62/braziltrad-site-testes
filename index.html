@@ -177,7 +177,8 @@
   </header>
 
   <!-- ===== CONTEÚDO PRINCIPAL ===== -->
-  <main>
+ <main id="lang-container">
+
 
     <!-- ===== HERO ===== -->
     <section class="hero">
@@ -1101,23 +1102,13 @@
 function applyLangSafe(code){
   const scrollY = window.scrollY;
 
-  // 🔒 Trava o layout inteiro (Safari-safe real)
-  document.documentElement.style.overflow = "hidden";
-  document.body.style.overflow = "hidden";
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${scrollY}px`;
-  document.body.style.width = "100%";
+  document.body.classList.add("lang-freeze-safe");
 
   requestAnimationFrame(() => {
     applyLang(code);
 
     requestAnimationFrame(() => {
-      // ✅ Libera tudo mantendo o scroll exatamente no mesmo pixel
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
+      document.body.classList.remove("lang-freeze-safe");
 
       window.scrollTo({
         top: scrollY,
@@ -1127,7 +1118,6 @@ function applyLangSafe(code){
     });
   });
 }
-
 
 
   // ===== FUNÇÃO PRINCIPAL =====
