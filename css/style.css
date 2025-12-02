@@ -800,20 +800,27 @@ body {
 html, body {
   overflow-anchor: none;
 }
-/* =================================================
-   TRAVA DEFINITIVA DO TICKER (SEM DEFORMAR)
-================================================= */
+
+/* =========================================
+   ESPAÇO FIXO DO TICKER (ANTI-SALTO REAL)
+========================================= */
+.ticker-spacer {
+  height: 76px;
+  min-height: 76px;
+  max-height: 76px;
+}
+
 .tradingview-slot {
-  height: 72px;
-  min-height: 72px;
-  max-height: 72px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
   overflow: hidden;
-  display: block;
-  position: relative;
+  z-index: 9999;
 }
 
 .tradingview-slot iframe {
   width: 100%;
   border: 0;
-  display: block;
 }
