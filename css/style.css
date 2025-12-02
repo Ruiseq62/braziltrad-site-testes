@@ -764,3 +764,32 @@ header nav ul li a:hover {
 #export-insurance h2 {
   min-height: 60px;
 }
+/* ================================
+   🔒 ANTI-SALTO DEFINITIVO — CARDS DO SEGURO
+   ================================ */
+
+#export-insurance .card {
+  min-height: 330px;   /* trava a altura mínima */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Títulos dos cards */
+#export-insurance .card h3 {
+  min-height: 42px;
+}
+
+/* Texto dos cards */
+#export-insurance .card p {
+  min-height: 140px;
+}
+
+/* ✅ MOBILE: remove travamento para não quebrar layout */
+@media (max-width: 768px) {
+  #export-insurance .card,
+  #export-insurance .card p,
+  #export-insurance .card h3 {
+    min-height: unset;
+  }
+}
