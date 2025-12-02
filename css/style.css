@@ -827,3 +827,51 @@ body {
   display: flex;
   align-items: center;
 }
+/* ==========================================
+   FIX DEFINITIVO DOS SALTOS APÓS A HERO
+========================================== */
+
+/* 🔒 Trava os cards principais de idioma */
+#export-insurance .card,
+.export-card,
+.insurance-card {
+  min-height: 300px;
+}
+
+/* 🔒 Trava os títulos dos cards */
+#export-insurance h3 {
+  min-height: 38px;
+}
+
+/* 🔒 Trava os textos internos */
+#export-insurance p {
+  min-height: 90px;
+}
+
+/* 🔒 Trava a seção inteira contra recalculo */
+#export-insurance {
+  min-height: 700px;
+}
+
+/* 🔒 Trava o bloco de vantagens */
+#export-insurance ul {
+  min-height: 140px;
+}
+
+/* 🔒 Trava TODAS as sections que mudam idioma */
+.section {
+  min-height: 420px;
+  will-change: transform;
+}
+
+/* ✅ Remove qualquer animação residual em troca de idioma */
+body.lang-lock *,
+body.lang-freeze-safe * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* ✅ Safari anti-reflow */
+html, body {
+  overflow-anchor: none;
+}
