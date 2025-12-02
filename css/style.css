@@ -726,3 +726,40 @@ header nav ul li a:hover {
   top: 2px;
   line-height: 1.2;
 }
+/* =================================================
+   FIX DEFINITIVO — SEGURO SEM SALTO (VERSÃO B)
+================================================= */
+
+#export-insurance {
+  min-height: 900px;
+  position: relative;
+  overflow: hidden;
+}
+
+#export-insurance .grid {
+  min-height: 380px;
+}
+
+#export-insurance .card {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#export-insurance .card h3 {
+  min-height: 46px;
+}
+
+#export-insurance .card p {
+  min-height: 120px;
+  line-height: 1.55;
+}
+
+#export-insurance ul {
+  min-height: 180px;
+}
+
+#export-insurance h2 {
+  min-height: 60px;
+}
