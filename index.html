@@ -1007,49 +1007,58 @@
   };
 
   function updateLinks(code){
-    const btnComprar = root.getElementById("btn-comprar");
-    const btnVender  = root.getElementById("btn-vender");
-    const contato    = root.querySelector("a.contact-link");
-    const doc        = root.querySelector("a.doc-link");
-    const links      = root.querySelector("a.links-link");
+  // BOTÕES DO HERO
+  const btnComprar = document.getElementById("btn-comprar");
+  const btnVender  = document.getElementById("btn-vender");
+  const contato    = document.querySelector("a.contact-link");
 
-    if(!doc || !links) return;
+  // LINKS DO MENU / RODAPÉ
+  const doc   = document.querySelector("a.doc-link");
+  const links = document.querySelector("a.links-link");
 
-    if(code === "pt"){
-      doc.href   = "documentos.html";
-      links.href = "links-uteis.html";
-    }
-    if(code === "en"){
-      doc.href   = "en/documents.html";
-      links.href = "en/useful-links.html";
-    }
-    if(code === "es"){
-      doc.href   = "es/documentos.html";
-      links.href = "es/enlaces-utiles.html";
-    }
-    if(code === "zh"){
-      doc.href   = "zh/documents_cz.html";
-      links.href = "zh/useful-links.html";
-    }
+  // Se não achar doc/links, sai sem quebrar nada
+  if (!doc || !links) return;
 
-    if(code === "pt"){
-      if(btnComprar) btnComprar.href = "contato-compra.html";
-      if(btnVender)  btnVender.href  = "contato-venda.html";
-      if(contato)    contato.href    = "contato.html";
-    } else if(code === "en"){
-      if(btnComprar) btnComprar.href = "en/contact-buy.html";
-      if(btnVender)  btnVender.href  = "en/contact-sell.html";
-      if(contato)    contato.href    = "en/contact.html";
-    } else if(code === "es"){
-      if(btnComprar) btnComprar.href = "es/compradores.html";
-      if(btnVender)  btnVender.href  = "es/vendedores.html";
-      if(contato)    contato.href    = "es/contato.html";
-    } else if(code === "zh"){
-      if(btnComprar) btnComprar.href = "zh/contact-buy.html";
-      if(btnVender)  btnVender.href  = "zh/contact-sell.html";
-      if(contato)    contato.href    = "zh/contact.html";
-    }
+  // ===== PT =====
+  if(code === "pt"){
+    if(btnComprar) btnComprar.href = "contato-compra.html";
+    if(btnVender)  btnVender.href  = "contato-venda.html";
+    if(contato)    contato.href    = "contato.html";
+
+    doc.href   = "documentos.html";
+    links.href = "links-uteis.html";
   }
+
+  // ===== EN =====
+  else if(code === "en"){
+    if(btnComprar) btnComprar.href = "en/contact-buy.html";
+    if(btnVender)  btnVender.href  = "en/contact-sell.html";
+    if(contato)    contato.href    = "en/contact.html";
+
+    doc.href   = "en/documents.html";
+    links.href = "en/useful-links.html";
+  }
+
+  // ===== ES =====
+  else if(code === "es"){
+    if(btnComprar) btnComprar.href = "es/compradores.html";
+    if(btnVender)  btnVender.href  = "es/vendedores.html";
+    if(contato)    contato.href    = "es/contato.html";
+
+    doc.href   = "es/documentos.html";
+    links.href = "es/enlaces-utiles.html";
+  }
+
+  // ===== ZH =====
+  else if(code === "zh"){
+    if(btnComprar) btnComprar.href = "zh/contact-buy.html";
+    if(btnVender)  btnVender.href  = "zh/contact-sell.html";
+    if(contato)    contato.href    = "zh/contact.html";
+
+    doc.href   = "zh/documents_cz.html";      // mantém o que já tens
+    links.href = "zh/useful-links.html";
+  }
+}
 
   function initTradingView(locale){
     const tvIndices = root.getElementById('tv-indices');
