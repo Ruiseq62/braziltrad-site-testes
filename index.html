@@ -1288,36 +1288,30 @@ function applyLangSafe(code){
   </script>
 <script>
 (function () {
-  const target = document.querySelector('#export-insurance');
-  if (!target) return;
+  const insurance = document.querySelector('#export-insurance');
+  if (!insurance) return;
 
-  let locked = false;
-
-  function lockHeight() {
-    if (locked) return;
-    const finalHeight = target.offsetHeight;
-    target.style.minHeight = finalHeight + 'px';
-    target.style.maxHeight = finalHeight + 'px';
-    locked = true;
-    console.log('🔒 Altura do Seguro travada em:', finalHeight);
+  function lockInsuranceHeight() {
+    insurance.style.height = 'auto'; // deixa calcular primeiro
+    const h = insurance.offsetHeight;
+    insurance.style.minHeight = h + 'px';
+    insurance.style.maxHeight = h + 'px';
   }
 
-  // Espera o layout estabilizar completamente
-  window.addEventListener('load', () => {
-    setTimeout(lockHeight, 300);
+  // 1. Ao carregar
+  window.addEventListener('load', lockInsuranceHeight);
+
+  // 2. Ao trocar idioma
+  document.addEventListener('bt:langChanged', function () {
+    setTimeout(lockInsuranceHeight, 80);
   });
 
-  // Se trocar idioma, NÃO deixa recrescer
-  document.addEventListener('bt:langChanged', () => {
-    setTimeout(() => {
-      const currentHeight = target.offsetHeight;
-      target.style.minHeight = currentHeight + 'px';
-      target.style.maxHeight = currentHeight + 'px';
-    }, 100);
+  // 3. Ao redimensionar o ecrã
+  window.addEventListener('resize', function () {
+    setTimeout(lockInsuranceHeight, 80);
   });
 })();
 </script>
-
 
 
 </body>
