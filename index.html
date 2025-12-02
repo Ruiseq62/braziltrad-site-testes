@@ -1007,11 +1007,11 @@
   };
 
   function updateLinks(code){
-    const btnComprar = document.getElementById("btn-comprar");
-    const btnVender  = document.getElementById("btn-vender");
-    const contato    = document.querySelector("a.contact-link");
-    const doc        = document.querySelector("a.doc-link");
-    const links      = document.querySelector("a.links-link");
+    const btnComprar = root.getElementById("btn-comprar");
+    const btnVender  = root.getElementById("btn-vender");
+    const contato    = root.querySelector("a.contact-link");
+    const doc        = root.querySelector("a.doc-link");
+    const links      = root.querySelector("a.links-link");
 
     if(!doc || !links) return;
 
@@ -1052,13 +1052,13 @@
   }
 
   function initTradingView(locale){
-    const tvIndices = document.getElementById('tv-indices');
-    const tvCommod  = document.getElementById('tv-commodities');
+    const tvIndices = root.getElementById('tv-indices');
+    const tvCommod  = root.getElementById('tv-commodities');
 
     if(tvIndices) tvIndices.innerHTML = '';
     if(tvCommod)  tvCommod.innerHTML  = '';
 
-    const w1 = document.createElement('script');
+    const w1 = root.createElement('script');
     w1.src  = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
     w1.text = JSON.stringify({
       symbols:[
@@ -1077,7 +1077,7 @@
     });
     tvIndices.appendChild(w1);
 
-    const w2 = document.createElement('script');
+    const w2 = root.createElement('script');
     w2.src  = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
     w2.text = JSON.stringify({
       symbols:[
@@ -1099,53 +1099,65 @@
     tvCommod.appendChild(w2);
   }
 
-function applyLangSafe(code){
+<script>
+function applyLangSafe(code) {
   const scrollY = window.scrollY;
 
-  // Congela apenas repaint (não usa fixed!)
-  document.documentElement.style.scrollBehavior = "auto";
-  document.body.style.pointerEvents = "none";
+  const oldBody = root.body;
+  const clone = oldBody.cloneNode(true);
+
+  clone.style.visibility = "hidden";
+  clone.style.position = "absolute";
+  clone.style.top = "0";
+  clone.style.left = "0";
+  clone.style.width = "100%";
+
+  root.body.appendChild(clone);
+
+  applyLang(code, clone);
 
   requestAnimationFrame(() => {
-    applyLang(code);
+    root.body.innerHTML = clone.innerHTML;
+    window.scrollTo(0, scrollY);
+  });
 
-    requestAnimationFrame(() => {
-      window.scrollTo(0, scrollY);
-      document.body.style.pointerEvents = "";
-    });
+  requestAnimationFrame(() => {
+    window.scrollTo(0, scrollY);
   });
 }
+</script>
+
 
 
 
   // ===== FUNÇÃO PRINCIPAL =====
-  function applyLang(code) {
-    document.documentElement.setAttribute("lang", code);
+  function applyLang(code, root = document) {
+  root.documentElement?.setAttribute("lang", code);
     const t = TRANSLATIONS[code] || TRANSLATIONS.pt;
 
     // MENU
-    const navLinks = document.querySelectorAll('header nav ul li a');
+   const navLinks = root.querySelectorAll('header nav ul li a');
     navLinks.forEach((a,i)=>{
       if(t.nav && t.nav[i]) a.textContent = t.nav[i];
     });
 
     // HERO
-    const heroTitle = document.querySelector('.hero-title');
-    const heroLead  = document.querySelector('.hero-lead');
-    const heroSlog  = document.querySelector('.slogan em');
+    const heroTitle = root.querySelector('.hero-title');
+    const heroLead  = root.querySelector('.hero-lead');
+    const heroSlog  = root.querySelector('.slogan em');
 
     if(heroTitle) heroTitle.textContent = t.title;
     if(heroLead)  heroLead.textContent  = t.lead;
     if(heroSlog && t.heroSlogan) heroSlog.textContent = t.heroSlogan;
 
     // BOTÕES HERO
-    const btnComprar = document.getElementById('btn-comprar');
-    const btnVender  = document.getElementById('btn-vender');
+    const btnComprar = root.getElementById('btn-comprar');
+    const btnVender  = root.getElementById('btn-vender');
     if(btnComprar) btnComprar.textContent = t.btnComprar;
     if(btnVender)  btnVender.textContent  = t.btnVender;
 
     // TRADUÇÃO GENÉRICA data-i18n
-    document.querySelectorAll("[data-i18n]").forEach(el => {
+    root.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       const parts = key.split(".");
       let value = t;
@@ -1160,9 +1172,9 @@ function applyLangSafe(code){
     // PRODUTOS (CARDS)
     if(t.products){
       const prod = t.products;
-      const cards = document.querySelectorAll('#products .card');
-      const leadEl = document.querySelector('#products .lead');
-      const prodTitle = document.querySelector('#products h2');
+      const cards = root.querySelectorAll('#products .card');
+      const leadEl = root.querySelector('#products .lead');
+      const prodTitle = root.querySelector('#products h2');
       if(leadEl && prod.lead) leadEl.textContent = prod.lead;
       if(prodTitle && prod.title) prodTitle.textContent = prod.title;
 
@@ -1180,12 +1192,12 @@ function applyLangSafe(code){
 
     // SEO
     const seo = SEO[code] || SEO.pt;
-    document.title = seo.title;
-    const descEl = document.getElementById('seo-desc');
+    root.title = seo.title;
+    const descEl = root.getElementById('seo-desc');
     if(descEl) descEl.setAttribute('content', seo.desc);
 
     // BOTÃO 🌎
-    const langBtn = document.getElementById("langBtn");
+    const langBtn = root.getElementById("langBtn");
     if(langBtn) langBtn.textContent = "🌎 " + FLAGS[code];
 
     // LINKS
@@ -1200,11 +1212,11 @@ function applyLangSafe(code){
 
     // PERSISTÊNCIA
     localStorage.setItem("bt_lang", code);
-    document.dispatchEvent(new Event("bt:langChanged"));
+    root.dispatchEvent(new Event("bt:langChanged"));
   }
 
   // ===== INIT FINAL =====
-  document.addEventListener('DOMContentLoaded', function(){
+  root.addEventListener('DOMContentLoaded', function(){
     const navLang = (navigator.language || navigator.userLanguage || 'pt').substring(0,2);
     let code = localStorage.getItem("bt_lang") || navLang;
     if(!["pt","en","es","zh"].includes(code)) code = "pt";
@@ -1213,7 +1225,7 @@ function applyLangSafe(code){
 
     // Botão global de idioma
     let idx = LANGS.indexOf(code);
-    const langBtn = document.getElementById('langBtn');
+    const langBtn = root.getElementById('langBtn');
     if(langBtn){
       langBtn.addEventListener('click', function(){
         idx = (idx + 1) % LANGS.length;
@@ -1222,13 +1234,13 @@ function applyLangSafe(code){
     }
 
     // Scroll suave
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    root.querySelectorAll('a[href^="#"]').forEach(function(a){
       a.addEventListener('click', function(e){
         const target = a.getAttribute('href');
         if (!target || target === "#" || target.length < 2) return;
 
         const id = target.substring(1);
-        const el = document.getElementById(id);
+        const el = root.getElementById(id);
         if(el){
           e.preventDefault();
           window.scrollTo({
@@ -1245,7 +1257,7 @@ function applyLangSafe(code){
   <script>
     function removeImpactBoxesMobile(){
       if(window.innerWidth <= 768){
-        const caixas = document.querySelectorAll(
+        const caixas = root.querySelectorAll(
           ".bloco-impacto .overlay-texto, .bloco-impacto .overlay-texto.problema, .bloco-impacto .overlay-texto.solucao"
         );
         caixas.forEach(caixa => {
@@ -1255,10 +1267,10 @@ function applyLangSafe(code){
     }
 
     // Executa ao carregar
-    document.addEventListener("DOMContentLoaded", removeImpactBoxesMobile);
+    root.addEventListener("DOMContentLoaded", removeImpactBoxesMobile);
 
     // Executa ao mudar de idioma
-    document.addEventListener("bt:langChanged", function () {
+    root.addEventListener("bt:langChanged", function () {
   setTimeout(removeImpactBoxesMobile, 50);
 });
 
