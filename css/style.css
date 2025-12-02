@@ -143,7 +143,8 @@ body {
   gap: 12px;
   color: var(--primary);
   text-decoration: none;
-  height: 70px;   /* ✅ FORÇA CENTRALIZAÇÃO NA BARRA */
+  height: 70px;
+  transform: translateY(2px);  /* ✅ DESCE SUAVEMENTE */
 }
 
 .brand img {
