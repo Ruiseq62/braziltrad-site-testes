@@ -744,10 +744,6 @@ header nav ul li a:hover {
   background: #fff;
 }
 
-.market-widget-wrapper .tradingview-widget-container {
-  position: relative;
-  background: #fff;
-}
 
 /* Compensação única no body (SÓ UMA VEZ) */
 body {
@@ -804,33 +800,20 @@ body {
 html, body {
   overflow-anchor: none;
 }
-/* ==============================
-   FIX ANTI-SALTO TRADINGVIEW
-============================== */
-.tradingview-widget-container,
-.tradingview-ticker,
-iframe {
-  min-height: 68px !important;
-  max-height: 68px !important;
-  overflow: hidden !important;
-}
-.tradingview-widget-container * {
-  transition: none !important;
-}
 /* =================================================
-   TRAVA DEFINITIVA DO TICKER (ANTI-SALTO)
+   TRAVA DEFINITIVA DO TICKER (SEM DEFORMAR)
 ================================================= */
-.tradingview-widget-container,
-.tradingview-widget-container iframe,
-.tradingview-ticker {
-  height: 68px !important;
-  min-height: 68px !important;
-  max-height: 68px !important;
-  overflow: hidden !important;
-  display: block !important;
+.tradingview-slot {
+  height: 72px;
+  min-height: 72px;
+  max-height: 72px;
+  overflow: hidden;
+  display: block;
+  position: relative;
 }
 
-/* Impede animação elástica quando reconecta */
-.tradingview-widget-container * {
-  transition: none !important;
+.tradingview-slot iframe {
+  width: 100%;
+  border: 0;
+  display: block;
 }
