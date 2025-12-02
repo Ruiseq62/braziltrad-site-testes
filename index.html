@@ -1230,12 +1230,23 @@ if (
   if (stepTitle) stepTitle.textContent = t.insurance.steps.title;
 
   const stepItems = document.querySelectorAll("#export-insurance ol li");
-  if (t.insurance.steps.items && stepItems.length) {
-    stepItems.forEach((li, i) => {
-      if (t.insurance.steps.items[i]) {
-        li.textContent = t.insurance.steps.items[i];
-      }
-    });
+  // ===== SEGURO — COMO FUNCIONA =====
+const stepTitle = document.querySelector('[data-i18n="insurance.steps.title"]');
+
+if (stepTitle && t.insurance?.steps?.title) {
+  stepTitle.textContent = t.insurance.steps.title;
+}
+
+const stepItems = document.querySelectorAll('#export-insurance ol li');
+
+if (
+  t.insurance?.steps?.items &&
+  Array.isArray(t.insurance.steps.items)
+) {
+  t.insurance.steps.items.forEach((item, i) => {
+    if (stepItems[i]) stepItems[i].textContent = item;
+  });
+
   }
 
   const costTitle = document.querySelector('[data-i18n="insurance.cost.title"]');
