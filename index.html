@@ -1288,23 +1288,36 @@ function applyLangSafe(code){
   </script>
 <script>
 (function () {
-  let lastScrollY = 0;
+  const target = document.querySelector('#export-insurance');
+  if (!target) return;
 
-  document.addEventListener('click', function (e) {
-    const langBtn = e.target.closest('[data-lang], .lang-btn, .bt-lang-btn');
-    if (!langBtn) return;
+  let locked = false;
 
-    lastScrollY = window.scrollY;
+  function lockHeight() {
+    if (locked) return;
+    const finalHeight = target.offsetHeight;
+    target.style.minHeight = finalHeight + 'px';
+    target.style.maxHeight = finalHeight + 'px';
+    locked = true;
+    console.log('🔒 Altura do Seguro travada em:', finalHeight);
+  }
 
+  // Espera o layout estabilizar completamente
+  window.addEventListener('load', () => {
+    setTimeout(lockHeight, 300);
+  });
+
+  // Se trocar idioma, NÃO deixa recrescer
+  document.addEventListener('bt:langChanged', () => {
     setTimeout(() => {
-      window.scrollTo({
-        top: lastScrollY,
-        behavior: 'instant'
-      });
-    }, 80);
+      const currentHeight = target.offsetHeight;
+      target.style.minHeight = currentHeight + 'px';
+      target.style.maxHeight = currentHeight + 'px';
+    }, 100);
   });
 })();
 </script>
+
 
 
 </body>
