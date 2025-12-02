@@ -695,3 +695,36 @@ header nav ul li a:hover {
   color: #0F4C5C;
   font-size: 0.9rem;
 }
+/* =========================================
+   AJUSTE FINO DO TEXTO SOB O LOGO
+   (sem quebrar layout)
+========================================= */
+.brand .slogan {
+  margin-top: 4px;   /* ajusta só um pouco para baixo */
+  display: block;
+  line-height: 1.2;
+}
+
+
+/* =========================================
+   FIXAÇÃO CORRETA DA BARRA BRANCA (HEADER)
+   sem gerar espaço extra nem saltos
+========================================= */
+header {
+  position: fixed;
+  top: 76px;              /* fica logo abaixo da barra de cotações */
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+
+/* =========================================
+   COMPENSAÇÃO ÚNICA DO BODY
+   (exatamente a soma: barras + header)
+========================================= */
+body {
+  padding-top: 146px;   /* 76px (cotações) + 70px (header) */
+}
