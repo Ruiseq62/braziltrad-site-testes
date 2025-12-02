@@ -731,10 +731,11 @@ header nav ul li a:hover {
 ================================================= */
 
 #export-insurance {
-  min-height: 900px;
+  min-height: 960px;
   position: relative;
   overflow: hidden;
 }
+
 
 #export-insurance .grid {
   min-height: 380px;
