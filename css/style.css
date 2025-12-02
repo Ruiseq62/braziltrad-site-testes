@@ -876,45 +876,53 @@ html, body {
   overflow-anchor: none;
 }
 /* ==========================================
-   FIX DEFINITIVO — SALTO NA SEÇÃO DE SEGURO
+   FIX DEFINITIVO ABSOLUTO — SEÇÃO DE SEGURO
 ========================================== */
 
 #export-insurance {
-  min-height: 840px;        /* trava a altura total da seção */
-  overflow: hidden;        /* impede micro-reflows */
+  min-height: 900px;        /* trava completamente a área */
+  position: relative;
+  overflow: hidden;
 }
 
-/* Trava os 3 cards principais */
+/* Grid dos cards */
+#export-insurance .grid {
+  min-height: 360px;
+  align-items: stretch;
+}
+
+/* Cada card */
 #export-insurance .card {
-  min-height: 320px;       /* suficiente até para chinês */
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-/* Trava os títulos dos cards */
+/* Títulos dos cards */
 #export-insurance .card h3 {
-  min-height: 42px;
+  min-height: 44px;
 }
 
-/* Trava os textos dos cards */
+/* Texto dos cards */
 #export-insurance .card p {
-  min-height: 100px;
+  min-height: 110px;
 }
 
-/* Trava o bloco de vantagens */
-#export-insurance .vantagens,
-#export-insurance ul {
-  min-height: 160px;
+/* Lista de vantagens */
+#export-insurance ul,
+#export-insurance .vantagens {
+  min-height: 180px;
 }
 
-/* Trava subtítulos */
+/* Título principal */
 #export-insurance h2 {
-  min-height: 52px;
+  min-height: 54px;
 }
 
-/* Safari anti-reflow */
+/* Anti-reflow Safari */
 #export-insurance * {
-  backface-visibility: hidden;
   transform: translateZ(0);
+  backface-visibility: hidden;
 }
+
