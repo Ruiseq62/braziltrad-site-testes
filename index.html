@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8" />
-  <title>Braziltrad</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <title id="seo-title">Braziltrad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" id="seo-desc" content="Trading e exportação de commodities.">
 
   <link rel="stylesheet" href="./css/style.css">
@@ -39,7 +39,7 @@
       <div>
         <div class="title">BrazilTrad</div>
         <div class="slogan">
-          <em class="hero-slogan"></em>
+          <em class="hero-slog"></em>
         </div>
       </div>
     </a>
@@ -52,9 +52,9 @@
         <li><a href="#products"></a></li>
         <li><a href="#markets"></a></li>
         <li><a href="#insights"></a></li>
-        <li><a class="doc-link" href="documentos.html"></a></li>
-        <li><a class="links-link" href="links-uteis.html"></a></li>
-        <li><a class="contact-link" href="#contact"></a></li>
+        <li><a href="documentos.html"></a></li>
+        <li><a href="links-uteis.html"></a></li>
+        <li><a href="#contact"></a></li>
       </ul>
     </nav>
   </div>
@@ -62,11 +62,11 @@
 
 <main>
 
+<!-- HERO -->
 <section class="hero">
   <div class="container">
     <h1 class="hero-title"></h1>
     <p class="hero-lead"></p>
-
     <div class="cta">
       <a id="btn-comprar" class="button" href="contato-compra.html"></a>
       <a id="btn-vender" class="button secondary" href="contato-venda.html"></a>
@@ -74,19 +74,107 @@
   </div>
 </section>
 
-<section id="export-insurance" class="section" style="background:#f8f8f8;">
+<!-- BLOCO IMPACTO -->
+<section class="bloco-impacto">
+  <div class="overlay-texto problema">
+    <h2 class="impact-problem-title"></h2>
+    <ul>
+      <li class="impact-p1"></li>
+      <li class="impact-p2"></li>
+      <li class="impact-p3"></li>
+      <li class="impact-p4"></li>
+      <li class="impact-p5"></li>
+    </ul>
+  </div>
+
+  <div class="overlay-texto solucao">
+    <h2 class="impact-solution-title"></h2>
+    <ul>
+      <li class="impact-s1"></li>
+      <li class="impact-s2"></li>
+      <li class="impact-s3"></li>
+      <li class="impact-s4"></li>
+      <li class="impact-s5"></li>
+    </ul>
+  </div>
+
+  <div class="overlay-footer impact-footer"></div>
+</section>
+
+<!-- INSTITUCIONAL -->
+<section id="institutional" class="section">
   <div class="container">
-    <h2 data-i18n="insurance.title"></h2>
-    <p data-i18n="insurance.subtitle" class="lead"></p>
+    <h2 class="inst-title"></h2>
+    <h3 class="inst-who-title"></h3>
+    <p class="inst-who-p1"></p>
+    <p class="inst-who-p2"></p>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="services" class="section">
+  <div class="container">
+    <h2 class="services-title"></h2>
+    <ul>
+      <li class="srv-1"></li>
+      <li class="srv-2"></li>
+      <li class="srv-3"></li>
+      <li class="srv-4"></li>
+      <li class="srv-5"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- SEGURO -->
+<section id="export-insurance" class="section">
+  <div class="container">
+    <h2 class="insurance-title"></h2>
+    <p class="insurance-subtitle"></p>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="products" class="section">
+  <div class="container">
+    <h2 class="products-title"></h2>
+    <p class="products-lead"></p>
+  </div>
+</section>
+
+<!-- MERCADOS -->
+<section id="markets" class="section">
+  <div class="container">
+    <h2 class="markets-title"></h2>
+    <ul>
+      <li class="mk1"></li>
+      <li class="mk2"></li>
+      <li class="mk3"></li>
+      <li class="mk4"></li>
+      <li class="mk5"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insights" class="section">
+  <div class="container">
+    <h2 class="insights-title"></h2>
+    <ul>
+      <li class="in1"></li>
+      <li class="in2"></li>
+      <li class="in3"></li>
+      <li class="in4"></li>
+    </ul>
   </div>
 </section>
 
 </main>
 
 <footer class="footer">
-  <div class="inner container">
-    <img src="assets/img/braziltrad-logo.png" style="height:34px;">
+  <div class="container">
+    <img src="assets/img/braziltrad-logo.png" style="height:36px;">
     <div>© BrazilTrad</div>
+    <div>São Paulo — Brasil</div>
   </div>
 </footer>
 
@@ -96,99 +184,91 @@ const FLAGS = { pt:"🇧🇷 PT", en:"🇬🇧 EN", es:"🇪🇸 ES", zh:"🇨�
 
 const TRANSLATIONS = {
   pt:{
-    nav:["Sobre","Serviços","Seguro","Produtos","Mercados","Insights","Documentos","Links Úteis","Contato"],
-    hero:{
-      title:"Conectando o Brasil ao mercado global de commodities",
-      lead:"Intermediação confiável de metais e agrícolas com compliance e logística FOB/CIF.",
-      slogan:"Conectando produtores brasileiros a mercados globais",
-      buy:"Quero comprar",
-      sell:"Quero vender"
-    },
-    insurance:{
-      title:"Seguro de Exportação BrazilTrad",
-      subtitle:"Venda com segurança e garantia de recebimento."
-    }
+    nav:["Sobre","Serviços","Seguro","Produtos","Mercados","Insights","Documentos","Links","Contato"],
+    hero:{ title:"Conectando o Brasil ao mercado global", lead:"Trading de commodities com compliance e logística", slogan:"Conectando produtores brasileiros ao mundo", buy:"Quero comprar", sell:"Quero vender"},
+    impact:{ problem:"O Problema", p1:"Falta de acesso a compradores", p2:"Burocracia", p3:"Risco financeiro", p4:"Logística", p5:"Crédito limitado",
+             solution:"A Solução", s1:"Acesso global", s2:"Contratos", s3:"Pagamentos", s4:"Logística", s5:"Compliance",
+             footer:"Transformamos produtores em exportadores" },
+    institutional:{ title:"Quem Somos", who1:"A Braziltrad conecta produtores a mercados globais.", who2:"Atuamos com segurança e eficiência."},
+    services:["Exportação Assistida","Inteligência de Mercado","Pagamentos Internacionais","Compliance","Small Export"],
+    insurance:{ title:"Seguro de Exportação", subtitle:"Venda com garantia de recebimento."},
+    products:{ title:"Produtos", lead:"Agrícolas, Energéticas e Minerais"},
+    markets:{ title:"Mercados", m1:"China", m2:"Europa", m3:"Oriente Médio", m4:"EUA", m5:"Japão"},
+    insights:{ title:"Insights", i1:"Preços", i2:"Fluxos", i3:"Geopolítica", i4:"Oportunidades"}
   },
 
   en:{
-    nav:["About","Services","Insurance","Products","Markets","Insights","Documents","Useful Links","Contact"],
-    hero:{
-      title:"Connecting Brazil to the global commodities market",
-      lead:"Reliable intermediation with compliance and FOB/CIF logistics.",
-      slogan:"Connecting Brazilian producers to global markets",
-      buy:"I want to buy",
-      sell:"I want to sell"
-    },
-    insurance:{
-      title:"BrazilTrad Export Insurance",
-      subtitle:"Sell safely and secure your receivables."
-    }
-  },
-
-  es:{
-    nav:["Sobre","Servicios","Seguro","Productos","Mercados","Insights","Documentos","Links Útiles","Contacto"],
-    hero:{
-      title:"Conectando Brasil con el mercado global",
-      lead:"Intermediación confiable con logística FOB/CIF.",
-      slogan:"Conectando productores con mercados globales",
-      buy:"Quiero comprar",
-      sell:"Quiero vender"
-    },
-    insurance:{
-      title:"Seguro de Exportación BrazilTrad",
-      subtitle:"Venda con seguridad y garantía de cobro."
-    }
-  },
-
-  zh:{
-    nav:["关于","服务","保险","产品","市场","洞察","文件","实用链接","联系"],
-    hero:{
-      title:"连接巴西与全球大宗商品市场",
-      lead:"提供合规可靠的国际中介服务。",
-      slogan:"连接巴西生产者与全球市场",
-      buy:"我要买",
-      sell:"我要卖"
-    },
-    insurance:{
-      title:"BrazilTrad 出口保险",
-      subtitle:"降低风险，保障收款。"
-    }
+    nav:["About","Services","Insurance","Products","Markets","Insights","Documents","Links","Contact"],
+    hero:{ title:"Connecting Brazil to the global market", lead:"Commodity trading with compliance", slogan:"Connecting producers globally", buy:"Buy", sell:"Sell"},
+    impact:{ problem:"The Problem", p1:"Access", p2:"Bureaucracy", p3:"Risk", p4:"Logistics", p5:"Credit",
+             solution:"The Solution", s1:"Global Access", s2:"Contracts", s3:"Payments", s4:"Logistics", s5:"Compliance",
+             footer:"We turn producers into exporters" },
+    institutional:{ title:"About Us", who1:"Braziltrad connects producers to buyers.", who2:"Secure and efficient trading."},
+    services:["Assisted Export","Market Intelligence","International Payments","Compliance","Small Export"],
+    insurance:{ title:"Export Insurance", subtitle:"Sell with guaranteed payment."},
+    products:{ title:"Products", lead:"Agricultural, Energy, Minerals"},
+    markets:{ title:"Markets", m1:"China", m2:"Europe", m3:"Middle East", m4:"USA", m5:"Japan"},
+    insights:{ title:"Insights", i1:"Prices", i2:"Flows", i3:"Geopolitics", i4:"Opportunities"}
   }
 };
 
 function applyLang(code){
   if(!TRANSLATIONS[code]) code = "pt";
   localStorage.setItem("bt_lang", code);
-  document.documentElement.lang = code;
-
   const t = TRANSLATIONS[code];
 
-  document.querySelectorAll("header nav ul li a").forEach((a,i)=>{
-    if(t.nav[i]) a.textContent = t.nav[i];
-  });
+  document.querySelectorAll("header nav ul li a").forEach((a,i)=>a.textContent=t.nav[i]||"");
+  document.querySelector(".hero-title").textContent=t.hero.title;
+  document.querySelector(".hero-lead").textContent=t.hero.lead;
+  document.querySelector(".hero-slog").textContent=t.hero.slogan;
+  document.getElementById("btn-comprar").textContent=t.hero.buy;
+  document.getElementById("btn-vender").textContent=t.hero.sell;
 
-  document.querySelector(".hero-title").textContent = t.hero.title;
-  document.querySelector(".hero-lead").textContent  = t.hero.lead;
-  document.querySelector(".hero-slogan").textContent = t.hero.slogan;
-  document.getElementById("btn-comprar").textContent = t.hero.buy;
-  document.getElementById("btn-vender").textContent  = t.hero.sell;
+  document.querySelector(".impact-problem-title").textContent=t.impact.problem;
+  document.querySelector(".impact-solution-title").textContent=t.impact.solution;
+  document.querySelector(".impact-footer").textContent=t.impact.footer;
 
-  document.querySelector('[data-i18n="insurance.title"]').textContent = t.insurance.title;
-  document.querySelector('[data-i18n="insurance.subtitle"]').textContent = t.insurance.subtitle;
+  document.querySelector(".inst-title").textContent=t.institutional.title;
+  document.querySelector(".inst-who-p1").textContent=t.institutional.who1;
+  document.querySelector(".inst-who-p2").textContent=t.institutional.who2;
 
-  document.getElementById("langBtn").textContent = "🌎 " + FLAGS[code];
+  document.querySelector(".services-title").textContent=t.nav[1];
+  document.querySelector(".srv-1").textContent=t.services[0];
+  document.querySelector(".srv-2").textContent=t.services[1];
+  document.querySelector(".srv-3").textContent=t.services[2];
+  document.querySelector(".srv-4").textContent=t.services[3];
+  document.querySelector(".srv-5").textContent=t.services[4];
+
+  document.querySelector(".insurance-title").textContent=t.insurance.title;
+  document.querySelector(".insurance-subtitle").textContent=t.insurance.subtitle;
+
+  document.querySelector(".products-title").textContent=t.products.title;
+  document.querySelector(".products-lead").textContent=t.products.lead;
+
+  document.querySelector(".markets-title").textContent=t.markets.title;
+  document.querySelector(".mk1").textContent=t.markets.m1;
+  document.querySelector(".mk2").textContent=t.markets.m2;
+  document.querySelector(".mk3").textContent=t.markets.m3;
+  document.querySelector(".mk4").textContent=t.markets.m4;
+  document.querySelector(".mk5").textContent=t.markets.m5;
+
+  document.querySelector(".insights-title").textContent=t.insights.title;
+  document.querySelector(".in1").textContent=t.insights.i1;
+  document.querySelector(".in2").textContent=t.insights.i2;
+  document.querySelector(".in3").textContent=t.insights.i3;
+  document.querySelector(".in4").textContent=t.insights.i4;
+
+  document.getElementById("langBtn").textContent="🌎 "+FLAGS[code];
 }
 
-document.addEventListener("DOMContentLoaded", ()=>{
-  let code = localStorage.getItem("bt_lang") || navigator.language.substring(0,2);
-  if(!LANGS.includes(code)) code = "pt";
+document.addEventListener("DOMContentLoaded",()=>{
+  let code=localStorage.getItem("bt_lang")||"pt";
   applyLang(code);
-
-  let idx = LANGS.indexOf(code);
-  document.getElementById("langBtn").addEventListener("click", ()=>{
-    idx = (idx + 1) % LANGS.length;
+  let idx=LANGS.indexOf(code);
+  document.getElementById("langBtn").onclick=()=>{
+    idx=(idx+1)%LANGS.length;
     applyLang(LANGS[idx]);
-  });
+  }
 });
 </script>
 
