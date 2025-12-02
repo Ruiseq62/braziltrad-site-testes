@@ -11,7 +11,12 @@ html, body {
   width: 100%;
   overflow-x: hidden;
 }
-
+/* ==============================
+   MODO RAIO-X (TEMPORÁRIO)
+============================== */
+* {
+  outline: 1px solid red !important;
+}
 /* ==============================
    1. VARIÁVEIS
 ============================== */
@@ -803,4 +808,17 @@ body {
 
 html, body {
   overflow-anchor: none;
+}
+/* ==============================
+   FIX ANTI-SALTO TRADINGVIEW
+============================== */
+.tradingview-widget-container,
+.tradingview-ticker,
+iframe {
+  min-height: 68px !important;
+  max-height: 68px !important;
+  overflow: hidden !important;
+}
+.tradingview-widget-container * {
+  transition: none !important;
 }
