@@ -721,13 +721,7 @@ body.lang-lock {
   overflow: hidden !important;
 }
 /* 🔒 Tira o widget do fluxo normal para impedir reflow */
-.market-widget-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-}
+
 
 /* Dá espaço artificial no topo para compensar o widget */
 body {
@@ -782,26 +776,28 @@ body.lang-lock * {
   transition: none !important;
   animation: none !important;
 }
-/* Wrapper geral das barras */
 .market-widget-wrapper {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 999;
+  left: 0;
+  right: 0;
+  z-index: 9999;
   background: white;
 }
 
-/* Primeira barra (índices) */
+/* Primeira barra */
 .market-widget-wrapper .main-bar {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  background: white;
+  position: relative;
+  z-index: 9999;
 }
 
-/* Segunda barra (commodities) fica colada logo abaixo da primeira */
+/* Segunda barra */
 .market-widget-wrapper .commodities-bar {
-  position: sticky;
-  top: 42px;   /* ajusta à altura real da primeira barra */
-  z-index: 998;
-  background: white;
+  position: relative;
+  z-index: 9998;
+}
+
+/* Compensação no body para não tapar conteúdo */
+body {
+  padding-top: 84px; /* ajusta à soma real das duas barras */
 }
