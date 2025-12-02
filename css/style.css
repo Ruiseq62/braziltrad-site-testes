@@ -227,3 +227,61 @@ header nav ul li a{
   .hero p{font-size:1.05rem;}
   header nav ul{display:none;}
 }
+/* ============================
+   ✅ RESTAURA HEADER E NAV
+============================= */
+
+.header {
+  position: relative;
+  background: #fff;
+  z-index: 9000;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.header .container.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.brand .title {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.brand .slogan {
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+.header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+}
+
+.header nav ul li {
+  display: inline-block;
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #111;
+}
