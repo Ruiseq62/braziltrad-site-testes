@@ -716,90 +716,13 @@ header nav ul li a:hover {
   color: #0F4C5C;
   font-size: 0.9rem;
 }
-html.lang-lock,
-body.lang-lock {
-  overflow: hidden !important;
-}
-/* 🔒 Tira o widget do fluxo normal para impedir reflow */
+/* ===================================================
+   ✅ FIX FINAL LIMPO — SEM CONFLITOS (PRODUÇÃO)
+=================================================== */
 
-
-/* Dá espaço artificial no topo para compensar o widget */
-body {
-  padding-top: 68px; /* ajuste fino se necessário */
-}
-/* === CORREÇÃO DEFINITIVA DOS SALTOS DE IDIOMA === */
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px; /* altura real do header */
-}
-
-.section {
-  scroll-margin-top: 90px;
-}
-#export-insurance h2 {
-  margin-top: 0;
-  margin-bottom: 18px;
-}
-
-#export-insurance h3 {
-  margin-top: 24px;
-  margin-bottom: 12px;
-}
-#export-insurance .card {
-  min-height: 280px;
-}
-/* ===== TRAVA VISUAL ANTI-FLICKER NA TROCA DE IDIOMA ===== */
-.lang-lock {
-  overflow: hidden !important;
-}
-
-body.lang-lock * {
-  transition: none !important;
-  animation: none !important;
-}
-
-.lang-fade {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.lang-show {
-  opacity: 1;
-  transition: opacity 0.15s linear;
-}
-.lang-freeze-safe {
-  overflow: hidden !important;
-}
-
-.lang-freeze-safe * {
-  transition: none !important;
-  animation: none !important;
-}
+/* ===== BARRAS FIXAS ===== */
 .market-widget-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: white;
-}
-
-/* Primeira barra */
-.market-widget-wrapper .main-bar {
-  position: relative;
-  z-index: 9999;
-}
-
-/* Segunda barra */
-.market-widget-wrapper .commodities-bar {
-  position: relative;
-  z-index: 9998;
-}
-/* === FIXAÇÃO DEFINITIVA DAS BARRAS DE COTAÇÃO === */
-
-.market-widget-wrapper {
-  position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
@@ -807,122 +730,63 @@ body.lang-lock * {
   background: #fff;
 }
 
-/* Ajuste das barras internas */
 .market-widget-wrapper .tradingview-widget-container {
-  position: relative !important;
+  position: relative;
   background: #fff;
 }
 
-/* Empurra o site para baixo para não ficar tapado */
+/* Compensação única no body (SÓ UMA VEZ) */
 body {
-  padding-top: 86px !important; /* ajusta depois se precisares: 80 a 100 */
+  padding-top: 86px;
 }
-/* Compensação no body para não tapar conteúdo */
-body {
-  padding-top: 84px; /* ajusta à soma real das duas barras */
-}
-/* === ESTABILIZA O HERO NA TROCA DE IDIOMA (ANTI-SALTO FINAL) === */
+
+/* ===== HERO ESTÁVEL ===== */
 .hero {
-  min-height: 420px;   /* pode ajustar entre 380 e 460 se quiseres */
+  min-height: 420px;
   display: flex;
   align-items: center;
 }
-/* ==========================================
-   FIX DEFINITIVO DOS SALTOS APÓS A HERO
-========================================== */
 
-/* 🔒 Trava os cards principais de idioma */
-#export-insurance .card,
-.export-card,
-.insurance-card {
-  min-height: 300px;
-}
-
-/* 🔒 Trava os títulos dos cards */
-#export-insurance h3 {
-  min-height: 38px;
-}
-
-/* 🔒 Trava os textos internos */
-#export-insurance p {
-  min-height: 90px;
-}
-
-/* 🔒 Trava a seção inteira contra recalculo */
+/* ===== SEÇÃO DE SEGURO TOTALMENTE TRAVADA ===== */
 #export-insurance {
-  min-height: 700px;
-}
-
-/* 🔒 Trava o bloco de vantagens */
-#export-insurance ul {
-  min-height: 140px;
-}
-
-/* 🔒 Trava TODAS as sections que mudam idioma */
-.section {
-  min-height: 420px;
-  will-change: transform;
-}
-
-/* ✅ Remove qualquer animação residual em troca de idioma */
-body.lang-lock *,
-body.lang-freeze-safe * {
-  transition: none !important;
-  animation: none !important;
-}
-
-/* ✅ Safari anti-reflow */
-html, body {
-  overflow-anchor: none;
-}
-/* ==========================================
-   FIX DEFINITIVO ABSOLUTO — SEÇÃO DE SEGURO
-========================================== */
-
-#export-insurance {
-  min-height: 900px;        /* trava completamente a área */
+  min-height: 880px;
   position: relative;
   overflow: hidden;
 }
 
-/* Grid dos cards */
 #export-insurance .grid {
   min-height: 360px;
-  align-items: stretch;
 }
 
-/* Cada card */
 #export-insurance .card {
-  min-height: 340px;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-/* Títulos dos cards */
 #export-insurance .card h3 {
-  min-height: 44px;
+  min-height: 42px;
 }
 
-/* Texto dos cards */
 #export-insurance .card p {
   min-height: 110px;
 }
 
-/* Lista de vantagens */
-#export-insurance ul,
-#export-insurance .vantagens {
-  min-height: 180px;
+#export-insurance ul {
+  min-height: 170px;
 }
 
-/* Título principal */
 #export-insurance h2 {
-  min-height: 54px;
+  min-height: 52px;
 }
 
-/* Anti-reflow Safari */
+/* ===== ANTI-REPAINT SAFARI ===== */
 #export-insurance * {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 
+html, body {
+  overflow-anchor: none;
+}
