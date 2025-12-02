@@ -875,3 +875,46 @@ body.lang-freeze-safe * {
 html, body {
   overflow-anchor: none;
 }
+/* ==========================================
+   FIX DEFINITIVO — SALTO NA SEÇÃO DE SEGURO
+========================================== */
+
+#export-insurance {
+  min-height: 840px;        /* trava a altura total da seção */
+  overflow: hidden;        /* impede micro-reflows */
+}
+
+/* Trava os 3 cards principais */
+#export-insurance .card {
+  min-height: 320px;       /* suficiente até para chinês */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Trava os títulos dos cards */
+#export-insurance .card h3 {
+  min-height: 42px;
+}
+
+/* Trava os textos dos cards */
+#export-insurance .card p {
+  min-height: 100px;
+}
+
+/* Trava o bloco de vantagens */
+#export-insurance .vantagens,
+#export-insurance ul {
+  min-height: 160px;
+}
+
+/* Trava subtítulos */
+#export-insurance h2 {
+  min-height: 52px;
+}
+
+/* Safari anti-reflow */
+#export-insurance * {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
