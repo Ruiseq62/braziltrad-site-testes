@@ -782,3 +782,26 @@ body.lang-lock * {
   transition: none !important;
   animation: none !important;
 }
+/* Wrapper geral das barras */
+.market-widget-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: white;
+}
+
+/* Primeira barra (índices) */
+.market-widget-wrapper .main-bar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: white;
+}
+
+/* Segunda barra (commodities) fica colada logo abaixo da primeira */
+.market-widget-wrapper .commodities-bar {
+  position: sticky;
+  top: 42px;   /* ajusta à altura real da primeira barra */
+  z-index: 998;
+  background: white;
+}
