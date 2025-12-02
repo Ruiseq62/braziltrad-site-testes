@@ -1204,7 +1204,11 @@ function applyLangSafe(code){
     updateLinks(code);
 
     // TRADINGVIEW
-    initTradingView(code);
+   if(!window.__tvInitialized){
+  initTradingView(code);
+  window.__tvInitialized = true;
+}
+
 
     // PERSISTÊNCIA
     localStorage.setItem("bt_lang", code);
