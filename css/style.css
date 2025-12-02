@@ -157,12 +157,15 @@ body {
   font-size: 0.85rem;
   color: #777;
 
-  /* ✅ TRAVA TOTAL DO SALTO ENTRE IDIOMAS */
-  min-height: 34px;        /* Altura fixa para 2 linhas */
+  min-height: 34px;
   line-height: 17px;
+
   display: flex;
   align-items: center;
+
+  margin-top: 4px;   /* ✅ DESCE O TEXTO UM POUQUINHO */
 }
+
 
 
 header nav ul {
@@ -692,3 +695,33 @@ header nav ul li a:hover {
   color: #0F4C5C;
   font-size: 0.9rem;
 }
+/* ===== FIXAR BARRA BRANCA NO TOPO ===== */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ===== COMPENSAÇÃO DO FIXED ===== */
+body {
+  padding-top: 86px;
+}
+
+/* ===== ALINHAMENTO DO TEXTO SOB O LOGO ===== */
+.brand .slogan,
+.brand em {
+  margin-top: 4px;
+  display: block;
+}
+
