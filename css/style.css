@@ -11,12 +11,7 @@ html, body {
   width: 100%;
   overflow-x: hidden;
 }
-/* ==============================
-   MODO RAIO-X (TEMPORÁRIO)
-============================== */
-* {
-  outline: 1px solid red !important;
-}
+
 /* ==============================
    1. VARIÁVEIS
 ============================== */
@@ -819,6 +814,23 @@ iframe {
   max-height: 68px !important;
   overflow: hidden !important;
 }
+.tradingview-widget-container * {
+  transition: none !important;
+}
+/* =================================================
+   TRAVA DEFINITIVA DO TICKER (ANTI-SALTO)
+================================================= */
+.tradingview-widget-container,
+.tradingview-widget-container iframe,
+.tradingview-ticker {
+  height: 68px !important;
+  min-height: 68px !important;
+  max-height: 68px !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+/* Impede animação elástica quando reconecta */
 .tradingview-widget-container * {
   transition: none !important;
 }
