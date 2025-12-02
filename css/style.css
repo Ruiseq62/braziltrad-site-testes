@@ -793,3 +793,28 @@ header nav ul li a:hover {
     min-height: unset;
   }
 }
+/* ==========================================
+   🔒 ANTI-SALTO REAL — CABEÇALHO DO SEGURO
+   ========================================== */
+
+#export-insurance h2 {
+  min-height: 58px;
+}
+
+#export-insurance h2::after {
+  min-height: 20px;
+  display: block;
+}
+
+#export-insurance > p,
+#export-insurance .section-desc {
+  min-height: 56px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ✅ Impede que o navegador reancore o scroll nesta secção */
+#export-insurance {
+  overflow-anchor: none;
+}
