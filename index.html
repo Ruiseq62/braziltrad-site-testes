@@ -1198,19 +1198,44 @@ function applyLangSafe(code){
 /* ===========================
    SEGURO — VANTAGENS
 =========================== */
-const advTitle = document.querySelector('[data-i18n="insurance.benefits.title"]');
-if(advTitle && t.insurance?.benefits?.title){
-  advTitle.textContent = t.insurance.benefits.title;
-}
+// ===== SEGURO =====
+if(t.insurance){
 
-const advItems = document.querySelectorAll('#export-insurance ul li');
-if(t.insurance?.benefits?.items && advItems.length){
-  advItems.forEach((li, i) => {
-    if(t.insurance.benefits.items[i]){
-      li.textContent = t.insurance.benefits.items[i];
+  // TÍTULOS PRINCIPAIS
+  const insTitle = document.querySelector('[data-i18n="insurance.title"]');
+  const insSub   = document.querySelector('[data-i18n="insurance.subtitle"]');
+
+  if(insTitle) insTitle.textContent = t.insurance.title;
+  if(insSub)   insSub.textContent   = t.insurance.subtitle;
+
+  // CARDS: O que é / O que cobre / Para quem
+  const insWhatTitle   = document.querySelector('[data-i18n="insurance.what.title"]');
+  const insWhatText    = document.querySelector('[data-i18n="insurance.what.text"]');
+  const insCoverTitle = document.querySelector('[data-i18n="insurance.cover.title"]');
+  const insCoverText  = document.querySelector('[data-i18n="insurance.cover.text"]');
+  const insForTitle   = document.querySelector('[data-i18n="insurance.for.title"]');
+  const insForText    = document.querySelector('[data-i18n="insurance.for.text"]');
+
+  if(insWhatTitle)   insWhatTitle.textContent   = t.insurance.what.title;
+  if(insWhatText)    insWhatText.textContent    = t.insurance.what.text;
+  if(insCoverTitle)  insCoverTitle.textContent  = t.insurance.cover.title;
+  if(insCoverText)   insCoverText.textContent   = t.insurance.cover.text;
+  if(insForTitle)    insForTitle.textContent    = t.insurance.for.title;
+  if(insForText)     insForText.textContent     = t.insurance.for.text;
+
+  // ✅ VANTAGENS
+  const advTitle = document.querySelector('[data-i18n="insurance.advantages.title"]');
+  if(advTitle) advTitle.textContent = t.insurance.advantages.title;
+
+  const advItems = document.querySelectorAll('[data-i18n^="insurance.advantages.items"]');
+  advItems.forEach((el, i) => {
+    if(t.insurance.advantages.items[i]){
+      el.textContent = t.insurance.advantages.items[i];
     }
   });
+
 }
+
 
 /* ===========================
    SEGURO — COMO FUNCIONA
