@@ -1288,17 +1288,24 @@ function applyLangSafe(code){
   </script>
 <script>
 (function () {
-  const slot = document.querySelector('.tradingview-slot');
-  if (!slot) return;
+  let lastScrollY = 0;
 
-  const lockedHeight = slot.offsetHeight;
+  document.addEventListener('click', function (e) {
+    const langBtn = e.target.closest('[data-lang], .lang-btn, .bt-lang-btn');
+    if (!langBtn) return;
 
-  setInterval(() => {
-    slot.style.minHeight = lockedHeight + 'px';
-    slot.style.maxHeight = lockedHeight + 'px';
-  }, 500);
+    lastScrollY = window.scrollY;
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: lastScrollY,
+        behavior: 'instant'
+      });
+    }, 80);
+  });
 })();
 </script>
+
 
 </body>
 </html>
