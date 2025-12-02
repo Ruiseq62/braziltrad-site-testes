@@ -854,3 +854,6 @@ main, .main, .hero, .section, .container {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+body {
+  padding-top: 76px !important;
+}
