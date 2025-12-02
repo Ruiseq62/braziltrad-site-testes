@@ -1,5 +1,5 @@
 /* =================================================
-   1. VARIÁVEIS
+   1. VARIÁVEIS GLOBAIS
 ================================================= */
 :root {
   --primary: #0F4C5C;
@@ -14,7 +14,7 @@
 }
 
 /* =================================================
-   2. RESET
+   2. RESET GERAL
 ================================================= */
 * {
   margin: 0;
@@ -27,10 +27,44 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+
+  /* ✅ COMPENSAÇÃO FIXA DAS DUAS BARRAS */
+  padding-top: 96px;
 }
 
 /* =================================================
-   3. LAYOUT GLOBAL
+   3. BARRAS DE COTAÇÃO (FIXAÇÃO DEFINITIVA)
+================================================= */
+.market-widget-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96px;
+  background: #fff;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.market-widget-wrapper .main-bar,
+.market-widget-wrapper .commodities-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.market-widget-wrapper .main-bar {
+  top: 0;
+  height: 48px;
+}
+
+.market-widget-wrapper .commodities-bar {
+  top: 48px;
+  height: 48px;
+}
+
+/* =================================================
+   4. CONTAINER E SEÇÕES
 ================================================= */
 .container {
   width: 100%;
@@ -41,6 +75,7 @@ body {
 
 .section {
   padding: 80px 0;
+  scroll-margin-top: 110px;
 }
 
 .section .container {
@@ -75,118 +110,59 @@ body {
   margin: 0 auto 20px;
 }
 
-.section ul {
-  list-style-position: inside;
-  padding-left: 0;
-}
-
 /* =================================================
-   4. HEADER
+   5. HEADER ESTÁVEL
 ================================================= */
-/* 🔒 HEADER DEFINITIVAMENTE TRAVADO (ANTI-SALTO) */
 .header {
   background: #ffffff;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   position: sticky;
   top: 0;
-  z-index: 9999;
-
+  z-index: 9000;
   height: 70px;
-  min-height: 70px;
-  max-height: 70px;
-  overflow: hidden;
-  padding: 0;
-}
-
-
-/* Trava alinhamento interno */
-.header nav {
-  height: 40px;
-  min-height: 40px;
-}
-
-/* Segurança extra */
-.header * {
-  line-height: 1.2;
-}
-
-.header .nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
+
 .header nav ul {
-  flex-wrap: nowrap;
-  white-space: nowrap;
-}
-
-
-.header nav ul li {
-  flex-shrink: 0;
-}
-.header nav ul li a {
-  padding-left: 0.4ch;
-  padding-right: 0.4ch;
-}
-.header .slogan {
-  min-height: 20px;
-  line-height: 20px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.brand img {
-  height: 42px;
-}
-
-.brand .title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-}
-
-.brand .slogan {
-  font-size: 0.85rem;
-  color: #777;
-}
-
-header nav ul {
   display: flex;
   gap: 22px;
   list-style: none;
+  white-space: nowrap;
 }
 
-header nav ul li a {
+.header nav ul li a {
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
   transition: var(--transition);
 }
 
-header nav ul li a:hover {
+.header nav ul li a:hover {
   color: var(--primary);
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  height: 42px;
+}
+
 /* =================================================
-   5. HERO
+   6. HERO — 100% ESTÁVEL
 ================================================= */
 .hero {
   padding: 80px 20px 100px;
   background: #f4f7f9;
   text-align: center;
-
-  /* ✅ ADIÇÃO ANTI-SALTO */
   min-height: 520px;
   display: flex;
   align-items: center;
 }
-
 
 .hero h1 {
   font-size: 2.6rem;
@@ -203,22 +179,19 @@ header nav ul li a:hover {
   line-height: 1.6;
   color: #555;
 }
-/* ✅ ESTABILIZA ALTURA DOS TEXTOS ENTRE IDIOMAS */
-.hero-title {
-  min-height: 120px;
-}
 
-.hero-lead {
-  min-height: 72px;
-}
+.hero-title { min-height: 120px; }
+.hero-lead { min-height: 72px; }
+
 .cta {
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin-top: 40px;
 }
 
 /* =================================================
-   6. BOTÕES
+   7. BOTÕES
 ================================================= */
 .button {
   background: var(--primary);
@@ -232,24 +205,14 @@ header nav ul li a:hover {
   box-shadow: var(--shadow-strong);
 }
 
-.button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-}
-
 .button.secondary {
-  background: #ffffff;
+  background: #fff;
   color: var(--primary-dark);
   border: 2px solid var(--primary);
 }
 
-.button.secondary:hover {
-  background: var(--primary);
-  color: #ffffff;
-}
-
 /* =================================================
-   7. GRID + CARDS (PRODUTOS)
+   8. GRID E CARDS
 ================================================= */
 .grid {
   display: grid;
@@ -262,229 +225,23 @@ header nav ul li a:hover {
   padding: 24px 20px 32px;
   border-radius: var(--radius);
   box-shadow: var(--shadow-strong);
-  transition: var(--transition);
   text-align: center;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-}
-
-.card img {
-  width: 100%;
-  max-width: 280px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  margin: 0 auto 20px;
-  display: block;
-}
-
-.card h3 {
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin: 20px 0 10px;
-}
-
-.card p {
-  font-size: 1.05rem;
-  line-height: 1.45;
-  color: #555;
-}
-
-/* =================================================
-   8. SERVIÇOS EM CARDS
-================================================= */
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 18px;
-  margin-top: 24px;
-}
-
-.service-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 16px 18px;
-  box-shadow: var(--shadow-soft);
-  text-align: left;
-}
-
-.service-card h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-  color: var(--primary);
-}
-
-.service-card p {
-  font-size: 0.95rem;
-  line-height: 1.5;
 }
 
 /* =================================================
    9. BOTÕES DE IDIOMA
 ================================================= */
-.lang-switch-group {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.lang-switch-group button,
-.bt-lang-btn {
-  background: var(--primary);
-  color: #ffffff;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 18px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.10);
-}
-
-.lang-switch-group button:hover,
-.bt-lang-btn:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-}
-
-/* =================================================
-   10. FOOTER
-================================================= */
-.footer {
-  background: linear-gradient(180deg, #0F4C5C, #083842);
-  padding: 60px 0 40px;
-  text-align: center;
-  color: #ffffff;
-}
-
-.footer div {
-  font-size: 0.95rem;
-  letter-spacing: 0.3px;
-}
-
-.footer a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* =================================================
-   11. MEDIA QUERIES
-================================================= */
-@media (max-width: 768px) {
-  .hero {
-    padding: 60px 16px 80px;
-  }
-
-  .hero h1 {
-    font-size: 1.9rem;
-  }
-
-  .hero p {
-    font-size: 1.05rem;
-  }
-
-  .cta {
-    flex-direction: column;
-    gap: 14px;
-  }
-}
-
-@media (max-width: 600px) {
-  header nav ul {
-    display: none;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section {
-    padding: 60px 0;
-  }
-
-  .section h2 {
-    font-size: 1.8rem;
-  }
-
-  .cta .button {
-    width: 100%;
-    max-width: 320px;
-  }
-}
-/* ============================= */
-/* ✅ FIX DEFINITIVO — PRODUTOS */
-/* ============================= */
-
-#products {
-  padding-top: 90px;
-  padding-bottom: 90px;
-  background: #ffffff;
-}
-
-#products .container {
-  max-width: 1200px;
-}
-
-#products .grid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-}
-
-#products .card {
-  display: block;
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-  text-align: center;
-  overflow: hidden;
-}
-
-#products .card img {
-  width: 100%;
-  max-width: 300px;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 18px;
-  border-radius: 14px;
-}
-
-#products .card h3 {
-  font-size: 1.4rem;
-  margin: 10px 0 6px;
-  color: #0F4C5C;
-}
-
-#products .card p {
+.lang-btn {
+  padding: 11px 24px;
   font-size: 1.05rem;
-  color: #555;
-  margin-bottom: 16px;
+  border-radius: 32px;
+  width: 110px;
+  text-align: center;
 }
 
-/* ✅ MOBILE */
-@media (max-width: 600px) {
-  #products .grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  #products .card img {
-    height: 170px;
-  }
-}
 /* =================================================
-   BLOCO IMPACTO — VERSÃO FINAL LIMPA (PRODUÇÃO)
+   10. BLOCO IMPACTO (FINAL LIMPO)
 ================================================= */
-
 .bloco-impacto{
   position: relative;
   width: 100%;
@@ -501,329 +258,33 @@ header nav ul li a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-}
-
-/* CAIXAS DE TEXTO */
-.bloco-impacto .overlay-texto{
-  position: absolute;
-  background: rgba(8, 32, 55, 0.9);
-  color: #fff;
-  padding: 26px 28px;
-  border-radius: 14px;
-  width: 360px;
-  height: 280px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  font-family: Inter, Arial, sans-serif;
-  line-height: 1.35;
-}
-
-.bloco-impacto .overlay-texto h2{
-  font-size: 1.6rem;
-  margin-bottom: 12px;
-}
-
-.bloco-impacto .overlay-texto li{
-  font-size: 1.02rem;
-  margin-bottom: 6px;
-}
-
-/* POSIÇÕES DESKTOP */
-.bloco-impacto .overlay-texto.problema{
-  top: 60px;
-  left: 60px;
-}
-
-.bloco-impacto .overlay-texto.solucao{
-  bottom: 90px;
-  right: 60px;
-}
-
-/* FRASE FINAL */
-.bloco-impacto .overlay-footer{
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(8, 32, 55, 0.95);
-  color: #fff;
-  padding: 14px 30px;
-  border-radius: 999px;
-  font-size: 1.05rem;
-  font-weight: 600;
-  text-align: center;
-  max-width: 90%;
 }
 
 /* =================================================
-   MOBILE — LIMPO, SEM CAIXAS GRANDES
+   11. EXPORT INSURANCE
 ================================================= */
-@media (max-width: 768px){
-
-  .bloco-impacto{
-    height: 300px;
-  }
-
-  .bloco-impacto img{
-    object-fit: cover;
-  }
-
-  /* REMOVE AS CAIXAS NO MOBILE */
-  .bloco-impacto .overlay-texto{
-    display: none;
-  }
-
-  /* MANTÉM APENAS A FRASE FINAL */
-  .bloco-impacto .overlay-footer{
-    bottom: 12px;
-    font-size: 13px;
-    padding: 10px 16px;
-  }
-
-}
-.lang-btn{
-  padding: 11px 24px !important;
-  font-size: 1.05rem !important;
-  border-radius: 32px !important;
-}
-.lang-btn {
-  width: 110px;
-  text-align: center;
-}
-
-.hero .cta{
-  margin-top: 40px;
-}
-.links-link { white-space: nowrap; 
-            }
-.tv-top-bar {
-  width: 100%;
-  min-height: 48px;
-  overflow: hidden;
-  background: white;
-  border-bottom: 1px solid #e5e5e5;
-  position: relative;
-  z-index: 999;
-}
-
-.commodities-bar {
-  width: 100%;
-  min-height: 48px;
-}
-.docs-hero {
-  text-align: center;
-  padding: 40px 20px 20px;
-}
-
-.docs-hero h1 {
-  font-size: 2rem;
-  color: #0F4C5C;
-  margin-bottom: 8px;
-}
-
-.docs-hero p {
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.docs-section {
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 0 20px;
-}
-
-.docs-section h2 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #0F4C5C;
-}
-
-.docs-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.docs-list li {
-  background: #fff;
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-
-.docs-list a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #0F4C5C;
-  font-size: 0.9rem;
-}
-.docs-hero {
-  text-align: center;
-  padding: 40px 20px 20px;
-}
-
-.docs-hero h1 {
-  font-size: 2rem;
-  color: #0F4C5C;
-  margin-bottom: 8px;
-}
-
-.docs-hero p {
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.docs-section {
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 0 20px;
-}
-
-.docs-section h2 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #0F4C5C;
-}
-
-.docs-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.docs-list li {
-  background: #fff;
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-
-.docs-list a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #0F4C5C;
-  font-size: 0.9rem;
-}
-html.lang-lock,
-body.lang-lock {
-  overflow: hidden !important;
-}
-/* 🔒 Tira o widget do fluxo normal para impedir reflow */
-
-
-/* Dá espaço artificial no topo para compensar o widget */
-body {
-  padding-top: 68px; /* ajuste fino se necessário */
-}
-/* === CORREÇÃO DEFINITIVA DOS SALTOS DE IDIOMA === */
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px; /* altura real do header */
-}
-
-.section {
-  scroll-margin-top: 90px;
-}
-#export-insurance h2 {
-  margin-top: 0;
-  margin-bottom: 18px;
-}
-
-#export-insurance h3 {
-  margin-top: 24px;
-  margin-bottom: 12px;
-}
 #export-insurance .card {
   min-height: 280px;
 }
-/* ===== TRAVA VISUAL ANTI-FLICKER NA TROCA DE IDIOMA ===== */
-.lang-lock {
-  overflow: hidden !important;
+
+/* =================================================
+   12. FOOTER
+================================================= */
+.footer {
+  background: linear-gradient(180deg, #0F4C5C, #083842);
+  padding: 60px 0 40px;
+  text-align: center;
+  color: #ffffff;
 }
 
-body.lang-lock * {
-  transition: none !important;
-  animation: none !important;
+/* =================================================
+   13. RESPONSIVO
+================================================= */
+@media (max-width: 768px) {
+  .hero { min-height: 420px; }
+  .cta { flex-direction: column; }
 }
 
-.lang-fade {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.lang-show {
-  opacity: 1;
-  transition: opacity 0.15s linear;
-}
-.lang-freeze-safe {
-  overflow: hidden !important;
-}
-
-.lang-freeze-safe * {
-  transition: none !important;
-  animation: none !important;
-}
-.market-widget-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: white;
-}
-
-/* Primeira barra */
-.market-widget-wrapper .main-bar {
-  position: relative;
-  z-index: 9999;
-}
-
-/* Segunda barra */
-.market-widget-wrapper .commodities-bar {
-  position: relative;
-  z-index: 9998;
-}
-/* === FIXAÇÃO DEFINITIVA DAS BARRAS DE COTAÇÃO === */
-
-.market-widget-wrapper {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10000;
-  background: #fff;
-}
-
-/* Ajuste das barras internas */
-.market-widget-wrapper .tradingview-widget-container {
-  position: relative !important;
-  background: #fff;
-}
-
-/* Empurra o site para baixo para não ficar tapado */
-body {
-  padding-top: 86px !important; /* ajusta depois se precisares: 80 a 100 */
-}
-/* Compensação no body para não tapar conteúdo */
-body {
-  padding-top: 84px; /* ajusta à soma real das duas barras */
-}
-/* === ESTABILIZA O HERO NA TROCA DE IDIOMA (ANTI-SALTO FINAL) === */
-.hero {
-  min-height: 420px;   /* pode ajustar entre 380 e 460 se quiseres */
-  display: flex;
-  align-items: center;
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
 }
