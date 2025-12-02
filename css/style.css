@@ -113,7 +113,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 70px;              /* igual à altura da barra */
 }
+
 
 .header nav ul {
   flex-wrap: nowrap;
@@ -141,6 +143,7 @@ body {
   gap: 12px;
   color: var(--primary);
   text-decoration: none;
+  height: 70px;   /* ✅ FORÇA CENTRALIZAÇÃO NA BARRA */
 }
 
 .brand img {
@@ -700,8 +703,7 @@ header nav ul li a:hover {
    (sem quebrar layout)
 ========================================= */
 .brand .slogan {
-  margin-top: 4px;   /* ajusta só um pouco para baixo */
-  display: block;
+  margin-top: 2px;
   line-height: 1.2;
 }
 
