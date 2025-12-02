@@ -774,3 +774,11 @@ body.lang-lock * {
   opacity: 1;
   transition: opacity 0.15s linear;
 }
+.lang-freeze-safe {
+  overflow: hidden !important;
+}
+
+.lang-freeze-safe * {
+  transition: none !important;
+  animation: none !important;
+}
