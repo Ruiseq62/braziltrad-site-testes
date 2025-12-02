@@ -1098,45 +1098,36 @@
     tvCommod.appendChild(w2);
   }
 
- function applyLangSafe(code){
-  const html = document.documentElement;
-  const body = document.body;
+function applyLangSafe(code){
   const scrollY = window.scrollY;
 
-  // 🔒 Trava tudo
-  html.classList.add("lang-lock");
-  body.classList.add("lang-lock");
-  body.classList.add("lang-fade");
+  // 🔒 Trava o layout inteiro (Safari-safe real)
+  document.documentElement.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.width = "100%";
 
-  body.style.position = "fixed";
-  body.style.top = `-${scrollY}px`;
-  body.style.width = "100%";
-
-  // ✅ Dois frames para garantir que o browser realmente travou
   requestAnimationFrame(() => {
+    applyLang(code);
+
     requestAnimationFrame(() => {
+      // ✅ Libera tudo mantendo o scroll exatamente no mesmo pixel
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
 
-      applyLang(code);
-
-      // ✅ Retorno suave sem flicker
-      body.classList.remove("lang-fade");
-      body.classList.add("lang-show");
-
-      setTimeout(() => {
-        html.classList.remove("lang-lock");
-        body.classList.remove("lang-lock");
-        body.classList.remove("lang-show");
-
-        body.style.position = "";
-        body.style.top = "";
-        body.style.width = "";
-
-        window.scrollTo(0, scrollY);
-      }, 160);
-
+      window.scrollTo({
+        top: scrollY,
+        left: 0,
+        behavior: "auto"
+      });
     });
   });
 }
+
 
 
   // ===== FUNÇÃO PRINCIPAL =====
