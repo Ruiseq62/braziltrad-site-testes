@@ -710,21 +710,16 @@ header nav ul li a:hover {
    FIXAÇÃO CORRETA DA BARRA BRANCA (HEADER)
    sem gerar espaço extra nem saltos
 ========================================= */
-header {
-  position: fixed;
-  top: 76px;              /* fica logo abaixo da barra de cotações */
-  left: 0;
-  right: 0;
-  z-index: 9998;
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
 
 
 /* =========================================
    COMPENSAÇÃO ÚNICA DO BODY
    (exatamente a soma: barras + header)
 ========================================= */
-body {
-  padding-top: 146px;   /* 76px (cotações) + 70px (header) */
+/* AJUSTE FINO DO TEXTO SOB O LOGO (SEM ALTERAR ALTURAS) */
+.brand .slogan {
+  margin-top: 5px;
+  position: relative;
+  top: 2px;
+  line-height: 1.2;
 }
