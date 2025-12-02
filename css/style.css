@@ -745,11 +745,6 @@ header nav ul li a:hover {
 }
 
 
-/* Compensação única no body (SÓ UMA VEZ) */
-body {
-  padding-top: 86px;
-}
-
 /* ===== HERO ESTÁVEL ===== */
 .hero {
   min-height: 420px;
@@ -809,19 +804,26 @@ html, body {
   min-height: 76px;
   max-height: 76px;
 }
+/* === ESPAÇO REAL DO TICKER === */
+.ticker-spacer {
+  height: 76px;
+}
 
+/* === SLOT FIXO DO TICKER === */
 .tradingview-slot {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 76px;
   overflow: hidden;
   z-index: 9999;
+  background: #fff;
 }
 
 .tradingview-slot iframe {
   width: 100%;
+  height: 76px;
   border: 0;
 }
 /* Corrige salto do menu para o Seguro */
