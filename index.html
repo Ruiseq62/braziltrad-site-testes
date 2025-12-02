@@ -1205,7 +1205,15 @@ if (t.insurance) {
   if (insSub)   insSub.textContent   = t.insurance.subtitle;
 
   const benTitle = document.querySelector('[data-i18n="insurance.benefits.title"]');
-  if (benTitle) benTitle.textContent = t.insurance.benefits.title;
+if (
+  benTitle &&
+  t.insurance &&
+  t.insurance.benefits &&
+  t.insurance.benefits.title
+) {
+  benTitle.textContent = t.insurance.benefits.title;
+}
+
 
   const benItems = document.querySelectorAll("#export-insurance ul li");
   if (t.insurance.benefits.items && benItems.length) {
