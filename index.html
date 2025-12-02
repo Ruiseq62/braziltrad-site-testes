@@ -1191,7 +1191,61 @@ function applyLangSafe(code){
         if(b)  b.textContent  = data.badge;
       });
     }
+// PRODUTOS (CARDS)
+...
+}   // ← este é o FECHO do bloco dos produtos
 
+⬇️ AQUI ENTRA O BLOCO DO SEGURO ⬇️
+
+/* ===========================
+   SEGURO — VANTAGENS
+=========================== */
+const advTitle = document.querySelector('[data-i18n="insurance.benefits.title"]');
+if(advTitle && t.insurance?.benefits?.title){
+  advTitle.textContent = t.insurance.benefits.title;
+}
+
+const advItems = document.querySelectorAll('#export-insurance ul li');
+if(t.insurance?.benefits?.items && advItems.length){
+  advItems.forEach((li, i) => {
+    if(t.insurance.benefits.items[i]){
+      li.textContent = t.insurance.benefits.items[i];
+    }
+  });
+}
+
+/* ===========================
+   SEGURO — COMO FUNCIONA
+=========================== */
+const flowTitle = document.querySelector('[data-i18n="insurance.flow.title"]');
+if(flowTitle && t.insurance?.flow?.title){
+  flowTitle.textContent = t.insurance.flow.title;
+}
+
+const flowItems = document.querySelectorAll('#export-insurance ol li');
+if(t.insurance?.flow && flowItems.length){
+  flowItems.forEach((li, i) => {
+    const key = 's' + (i+1);
+    if(t.insurance.flow[key]){
+      li.textContent = t.insurance.flow[key];
+    }
+  });
+}
+
+/* ===========================
+   SEGURO — CUSTO MÉDIO
+=========================== */
+const costTitle = document.querySelector('[data-i18n="insurance.cost.title"]');
+if(costTitle && t.insurance?.cost?.title){
+  costTitle.textContent = t.insurance.cost.title;
+}
+
+const costText = document.querySelector('[data-i18n="insurance.cost.text"]');
+if(costText && t.insurance?.cost?.text){
+  costText.textContent = t.insurance.cost.text;
+}
+
+// SEO ✅ (continua tudo normal a partir daqui)
     // SEO
     const seo = SEO[code] || SEO.pt;
     document.title = seo.title;
