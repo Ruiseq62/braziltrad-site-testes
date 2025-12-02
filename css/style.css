@@ -285,15 +285,8 @@ body {
    10. SEGURO — SEM SALTO
 ================================================= */
 #export-insurance {
-  scroll-margin-top: 120px;
-  min-height: 880px;
+  scroll-margin-top: 60px;   /* só compensa o menu */
   position: relative;
-  overflow: hidden;
-}
-
-#export-insurance * {
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 /* =================================================
