@@ -156,7 +156,14 @@ body {
 .brand .slogan {
   font-size: 0.85rem;
   color: #777;
+
+  /* ✅ TRAVA TOTAL DO SALTO ENTRE IDIOMAS */
+  min-height: 34px;        /* Altura fixa para 2 linhas */
+  line-height: 17px;
+  display: flex;
+  align-items: center;
 }
+
 
 header nav ul {
   display: flex;
