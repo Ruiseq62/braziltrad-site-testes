@@ -377,118 +377,180 @@
 
 <script>
 const LANGS = ["pt","en","es","zh"];
-const FLAGS = { pt:"🇧🇷 PT", en:"🇬🇧 EN", es:"🇪🇸 ES", zh:"🇨🇳 中文" };
+const FLAGS = {
+  pt:"🇧🇷 PT",
+  en:"🇬🇧 EN",
+  es:"🇪🇸 ES",
+  zh:"🇨🇳 中文"
+};
 
 const TRANSLATIONS = {
   pt:{
-    nav:["Sobre","Serviços","Seguro","Produtos","Mercados","Insights","Documentos","Links","Contato"],
-    hero:{ title:"Conectando o Brasil ao mercado global", lead:"Trading de commodities com compliance e logística", slogan:"Conectando produtores brasileiros ao mundo", buy:"Quero comprar", sell:"Quero vender"},
-    impact:{ problem:"O Problema", p1:"Falta de acesso a compradores", p2:"Burocracia", p3:"Risco financeiro", p4:"Logística", p5:"Crédito limitado",
-             solution:"A Solução", s1:"Acesso global", s2:"Contratos", s3:"Pagamentos", s4:"Logística", s5:"Compliance",
-             footer:"Transformamos produtores em exportadores" },
-    institutional:{ title:"Quem Somos", who1:"A Braziltrad conecta produtores a mercados globais.", who2:"Atuamos com segurança e eficiência."},
-    services:["Exportação Assistida","Inteligência de Mercado","Pagamentos Internacionais","Compliance","Small Export"],
-    insurance:{ title:"Seguro de Exportação", subtitle:"Venda com garantia de recebimento."},
-    products:{ title:"Produtos", lead:"Agrícolas, Energéticas e Minerais"},
-    markets:{ title:"Mercados", m1:"China", m2:"Europa", m3:"Oriente Médio", m4:"EUA", m5:"Japão"},
-    insights:{ title:"Insights", i1:"Preços", i2:"Fluxos", i3:"Geopolítica", i4:"Oportunidades"}
+    institutional:{
+      title:"Braziltrad — Apresentação Institucional",
+      who:{ title:"Quem Somos", p1:"A Braziltrad é uma plataforma brasileira de intermediação de exportações.", p2:"Conectamos produtores nacionais a compradores globais." },
+      what:{ title:"O Que Fazemos", i1:"Conectamos produtores a compradores globais", i2:"Estruturamos operações de exportação", i3:"Logística, contratos e pagamentos", i4:"Small export e grandes volumes" },
+      sectors:{ label:"Setores:", text:"Agronegócio, Alimentos, Commodities, Minerais." },
+      closing:"O Brasil produz. O mundo compra. A Braziltrad conecta."
+    },
+    services:{
+      title:"Serviços",
+      i1_t:"Exportação Assistida", i1_d:"Estruturação completa de exportações.",
+      i2_t:"Inteligência de Mercado", i2_d:"Análise de preços e demanda.",
+      i3_t:"Pagamentos Internacionais", i3_d:"Câmbio e recebimentos.",
+      i4_t:"Compliance", i4_d:"Documentação e rastreabilidade.",
+      i5_t:"Small Export", i5_d:"Acesso global ao pequeno produtor."
+    },
+    insurance:{
+      title:"Seguro de Exportação",
+      subtitle:"Venda com segurança e garantia de recebimento.",
+      what:{ title:"O que é?", text:"Protege contra inadimplência e riscos políticos." },
+      cover:{ title:"O que cobre?", text:"Calotes, atrasos e crises internacionais." },
+      for:{ title:"Para quem?", text:"Produtores, exportadores e small export." },
+      benefits:{ title:"Vantagens", b1:"Receba mesmo sem pagamento", b2:"Novos mercados", b3:"Acesso a crédito", b4:"Risco reduzido" },
+      flow:{ title:"Como funciona", s1:"Cadastro", s2:"Análise", s3:"Proposta", s4:"Venda protegida", s5:"Indenização" },
+      cost:{ title:"Custo médio", text:"Entre 1% e 5%" },
+      cta:"Solicitar Análise de Seguro"
+    },
+    products:{
+      title:"Produtos",
+      lead:"Principais commodities negociadas.",
+      cards:[
+        { title:"Agrícolas", text:"Soja, milho, açúcar e café.", badge:"Origem Brasil" },
+        { title:"Energéticas", text:"Etanol, biomassa e diesel renovável.", badge:"Energia limpa" },
+        { title:"Minerais", text:"Lítio, ferro, nióbio e cobre.", badge:"Minerais estratégicos" }
+      ]
+    },
+    markets:{
+      title:"Mercados",
+      m1:"🇨🇳 China",
+      m2:"🇪🇺 União Europeia",
+      m3:"🇸🇦 Oriente Médio",
+      m4:"🇺🇸 América do Norte",
+      m5:"🇯🇵 Ásia Desenvolvida"
+    }
   },
 
   en:{
-    nav:["About","Services","Insurance","Products","Markets","Insights","Documents","Links","Contact"],
-    hero:{ title:"Connecting Brazil to the global market", lead:"Commodity trading with compliance", slogan:"Connecting producers globally", buy:"Buy", sell:"Sell"},
-    impact:{ problem:"The Problem", p1:"Access", p2:"Bureaucracy", p3:"Risk", p4:"Logistics", p5:"Credit",
-             solution:"The Solution", s1:"Global Access", s2:"Contracts", s3:"Payments", s4:"Logistics", s5:"Compliance",
-             footer:"We turn producers into exporters" },
-    institutional:{ title:"About Us", who1:"Braziltrad connects producers to buyers.", who2:"Secure and efficient trading."},
-    services:["Assisted Export","Market Intelligence","International Payments","Compliance","Small Export"],
-    insurance:{ title:"Export Insurance", subtitle:"Sell with guaranteed payment."},
-    products:{ title:"Products", lead:"Agricultural, Energy, Minerals"},
-    markets:{ title:"Markets", m1:"China", m2:"Europe", m3:"Middle East", m4:"USA", m5:"Japan"},
-    insights:{ title:"Insights", i1:"Prices", i2:"Flows", i3:"Geopolitics", i4:"Opportunities"}
+    institutional:{
+      title:"Braziltrad — Institutional Presentation",
+      who:{ title:"Who We Are", p1:"Braziltrad is a Brazilian export trading platform.", p2:"We connect producers to global buyers." },
+      what:{ title:"What We Do", i1:"Connect producers", i2:"Structure export operations", i3:"Logistics and payments", i4:"Small and large exports" },
+      sectors:{ label:"Sectors:", text:"Agribusiness, Food, Commodities, Minerals." },
+      closing:"Brazil produces. The world buys. Braziltrad connects."
+    },
+    services:{
+      title:"Services",
+      i1_t:"Assisted Export", i1_d:"Full export structuring.",
+      i2_t:"Market Intelligence", i2_d:"Price and demand analysis.",
+      i3_t:"International Payments", i3_d:"FX and receivables.",
+      i4_t:"Compliance", i4_d:"Documentation and traceability.",
+      i5_t:"Small Export", i5_d:"Global access for small producers."
+    },
+    insurance:{
+      title:"Export Insurance",
+      subtitle:"Sell safely with guaranteed payments.",
+      what:{ title:"What is it?", text:"Protects against defaults and political risks." },
+      cover:{ title:"What does it cover?", text:"Defaults and payment delays." },
+      for:{ title:"For who?", text:"Exporters and producers." },
+      benefits:{ title:"Benefits", b1:"Guaranteed payments", b2:"New markets", b3:"Credit access", b4:"Lower risk" },
+      flow:{ title:"How it works", s1:"Register", s2:"Analysis", s3:"Proposal", s4:"Protected sale", s5:"Indemnity" },
+      cost:{ title:"Average cost", text:"Between 1% and 5%" },
+      cta:"Request Insurance"
+    },
+    products:{
+      title:"Products",
+      lead:"Main traded commodities.",
+      cards:[
+        { title:"Agricultural", text:"Soybeans, corn, sugar and coffee.", badge:"Brazil Origin" },
+        { title:"Energy", text:"Ethanol, biomass and renewable diesel.", badge:"Clean Energy" },
+        { title:"Minerals", text:"Lithium, iron, niobium and copper.", badge:"Strategic Minerals" }
+      ]
+    },
+    markets:{
+      title:"Markets",
+      m1:"🇨🇳 China",
+      m2:"🇪🇺 European Union",
+      m3:"🇸🇦 Middle East",
+      m4:"🇺🇸 North America",
+      m5:"🇯🇵 Developed Asia"
+    }
+  },
+
+  zh:{
+    institutional:{
+      title:"Braziltrad — 公司介绍",
+      who:{ title:"关于我们", p1:"Braziltrad 是巴西出口贸易平台。", p2:"连接本地生产商与全球买家。" },
+      what:{ title:"我们的服务", i1:"连接全球买家", i2:"出口结构", i3:"物流与支付", i4:"小额与大宗出口" },
+      sectors:{ label:"行业：", text:"农业、食品、大宗商品、矿产。" },
+      closing:"巴西生产，世界采购，Braziltrad 负责连接。"
+    },
+    services:{
+      title:"服务",
+      i1_t:"出口协助", i1_d:"完整出口结构。",
+      i2_t:"市场情报", i2_d:"价格与需求分析。",
+      i3_t:"国际支付", i3_d:"外汇与收款。",
+      i4_t:"合规", i4_d:"文件与追溯。",
+      i5_t:"小额出口", i5_d:"中小生产商全球化。"
+    },
+    insurance:{
+      title:"出口保险",
+      subtitle:"安全销售，保障回款。",
+      what:{ title:"什么是？", text:"防止违约与政治风险。" },
+      cover:{ title:"保障内容", text:"违约与延迟付款。" },
+      for:{ title:"适合谁？", text:"出口商与生产商。" },
+      benefits:{ title:"优势", b1:"保障回款", b2:"新市场", b3:"融资方便", b4:"风险降低" },
+      flow:{ title:"流程", s1:"登记", s2:"分析", s3:"报价", s4:"承保", s5:"理赔" },
+      cost:{ title:"平均费用", text:"1% 至 5%" },
+      cta:"申请保险"
+    },
+    products:{
+      title:"产品",
+      lead:"主要交易商品。",
+      cards:[
+        { title:"农产品", text:"大豆、玉米、糖和咖啡。", badge:"巴西原产" },
+        { title:"能源", text:"乙醇、生物质、可再生柴油。", badge:"清洁能源" },
+        { title:"矿产", text:"锂、铁、铌和铜。", badge:"战略矿产" }
+      ]
+    },
+    markets:{
+      title:"市场",
+      m1:"🇨🇳 中国",
+      m2:"🇪🇺 欧盟",
+      m3:"🇸🇦 中东",
+      m4:"🇺🇸 北美",
+      m5:"🇯🇵 发达亚洲"
+    }
   }
 };
 
 function applyLang(code){
-  if(!TRANSLATIONS[code]) code = "pt";
-  localStorage.setItem("bt_lang", code);
-  const t = TRANSLATIONS[code];
+  if(!TRANSLATIONS[code]) code="pt";
+  localStorage.setItem("bt_lang",code);
+  const t=TRANSLATIONS[code];
 
-  document.querySelectorAll("header nav ul li a").forEach((a,i)=>a.textContent=t.nav[i]||"");
-  document.querySelector(".hero-title").textContent=t.hero.title;
-  document.querySelector(".hero-lead").textContent=t.hero.lead;
-  document.querySelector(".hero-slog").textContent=t.hero.slogan;
-  document.getElementById("btn-comprar").textContent=t.hero.buy;
-  document.getElementById("btn-vender").textContent=t.hero.sell;
-
-  document.querySelector(".impact-problem-title").textContent=t.impact.problem;
-  document.querySelector(".impact-solution-title").textContent=t.impact.solution;
-  document.querySelector(".impact-footer").textContent=t.impact.footer;
-
-  document.querySelector(".inst-title").textContent=t.institutional.title;
-  document.querySelector(".inst-who-p1").textContent=t.institutional.who1;
-  document.querySelector(".inst-who-p2").textContent=t.institutional.who2;
-
-  document.querySelector(".services-title").textContent=t.nav[1];
-  document.querySelector(".srv-1").textContent=t.services[0];
-  document.querySelector(".srv-2").textContent=t.services[1];
-  document.querySelector(".srv-3").textContent=t.services[2];
-  document.querySelector(".srv-4").textContent=t.services[3];
-  document.querySelector(".srv-5").textContent=t.services[4];
-
-  document.querySelector(".insurance-title").textContent=t.insurance.title;
-  document.querySelector(".insurance-subtitle").textContent=t.insurance.subtitle;
-
-  document.querySelector(".products-title").textContent=t.products.title;
-  document.querySelector(".products-lead").textContent=t.products.lead;
-
-  document.querySelector(".markets-title").textContent=t.markets.title;
-  document.querySelector(".mk1").textContent=t.markets.m1;
-  document.querySelector(".mk2").textContent=t.markets.m2;
-  document.querySelector(".mk3").textContent=t.markets.m3;
-  document.querySelector(".mk4").textContent=t.markets.m4;
-  document.querySelector(".mk5").textContent=t.markets.m5;
-
-  document.querySelector(".insights-title").textContent=t.insights.title;
-  document.querySelector(".in1").textContent=t.insights.i1;
-  document.querySelector(".in2").textContent=t.insights.i2;
-  document.querySelector(".in3").textContent=t.insights.i3;
-  document.querySelector(".in4").textContent=t.insights.i4;
-
-  document.getElementById("langBtn").textContent="🌍 "+FLAGS[code];
-
-// ✅ TRADUÇÃO AUTOMÁTICA DOS data-i18n
-document.querySelectorAll("[data-i18n]").forEach(el => {
-  const key = el.getAttribute("data-i18n");
-  const parts = key.split(".");
-  let value = t;
-
-  parts.forEach(p => {
-    if (value && value[p] !== undefined) {
-      value = value[p];
-    } else {
-      value = null;
-    }
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const keys=el.dataset.i18n.split(".");
+    let value=t;
+    keys.forEach(k=>value=value?.[k]);
+    if(typeof value==="string") el.textContent=value;
   });
 
-  if (typeof value === "string") {
-    el.textContent = value;
-  }
-});
-
+  document.getElementById("langBtn").textContent="🌍 "+FLAGS[code];
 }
 
-
 document.addEventListener("DOMContentLoaded",()=>{
-  let code=localStorage.getItem("bt_lang")||"pt";
+  let code=localStorage.getItem("bt_lang") || "pt";
   applyLang(code);
   let idx=LANGS.indexOf(code);
+
   document.getElementById("langBtn").onclick=()=>{
     idx=(idx+1)%LANGS.length;
     applyLang(LANGS[idx]);
-  }
+  };
 });
 </script>
+
 
 </body>
 </html>
