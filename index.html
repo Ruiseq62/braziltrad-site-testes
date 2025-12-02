@@ -1215,14 +1215,16 @@ if (
 }
 
 
-  const benItems = document.querySelectorAll("#export-insurance ul li");
-  if (t.insurance.benefits.items && benItems.length) {
-    benItems.forEach((li, i) => {
-      if (t.insurance.benefits.items[i]) {
-        li.textContent = t.insurance.benefits.items[i];
-      }
-    });
-  }
+  const benItems = document.querySelectorAll('#export-insurance ul li');
+if (
+  t.insurance &&
+  t.insurance.benefits &&
+  Array.isArray(t.insurance.benefits.items)
+) {
+  t.insurance.benefits.items.forEach((item, i) => {
+    if (benItems[i]) benItems[i].textContent = item;
+  });
+}
 
   const stepTitle = document.querySelector('[data-i18n="insurance.steps.title"]');
   if (stepTitle) stepTitle.textContent = t.insurance.steps.title;
