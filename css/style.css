@@ -755,3 +755,22 @@ html {
 #export-insurance .card {
   min-height: 280px;
 }
+/* ===== TRAVA VISUAL ANTI-FLICKER NA TROCA DE IDIOMA ===== */
+.lang-lock {
+  overflow: hidden !important;
+}
+
+body.lang-lock * {
+  transition: none !important;
+  animation: none !important;
+}
+
+.lang-fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lang-show {
+  opacity: 1;
+  transition: opacity 0.15s linear;
+}
