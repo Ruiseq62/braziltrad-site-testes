@@ -134,7 +134,10 @@
 <body>
 
   <!-- ===== BARRAS TRADINGVIEW ===== -->
+<div class="tradingview-slot">
+
   <div class="market-widget-wrapper">
+
     <div class="tradingview-widget-container main-bar">
       <div id="tv-indices"></div>
     </div>
@@ -142,7 +145,10 @@
     <div class="tradingview-widget-container commodities-bar">
       <div id="tv-commodities"></div>
     </div>
+
   </div>
+
+</div>
 
   <!-- ===== BOTÃO DE IDIOMA ===== -->
   <button id="langBtn" class="lang-btn">🌎 🇧🇷 PT</button>
@@ -1275,6 +1281,19 @@ function applyLangSafe(code){
     // Executa se rodar o ecrã
     window.addEventListener("resize", removeImpactBoxesMobile);
   </script>
+<script>
+(function () {
+  const slot = document.querySelector('.tradingview-slot');
+  if (!slot) return;
+
+  const lockedHeight = slot.offsetHeight;
+
+  setInterval(() => {
+    slot.style.minHeight = lockedHeight + 'px';
+    slot.style.maxHeight = lockedHeight + 'px';
+  }, 500);
+})();
+</script>
 
 </body>
 </html>
