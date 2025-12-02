@@ -796,7 +796,27 @@ body.lang-lock * {
   position: relative;
   z-index: 9998;
 }
+/* === FIXAÇÃO DEFINITIVA DAS BARRAS DE COTAÇÃO === */
 
+.market-widget-wrapper {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: #fff;
+}
+
+/* Ajuste das barras internas */
+.market-widget-wrapper .tradingview-widget-container {
+  position: relative !important;
+  background: #fff;
+}
+
+/* Empurra o site para baixo para não ficar tapado */
+body {
+  padding-top: 86px !important; /* ajusta depois se precisares: 80 a 100 */
+}
 /* Compensação no body para não tapar conteúdo */
 body {
   padding-top: 84px; /* ajusta à soma real das duas barras */
