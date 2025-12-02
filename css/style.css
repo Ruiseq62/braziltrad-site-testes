@@ -821,3 +821,9 @@ body {
 body {
   padding-top: 84px; /* ajusta à soma real das duas barras */
 }
+/* === ESTABILIZA O HERO NA TROCA DE IDIOMA (ANTI-SALTO FINAL) === */
+.hero {
+  min-height: 420px;   /* pode ajustar entre 380 e 460 se quiseres */
+  display: flex;
+  align-items: center;
+}
