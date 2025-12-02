@@ -1098,33 +1098,46 @@
     tvCommod.appendChild(w2);
   }
 
-  function applyLangSafe(code){
-    const html = document.documentElement;
-    const body = document.body;
-    const scrollY = window.scrollY;
+ function applyLangSafe(code){
+  const html = document.documentElement;
+  const body = document.body;
+  const scrollY = window.scrollY;
 
-    html.classList.add("lang-lock");
-    body.classList.add("lang-lock");
+  // 🔒 Trava tudo
+  html.classList.add("lang-lock");
+  body.classList.add("lang-lock");
+  body.classList.add("lang-fade");
 
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.width = "100%";
+  body.style.position = "fixed";
+  body.style.top = `-${scrollY}px`;
+  body.style.width = "100%";
 
+  // ✅ Dois frames para garantir que o browser realmente travou
+  requestAnimationFrame(() => {
     requestAnimationFrame(() => {
+
       applyLang(code);
+
+      // ✅ Retorno suave sem flicker
+      body.classList.remove("lang-fade");
+      body.classList.add("lang-show");
 
       setTimeout(() => {
         html.classList.remove("lang-lock");
         body.classList.remove("lang-lock");
+        body.classList.remove("lang-show");
 
         body.style.position = "";
         body.style.top = "";
         body.style.width = "";
 
         window.scrollTo(0, scrollY);
-      }, 120);
+      }, 160);
+
     });
-  }
+  });
+}
+
 
   // ===== FUNÇÃO PRINCIPAL =====
   function applyLang(code) {
@@ -1204,6 +1217,7 @@
 
     // PERSISTÊNCIA
     localStorage.setItem("bt_lang", code);
+    document.dispatchEvent(new Event("bt:langChanged"));
   }
 
   // ===== INIT FINAL =====
@@ -1261,11 +1275,10 @@
     document.addEventListener("DOMContentLoaded", removeImpactBoxesMobile);
 
     // Executa ao mudar de idioma
-    const originalApplyLang = window.applyLang;
-    window.applyLang = function(code){
-      if(originalApplyLang) originalApplyLang(code);
-      setTimeout(removeImpactBoxesMobile, 50);
-    };
+    document.addEventListener("bt:langChanged", function () {
+  setTimeout(removeImpactBoxesMobile, 50);
+});
+
 
     // Executa se rodar o ecrã
     window.addEventListener("resize", removeImpactBoxesMobile);
