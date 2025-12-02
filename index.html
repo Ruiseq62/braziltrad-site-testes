@@ -1433,7 +1433,7 @@ document.querySelectorAll('[data-i18n]').forEach(el => {
     }
 
     // Scroll suave
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+       document.querySelectorAll('a[href^="#"]').forEach(function(a){
       a.addEventListener('click', function(e){
         const target = a.getAttribute('href');
         if (!target || target === "#" || target.length < 2) return;
@@ -1450,16 +1450,16 @@ document.querySelectorAll('[data-i18n]').forEach(el => {
       });
     });
   });
-    </script>
+</script>
+
+<!-- ===== SCRIPT EXTRA: REMOVER CAIXAS DO BLOCO DE IMPACTO NO MOBILE ===== -->
 <script>
   function removeImpactBoxesMobile(){
-    if(window.innerWidth <= 768){
+    if (window.innerWidth <= 768){
       const caixas = document.querySelectorAll(
         ".bloco-impacto .overlay-texto, .bloco-impacto .overlay-texto.problema, .bloco-impacto .overlay-texto.solucao"
       );
-      caixas.forEach(caixa => {
-        caixa.remove();
-      });
+      caixas.forEach(caixa => caixa.remove());
     }
   }
 
@@ -1469,7 +1469,7 @@ document.querySelectorAll('[data-i18n]').forEach(el => {
   // Executa ao mudar de idioma
   const originalApplyLang = window.applyLang;
   window.applyLang = function(code){
-    if(originalApplyLang) originalApplyLang(code);
+    if (originalApplyLang) originalApplyLang(code);
     setTimeout(removeImpactBoxesMobile, 50);
   };
 
@@ -1477,6 +1477,5 @@ document.querySelectorAll('[data-i18n]').forEach(el => {
   window.addEventListener("resize", removeImpactBoxesMobile);
 </script>
 
-  
 </body>
 </html>
