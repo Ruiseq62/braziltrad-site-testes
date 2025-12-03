@@ -1113,27 +1113,38 @@
 
 let isLangSwitching = false;
 
+let isLangSwitching = false;
+let lastScrollY = 0;
+
 function applyLangSafe(code){
-  // 🔒 Impede execução dupla
   if (isLangSwitching) return;
   isLangSwitching = true;
 
-  const scrollY = window.scrollY;
+  lastScrollY = window.scrollY;
 
-  // Troca o idioma apenas UMA vez
+  // Trava completamente o scroll
+  document.documentElement.style.scrollBehavior = "auto";
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${lastScrollY}px`;
+  document.body.style.width = "100%";
+
   applyLang(code);
 
   requestAnimationFrame(() => {
+    // Restaura perfeitamente a posição
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+
     window.scrollTo({
-      top: scrollY,
+      top: lastScrollY,
       left: 0,
       behavior: "auto"
     });
 
-    // 🔓 Libera após estabilizar
     setTimeout(() => {
       isLangSwitching = false;
-    }, 120);
+    }, 80);
   });
 }
 
