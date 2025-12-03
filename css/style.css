@@ -1,3 +1,11 @@
+/* ✅ IGUALA O ESPAÇAMENTO DO SEGURO AO DE MERCADOS */
+#export-insurance .insurance-header h2 {
+  margin-bottom: 12px !important;
+}
+
+#export-insurance .insurance-header .lead {
+  margin-top: 0 !important;
+}
 /* =================================================
    1. VARIÁVEIS
 ================================================= */
