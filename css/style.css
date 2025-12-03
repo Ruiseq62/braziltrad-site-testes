@@ -776,8 +776,20 @@ html, body {
 #export-insurance .section-header {
   min-height: 140px;
 }
+/* ✅ CENTRAR VERTICALMENTE OS ITENS DO MENU */
+header,
+nav,
+.navbar,
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
 
-
-
-
-
+nav a,
+.navbar a,
+.menu a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+}
