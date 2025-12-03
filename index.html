@@ -94,7 +94,8 @@
       z-index: 99998;
     }
 
-    body { margin-top: 86px !important; }
+    body { margin-top: 146px !important; }
+
 
     .lang-btn {
       position: fixed;
@@ -1286,31 +1287,6 @@ function applyLangSafe(code){
     // Executa se rodar o ecrã
     window.addEventListener("resize", removeImpactBoxesMobile);
   </script>
-<script>
-<script>
-(function () {
-  let lastScrollY = 0;
-
-  // Antes de mudar idioma → guarda a posição
-  document.addEventListener('bt:langChanging', function () {
-    lastScrollY = window.scrollY;
-    document.body.classList.add('no-scroll');
-  });
-
-  // Depois de mudar idioma → restaura exatamente onde estava
-  document.addEventListener('bt:langChanged', function () {
-    setTimeout(() => {
-      window.scrollTo({
-        top: lastScrollY,
-        left: 0,
-        behavior: 'instant'
-      });
-      document.body.classList.remove('no-scroll');
-    }, 50);
-  });
-})();
-</script>
-
 
 </body>
 </html>
