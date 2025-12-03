@@ -64,11 +64,19 @@ body {
   margin: 10px auto 25px;
   border-radius: 2px;
 }
-/* ✅ PADRÃO GLOBAL PARA SUBTÍTULOS (.lead) — TODAS AS SEÇÕES */
+
+/* ✅ PADRÃO LIMPO PARA CONTAINER DE TODAS AS SEÇÕES */
+.section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ✅ PADRÃO GLOBAL PARA SUBTÍTULOS (.lead) */
 .section .lead {
   text-align: center;
   margin-top: 0;
-  margin-bottom: 48px;  /* <<< ESTA LINHA CONTROLA O ESPAÇAMENTO */
+  margin-bottom: 48px;
   line-height: 1.6;
 }
 
