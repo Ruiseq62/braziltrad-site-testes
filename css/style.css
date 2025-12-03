@@ -58,12 +58,13 @@ body {
 .section h2::after {
   content: "";
   display: block;
-  width: 50px;
-  height: 3px;
+  width: 64px;                 /* mesmo padrão de "Mercados" */
+  height: 4px;                 /* mesma espessura */
   background: var(--primary);
-  margin: 10px auto 25px;
-  border-radius: 2px;
+  margin: 14px auto 34px;      /* mesmo respiro vertical */
+  border-radius: 3px;
 }
+
 
 .section p,
 .section li {
@@ -765,9 +766,6 @@ header nav ul li a:hover {
   min-height: 180px;
 }
 
-#export-insurance h2 {
-  min-height: 60px;
-}
 /* ================================
    🔒 ANTI-SALTO DEFINITIVO — CARDS DO SEGURO
    ================================ */
