@@ -915,3 +915,25 @@ html, body {
   display: none !important;
 }
 
+/* ✅ ELIMINA QUALQUER LINHA / BARRA GERADA NA ÁREA DO SEGURO */
+#export-insurance::before,
+#export-insurance::after,
+#export-insurance .insurance-header::before,
+#export-insurance .insurance-header::after,
+#export-insurance h2::before,
+#export-insurance h2::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* ✅ ELIMINA QUALQUER ELEMENTO VAZIO ENTRE O H2 E O TEXTO */
+#export-insurance h2 + *:empty {
+  display: none !important;
+}
+
+/* ✅ ELIMINA QUALQUER BLOCO FINO CENTRALIZADO NA ÁREA DO TÍTULO */
+#export-insurance .insurance-header div,
+#export-insurance .insurance-header span {
+  background: none !important;
+  height: auto !important;
+}
