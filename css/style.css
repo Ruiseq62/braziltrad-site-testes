@@ -880,6 +880,7 @@ header nav ul li a:hover {
   flex-direction: column;
   justify-content: center;
 }
-#export-insurance h2::after {
-  display: none !important;
+html, body {
+  overflow-anchor: none !important;
 }
+
