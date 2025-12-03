@@ -910,4 +910,8 @@ html, body {
 #export-insurance .bar {
   display: none !important;
 }
+/* ❌ REMOVE a barra extra real abaixo do título do Seguro */
+#export-insurance h2 + div {
+  display: none !important;
+}
 
