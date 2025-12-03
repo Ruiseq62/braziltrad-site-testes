@@ -859,3 +859,20 @@ header nav ul li a:hover {
 .no-scroll {
   overflow: hidden !important;
 }
+/* === ESTABILIZAR SECÇÃO DE SEGURO EM TODOS OS IDIOMAS === */
+.export-insurance {
+  min-height: auto !important;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.export-insurance .grid {
+  align-items: stretch;
+}
+
+.export-insurance .card {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
