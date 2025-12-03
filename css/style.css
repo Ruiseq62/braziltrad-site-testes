@@ -876,44 +876,8 @@ header nav ul li a:hover {
 html, body {
   overflow-anchor: none !important;
 }
-/* ✅ FORÇA o traço do Seguro a ser igual ao resto do site */
-#export-insurance h2::after {
-  content: "";
-  display: block;
-  width: 64px;
-  height: 4px;
-  background: var(--primary);
-  margin: 10px auto 25px;
-  border-radius: 3px;
-}
 
-/* ❌ REMOVE qualquer barra customizada grossa que exista */
-#export-insurance .divider,
-#export-insurance .insurance-divider,
-#export-insurance .line,
-#export-insurance .bar {
-  display: none !important;
-}
-/* ❌ REMOVE a barra extra real abaixo do título do Seguro */
-#export-insurance h2 + div {
-  display: none !important;
-}
 
-/* ✅ ELIMINA QUALQUER LINHA / BARRA GERADA NA ÁREA DO SEGURO */
-#export-insurance::before,
-#export-insurance::after,
-#export-insurance .insurance-header::before,
-#export-insurance .insurance-header::after,
-#export-insurance h2::before,
-#export-insurance h2::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* ✅ ELIMINA QUALQUER ELEMENTO VAZIO ENTRE O H2 E O TEXTO */
-#export-insurance h2 + *:empty {
-  display: none !important;
-}
 
 /* ✅ ELIMINA QUALQUER BLOCO FINO CENTRALIZADO NA ÁREA DO TÍTULO */
 #export-insurance .insurance-header div,
@@ -921,16 +885,7 @@ html, body {
   background: none !important;
   height: auto !important;
 }
-/* ✅ REPOE A BARRA PADRÃO NO TÍTULO DO SEGURO */
-#export-insurance h2::after {
-  content: "";
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: var(--primary);
-  margin: 10px auto 25px;
-  border-radius: 2px;
-}
+
 /* ✅ BARRA PADRÃO DO TÍTULO DO SEGURO (IGUAL À DE PRODUTOS) */
 #export-insurance .insurance-header h2::after {
   content: "";
