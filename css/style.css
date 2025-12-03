@@ -828,11 +828,20 @@ header nav ul li a:hover {
 
 /* 1. Bloco que muda de idioma fica com altura estável */
 .insurance-header {
-  min-height: 140px;
+  height: 170px;              /* ALTURA FIXA */
+  min-height: 170px;
+  max-height: 170px;
+
   text-align: center;
   max-width: 800px;
   margin: 0 auto 28px;
-  overflow-anchor: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: hidden;
+  position: relative;
 }
 
 /* 2. Título com altura estável */
@@ -849,8 +858,10 @@ header nav ul li a:hover {
 
 /* 4. Impede o browser de reancorar o scroll nesta secção */
 #export-insurance {
-  overflow-anchor: none;
+  overflow-anchor: none !important;
+  position: relative;
 }
+
 
 /* ✅ Mobile não precisa travar alturas */
 @media (max-width: 768px) {
