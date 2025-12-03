@@ -892,4 +892,22 @@ header nav ul li a:hover {
 html, body {
   overflow-anchor: none !important;
 }
+/* ✅ FORÇA o traço do Seguro a ser igual ao resto do site */
+#export-insurance h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  background: var(--primary);
+  margin: 10px auto 25px;
+  border-radius: 3px;
+}
+
+/* ❌ REMOVE qualquer barra customizada grossa que exista */
+#export-insurance .divider,
+#export-insurance .insurance-divider,
+#export-insurance .line,
+#export-insurance .bar {
+  display: none !important;
+}
 
