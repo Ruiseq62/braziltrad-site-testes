@@ -72,7 +72,29 @@ body {
   margin: 10px auto 25px;
   border-radius: 2px;
 }
+/* =========================================
+   HEADER PADRÃO DE TODAS AS SEÇÕES
+========================================= */
 
+.section-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+.section-header h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  margin: 12px auto 24px;
+  border-radius: 2px;
+}
+
+.section-header .lead {
+  margin-top: 0;
+}
 
 .section p,
 .section li {
@@ -739,158 +761,12 @@ header nav ul li a:hover {
   top: 2px;
   line-height: 1.2;
 }
-/* =================================================
-   FIX DEFINITIVO — SEGURO SEM SALTO (VERSÃO B)
-================================================= */
 
-#export-insurance {
-  min-height: 960px;
-  position: relative;
-  overflow: hidden;
-}
-
-
-#export-insurance .grid {
-  min-height: 380px;
-}
-
-#export-insurance .card {
-  min-height: 330px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-#export-insurance .card h3 {
-  min-height: 46px;
-}
-
-#export-insurance .card p {
-  min-height: 120px;
-  line-height: 1.55;
-}
-
-#export-insurance ul {
-  min-height: 180px;
-}
-
-/* ================================
-   🔒 ANTI-SALTO DEFINITIVO — CARDS DO SEGURO
-   ================================ */
-
-#export-insurance .card {
-  min-height: 330px;   /* trava a altura mínima */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-/* Títulos dos cards */
-#export-insurance .card h3 {
-  min-height: 42px;
-}
-
-/* Texto dos cards */
-#export-insurance .card p {
-  min-height: 140px;
-}
-
-/* ✅ MOBILE: remove travamento para não quebrar layout */
-@media (max-width: 768px) {
-  #export-insurance .card,
-  #export-insurance .card p,
-  #export-insurance .card h3 {
-    min-height: unset;
-  }
-}
-/* ==========================================
-   🔒 ANTI-SALTO REAL — CABEÇALHO DO SEGURO
-   ========================================== */
-
-
-/* ✅ Impede que o navegador reancore o scroll nesta secção */
-#export-insurance {
-  overflow-anchor: none;
-}
-/* ==========================================
-   ✅ FIX DEFINITIVO DO SALTO — SEGURO
-========================================== */
-
-/* 1. Bloco que muda de idioma fica com altura estável */
-.insurance-header {
-  height: 170px;              /* ALTURA FIXA */
-  min-height: 170px;
-  max-height: 170px;
-
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 28px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  overflow: hidden;
-  position: relative;
-}
-
-/* 2. Título com altura estável */
-.insurance-header h2 {
-  min-height: 56px;
-  margin-bottom: 18px;
-}
-
-/* 3. Subtítulo com altura estável */
-.insurance-header .lead {
-  min-height: 60px;
-  margin: 0;
-}
-
-/* 4. Impede o browser de reancorar o scroll nesta secção */
-#export-insurance {
-  overflow-anchor: none !important;
-  position: relative;
-}
-
-
-/* ✅ Mobile não precisa travar alturas */
-@media (max-width: 768px) {
-  .insurance-header,
-  .insurance-header h2,
-  .insurance-header .lead {
-    min-height: unset;
-  }
-}
-.no-scroll {
-  overflow: hidden !important;
-}
-/* === ESTABILIZAR SECÇÃO DE SEGURO EM TODOS OS IDIOMAS === */
-.export-insurance {
-  min-height: auto !important;
-  padding-top: 90px;
-  padding-bottom: 90px;
-}
-
-.export-insurance .grid {
-  align-items: stretch;
-}
-
-.export-insurance .card {
-  min-height: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 html, body {
   overflow-anchor: none !important;
 }
 
 
 
-/* ✅ ELIMINA QUALQUER BLOCO FINO CENTRALIZADO NA ÁREA DO TÍTULO */
-#export-insurance .insurance-header div,
-#export-insurance .insurance-header span {
-  background: none !important;
-  height: auto !important;
-}
+
 
