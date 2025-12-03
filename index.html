@@ -1222,11 +1222,12 @@ function applyLangSafe(code){
     // LINKS
     updateLinks(code);
 
-    // TRADINGVIEW
-   if(!window.__tvInitialized){
-  initTradingView(code);
+// TRADINGVIEW — inicializa só UMA vez, SEM recriar ao mudar idioma
+if (!window.__tvInitialized) {
+  initTradingView("pt"); // fixa PT como idioma das barras
   window.__tvInitialized = true;
 }
+
 
 
     // PERSISTÊNCIA
