@@ -187,30 +187,39 @@ body {
   color: var(--primary);
   text-decoration: none;
   height: 70px;
-  transform: translateY(2px);  /* ✅ DESCE SUAVEMENTE */
 }
 
+/* LOGO */
 .brand img {
   height: 42px;
+  display: block;
 }
 
+/* BLOCO DE TEXTO (DESCE TUDO UM POUCO) */
+.brand > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(4px);   /* ✅ DESCE BrazilTrad + slogan */
+}
+
+/* TÍTULO (DESCE UM POUCO) */
 .brand .title {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary-dark);
+  line-height: 1;
+  margin: 0;
+  transform: translateY(2px);   /* ✅ DESCE APENAS O TEXTO */
 }
 
+/* SLOGAN (SOBE UM POUCO) */
 .brand .slogan {
   font-size: 0.85rem;
   color: #777;
-
-  min-height: 34px;
-  line-height: 17px;
-
-  display: flex;
-  align-items: center;
-
-  margin-top: 4px;   /* ✅ DESCE O TEXTO UM POUQUINHO */
+  line-height: 1.05;
+  margin: 0;
+  transform: translateY(-3px);  /* ✅ SOBE O SLOGAN */
 }
 
 
