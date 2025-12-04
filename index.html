@@ -1090,17 +1090,24 @@
     }
   }
 
-  // ========= BOTÃO "QUERO SER PARCEIRO" =========
-  if (btnParceiro) {
-    if (code === "pt") {
-      btnParceiro.href = "parceiros.html";
-    } else if (code === "en") {
-      btnParceiro.href = "en/partners.html";
-    } else if (code === "es") {
-      btnParceiro.href = "es/socios.html";
-    } else if (code === "zh") {
-      btnParceiro.href = "zh/partners.html";
-    }
+  
+// ========= BOTÃO "QUERO SER PARCEIRO" (LINK + TEXTO) =========
+if (btnParceiro) {
+  if (code === "pt") {
+    btnParceiro.href = "parceiro.html";
+    btnParceiro.innerText = "Quero ser parceiro";
+  } 
+  else if (code === "en") {
+    btnParceiro.href = "en/partner.html";
+    btnParceiro.innerText = "Become a Partner";
+  } 
+  else if (code === "es") {
+    btnParceiro.href = "es/socio.html";
+    btnParceiro.innerText = "Quiero ser socio";
+  } 
+  else if (code === "zh") {
+    btnParceiro.href = "zh/partner.html";
+    btnParceiro.innerText = "成为合作伙伴";
   }
 }
 
