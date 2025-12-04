@@ -7,70 +7,87 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<body class="site">
 
-<section class="parceiros-hero">
-  <h1>Sea Socio de BrazilTrad</h1>
-  <p>
-    Conéctese a una plataforma internacional de trading y exportación.
-  </p>
+<div class="lang-switch-group">
+  <a href="partner.html" class="bt-lang-btn">EN</a>
+  <a href="parceiro.html" class="bt-lang-btn">PT</a>
+  <a href="partner-es.html" class="bt-lang-btn">ES</a>
+  <a href="partner-zh.html" class="bt-lang-btn">中文</a>
+</div>
+
+<section class="hero parceiros-hero">
+  <div class="container">
+    <h1>Sea Socio de BrazilTrad</h1>
+    <p>Conéctese a una plataforma global de trading y exportación. Expanda sus operaciones internacionales con seguridad y estructura.</p>
+  </div>
 </section>
 
-<section class="parceiros-section"><div class="container">
-
-<h2>Quién puede ser socio</h2>
-<div class="parceiros-grid">
-  <div class="parceiros-card"><h3>Productores</h3><p>Agricultura, minería y logística.</p></div>
-  <div class="parceiros-card"><h3>Traders & Brokers</h3><p>Intermediarios comerciales.</p></div>
-  <div class="parceiros-card"><h3>Distribuidores</h3><p>Canales activos de exportación.</p></div>
-  <div class="parceiros-card"><h3>Inversionistas</h3><p>Capital estratégico.</p></div>
-</div>
-
-</div></section>
-
-<section class="parceiros-section" style="background:#f6f8f9;"><div class="container">
-
-<h2>Ventajas</h2>
-<div class="parceiros-grid">
-  <div class="parceiros-card">Acceso a compradores globales</div>
-  <div class="parceiros-card">Estructura legal</div>
-  <div class="parceiros-card">Pagos seguros</div>
-  <div class="parceiros-card">Seguro de exportación</div>
-  <div class="parceiros-card">Logística organizada</div>
-  <div class="parceiros-card">Red internacional</div>
-</div>
-
-</div></section>
-
-<section class="parceiros-section"><div class="container">
-
-<h2>Cómo funciona</h2>
-<div class="parceiros-grid">
-  <div class="parceiros-card">1️⃣ Registro</div>
-  <div class="parceiros-card">2️⃣ Análisis</div>
-  <div class="parceiros-card">3️⃣ Integración</div>
-  <div class="parceiros-card">4️⃣ Operación</div>
-</div>
-
-<div class="parceiros-cta">
-<form class="parceiros-form" action="https://formsubmit.co/rsequeira@braziltrad.com" method="POST">
-  <input type="hidden" name="_subject" value="Nuevo Socio - BrazilTrad">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-
-  <div class="form-grid">
-    <input type="text" name="nombre" placeholder="Nombre completo" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="telefono" placeholder="Teléfono" required>
+<section class="parceiros-section">
+  <div class="container">
+    <h2>Quién puede ser socio</h2>
+    <div class="parceiros-grid">
+      <div class="parceiros-card"><h3>Productores</h3><p>Agricultores, cooperativas, mineras y operadores logísticos.</p></div>
+      <div class="parceiros-card"><h3>Traders & Brokers</h3><p>Intermediarios comerciales y agentes de mercado.</p></div>
+      <div class="parceiros-card"><h3>Distribuidores</h3><p>Empresas con canales activos de exportación.</p></div>
+      <div class="parceiros-card"><h3>Inversores</h3><p>Proveedores de capital estratégico.</p></div>
+    </div>
   </div>
+</section>
 
-  <input type="text" name="empresa" placeholder="Empresa">
-  <textarea name="mensaje" rows="4" placeholder="Describa su perfil"></textarea>
-  <button type="submit" class="button">Enviar</button>
-</form>
-</div>
+<section class="parceiros-section parceiros-bg">
+  <div class="container">
+    <h2>Beneficios de ser socio</h2>
+    <div class="parceiros-grid">
+      <div class="parceiros-card">Acceso a compradores globales</div>
+      <div class="parceiros-card">Estructura legal y cumplimiento</div>
+      <div class="parceiros-card">Pagos internacionales seguros</div>
+      <div class="parceiros-card">Seguro de crédito a la exportación</div>
+      <div class="parceiros-card">Logística organizada</div>
+      <div class="parceiros-card">Red global de negocios</div>
+    </div>
+  </div>
+</section>
 
-</div></section>
+<section class="parceiros-section">
+  <div class="container">
+    <h2>Cómo funciona</h2>
+    <div class="parceiros-grid">
+      <div class="parceiros-card">1️⃣ Registro del socio</div>
+      <div class="parceiros-card">2️⃣ Análisis de perfil y documentación</div>
+      <div class="parceiros-card">3️⃣ Integración a la red BrazilTrad</div>
+      <div class="parceiros-card">4️⃣ Inicio de operaciones</div>
+    </div>
+
+    <div class="parceiros-cta">
+      <form class="partner-form">
+        <h2>Sea Socio</h2>
+
+        <div class="form-grid">
+          <input type="text" placeholder="Nombre completo">
+          <input type="email" placeholder="Email">
+          <input type="text" placeholder="Teléfono / WhatsApp">
+          <input type="text" placeholder="Empresa">
+
+          <select>
+            <option disabled selected>Tipo de socio</option>
+            <option>Productor</option>
+            <option>Trader / Broker</option>
+            <option>Distribuidor</option>
+            <option>Inversor</option>
+          </select>
+
+          <textarea placeholder="Describa brevemente su perfil"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">Enviar</button>
+          <a href="index.html" class="btn-back">Volver a la página</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
