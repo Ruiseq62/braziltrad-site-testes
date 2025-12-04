@@ -929,18 +929,23 @@ nav a,
     max-width: 320px;
   }
 }
-/* ===== PÁGINAS DE PARCEIROS ===== */
+/* ===============================
+   PARCEIROS – VERSÃO FINAL LIMPA
+=============================== */
 
+/* HERO */
 .parceiros-hero {
-  padding: 100px 20px 70px;
+  padding: 90px 20px 60px;
   text-align: center;
   background: #f3f7f9;
+  min-height: auto;
 }
 
 .parceiros-hero h1 {
   font-size: 44px;
   font-weight: 700;
   margin-bottom: 12px;
+  color: #0b3d47;
 }
 
 .parceiros-hero p {
@@ -950,9 +955,14 @@ nav a,
   color: #555;
 }
 
+/* SEÇÕES */
 .parceiros-section {
-  padding: 70px 20px;
+  padding: 60px 20px;
   background: #fff;
+}
+
+.parceiros-bg {
+  background: #f6f8f9;
 }
 
 .parceiros-section .container {
@@ -961,130 +971,50 @@ nav a,
 }
 
 .parceiros-section h2 {
-  margin-top: 40px;
-  margin-bottom: 16px;
-}
-
-.parceiros-section ul,
-.parceiros-section ol {
-  margin-left: 20px;
-}
-
-.parceiros-section li {
-  margin-bottom: 8px;
-}
-/* ===== FORMULÁRIO PARCEIRO – AJUSTE FINAL ===== */
-
-.parceiros-section form {
-  margin-top: 40px;
-  max-width: 900px;
-}
-
-/* Linha de campos */
-.parceiros-section .form-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 14px;
-}
-
-.parceiros-section .form-row input,
-.parceiros-section .form-row select {
-  flex: 1;
-  min-width: 220px;
-}
-
-.parceiros-section textarea {
-  width: 100%;
-  min-height: 120px;
-}
-
-/* Botão alinhado corretamente */
-.parceiros-section button {
-  margin-top: 20px;
-  padding: 14px 34px;
-  border-radius: 40px;
-  font-weight: 600;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .parceiros-section .form-row {
-    flex-direction: column;
-  }
-}
-body section:first-of-type {
-  min-height: auto !important;
-  padding: 80px 20px 60px 20px;
-}
-section {
-  padding-top: 60px !important;
-  padding-bottom: 60px !important;
-}
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 25px;
-}
-
-.form-grid input,
-.form-grid select,
-.form-grid textarea {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  font-size: 15px;
-}
-
-.form-grid textarea {
-  grid-column: span 2;
-  min-height: 160px;
-  resize: vertical;
-}
-
-.btn-submit {
-  background: #0b3c44;
-  color: #fff;
-  padding: 12px 40px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .form-grid textarea {
-    grid-column: span 1;
-  }
-}
-/* AJUSTE GLOBAL DE TODAS AS SEÇÕES */
-section {
-  padding-top: 50px !important;
-  padding-bottom: 50px !important;
-}
-
-/* HERO */
-.parceiros-hero {
-  min-height: auto !important;
-  padding: 80px 20px 60px 20px;
   text-align: center;
+  margin-bottom: 24px;
+  font-size: 26px;
+  color: #0b3d47;
 }
 
-/* FUNDO CINZA SUAVE */
-.parceiros-bg {
-  background: #f6f8f9;
+/* GRID */
+.parceiros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
 }
 
-/* FORMULÁRIO */
+/* CARDS */
+.parceiros-card {
+  background: #ffffff;
+  padding: 28px 22px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+.parceiros-card h3 {
+  margin-bottom: 10px;
+  font-size: 17px;
+  color: #083c44;
+}
+
+.parceiros-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.10);
+}
+
+/* ===============================
+   FORMULÁRIO FINAL ESTÁVEL
+=============================== */
+
 .partner-form {
   max-width: 900px;
-  margin: 50px auto 0 auto;
+  margin: 50px auto 0;
   text-align: center;
 }
 
@@ -1130,43 +1060,8 @@ section {
   .form-grid textarea {
     grid-column: span 1;
   }
-}
-/* GRID PADRÃO DOS PARCEIROS */
-.parceiros-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-  margin-top: 30px;
-}
 
-/* CARTÕES / CAIXAS */
-.parceiros-card {
-  background: #ffffff;
-  padding: 28px 22px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-  text-align: center;
-  font-size: 15px;
-  line-height: 1.5;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* TÍTULOS DENTRO DOS CARDS */
-.parceiros-card h3 {
-  margin-bottom: 10px;
-  font-size: 17px;
-  color: #083c44;
-}
-
-/* HOVER ELEGANTE */
-.parceiros-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.10);
-}
-
-/* TÍTULOS DAS SEÇÕES */
-.parceiros-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 26px;
+  .parceiros-hero h1 {
+    font-size: 28px;
+  }
 }
