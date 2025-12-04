@@ -1160,9 +1160,12 @@ function applyLangSafe(code){
 
     // MENU
     const navLinks = document.querySelectorAll('header nav ul li a');
-    navLinks.forEach((a,i)=>{
-      if(t.nav && t.nav[i]) a.textContent = t.nav[i];
-    });
+navLinks.forEach((a, i) => {
+  if (t.nav && typeof t.nav[i] !== "undefined") {
+    a.textContent = t.nav[i];
+  }
+});
+
 
     // HERO
     const heroTitle = document.querySelector('.hero-title');
