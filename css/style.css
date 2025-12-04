@@ -804,7 +804,6 @@ nav a,
 }
 @media (max-width: 768px) {
 
-  /* ✅ MANTÉM AS DUAS BARRAS VISÍVEIS NO TOPO */
   .tradingview-widget-container.main-bar {
     position: fixed !important;
     top: 0 !important;
@@ -819,12 +818,10 @@ nav a,
     z-index: 99998;
   }
 
-  /* ✅ COMPENSAÇÃO CORRETA DO BODY NO MOBILE */
   body {
-    margin-top: 146px !important; /* 38 + 38 + header */
+    margin-top: 146px !important;
   }
 
-  /* ✅ BOTÃO DE IDIOMA AJUSTADO */
   .lang-btn {
     top: 92px !important;
   }
@@ -834,6 +831,7 @@ nav a,
     padding-top: 0 !important;
   }
 }
+
 /* ✅ BOTÃO DE IDIOMA — AJUSTE MOBILE */
 @media (max-width: 768px) {
   .lang-switcher,
