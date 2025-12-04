@@ -1017,3 +1017,7 @@ body section:first-of-type {
   min-height: auto !important;
   padding: 80px 20px 60px 20px;
 }
+section {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
