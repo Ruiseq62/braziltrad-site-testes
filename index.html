@@ -1033,6 +1033,7 @@
   };
 
   function updateLinks(code){
+
   const btnComprar    = document.getElementById("btn-comprar");
   const btnVender     = document.getElementById("btn-vender");
   const contato       = document.querySelector("a.contact-link");
@@ -1047,13 +1048,16 @@
   if (code === "pt") {
     doc.href   = "documentos.html";
     links.href = "links-uteis.html";
-  } else if (code === "en") {
+  } 
+  else if (code === "en") {
     doc.href   = "en/documents.html";
     links.href = "en/useful-links.html";
-  } else if (code === "es") {
+  } 
+  else if (code === "es") {
     doc.href   = "es/documentos.html";
     links.href = "es/enlaces-utiles.html";
-  } else if (code === "zh") {
+  } 
+  else if (code === "zh") {
     doc.href   = "zh/documents_cz.html";
     links.href = "zh/useful-links.html";
   }
@@ -1063,15 +1067,18 @@
     if (btnComprar) btnComprar.href = "contato-compra.html";
     if (btnVender)  btnVender.href  = "contato-venda.html";
     if (contato)    contato.href    = "contato.html";
-  } else if (code === "en") {
+  } 
+  else if (code === "en") {
     if (btnComprar) btnComprar.href = "en/contact-buy.html";
     if (btnVender)  btnVender.href  = "en/contact-sell.html";
     if (contato)    contato.href    = "en/contact.html";
-  } else if (code === "es") {
+  } 
+  else if (code === "es") {
     if (btnComprar) btnComprar.href = "es/compradores.html";
     if (btnVender)  btnVender.href  = "es/vendedores.html";
     if (contato)    contato.href    = "es/contato.html";
-  } else if (code === "zh") {
+  } 
+  else if (code === "zh") {
     if (btnComprar) btnComprar.href = "zh/contact-buy.html";
     if (btnVender)  btnVender.href  = "zh/contact-sell.html";
     if (contato)    contato.href    = "zh/contact.html";
@@ -1081,38 +1088,40 @@
   if (footerContato) {
     if (code === "pt") {
       footerContato.href = "contato.html";
-    } else if (code === "en") {
+    } 
+    else if (code === "en") {
       footerContato.href = "/en/contact.html";
-    } else if (code === "es") {
+    } 
+    else if (code === "es") {
       footerContato.href = "/es/contato.html";
-    } else if (code === "zh") {
-      footerContato.href = "/zh/contatc.html";
+    } 
+    else if (code === "zh") {
+      footerContato.href = "/zh/contact.html";
     }
   }
 
-  
-// ========= BOTÃO "QUERO SER PARCEIRO" (LINK + TEXTO) =========
-if (btnParceiro) {
-  if (code === "pt") {
-    btnParceiro.href = "parceiro.html";
-    btnParceiro.innerText = "Quero ser parceiro";
-  } 
-  else if (code === "en") {
-    btnParceiro.href = "en/partner.html";
-    btnParceiro.innerText = "Become a Partner";
-  } 
-  else if (code === "es") {
-    btnParceiro.href = "es/socio.html";
-    btnParceiro.innerText = "Quiero ser socio";
-  } 
-  else if (code === "zh") {
-    btnParceiro.href = "zh/partner.html";
-    btnParceiro.innerText = "成为合作伙伴";
+  // ========= BOTÃO "QUERO SER PARCEIRO" =========
+  if (btnParceiro) {
+    if (code === "pt") {
+      btnParceiro.href = "parceiro.html";
+      btnParceiro.innerText = "Quero ser parceiro";
+    } 
+    else if (code === "en") {
+      btnParceiro.href = "en/partner.html";
+      btnParceiro.innerText = "Become a Partner";
+    } 
+    else if (code === "es") {
+      btnParceiro.href = "es/socio.html";
+      btnParceiro.innerText = "Quiero ser socio";
+    } 
+    else if (code === "zh") {
+      btnParceiro.href = "zh/partner.html";
+      btnParceiro.innerText = "成为合作伙伴";
+    }
   }
-}
 
-/* ✅ AGORA SIM: FECHAMENTO REAL DA FUNÇÃO updateLinks */
-}
+} // ✅ FECHAMENTO FINAL E CORRETO DA FUNÇÃO
+
 
 // ✅ FECHAMENTO FINAL DA updateLinks
 
