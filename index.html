@@ -1036,9 +1036,11 @@
     const btnComprar = document.getElementById("btn-comprar");
     const btnVender  = document.getElementById("btn-vender");
     const contato    = document.querySelector("a.contact-link");
-    const doc        = document.querySelector("a.doc-link");
-    const links      = document.querySelector("a.links-link");
-    const footerContato = document.getElementById("footerContato");
+   const doc            = document.querySelector("a.doc-link");
+const links          = document.querySelector("a.links-link");
+const footerContato  = document.getElementById("footerContato");
+const btnParceiro    = document.getElementById("btn-parceiro");  // ✅ ADICIONE ESTA
+
   
     if(!doc || !links) return;
 
@@ -1077,14 +1079,26 @@ if (footerContato) {
       if(btnComprar) btnComprar.href = "es/compradores.html";
       if(btnVender)  btnVender.href  = "es/vendedores.html";
       if(contato)    contato.href    = "es/contato.html";
-    } else if(code === "zh"){
-      if(btnComprar) btnComprar.href = "zh/contact-buy.html";
-      if(btnVender)  btnVender.href  = "zh/contact-sell.html";
-      if(contato)    contato.href    = "zh/contact.html";
-    }
-  }
+    else if(code === "zh"){
+  if(btnComprar) btnComprar.href = "zh/contact-buy.html";
+  if(btnVender)  btnVender.href  = "zh/contact-sell.html";
+  if(contato)    contato.href    = "zh/contact.html";
+}
 
-  function initTradingView(locale){
+// ✅ BOTÃO QUERO SER PARCEIRO (LOCAL CERTO)
+if (btnParceiro) {
+  if (code === "pt") btnParceiro.href = "parceiros.html";
+  if (code === "en") btnParceiro.href = "en/partners.html";
+  if (code === "es") btnParceiro.href = "es/socios.html";
+  if (code === "zh") btnParceiro.href = "zh/partners.html";
+}
+
+} // ✅ FECHAMENTO FINAL DA updateLinks
+
+// ⬇️ A PARTIR DAQUI JÁ É OUTRA FUNÇÃO (TradingView)
+
+    function initTradingView(locale){
+
     const tvIndices = document.getElementById('tv-indices');
     const tvCommod  = document.getElementById('tv-commodities');
 
