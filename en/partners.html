@@ -60,32 +60,36 @@
 </div>
 
 <div class="parceiros-cta">
-  <form class="parceiros-form" action="https://formsubmit.co/rsequeira@braziltrad.com" method="POST">
-    <input type="hidden" name="_subject" value="New Partner Registration - BrazilTrad">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
+  <form>
 
-    <div class="form-grid">
-      <input type="text" name="name" placeholder="Full name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone / WhatsApp" required>
-    </div>
+  <div class="form-row">
+    <input type="text" placeholder="Full name">
+    <input type="email" placeholder="Email">
+  </div>
 
-    <input type="text" name="company" placeholder="Company">
+  <div class="form-row">
+    <input type="text" placeholder="Phone / WhatsApp">
+    <input type="text" placeholder="Company">
+  </div>
 
-    <select name="profile" required>
-      <option value="">Partner type</option>
+  <div class="form-row">
+    <select>
+      <option>Partner type</option>
       <option>Producer</option>
       <option>Trader / Broker</option>
       <option>Distributor</option>
-      <option>Representative</option>
       <option>Investor</option>
     </select>
+  </div>
 
-    <textarea name="message" rows="4" placeholder="Briefly describe your profile"></textarea>
+  <div class="form-row">
+    <textarea placeholder="Briefly describe your profile"></textarea>
+  </div>
 
-    <button type="submit" class="button">Submit</button>
-  </form>
+  <button type="submit" class="button">Submit</button>
+
+</form>
+
 </div>
 
 </div>
