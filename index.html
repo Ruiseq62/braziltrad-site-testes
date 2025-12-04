@@ -467,7 +467,7 @@
       <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:34px;width:auto;margin:0 auto 10px">
       <div>© BrazilTrad. Conectando produtores brasileiros a mercados globais.</div>
       <div style="margin-top:10px;">
-  👤 <a href="#contact-anchor">Contato</a> |
+  👤 <a id="footerContato" href="contato.html">Contato</a> |
   🌐 <a href="https://braziltrad.com" target="_blank">braziltrad.com</a> |
   ✉️ <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a> |
   💼 <a href="https://www.linkedin.com/company/braziltrad/" target="_blank">LinkedIn</a> |
@@ -1033,7 +1033,8 @@
     const contato    = document.querySelector("a.contact-link");
     const doc        = document.querySelector("a.doc-link");
     const links      = document.querySelector("a.links-link");
-
+    const footerContato = document.getElementById("footerContato");
+  
     if(!doc || !links) return;
 
     if(code === "pt"){
@@ -1052,7 +1053,13 @@
       doc.href   = "zh/documents_cz.html";
       links.href = "zh/useful-links.html";
     }
-
+// ✅ CONTATO DO RODAPÉ ACOMPANHA O IDIOMA
+if (footerContato) {
+  if (code === "pt") footerContato.href = "contato.html";
+  if (code === "en") footerContato.href = "/en/contact.html";
+  if (code === "es") footerContato.href = "/es/contato.html";
+  if (code === "zh") footerContato.href = "/zh/contatc.html";
+}
     if(code === "pt"){
       if(btnComprar) btnComprar.href = "contato-compra.html";
       if(btnVender)  btnVender.href  = "contato-venda.html";
