@@ -198,15 +198,17 @@ body {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary-dark);
-  line-height: 1.1;
+  line-height: 1;        /* ✅ remove espaço extra */
+  margin-bottom: 2px;   /* ✅ aproxima do slogan */
 }
 
 .brand .slogan {
   font-size: 0.85rem;
   color: #777;
-  line-height: 1.2;
-  margin-top: 2px;
+  line-height: 1.05;    /* ✅ slogan bem colado */
+  margin-top: 0;       /* ✅ remove afastamento */
 }
+
 
 
 
