@@ -903,4 +903,29 @@ nav a,
   transform: translateY(-3px);
   box-shadow: 0 12px 26px rgba(0,0,0,0.35);
 }
+/* ✅ TERCEIRO BOTÃO — PARCEIRO */
+.button.ghost {
+  background: transparent;
+  color: var(--primary);
+  border: 2px dashed var(--primary);
+  box-shadow: none;
+}
 
+.button.ghost:hover {
+  background: var(--primary);
+  color: #fff;
+  border-style: solid;
+}
+
+/* ✅ AJUSTE PARA 3 BOTÕES */
+.cta-3 {
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .cta-3 .button {
+    width: 100%;
+    max-width: 320px;
+  }
+}
