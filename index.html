@@ -465,11 +465,13 @@
       <img src="assets/img/braziltrad-logo.png" alt="BrazilTrad" style="height:34px;width:auto;margin:0 auto 10px">
       <div>© BrazilTrad. Conectando produtores brasileiros a mercados globais.</div>
       <div style="margin-top:10px;">
+  📍 <a href="#contact">Contato</a> |
   🌐 <a href="https://braziltrad.com" target="_blank">braziltrad.com</a> |
   ✉️ <a href="mailto:rsequeira@braziltrad.com">rsequeira@braziltrad.com</a> |
   💼 <a href="https://www.linkedin.com/company/braziltrad/" target="_blank">LinkedIn</a> |
   📱 <a href="https://wa.me/5511922260188" target="_blank">WhatsApp</a>
 </div>
+
 
       <div style="margin-top:8px;opacity:0.9;">São Paulo — Brasil</div>
     </div>
@@ -1160,11 +1162,16 @@ function applyLangSafe(code){
 
     // MENU
     const navLinks = document.querySelectorAll('header nav ul li a');
+
 navLinks.forEach((a, i) => {
-  if (t.nav && typeof t.nav[i] !== "undefined") {
+  if (t.nav && t.nav[i]) {
     a.textContent = t.nav[i];
+  } else {
+    // ✅ fallback seguro: mantém o texto original do HTML
+    a.textContent = a.textContent;
   }
 });
+
 
 
     // HERO
