@@ -1033,64 +1033,75 @@
   };
 
   function updateLinks(code){
-    const btnComprar = document.getElementById("btn-comprar");
-    const btnVender  = document.getElementById("btn-vender");
-    const contato    = document.querySelector("a.contact-link");
-   const doc            = document.querySelector("a.doc-link");
-const links          = document.querySelector("a.links-link");
-const footerContato  = document.getElementById("footerContato");
-const btnParceiro    = document.getElementById("btn-parceiro");  // ✅ ADICIONE ESTA
+  const btnComprar    = document.getElementById("btn-comprar");
+  const btnVender     = document.getElementById("btn-vender");
+  const contato       = document.querySelector("a.contact-link");
+  const doc           = document.querySelector("a.doc-link");
+  const links         = document.querySelector("a.links-link");
+  const footerContato = document.getElementById("footerContato");
+  const btnParceiro   = document.getElementById("btn-parceiro");
 
-  
-    if(!doc || !links) return;
+  if (!doc || !links) return;
 
-    if(code === "pt"){
-      doc.href   = "documentos.html";
-      links.href = "links-uteis.html";
-    }
-    if(code === "en"){
-      doc.href   = "en/documents.html";
-      links.href = "en/useful-links.html";
-    }
-    if(code === "es"){
-      doc.href   = "es/documentos.html";
-      links.href = "es/enlaces-utiles.html";
-    }
-    if(code === "zh"){
-      doc.href   = "zh/documents_cz.html";
-      links.href = "zh/useful-links.html";
-    }
-// ✅ CONTATO DO RODAPÉ ACOMPANHA O IDIOMA
-if (footerContato) {
-  if (code === "pt") footerContato.href = "contato.html";
-  if (code === "en") footerContato.href = "en/contact.html";
-  if (code === "es") footerContato.href = "es/contato.html";
-  if (code === "zh") footerContato.href = "zh/contact.html";
-}
-    if(code === "pt"){
-      if(btnComprar) btnComprar.href = "contato-compra.html";
-      if(btnVender)  btnVender.href  = "contato-venda.html";
-      if(contato)    contato.href    = "contato.html";
-    } else if(code === "en"){
-      if(btnComprar) btnComprar.href = "en/contact-buy.html";
-      if(btnVender)  btnVender.href  = "en/contact-sell.html";
-      if(contato)    contato.href    = "en/contact.html";
-    } else if(code === "es"){
-      if(btnComprar) btnComprar.href = "es/compradores.html";
-      if(btnVender)  btnVender.href  = "es/vendedores.html";
-      if(contato)    contato.href    = "es/contato.html";
-    else if(code === "zh"){
-  if(btnComprar) btnComprar.href = "zh/contact-buy.html";
-  if(btnVender)  btnVender.href  = "zh/contact-sell.html";
-  if(contato)    contato.href    = "zh/contact.html";
-}
+  // ========= DOCUMENTOS & LINKS =========
+  if (code === "pt") {
+    doc.href   = "documentos.html";
+    links.href = "links-uteis.html";
+  } else if (code === "en") {
+    doc.href   = "en/documents.html";
+    links.href = "en/useful-links.html";
+  } else if (code === "es") {
+    doc.href   = "es/documentos.html";
+    links.href = "es/enlaces-utiles.html";
+  } else if (code === "zh") {
+    doc.href   = "zh/documents_cz.html";
+    links.href = "zh/useful-links.html";
+  }
 
-// ✅ BOTÃO QUERO SER PARCEIRO (LOCAL CERTO)
-if (btnParceiro) {
-  if (code === "pt") btnParceiro.href = "parceiros.html";
-  if (code === "en") btnParceiro.href = "en/partners.html";
-  if (code === "es") btnParceiro.href = "es/socios.html";
-  if (code === "zh") btnParceiro.href = "zh/partners.html";
+  // ========= BOTÕES HERO + CONTATO TOPO =========
+  if (code === "pt") {
+    if (btnComprar) btnComprar.href = "contato-compra.html";
+    if (btnVender)  btnVender.href  = "contato-venda.html";
+    if (contato)    contato.href    = "contato.html";
+  } else if (code === "en") {
+    if (btnComprar) btnComprar.href = "en/contact-buy.html";
+    if (btnVender)  btnVender.href  = "en/contact-sell.html";
+    if (contato)    contato.href    = "en/contact.html";
+  } else if (code === "es") {
+    if (btnComprar) btnComprar.href = "es/compradores.html";
+    if (btnVender)  btnVender.href  = "es/vendedores.html";
+    if (contato)    contato.href    = "es/contato.html";
+  } else if (code === "zh") {
+    if (btnComprar) btnComprar.href = "zh/contact-buy.html";
+    if (btnVender)  btnVender.href  = "zh/contact-sell.html";
+    if (contato)    contato.href    = "zh/contact.html";
+  }
+
+  // ========= CONTATO DO RODAPÉ =========
+  if (footerContato) {
+    if (code === "pt") {
+      footerContato.href = "contato.html";
+    } else if (code === "en") {
+      footerContato.href = "/en/contact.html";
+    } else if (code === "es") {
+      footerContato.href = "/es/contato.html";
+    } else if (code === "zh") {
+      footerContato.href = "/zh/contatc.html";
+    }
+  }
+
+  // ========= BOTÃO "QUERO SER PARCEIRO" =========
+  if (btnParceiro) {
+    if (code === "pt") {
+      btnParceiro.href = "parceiros.html";
+    } else if (code === "en") {
+      btnParceiro.href = "/en/partners.html";
+    } else if (code === "es") {
+      btnParceiro.href = "/es/socios.html";
+    } else if (code === "zh") {
+      btnParceiro.href = "/zh/partners.html";
+    }
+  }
 }
 
 } // ✅ FECHAMENTO FINAL DA updateLinks
