@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Solicitar Análise de Seguro — BrazilTrad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
 
+<body>
+
+<section class="parceiros-hero">
+  <div class="container">
+    <h1>Solicitar Análise de Seguro de Exportação</h1>
+    <p>Avaliamos gratuitamente o risco do comprador internacional e indicamos a melhor cobertura para sua operação.</p>
+  </div>
+</section>
+
+<section class="parceiros-section">
+  <div class="container">
+
+    <!-- 🔹 BLOCO 1 — DADOS DO VENDEDOR -->
+    <h2>Dados do Vendedor (Exportador)</h2>
+
+    <form class="partner-form" id="seguroForm">
+
+      <div class="form-grid">
+        <input type="text" name="empresa_vendedora" placeholder="Nome da empresa vendedora" required>
+        <input type="text" name="responsavel_vendedor" placeholder="Nome do responsável" required>
+
+        <input type="email" name="email_vendedor" placeholder="Email" required>
+        <input type="text" name="telefone_vendedor" placeholder="Telefone / WhatsApp" required>
+
+        <input type="text" name="pais_origem" placeholder="País de origem" required>
+      </div>
+
+      <!-- 🔹 BLOCO 2 — DADOS DO COMPRADOR -->
+      <h2>Dados do Comprador (Importador)</h2>
+
+      <div class="form-grid">
+        <input type="text" name="empresa_compradora" placeholder="Nome da empresa compradora" required>
+        <input type="text" name="responsavel_comprador" placeholder="Nome do contato no comprador" required>
+
+        <input type="text" name="pais_destino" placeholder="País de destino" required>
+        <input type="text" name="cidade_destino" placeholder="Cidade de destino">
+      </div>
+
+      <!-- 🔹 BLOCO 3 — DADOS DA OPERAÇÃO -->
+      <h2>Dados da Operação Comercial</h2>
+
+      <div class="form-grid">
+        <input type="text" name="produto" placeholder="Produto" required>
+        <input type="text" name="ncm" placeholder="NCM / HS Code (opcional)">
+
+        <input type="text" name="valor_operacao" placeholder="Valor total da operação (USD / EUR)" required>
+
+        <select name="moeda" required>
+          <option disabled selected>Moeda</option>
+          <option>USD</option>
+          <option>EUR</option>
+          <option>BRL</option>
+        </select>
+
+        <select name="incoterm" required>
+          <option disabled selected>Incoterm</option>
+          <option>FOB</option>
+          <option>CIF</option>
+          <option>CFR</option>
+          <option>DAP</option>
+          <option>DDP</option>
+        </select>
+
+        <select name="pagamento" required>
+          <option disabled selected>Prazo de pagamento</option>
+          <option>À vista</option>
+          <option>30 dias</option>
+          <option>60 dias</option>
+          <option>90 dias</option>
+        </select>
+
+        <input type="text" name="quantidade" placeholder="Quantidade (ex: 500 toneladas)">
+      </div>
+
+      <!-- 🔹 BLOCO 4 — LOGÍSTICA & TRANSPORTE -->
+      <h2>Transporte & Logística</h2>
+
+      <div class="form-grid">
+        <select name="meio_transporte" required>
+          <option disabled selected>Meio de transporte</option>
+          <option>Marítimo</option>
+          <option>Aéreo</option>
+          <option>Rodoviário</option>
+          <option>Multimodal</option>
+        </select>
+
+        <input type="number" name="tempo_transporte" placeholder="Tempo estimado de transporte (dias)" required>
+
+        <input type="text" name="porto_origem" placeholder="Porto / Aeroporto de origem">
+        <input type="text" name="porto_destino" placeholder="Porto / Aeroporto de destino">
+      </div>
+
+      <!-- 🔹 BLOCO 5 — OBSERVAÇÕES -->
+      <h2>Observações Adicionais</h2>
+
+      <div class="form-grid">
+        <textarea name="observacoes" placeholder="Descreva qualquer detalhe adicional sobre a operação"></textarea>
+      </div>
+
+      <!-- 🔹 BLOCO FINAL -->
+      <div style="text-align:center;margin-top:24px;">
+        <p style="font-size:14px;opacity:0.8;">
+          ✅ Todas as informações são confidenciais  
+          <br>✅ Esta análise não gera compromisso  
+          <br>✅ Retornamos em até 24h úteis
+        </p>
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:16px;margin-top:16px;">
+        <button type="submit" class="btn-submit">Solicitar Análise de Seguro</button>
+        <a href="../index.html" class="btn-submit" style="text-decoration:none;display:flex;align-items:center;">Voltar</a>
+      </div>
+
+      <p id="formMessage" style="margin-top:14px;text-align:center;"></p>
+
+    </form>
+
+  </div>
+</section>
+
+</body>
+</html>
