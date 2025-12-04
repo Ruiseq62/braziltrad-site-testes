@@ -973,3 +973,43 @@ nav a,
 .parceiros-section li {
   margin-bottom: 8px;
 }
+/* ===== FORMULÁRIO PARCEIRO – AJUSTE FINAL ===== */
+
+.parceiros-section form {
+  margin-top: 40px;
+  max-width: 900px;
+}
+
+/* Linha de campos */
+.parceiros-section .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.parceiros-section .form-row input,
+.parceiros-section .form-row select {
+  flex: 1;
+  min-width: 220px;
+}
+
+.parceiros-section textarea {
+  width: 100%;
+  min-height: 120px;
+}
+
+/* Botão alinhado corretamente */
+.parceiros-section button {
+  margin-top: 20px;
+  padding: 14px 34px;
+  border-radius: 40px;
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .parceiros-section .form-row {
+    flex-direction: column;
+  }
+}
