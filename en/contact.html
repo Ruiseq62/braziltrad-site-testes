@@ -1,58 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Contact — BrazilTrad</title>
-<link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — BrazilTrad</title>
 
+  <!-- ✅ CSS correto para páginas dentro de /en -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
 
-<div class="container">
-  <h1>Contact</h1>
-  <p class="subtitle">Fill out the form below and we will get back to you.</p>
+<body class="site">
 
-  <form id="contactForm">
+  <section class="section">
+    <div class="container">
 
-    <!-- Hidden Zoho fields -->
-    <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
-    <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
-    <input type="hidden" name="actionType" value="TGVhZHM=">
-    <input type="hidden" name="zc_gad" id="zc_gad" value="">
-    <input type="hidden" name="returnURL" value="https://braziltrad.com">
+      <h1>Contact</h1>
+      <p class="subtitle">Fill out the form below and we will get back to you.</p>
 
-    <!-- Fields -->
-    <label for="name">Name *</label>
-    <input type="text" id="name" name="Last Name" required>
+      <form id="contactForm">
 
-    <label for="email">Email *</label>
-    <input type="email" id="email" name="Email" required>
+        <!-- Hidden Zoho fields -->
+        <input type="hidden" name="xnQsjsdp" value="006d2ecb73ad998ea05f038497601dc3ffae95c11e530d1250cc6309dabfc502">
+        <input type="hidden" name="xmIwtLD" value="0c16e695af92187629acdbe97f14dc0656f785e23f9449adbc346216ab10aaebe8d345eda125a27c49af0f12ee5c0f23">
+        <input type="hidden" name="actionType" value="TGVhZHM=">
+        <input type="hidden" name="zc_gad" id="zc_gad" value="">
+        <input type="hidden" name="returnURL" value="https://braziltrad.com">
 
-    <label for="phone">Phone *</label>
-    <input type="text" id="phone" name="Mobile" required>
+        <!-- Fields -->
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="Last Name" required>
 
-    <label for="country">Country of operation *</label>
-    <input type="text" id="country" name="City" required>
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="Email" required>
 
-    <label for="company">Company (optional)</label>
-    <input type="text" id="company" name="Company">
+        <label for="phone">Phone *</label>
+        <input type="text" id="phone" name="Mobile" required>
 
-    <label for="message">Message *</label>
-    <textarea id="message" name="Description" rows="5" required></textarea>
+        <label for="country">Country of operation *</label>
+        <input type="text" id="country" name="City" required>
 
-    <!-- Extra Zoho fields -->
-    <input type="hidden" name="Industry" value="-None-">
-    <input type="hidden" name="Lead Source" value="-None-">
-    <input type="hidden" name="Annual Revenue" value="">
-    <input type="hidden" id="rating" name="Rating" value="EN">
+        <label for="company">Company (optional)</label>
+        <input type="text" id="company" name="Company">
 
-    <button type="submit">Send</button>
+        <label for="message">Message *</label>
+        <textarea id="message" name="Description" rows="5" required></textarea>
 
-    <div id="msgStatus"></div>
-    <button id="backBtn" type="button" onclick="history.back()">Back to website</button>
-    <div class="small">By submitting, your data goes directly into the Zoho CRM.</div>
+        <!-- Extra Zoho fields -->
+        <input type="hidden" name="Industry" value="-None-">
+        <input type="hidden" name="Lead Source" value="-None-">
+        <input type="hidden" name="Annual Revenue" value="">
+        <input type="hidden" id="rating" name="Rating" value="EN">
 
-  </form>
-</div>
+        <button type="submit" class="button">Send</button>
+
+        <div id="msgStatus"></div>
+
+        <button id="backBtn" type="button" onclick="history.back()" style="display:none;">
+          Back to website
+        </button>
+
+        <div class="small">
+          By submitting, your data goes directly into the Zoho CRM.
+        </div>
+
+      </form>
+
+    </div>
+  </section>
 
 <script>
 (function(){
