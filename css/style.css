@@ -182,35 +182,30 @@ body {
 
 .brand {
   display: flex;
-  align-items: center;
+  align-items: center;   /* ✅ CENTRA VERTICALMENTE */
   gap: 12px;
   color: var(--primary);
   text-decoration: none;
-  height: 70px;
-  transform: translateY(2px);  /* ✅ DESCE SUAVEMENTE */
+  height: 70px;          /* ✅ igual à altura do header */
 }
 
 .brand img {
   height: 42px;
+  display: block;
 }
 
 .brand .title {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary-dark);
+  line-height: 1.1;
 }
 
 .brand .slogan {
   font-size: 0.85rem;
   color: #777;
-
-  min-height: 34px;
-  line-height: 17px;
-
-  display: flex;
-  align-items: center;
-
-  margin-top: 4px;   /* ✅ DESCE O TEXTO UM POUQUINHO */
+  line-height: 1.2;
+  margin-top: 2px;
 }
 
 
@@ -815,4 +810,29 @@ nav a,
     top: 10px !important;
     right: 10px !important;
   }
+}
+.header .nav {
+  display: flex;
+  align-items: center;     /* ✅ CENTRO VERTICAL REAL */
+  height: 70px;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;     /* ✅ CENTRO VERTICAL DO MENU */
+  height: 70px;
+}
+
+.header nav ul {
+  display: flex;
+  align-items: center;     /* ✅ CENTRO VERTICAL DOS ITENS */
+  height: 70px;
+}
+
+.header nav ul li a {
+  display: flex;
+  align-items: center;     /* ✅ TEXTO ALINHADO AO MEIO */
+  height: 70px;
+  line-height: 1;
+  padding: 0 6px;
 }
