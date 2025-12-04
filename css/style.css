@@ -802,14 +802,33 @@ nav a,
   height: 100%;
   line-height: 1;
 }
-/* ✅ FIX MOBILE — evitar que a barra da TradingView tape o topo */
 @media (max-width: 768px) {
-  .tradingview-widget-container,
-  .tv-widget-container,
-  .ticker-bar {
-    position: relative !important;
+
+  /* ✅ MANTÉM AS DUAS BARRAS VISÍVEIS NO TOPO */
+  .tradingview-widget-container.main-bar {
+    position: fixed !important;
     top: 0 !important;
+    height: 38px;
+    z-index: 99999;
   }
+
+  .tradingview-widget-container.commodities-bar {
+    position: fixed !important;
+    top: 38px !important;
+    height: 38px;
+    z-index: 99998;
+  }
+
+  /* ✅ COMPENSAÇÃO CORRETA DO BODY NO MOBILE */
+  body {
+    margin-top: 146px !important; /* 38 + 38 + header */
+  }
+
+  /* ✅ BOTÃO DE IDIOMA AJUSTADO */
+  .lang-btn {
+    top: 92px !important;
+  }
+}
 
   body {
     padding-top: 0 !important;
