@@ -844,3 +844,40 @@ nav a,
     right: 10px !important;
   }
 }
+@media (max-width: 768px) {
+
+  /* ✅ BARRA 1 */
+  .tradingview-widget-container.main-bar {
+    position: fixed !important;
+    top: 0 !important;
+    height: 38px;
+    z-index: 99999;
+  }
+
+  /* ✅ BARRA 2 */
+  .tradingview-widget-container.commodities-bar {
+    position: fixed !important;
+    top: 38px !important;
+    height: 38px;
+    z-index: 99998;
+  }
+
+  /* ✅ HEADER LOGO */
+  .header {
+    position: fixed !important;
+    top: 76px !important;   /* 38 + 38 */
+    height: 70px;
+    z-index: 99997;
+  }
+
+  /* ✅ COMPENSAÇÃO TOTAL PERFEITA */
+  body {
+    margin-top: 146px !important; /* 38 + 38 + 70 */
+  }
+
+  /* ✅ BOTÃO DE IDIOMA NO LUGAR CERTO */
+  .lang-btn {
+    top: 92px !important;
+    transform: scale(0.8);
+  }
+}
