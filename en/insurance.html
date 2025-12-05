@@ -1,1 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Request Insurance Analysis — BrazilTrad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
 
+<body>
+
+<section class="parceiros-hero">
+  <div class="container">
+    <h1>Request Export Insurance Analysis</h1>
+    <p>We analyze the international buyer's risk for free and indicate the best coverage for your operation.</p>
+  </div>
+</section>
+  
+<section class="parceiros-section">
+  <div class="container">
+
+    <h2>Seller Information (Exporter)</h2>
+
+    <form class="partner-form" id="seguroForm">
+
+      <div class="form-grid">
+        <input type="text" name="empresa_vendedora" placeholder="Seller company name" required>
+        <input type="text" name="responsavel_vendedor" placeholder="Responsible person's name" required>
+
+        <input type="email" name="email_vendedor" placeholder="Email" required>
+        <input type="text" name="telefone_vendedor" placeholder="Phone / WhatsApp" required>
+
+        <input type="text" name="pais_origem" placeholder="Country of origin" required>
+      </div>
+
+      <h2>Buyer Information (Importer)</h2>
+
+      <div class="form-grid">
+        <input type="text" name="empresa_compradora" placeholder="Buyer company name" required>
+        <input type="text" name="responsavel_comprador" placeholder="Buyer contact name" required>
+
+        <input type="text" name="pais_destino" placeholder="Destination country" required>
+        <input type="text" name="cidade_destino" placeholder="Destination city">
+      </div>
+
+      <h2>Commercial Operation Data</h2>
+
+      <div class="form-grid">
+        <input type="text" name="produto" placeholder="Product" required>
+        <input type="text" name="ncm" placeholder="NCM / HS Code (optional)">
+
+        <input type="text" name="valor_operacao" placeholder="Total transaction value (USD / EUR)" required>
+
+        <select name="moeda" required>
+          <option disabled selected>Currency</option>
+          <option>USD</option>
+          <option>EUR</option>
+          <option>BRL</option>
+        </select>
+
+        <select name="incoterm" required>
+          <option disabled selected>Incoterm</option>
+          <option>FOB</option>
+          <option>CIF</option>
+          <option>CFR</option>
+          <option>DAP</option>
+          <option>DDP</option>
+        </select>
+
+        <select name="pagamento" required>
+          <option disabled selected>Payment terms</option>
+          <option>Cash</option>
+          <option>30 days</option>
+          <option>60 days</option>
+          <option>90 days</option>
+        </select>
+
+        <input type="text" name="quantidade" placeholder="Quantity (e.g. 500 tons)">
+      </div>
+
+      <h2>Transport & Logistics</h2>
+
+      <div class="form-grid">
+        <select name="meio_transporte" required>
+          <option disabled selected>Transport mode</option>
+          <option>Maritime</option>
+          <option>Air</option>
+          <option>Road</option>
+          <option>Multimodal</option>
+        </select>
+
+        <input type="number" name="tempo_transporte" placeholder="Estimated transport time (days)" required>
+
+        <input type="text" name="porto_origem" placeholder="Origin port / airport">
+        <input type="text" name="porto_destino" placeholder="Destination port / airport">
+      </div>
+
+      <h2>Additional Notes</h2>
+
+      <div class="form-grid">
+        <textarea name="observacoes" placeholder="Describe any additional details about the operation"></textarea>
+      </div>
+
+      <div class="seguranca-info">
+        <p style="font-size:14px;opacity:0.8;">
+          ✅ All information is confidential  
+          <br>✅ This analysis does not create any obligation  
+          <br>✅ We respond within 24 business hours
+        </p>
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:16px;margin-top:16px;">
+        <button type="submit" class="btn-submit">Request Insurance Analysis</button>
+        <a href="../index.html" class="btn-submit" style="text-decoration:none;display:flex;align-items:center;">Back</a>
+      </div>
+
+      <p id="formMessage" style="margin-top:14px;text-align:center;"></p>
+
+    </form>
+
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const form = document.getElementById("seguroForm");
+  const msg = document.getElementById("formMessage");
+
+  if (!form || !msg) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    data.append("origem", "Insurance - Site");
+    data.append("lang", "EN");
+    data.append("tipo_lead", "Insurance");
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbyjINH9RzPYSydQipJBkmZ_1FMXL5irgNOTxML9QxqvaAb7tRjDfpoeq_GV-ximZpDo/exec",
+        { method: "POST", body: data }
+      );
+
+      const result = await response.json();
+
+      if (result.status === "ok") {
+        form.reset();
+        msg.innerText = "✅ Request sent successfully! We will contact you within 24 hours.";
+        msg.style.color = "#1f9d55";
+      } else {
+        msg.innerText = "❌ Error sending data.";
+        msg.style.color = "#dc2626";
+      }
+
+    } catch (err) {
+      msg.innerText = "❌ Server connection error.";
+      msg.style.color = "#dc2626";
+    }
+
+  });
+
+});
+</script>
+</body>
+</html>
