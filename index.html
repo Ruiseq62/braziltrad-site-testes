@@ -1035,38 +1035,49 @@
   };
 
   function updateLinks(code){
-   const btnComprar  = document.getElementById("btn-comprar");
-const btnVender   = document.getElementById("btn-vender");
-const btnParceiro = document.getElementById("btn-parceiro");
-const contato     = document.querySelector("a.contact-link");
-const doc         = document.querySelector("a.doc-link");
-const links       = document.querySelector("a.links-link");
-const footerContato = document.getElementById("footerContato");
+  const btnComprar  = document.getElementById("btn-comprar");
+  const btnVender   = document.getElementById("btn-vender");
+  const btnParceiro = document.getElementById("btn-parceiro");
+  const contato     = document.querySelector("a.contact-link");
+  const doc         = document.querySelector("a.doc-link");
+  const links       = document.querySelector("a.links-link");
+  const footerContato = document.getElementById("footerContato");
+
+  // ✅ ESTA LINHA NOVA VEM AQUI:
+  const btnSeguro = document.querySelector("#export-insurance .cta a");
 
   
     if(!doc || !links) return;
 
     if(code === "pt"){
-  doc.href   = "documentos.html";
+  doc.href = "documentos.html";
   links.href = "links-uteis.html";
+
   if(btnParceiro) btnParceiro.href = "parceiros.html";
+  if (btnSeguro) btnSeguro.href = "seguro.html";
 }
+
 
     if(code === "en"){
   doc.href   = "en/documents.html";
   links.href = "en/useful-links.html";
   if(btnParceiro) btnParceiro.href = "en/partners.html";
+  if (btnSeguro) btnSeguro.href = "en/insurance.html";
 }
 
     if(code === "es"){
       doc.href   = "es/documentos.html";
       links.href = "es/enlaces-utiles.html";
       if(btnParceiro) btnParceiro.href = "es/socios.html";
+      if (btnSeguro) btnSeguro.href = "es/seguro.html";
+ (
     }
     if(code === "zh"){
       doc.href   = "zh/documents_cz.html";
       links.href = "zh/useful-links.html";
       if(btnParceiro) btnParceiro.href = "zh/partners.html";
+      if (btnSeguro) btnSeguro.href = "zh/insurance.html";
+
  }
 // ✅ CONTATO DO RODAPÉ ACOMPANHA O IDIOMA
 if (footerContato) {
